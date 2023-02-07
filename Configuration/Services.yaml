@@ -1,0 +1,28 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  EliasHaeussler\Typo3Solver\:
+    resource: '../Classes/*'
+
+  EliasHaeussler\Typo3Solver\Command\CacheFlushCommand:
+    tags:
+      - name: console.command
+        command: 'solver:cache:flush'
+        description: 'Flush the solutions cache'
+
+  EliasHaeussler\Typo3Solver\Command\ListModelsCommand:
+    tags:
+      - name: console.command
+        command: 'solver:list-models'
+        description: 'List all available models'
+        schedulable: false
+
+  EliasHaeussler\Typo3Solver\Command\SolveCommand:
+    tags:
+      - name: console.command
+        command: 'solver:solve'
+        description: 'Solve a specific problem'
+        schedulable: false

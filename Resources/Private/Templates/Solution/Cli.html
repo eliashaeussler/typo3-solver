@@ -1,0 +1,22 @@
+<html xmlns:s="http://typo3.org/ns/EliasHaeussler/Typo3Solver/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:spaceless><f:if condition="{showPrompt}">
+Prompt
+======
+<f:spaceless>{solution.prompt -> f:format.raw()}</f:spaceless>
+</f:if></f:spaceless>
+
+<f:spaceless><f:for each="{solution.choices}" as="choice" iteration="iterator">
+Solution #{iterator.cycle}
+===========
+<f:spaceless>{choice.text -> f:format.raw()}</f:spaceless>
+</f:for></f:spaceless>
+
+<f:spaceless><f:if condition="{solution.cacheIdentifier}">
+Cache
+=====
+This solution was cached {f:if(condition: solution.createDate, then: '{s:date(date: solution.createDate, readable: 1)} ')}as {solution.cacheIdentifier}
+</f:if></f:spaceless>
+
+</html>

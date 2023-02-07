@@ -1,0 +1,13 @@
+{f:if(condition: '{index} == 0', then: 'checked') -> f:variable(name: 'checked')}
+
+<input type="radio" hidden
+       name="solution-choice"
+       class="solution-choice-selector"
+       id="solution-choice-{index}"
+       {checked}
+>
+<label for="solution-choice-{prevIndex}" class="solution-choice-arrow solution-choice-arrow-prev">&larr;</label>
+<label for="solution-choice-{nextIndex}" class="solution-choice-arrow solution-choice-arrow-next">&rarr;</label>
+<div class="solution-choice-container">
+    {formattedChoice -> f:format.raw()}
+</div>

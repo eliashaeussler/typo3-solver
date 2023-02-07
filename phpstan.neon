@@ -1,0 +1,13 @@
+includes:
+	- phpstan-baseline.neon
+	- .build/vendor/phpstan/phpstan/conf/bleedingEdge.neon
+parameters:
+	level: max
+	paths:
+		- Classes
+		- Configuration
+		- Tests
+	bootstrapFiles:
+		- .build/vendor/typo3/testing-framework/Resources/Core/Build/UnitTestsBootstrap.php
+	symfony:
+		consoleApplicationLoader: Tests/Build/console-application.php

@@ -1,0 +1,23 @@
+# cat=basic//10; type=string; label=FQCN of the solution provider to use:Must implement the "EliasHaeussler\Typo3Solver\Solution\Provider\SolutionProvider" interface
+provider = EliasHaeussler\Typo3Solver\Solution\Provider\OpenAISolutionProvider
+
+# cat=basic//20; type=string; label=FQCN of the prompt to use:Must implement the "EliasHaeussler\Typo3Solver\Prompt\Prompt" interface
+prompt = EliasHaeussler\Typo3Solver\Prompt\DefaultPrompt
+
+# cat=basic//30; type=string; label=Ignored exception codes:Separated by comma
+ignoredCodes =
+
+# cat=api//10; type=string; label=OpenAI API key:Must be created on https://platform.openai.com/account/api-keys
+api.key =
+
+# cat=attributes//10; type=string; label=OpenAI model:You can list all available models by running the `solver:list-models` command
+attributes.model = text-davinci-003
+
+# cat=attributes//20; type=int+; label=Maximum number of tokens to use per request
+attributes.maxTokens = 300
+
+# cat=attributes//30; type=string; label=Temperature to use for completion requests:Must be a float between 0 and 1
+attributes.temperature = 0.5
+
+# cat=cache//10; type=int+; label=Lifetime of the solutions cache:Use "0" to disable caching
+cache.lifetime = 86400

@@ -1,0 +1,11 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Parameter \\#1 \\$arguments \\(array\\{date\\: DateTimeInterface, readable\\: bool\\}\\) of method EliasHaeussler\\\\Typo3Solver\\\\ViewHelpers\\\\DateViewHelper\\:\\:renderStatic\\(\\) should be contravariant with parameter \\$arguments \\(array\\) of method TYPO3Fluid\\\\Fluid\\\\Core\\\\ViewHelper\\\\AbstractViewHelper\\:\\:renderStatic\\(\\)$#"
+			count: 1
+			path: Classes/ViewHelpers/DateViewHelper.php
+
+		-
+			message: "#^Parameter \\#1 \\$arguments \\(array\\{date\\: DateTimeInterface, readable\\: bool\\}\\) of method EliasHaeussler\\\\Typo3Solver\\\\ViewHelpers\\\\DateViewHelper\\:\\:renderStatic\\(\\) should be contravariant with parameter \\$arguments \\(array\\) of method TYPO3Fluid\\\\Fluid\\\\Core\\\\ViewHelper\\\\ViewHelperInterface\\:\\:renderStatic\\(\\)$#"
+			count: 1
+			path: Classes/ViewHelpers/DateViewHelper.php

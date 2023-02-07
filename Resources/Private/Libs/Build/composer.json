@@ -1,0 +1,18 @@
+{
+	"name": "eliashaeussler/typo3-solver-libs",
+	"description": "Additional libraries to support non-composer mode of EXT:solver",
+	"license": "GPL-2.0-or-later",
+	"authors": [
+		{
+			"name": "Elias Häußler",
+			"email": "elias@haeussler.dev",
+			"homepage": "https://haeussler.dev",
+			"role": "Maintainer"
+		}
+	],
+	"require": {
+		"php": "~8.1.0",
+		"openai-php/client": "^0.3.0",
+		"spatie/backtrace": "^1.2"
+	}
+}

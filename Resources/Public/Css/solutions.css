@@ -1,0 +1,142 @@
+.solution {
+    background-color: #fff;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 1px rgb(0 0 0 / 15%);
+}
+
+.solution-head {
+    color: #10a37f;
+    background-color: #e6f3f3;
+    padding: 1.5rem;
+    display: flex;
+}
+
+.solution-headline {
+    flex-grow: 1;
+}
+
+.solution-head h3 {
+    margin: 0;
+}
+
+.solution-meta {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0;
+    display: flex;
+    gap: 0.5em;
+}
+
+.solution-meta li {
+    display: flex;
+    align-items: center;
+    gap: 0.25em;
+}
+
+.solution-meta .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+    border: 0;
+}
+
+.solution-meta svg {
+    height: 1em;
+    width: 1em;
+    fill: currentColor;
+    opacity: 0.5;
+}
+
+.solution-meta code {
+    font-size: 0.9em;
+    line-height: 0.9em;
+}
+
+.solution-model {
+    margin-bottom: 0;
+}
+
+.solution-icon > svg {
+    width: 2rem;
+    height: 2rem;
+    fill: currentColor;
+}
+
+.solution-body {
+    position: relative;
+    border-bottom: 1px solid #b9b9b9;
+}
+
+.solution-choice-container {
+    padding: 1.5rem;
+}
+
+.solution-choice-selector ~ .solution-choice-container {
+    display: none;
+}
+
+.solution-choice-selector:checked ~ .solution-choice-container {
+    display: block;
+}
+
+.solution-choice-arrow {
+    display: none;
+    position: absolute;
+    background-color: #10a37f;
+    width: 2rem;
+    height: 2rem;
+    top: calc(50% - 1rem);
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.2em;
+    text-align: center;
+    line-height: 2rem;
+}
+
+.solution-choice-arrow:hover,
+.solution-choice-arrow:focus {
+    background-color: #8c8c8c;
+}
+
+.solution-choice-arrow-prev {
+    left: -2rem;
+}
+
+.solution-choice-arrow-next {
+    right: -2rem;
+}
+
+.solution-choice-selector:checked ~ .solution-choice-arrow {
+    display: block;
+}
+
+.solution-choice p:first-child {
+    margin-top: 0;
+}
+
+.solution-choice p:last-child {
+    margin-bottom: 0;
+}
+
+.solution-choice pre {
+    margin: 0;
+}
+
+.solution-prompt {
+    padding: 1rem 1.5rem;
+    font-size: 0.8em;
+}
+
+.solution-prompt summary {
+    cursor: pointer;
+}
+
+.solution-prompt pre {
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+}

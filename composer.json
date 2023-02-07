@@ -1,0 +1,85 @@
+{
+	"name": "eliashaeussler/typo3-solver",
+	"description": "Extension for TYPO3 CMS to extend TYPO3's exception handling with AI generated solutions",
+	"license": "GPL-2.0-or-later",
+	"type": "typo3-cms-extension",
+	"authors": [
+		{
+			"name": "Elias Häußler",
+			"email": "elias@haeussler.dev",
+			"homepage": "https://haeussler.dev",
+			"role": "Maintainer"
+		}
+	],
+	"require": {
+		"php": "~8.1.0 || ~8.2.0",
+		"openai-php/client": "^0.3.0",
+		"spatie/backtrace": "^1.2",
+		"symfony/console": "^5.4 || ^6.0",
+		"symfony/filesystem": "^5.4 || ^6.0",
+		"typo3/cms-core": "^11.5 || ^12.2",
+		"typo3fluid/fluid": "^2.7"
+	},
+	"require-dev": {
+		"armin/editorconfig-cli": "^1.5",
+		"ergebnis/composer-normalize": "^2.29",
+		"phpstan/extension-installer": "^1.2",
+		"phpstan/phpstan": "^1.9",
+		"phpstan/phpstan-deprecation-rules": "^1.1",
+		"phpstan/phpstan-strict-rules": "^1.4",
+		"phpstan/phpstan-symfony": "^1.2",
+		"rector/rector": "^0.15.10",
+		"saschaegerer/phpstan-typo3": "^1.8",
+		"sbuerk/typo3-cmscomposerinstallers-testingframework-bridge": "^0.1.2",
+		"typo3/coding-standards": "^0.7.1",
+		"typo3/testing-framework": "^6.16 || ^7.0@dev"
+	},
+	"autoload": {
+		"psr-4": {
+			"EliasHaeussler\\Typo3Solver\\": "Classes/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"EliasHaeussler\\Typo3Solver\\Tests\\": "Tests/"
+		}
+	},
+	"config": {
+		"allow-plugins": {
+			"ergebnis/composer-normalize": true,
+			"phpstan/extension-installer": true,
+			"sbuerk/typo3-cmscomposerinstallers-testingframework-bridge": true,
+			"typo3/class-alias-loader": true,
+			"typo3/cms-composer-installers": true
+		},
+		"bin-dir": ".build/bin",
+		"sort-packages": true,
+		"vendor-dir": ".build/vendor"
+	},
+	"extra": {
+		"typo3/cms": {
+			"extension-key": "solver",
+			"web-dir": ".build/web"
+		}
+	},
+	"scripts": {
+		"lint": [
+			"@lint:composer",
+			"@lint:editorconfig",
+			"@lint:php"
+		],
+		"lint:composer": "@composer normalize",
+		"lint:editorconfig": "ec --fix",
+		"lint:php": "php-cs-fixer fix",
+		"migration": [
+			"@migration:rector"
+		],
+		"migration:rector": "rector process",
+		"sca": [
+			"@sca:php"
+		],
+		"sca:php": "phpstan analyse -c phpstan.neon",
+		"test": "phpunit -c phpunit.xml",
+		"test:coverage": "phpunit -c phpunit.coverage.xml"
+	}
+}
