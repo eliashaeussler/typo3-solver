@@ -25,7 +25,7 @@
 An extension for TYPO3 CMS to solve exceptions with AI generated solutions.
 It uses the [OpenAI PHP client][1] to send a prompt to a configured model
 and uses the responded completion as solution. Several completion attributes
-(model, tokens, temperature), number of completions are configurable. It also
+(model, tokens, temperature, number of completions) are configurable. It also
 provides a console command to solve problems from command line.
 
 ## 🚀 Features
