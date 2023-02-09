@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver\Configuration;
 
+use EliasHaeussler\Typo3Solver\Extension;
 use EliasHaeussler\Typo3Solver\ProblemSolving;
 use Exception;
 use TYPO3\CMS\Core;
@@ -49,7 +50,7 @@ final class LowLevelConfigurationProvider implements ConfigurationProvider
     public function __construct()
     {
         /* @phpstan-ignore-next-line */
-        $this->configuration = $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['solver'] ?? [];
+        $this->configuration = $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS'][Extension::KEY] ?? [];
     }
 
     public function get(string $configPath, mixed $default = null): mixed

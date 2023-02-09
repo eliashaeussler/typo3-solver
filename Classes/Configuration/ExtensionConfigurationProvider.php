@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver\Configuration;
 
+use EliasHaeussler\Typo3Solver\Extension;
 use Exception;
 use TYPO3\CMS\Core;
 
@@ -44,7 +45,7 @@ final class ExtensionConfigurationProvider implements ConfigurationProvider
     public function get(string $configPath, mixed $default = null): mixed
     {
         try {
-            return $this->configuration->get('solver', $configPath);
+            return $this->configuration->get(Extension::KEY, $configPath);
         } catch (Core\Exception) {
             return $default;
         }
