@@ -177,6 +177,38 @@ final class ConfigurationTest extends TestingFramework\Core\Unit\UnitTestCase
     /**
      * @test
      */
+    public function getNumberOfCompletionsReturnsDefaultNumberOfCompletionsIfNoNumberOfCompletionsIsConfigured(): void
+    {
+        self::assertSame(1, $this->subject->getNumberOfCompletions());
+    }
+
+    /**
+     * @test
+     */
+    public function getNumberOfCompletionsReturnsDefaultNumberOfCompletionsIfConfiguredNumberOfCompletionsIsInvalid(): void
+    {
+        $this->configurationProvider->configuration = [
+            'attributes/numberOfCompletions' => 'foo',
+        ];
+
+        self::assertSame(1, $this->subject->getNumberOfCompletions());
+    }
+
+    /**
+     * @test
+     */
+    public function getNumberOfCompletionsReturnsConfiguredNumberOfCompletions(): void
+    {
+        $this->configurationProvider->configuration = [
+            'attributes/numberOfCompletions' => 5,
+        ];
+
+        self::assertSame(5, $this->subject->getNumberOfCompletions());
+    }
+
+    /**
+     * @test
+     */
     public function getCacheLifetimeReturnsDefaultCacheLifetimeIfNoCacheLifetimeIsConfigured(): void
     {
         self::assertSame(60 * 60 * 24, $this->subject->getCacheLifetime());

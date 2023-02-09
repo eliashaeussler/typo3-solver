@@ -50,6 +50,7 @@ final class OpenAISolutionProvider implements SolutionProvider
                 'prompt' => $problem->getPrompt(),
                 'max_tokens' => $this->configuration->getMaxTokens(),
                 'temperature' => $this->configuration->getTemperature(),
+                'n' => $this->configuration->getNumberOfCompletions(),
             ]);
         } catch (\Exception) {
             throw Exception\UnableToSolveException::create($problem);
