@@ -30,6 +30,7 @@ use TYPO3\CMS\Core;
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
+ * @codeCoverageIgnore
  */
 final class Extension
 {
