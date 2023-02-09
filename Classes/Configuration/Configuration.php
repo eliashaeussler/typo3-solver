@@ -27,6 +27,8 @@ use EliasHaeussler\Typo3Solver\ProblemSolving;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
+use function array_filter;
+use function array_map;
 use function class_exists;
 use function is_a;
 use function is_numeric;
@@ -147,6 +149,12 @@ final class Configuration
             return [];
         }
 
-        return GeneralUtility::intExplode(',', $ignoredCodes, true);
+        return array_map(
+            'intval',
+            array_filter(
+                GeneralUtility::trimExplode(',', $ignoredCodes, true),
+                'is_numeric',
+            ),
+        );
     }
 }
