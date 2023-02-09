@@ -78,11 +78,11 @@ The extension provides a modified debug exception handler in [`Error/AiSolverExc
 It can be activated in the system configuration (aka `LocalConfiguration.php`):
 
 ```php
-# config/settings/system.php
+# config/system/settings.php
 
 return [
     'SYS' => [
-        'debugExceptionHandler' => \EliasHaeussler\Typo3Solver\Error\AiSolverExceptionHandler::class,
+        'debugExceptionHandler' => 'EliasHaeussler\\Typo3Solver\\Error\\AiSolverExceptionHandler',
     ],
 ];
 ```
