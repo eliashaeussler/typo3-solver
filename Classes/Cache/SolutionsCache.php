@@ -132,6 +132,7 @@ final class SolutionsCache
                 $this->configuration->getModel(),
                 $this->configuration->getTemperature(),
                 $this->configuration->getMaxTokens(),
+                $this->configuration->getNumberOfCompletions(),
                 $problem->getPrompt(),
             ]),
         );

@@ -46,6 +46,7 @@ final class Configuration
     private const DEFAULT_MODEL = 'text-davinci-003';
     private const DEFAULT_TOKENS = 300;
     private const DEFAULT_TEMPERATURE = 0.5;
+    private const DEFAULT_NUMBER_OF_COMPLETIONS = 1;
     private const DEFAULT_CACHE_LIFETIME = 60 * 60 * 24; // 1 day
     private const DEFAULT_PROVIDER = ProblemSolving\Solution\Provider\OpenAISolutionProvider::class;
     private const DEFAULT_PROMPT = ProblemSolving\Solution\Prompt\DefaultPrompt::class;
@@ -97,6 +98,17 @@ final class Configuration
         }
 
         return (float)$temperature;
+    }
+
+    public function getNumberOfCompletions(): int
+    {
+        $numberOfCompletions = $this->provider->get('attributes/numberOfCompletions', self::DEFAULT_NUMBER_OF_COMPLETIONS);
+
+        if (!is_numeric($numberOfCompletions) || $numberOfCompletions < 1) {
+            $numberOfCompletions = self::DEFAULT_NUMBER_OF_COMPLETIONS;
+        }
+
+        return (int)$numberOfCompletions;
     }
 
     public function getCacheLifetime(): int

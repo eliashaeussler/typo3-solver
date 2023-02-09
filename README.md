@@ -59,16 +59,17 @@ the key must be configured in the extension configuration.
 
 The following extension configuration is available:
 
-| Configuration            | Description                                                                                                        | Default value                                                              |
-|--------------------------|--------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|
-| `provider`               | FQCN of the solution provider                                                                                      | [`EliasHaeussler\Typo3Solver\Solution\Provider\OpenAISolutionProvider`][3] |
-| `prompt`                 | FQCN of the prompt generator                                                                                       | [`EliasHaeussler\Typo3Solver\Prompt\DefaultPrompt`][4]                     |
-| `ignoredCodes`           | Comma-separated list of exception codes to ignore                                                                  | –                                                                          |
-| `api.key`                | [API key](#api-key) for OpenAI requests                                                                            | –                                                                          |
-| `attributes.model`       | [OpenAI model][13] to use (see [List available models](#list-available-models) to show a list of available models) | `text-davinci-003`                                                         |
-| `attributes.maxTokens`   | [Maximum number of tokens][14] to use per request                                                                  | `300`                                                                      |
-| `attributes.temperature` | [Temperature][15] to use for completion requests (must be a value between `0` and `1`)                             | `0.5`                                                                      |
-| `cache.lifetime`         | Lifetime in seconds of the solutions cache (use `0` to disable caching)                                            | `86400` (1 day)                                                            |
+| Configuration                    | Description                                                                                                        | Default value                                                              |
+|----------------------------------|--------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|
+| `provider`                       | FQCN of the solution provider                                                                                      | [`EliasHaeussler\Typo3Solver\Solution\Provider\OpenAISolutionProvider`][3] |
+| `prompt`                         | FQCN of the prompt generator                                                                                       | [`EliasHaeussler\Typo3Solver\Prompt\DefaultPrompt`][4]                     |
+| `ignoredCodes`                   | Comma-separated list of exception codes to ignore                                                                  | –                                                                          |
+| `api.key`                        | [API key](#api-key) for OpenAI requests                                                                            | –                                                                          |
+| `attributes.model`               | [OpenAI model][13] to use (see [List available models](#list-available-models) to show a list of available models) | `text-davinci-003`                                                         |
+| `attributes.maxTokens`           | [Maximum number of tokens][14] to use per request                                                                  | `300`                                                                      |
+| `attributes.temperature`         | [Temperature][15] to use for completion requests (must be a value between `0` and `1`)                             | `0.5`                                                                      |
+| `attributes.numberOfCompletions` | [Number of completions][16] to generate for each prompt                                                            | `1`                                                                        |
+| `cache.lifetime`                 | Lifetime in seconds of the solutions cache (use `0` to disable caching)                                            | `86400` (1 day)                                                            |
 
 ## ⚡ Usage
 
@@ -169,3 +170,4 @@ This project is licensed under [GNU General Public License 2.0 (or later)](LICEN
 [13]: https://platform.openai.com/docs/models
 [14]: https://platform.openai.com/docs/api-reference/completions/create#completions/create-max_tokens
 [15]: https://platform.openai.com/docs/api-reference/completions/create#completions/create-temperature
+[16]: https://platform.openai.com/docs/api-reference/completions/create#completions/create-n

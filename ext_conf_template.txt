@@ -19,5 +19,8 @@ attributes.maxTokens = 300
 # cat=attributes//30; type=string; label=Temperature to use for completion requests:Must be a float between 0 and 1
 attributes.temperature = 0.5
 
+# cat=attributes//40; type=int+; label=Number of provided completions:Must be an integer greater than 0
+attributes.numberOfCompletions = 1
+
 # cat=cache//10; type=int+; label=Lifetime of the solutions cache:Use "0" to disable caching
 cache.lifetime = 86400
