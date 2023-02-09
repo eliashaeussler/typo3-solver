@@ -22,7 +22,7 @@
 /** @noinspection PhpUndefinedVariableInspection */
 $EM_CONF[$_EXTKEY] = [
     'title' => 'Solver',
-    'description' => 'Extends TYPO3\'s exception handling with AI generated solutions. Problems can also be solved from command line. All OpenAI parameters are configurable and prompts and solution providers can be customized as desired.',
+    'description' => 'Extends TYPO3\'s exception handling with AI generated solutions. Problems can also be solved from command line. Several OpenAI parameters are configurable and prompts and solution providers can be customized as desired.',
     'category' => 'misc',
     'version' => '0.1.1',
     'state' => 'beta',
