@@ -4,7 +4,7 @@ The exception occurred in a TYPO3 system with version {typo3Version} installed. 
 Keep in mind that there's not always an issue with the code snippet at the end. Please take the exception message into consideration as well.
 
 <f:if condition="{exception.file}">File: {exception.file}</f:if>
-Exception: {exception.message}
+Exception: {exception.message -> f:format.raw()}
 <f:if condition="{exception.line}">Line: {exception.line}</f:if>
 <f:if condition="{snippet}">
 Snippet including line numbers:
