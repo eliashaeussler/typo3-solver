@@ -48,11 +48,9 @@ final class Configuration
     private const DEFAULT_PROVIDER = ProblemSolving\Solution\Provider\OpenAISolutionProvider::class;
     private const DEFAULT_PROMPT = ProblemSolving\Solution\Prompt\DefaultPrompt::class;
 
-    private readonly ConfigurationProvider $provider;
-
-    public function __construct()
-    {
-        $this->provider = new LazyConfigurationProvider();
+    public function __construct(
+        private readonly ConfigurationProvider $provider = new LazyConfigurationProvider(),
+    ) {
     }
 
     public function getApiKey(): ?string
