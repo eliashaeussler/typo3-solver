@@ -96,7 +96,7 @@ Next to the exception handler integration, one can also explicitly solve
 problems using the provided console command `solver:solve`.
 
 ```bash
-vendor/bin/typo3 solver:solve [problem] [--code=CODE] [--file=FILE] [--line=LINE] [--refresh] [--json]
+vendor/bin/typo3 solver:solve <problem> [--code=CODE] [--file=FILE] [--line=LINE] [--refresh] [--json]
 ```
 
 The following input parameters are available:
@@ -126,7 +126,7 @@ the OpenAI client. In order to flush the solution cache or remove
 single cache entries, the command `solver:cache:flush` cam be used.
 
 ```bash
-vendor/bin/typo3 solver:cache:flush [identifier]
+vendor/bin/typo3 solver:cache:flush [<identifier>]
 ```
 
 The following input parameters are available:
