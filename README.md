@@ -1,6 +1,6 @@
 <div align="center">
 
-![Extension icon](Resources/Public/Icons/Extension.svg)
+![Error page screenshot](Documentation/Images/Screenshots/ErrorPage.png)
 
 # TYPO3 extension `solver`
 
