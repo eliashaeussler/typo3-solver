@@ -323,7 +323,7 @@ final class ConfigurationTest extends TestingFramework\Core\Unit\UnitTestCase
     /**
      * @test
      */
-    public function getIgnoredCodesReturnsEmptyArrayIfCodesToIgnoreAreConfigured(): void
+    public function getIgnoredCodesReturnsEmptyArrayIfCodesToIgnoreAreNotConfigured(): void
     {
         self::assertSame([], $this->subject->getIgnoredCodes());
     }
@@ -346,7 +346,7 @@ final class ConfigurationTest extends TestingFramework\Core\Unit\UnitTestCase
     public function getIgnoredCodesReturnsConfiguredCodesToIgnore(): void
     {
         $this->configurationProvider->configuration = [
-            'ignoredCodes' => '1675962685, 123',
+            'ignoredCodes' => '1675962685, foo, 123',
         ];
 
         self::assertSame([1675962685, 123], $this->subject->getIgnoredCodes());

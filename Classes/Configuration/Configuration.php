@@ -24,11 +24,11 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Configuration;
 
 use EliasHaeussler\Typo3Solver\ProblemSolving;
-
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core;
 
 use function array_filter;
 use function array_map;
+use function array_values;
 use function class_exists;
 use function is_a;
 use function is_numeric;
@@ -151,7 +151,7 @@ final class Configuration
     }
 
     /**
-     * @return array<int>
+     * @return list<int>
      */
     public function getIgnoredCodes(): array
     {
@@ -161,11 +161,13 @@ final class Configuration
             return [];
         }
 
-        return array_map(
-            'intval',
-            array_filter(
-                GeneralUtility::trimExplode(',', $ignoredCodes, true),
-                'is_numeric',
+        return array_values(
+            array_map(
+                'intval',
+                array_filter(
+                    Core\Utility\GeneralUtility::trimExplode(',', $ignoredCodes, true),
+                    'is_numeric',
+                ),
             ),
         );
     }
