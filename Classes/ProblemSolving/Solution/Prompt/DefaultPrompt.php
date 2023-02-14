@@ -61,7 +61,7 @@ final class DefaultPrompt implements Prompt
 
     private function createCodeSnippet(Throwable $exception): string
     {
-        $backtrace = Backtrace\Backtrace::createForThrowable($exception)->applicationPath(Core\Core\Environment::getProjectPath());
+        $backtrace = Backtrace\Backtrace::createForThrowable($exception);
         $frames = $backtrace->frames();
         $applicationFrame = $frames[$backtrace->firstApplicationFrameIndex()] ?? null;
         $snippet = '';
