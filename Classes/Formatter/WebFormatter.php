@@ -76,7 +76,7 @@ final class WebFormatter implements Formatter
             $formattedChoices .= '<div class="solution-choice">' . $formattedChoice . '</div>';
         }
 
-        return $this->renderer->render('Solution/Web.html', [
+        return $this->renderer->render('Solution/Web', [
             'solution' => $solution,
             'numberOfChoices' => $numberOfChoices,
             'formattedChoices' => $formattedChoices,
@@ -97,14 +97,14 @@ final class WebFormatter implements Formatter
 
     private function renderSingleChoice(string $formattedChoice): string
     {
-        return $this->renderer->render('Choice/SingleChoice.html', [
+        return $this->renderer->render('Choice/SingleChoice', [
             'formattedChoice' => $formattedChoice,
         ]);
     }
 
     private function renderMultipleChoices(string $formattedChoice, int $index, int $numberOfChoices): string
     {
-        return $this->renderer->render('Choice/MultipleChoices.html', [
+        return $this->renderer->render('Choice/MultipleChoices', [
             'formattedChoice' => $formattedChoice,
             'numberOfChoices' => $numberOfChoices,
             'index' => $index,
@@ -115,7 +115,7 @@ final class WebFormatter implements Formatter
 
     private function formatText(string $text): string
     {
-        return $this->renderer->render('Section/Text.html', [
+        return $this->renderer->render('Section/Text', [
             'text' => $text,
         ]);
     }
@@ -125,7 +125,7 @@ final class WebFormatter implements Formatter
      */
     private function formatCodeBlock(array $lines): string
     {
-        return $this->renderer->render('Section/CodeBlock.html', [
+        return $this->renderer->render('Section/CodeBlock', [
             'lines' => $lines,
         ]);
     }
