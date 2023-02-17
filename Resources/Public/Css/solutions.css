@@ -128,7 +128,7 @@
 }
 
 .solution-choice pre.text-raw {
-    white-space: normal;
+    white-space: break-spaces;
     font-family: inherit;
     border: none;
 }
