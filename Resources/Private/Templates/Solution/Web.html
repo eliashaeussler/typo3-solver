@@ -28,7 +28,10 @@
         </div>
     </div>
     <div class="solution-body">
-        <form>{formattedChoices -> f:format.raw()}</form>
+        <f:render partial="Choices" arguments="{
+            choices: choices,
+            numberOfChoices: numberOfChoices
+        }" />
     </div>
     <details class="solution-prompt">
         <summary>Show prompt</summary>

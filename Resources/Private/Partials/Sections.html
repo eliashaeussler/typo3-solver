@@ -1,0 +1,10 @@
+<f:for each="{sections}" as="section">
+    <f:switch expression="{section.type}">
+        <f:case value="text">
+            <f:render partial="Section/Text" arguments="{text: section.section.text}" />
+        </f:case>
+        <f:case value="codeBlock">
+            <f:render partial="Section/CodeBlock" arguments="{lines: section.section.lines}" />
+        </f:case>
+    </f:switch>
+</f:for>

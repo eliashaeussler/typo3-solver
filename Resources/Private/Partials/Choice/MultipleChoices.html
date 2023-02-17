@@ -9,5 +9,5 @@
 <label for="solution-choice-{prevIndex}" class="solution-choice-arrow solution-choice-arrow-prev">&larr;</label>
 <label for="solution-choice-{nextIndex}" class="solution-choice-arrow solution-choice-arrow-next">&rarr;</label>
 <div class="solution-choice-container">
-    {formattedChoice -> f:format.raw()}
+    <f:render partial="Sections" arguments="{sections: choice.sections}" />
 </div>
