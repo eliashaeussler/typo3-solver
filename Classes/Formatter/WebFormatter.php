@@ -33,7 +33,6 @@ use function explode;
 use function file_exists;
 use function file_get_contents;
 use function is_numeric;
-use function nl2br;
 
 /**
  * WebFormatter.
@@ -117,7 +116,7 @@ final class WebFormatter implements Formatter
     private function formatText(string $text): string
     {
         return $this->renderer->render('Section/Text.html', [
-            'text' => nl2br($text),
+            'text' => $text,
         ]);
     }
 

@@ -119,16 +119,18 @@
     display: block;
 }
 
-.solution-choice p:first-child {
+.solution-choice-container > *:first-child {
     margin-top: 0;
 }
 
-.solution-choice p:last-child {
+.solution-choice-container > *:last-child {
     margin-bottom: 0;
 }
 
-.solution-choice pre {
-    margin: 0;
+.solution-choice pre.text-raw {
+    white-space: normal;
+    font-family: inherit;
+    border: none;
 }
 
 .solution-prompt {
