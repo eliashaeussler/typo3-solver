@@ -1,0 +1,32 @@
+<html xmlns:s="http://typo3.org/ns/EliasHaeussler/Typo3Solver/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<div class="solution-head">
+    <div class="solution-head-container">
+        <div class="solution-headline">
+            <h3>
+                <span class="text-muted">({index + 1}/{numberOfChoices})</span>
+                AI Generated Solution
+            </h3>
+            <ul class="solution-meta">
+                <li title="Model">
+                    <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 16 16"><g class="icon-color"><g><path d="M5 13v1.5a.5.5 0 0 0 1 0V13H5zM7 13v1.5a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V13H7zM10 13v1.5a.5.5 0 0 0 1 0V13h-1z"/></g><g><path d="M5 3V1.5a.5.5 0 0 1 1 0V3H5zM7 3V1.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5V3H7zM10 3V1.5a.5.5 0 0 1 1 0V3h-1z"/></g><g><path d="M3 11H1.5a.5.5 0 0 1 0-1H3v1zM3 9H1.5a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5H3v2zM3 6H1.5a.5.5 0 0 1 0-1H3v1z"/></g><g><path d="M13 11h1.5a.5.5 0 0 0 0-1H13v1zM13 9h1.5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H13v2zM13 6h1.5a.5.5 0 0 0 0-1H13v1z"/></g><path d="M12 4v8H4V4h8m.5-1h-9a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5z"/><path d="M9 7v2H7V7h2m.5-1h-3a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"/></g></svg>
+                    <span class="sr-only" aria-hidden="true">Model:</span>
+                    {solution.model}
+                </li>
+                <f:if condition="{solution.createDate}">
+                    <li title="Cached on {s:date(date: solution.createDate)}{f:if(condition: solution.cacheIdentifier, then: ' with identifier {solution.cacheIdentifier}')}">
+                        <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 16 16"><g class="icon-color"><path d="M13.5 3H12V1.5a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 0-.5.5V3H6V1.5a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 0-.5.5V3H1.5a.5.5 0 0 0-.5.5v11a.5.5 0 0 0 .5.5h12a.5.5 0 0 0 .5-.5v-11a.5.5 0 0 0-.5-.5zM10 2h1v2h-1V2zM4 2h1v2H4V2zm.25 12H2v-2.25h2.25V14zm0-2.75H2v-2.5h2.25v2.5zm0-3H2V6h2.25v2.25zm3 5.75h-2.5v-2.25h2.5V14zm0-2.75h-2.5v-2.5h2.5v2.5zm0-3h-2.5V6h2.5v2.25zm3 5.75h-2.5v-2.25h2.5V14zm0-2.75h-2.5v-2.5h2.5v2.5zm0-3h-2.5V6h2.5v2.25zM13 14h-2.25v-2.25H13V14zm0-2.75h-2.25v-2.5H13v2.5zm0-3h-2.25V6H13v2.25z"/></g></svg>
+                        <span class="sr-only" aria-hidden="true">Date:</span>
+                        {s:date(date: solution.createDate, readable: '1')} (cached)
+                    </li>
+                </f:if>
+            </ul>
+        </div>
+        <div class="solution-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 16 16"><g class="icon-color"><path d="M8 1a4.5 4.5 0 0 0-4.5 4.5C3.5 7.263 5 9 5 11v2l.862 1.724a.5.5 0 0 0 .447.276h3.382a.5.5 0 0 0 .447-.276L11 13v-2c0-2 1.5-3.737 1.5-5.5A4.5 4.5 0 0 0 8 1zM4.5 5.5C4.5 3.57 6.07 2 8 2s3.5 1.57 3.5 3.5c0 .654-.31 1.401-.638 2.192-.291.702-.611 1.472-.766 2.308H5.904c-.155-.836-.475-1.606-.766-2.308C4.81 6.901 4.5 6.154 4.5 5.5zM9.382 14H6.618l-.5-1h3.764l-.5 1zM10 12H6v-1h4v1z"/><path d="M8 3a2.5 2.5 0 0 0-2.5 2.5h1C6.5 4.673 7.173 4 8 4V3zM12.988 3.197l1.757-1.014a.5.5 0 0 0-.5-.866l-1.757 1.015c.192.271.359.561.5.865zM1.255 2.183l1.757 1.014c.141-.305.308-.594.5-.866L1.755 1.317a.5.5 0 0 0-.5.866zM15 5h-1.525c.015.165.025.331.025.5 0 .17-.025.334-.044.5H15a.5.5 0 0 0 0-1zM14.745 8.817l-1.768-1.021c-.086.223-.177.444-.268.663l-.111.273 1.647.951a.5.5 0 0 0 .5-.866zM2.5 5.5c0-.169.01-.335.025-.5H1a.5.5 0 0 0 0 1h1.544c-.019-.166-.044-.33-.044-.5zM3.291 8.459c-.091-.219-.182-.44-.269-.663L1.255 8.817a.5.5 0 0 0 .5.866l1.647-.951-.111-.273z"/></g></svg>
+        </div>
+    </div>
+</div>
+
+</html>
