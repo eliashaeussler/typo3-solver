@@ -27,11 +27,10 @@ use EliasHaeussler\Typo3Solver\Configuration;
 use EliasHaeussler\Typo3Solver\Exception;
 use EliasHaeussler\Typo3Solver\Formatter;
 use EliasHaeussler\Typo3Solver\ProblemSolving;
+use EliasHaeussler\Typo3Solver\Utility;
 use EliasHaeussler\Typo3Solver\View;
 use Throwable;
 use TYPO3\CMS\Core;
-
-use function str_replace;
 
 /**
  * AiSolverExceptionHandler.
@@ -85,7 +84,11 @@ final class AiSolverExceptionHandler extends Core\Error\DebugExceptionHandler
             return $content;
         }
 
-        return str_replace('<div class="trace">', $solution . '<div class="trace">', $content);
+        return Utility\StringUtility::replaceFirstOccurrence(
+            '<div class="trace">',
+            $solution . '<div class="trace">',
+            $content,
+        );
     }
 
     protected function getStylesheet(): string
