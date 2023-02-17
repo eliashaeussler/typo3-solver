@@ -14,6 +14,7 @@
 [![Downloads](https://shields.io/endpoint?url=https://typo3-badges.dev/badge/solver/downloads/shields)](https://extensions.typo3.org/extension/solver)
 [![Supported TYPO3 versions](https://shields.io/endpoint?url=https://typo3-badges.dev/badge/solver/typo3/shields)](https://extensions.typo3.org/extension/solver)
 [![Extension stability](https://shields.io/endpoint?url=https://typo3-badges.dev/badge/solver/stability/shields)](https://extensions.typo3.org/extension/solver)
+[![Slack](https://img.shields.io/badge/slack-%23ext--solver-4a154b?logo=slack)](https://typo3.slack.com/archives/C04Q3440HS6)
 
 📦&nbsp;[Packagist](https://packagist.org/packages/eliashaeussler/typo3-solver) |
 🐥&nbsp;[TYPO3 extension repository](https://extensions.typo3.org/extension/solver) |

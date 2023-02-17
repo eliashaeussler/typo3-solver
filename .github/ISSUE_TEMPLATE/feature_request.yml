@@ -39,3 +39,9 @@ body:
       options:
         - label: I agree to follow this project's Code of Conduct.
           required: true
+  - type: markdown
+    attributes:
+      value: >
+        :bulb: **Tip:** Have you already looked into our
+        [Slack channel](https://typo3.slack.com/archives/C04Q3440HS6)? Maybe your problem has
+        already been discussed there.

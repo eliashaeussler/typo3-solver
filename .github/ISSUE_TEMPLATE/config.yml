@@ -1,1 +1,5 @@
 blank_issues_enabled: false
+contact_links:
+  - name: Community support
+    url: https://typo3.slack.com/archives/C04Q3440HS6
+    about: Please ask and answer questions here.
