@@ -42,8 +42,16 @@ final class OpenAISolutionProvider implements SolutionProvider
         $this->client = $client ?? OpenAI::client($this->configuration->getApiKey() ?? '');
     }
 
+    /**
+     * @throws Exception\ApiKeyMissingException
+     * @throws Exception\UnableToSolveException
+     */
     public function getSolution(ProblemSolving\Problem\Problem $problem): ProblemSolving\Solution\Solution
     {
+        if ($this->configuration->getApiKey() === null) {
+            throw Exception\ApiKeyMissingException::create();
+        }
+
         try {
             $response = $this->client->completions()->create([
                 'model' => $this->configuration->getModel(),
@@ -61,7 +69,6 @@ final class OpenAISolutionProvider implements SolutionProvider
 
     public function canBeUsed(ProblemSolving\Problem\Problem $problem): bool
     {
-        return $this->configuration->getApiKey() !== null
-            && !in_array($problem->getException()->getCode(), $this->configuration->getIgnoredCodes(), true);
+        return !in_array($problem->getException()->getCode(), $this->configuration->getIgnoredCodes(), true);
     }
 }
