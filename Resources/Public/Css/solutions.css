@@ -72,6 +72,10 @@
     border-bottom: 1px solid #b9b9b9;
 }
 
+.solution-body:last-child {
+    border-bottom: none;
+}
+
 .solution-choice-container {
     padding: 1.5rem;
 }
