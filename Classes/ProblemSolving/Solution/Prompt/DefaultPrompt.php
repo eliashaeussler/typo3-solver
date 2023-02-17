@@ -49,7 +49,7 @@ final class DefaultPrompt implements Prompt
 
     public function generate(Throwable $exception): string
     {
-        $prompt = $this->renderer->render('Prompt/Default.html', [
+        $prompt = $this->renderer->render('Prompt/Default', [
             'exception' => $exception,
             'snippet' => $this->createCodeSnippet($exception),
             'mode' => Core\Core\Environment::isComposerMode() ? 'composer' : 'classic (symlink)',

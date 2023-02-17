@@ -23,7 +23,6 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver\View;
 
-use Symfony\Component\Filesystem;
 use TYPO3Fluid\Fluid;
 
 use function dirname;
@@ -37,11 +36,11 @@ use function dirname;
  */
 final class TemplateRenderer
 {
-    private readonly string $templateRootPath;
+    private readonly Fluid\Core\Rendering\RenderingContextInterface $renderingContext;
 
     public function __construct()
     {
-        $this->templateRootPath = dirname(__DIR__, 2) . '/Resources/Private/Templates';
+        $this->renderingContext = $this->createRenderingContext();
     }
 
     /**
@@ -49,14 +48,21 @@ final class TemplateRenderer
      */
     public function render(string $templatePath, array $variables = []): string
     {
-        $renderingContext = new Fluid\Core\Rendering\RenderingContext();
-        $renderingContext->getTemplatePaths()->setTemplatePathAndFilename(
-            Filesystem\Path::join($this->templateRootPath, $templatePath),
-        );
-
-        $view = new Fluid\View\TemplateView($renderingContext);
+        $view = new Fluid\View\TemplateView($this->renderingContext);
         $view->assignMultiple($variables);
 
-        return $view->render();
+        return $view->render($templatePath);
+    }
+
+    private function createRenderingContext(): Fluid\Core\Rendering\RenderingContextInterface
+    {
+        $rootPath = dirname(__DIR__, 2) . '/Resources/Private';
+        $renderingContext = new Fluid\Core\Rendering\RenderingContext();
+
+        $templatePaths = $renderingContext->getTemplatePaths();
+        $templatePaths->setTemplateRootPaths([$rootPath . '/Templates']);
+        $templatePaths->setPartialRootPaths([$rootPath . '/Partials']);
+
+        return $renderingContext;
     }
 }

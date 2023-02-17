@@ -47,7 +47,7 @@ final class CliFormatter implements Formatter
 
     public function format(ProblemSolving\Solution\Solution $solution): string
     {
-        $formattedSolution = $this->renderer->render('Solution/Cli.html', [
+        $formattedSolution = $this->renderer->render('Solution/Cli', [
             'solution' => $solution,
             'showPrompt' => $this->output?->isVerbose(),
         ]);

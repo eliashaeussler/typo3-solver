@@ -98,7 +98,7 @@ final class AiSolverExceptionHandler extends Core\Error\DebugExceptionHandler
 
     private function renderException(\Exception $exception): string
     {
-        return $this->renderer->render('Message/Exception.html', [
+        return $this->renderer->render('Message/Exception', [
             'exception' => $exception,
             'exceptionClass' => $exception::class,
         ]);
