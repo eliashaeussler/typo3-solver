@@ -45,7 +45,7 @@ final class Text
         return $this;
     }
 
-    public function get(): string
+    public function getText(): string
     {
         return trim($this->content);
     }

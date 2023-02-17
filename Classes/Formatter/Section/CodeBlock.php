@@ -53,7 +53,7 @@ final class CodeBlock
     /**
      * @return array<int, string>
      */
-    public function get(): array
+    public function getLines(): array
     {
         return $this->lines;
     }

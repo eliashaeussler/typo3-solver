@@ -28,6 +28,7 @@ use EliasHaeussler\Typo3Solver\View;
 use Symfony\Component\Filesystem;
 use TYPO3\CMS\Core;
 
+use function count;
 use function dirname;
 use function explode;
 use function file_exists;
@@ -53,33 +54,18 @@ final class WebFormatter implements Formatter
 
     public function format(ProblemSolving\Solution\Solution $solution): string
     {
-        $numberOfChoices = count($solution);
-        $formattedChoices = '';
+        $choices = [];
 
-        foreach ($solution as $index => $choice) {
-            $formattedChoice = '';
-
-            foreach ($this->splitIntoSections($choice->text) as $section) {
-                if ($section instanceof Section\CodeBlock) {
-                    $formattedChoice .= $this->formatCodeBlock($section->get());
-                } else {
-                    $formattedChoice .= $this->formatText($section->get());
-                }
-            }
-
-            if ($numberOfChoices > 1) {
-                $formattedChoice = $this->renderMultipleChoices($formattedChoice, $index, $numberOfChoices);
-            } else {
-                $formattedChoice = $this->renderSingleChoice($formattedChoice);
-            }
-
-            $formattedChoices .= '<div class="solution-choice">' . $formattedChoice . '</div>';
+        foreach ($solution as $choice) {
+            $choices[] = [
+                'sections' => $this->splitIntoSections($choice->text),
+            ];
         }
 
         return $this->renderer->render('Solution/Web', [
             'solution' => $solution,
-            'numberOfChoices' => $numberOfChoices,
-            'formattedChoices' => $formattedChoices,
+            'choices' => $choices,
+            'numberOfChoices' => count($solution),
         ]);
     }
 
@@ -95,43 +81,8 @@ final class WebFormatter implements Formatter
         return '';
     }
 
-    private function renderSingleChoice(string $formattedChoice): string
-    {
-        return $this->renderer->render('Choice/SingleChoice', [
-            'formattedChoice' => $formattedChoice,
-        ]);
-    }
-
-    private function renderMultipleChoices(string $formattedChoice, int $index, int $numberOfChoices): string
-    {
-        return $this->renderer->render('Choice/MultipleChoices', [
-            'formattedChoice' => $formattedChoice,
-            'numberOfChoices' => $numberOfChoices,
-            'index' => $index,
-            'prevIndex' => $index > 0 ? $index - 1 : $numberOfChoices - 1,
-            'nextIndex' => $index < ($numberOfChoices - 1) ? $index + 1 : 0,
-        ]);
-    }
-
-    private function formatText(string $text): string
-    {
-        return $this->renderer->render('Section/Text', [
-            'text' => $text,
-        ]);
-    }
-
     /**
-     * @param array<int, string> $lines
-     */
-    private function formatCodeBlock(array $lines): string
-    {
-        return $this->renderer->render('Section/CodeBlock', [
-            'lines' => $lines,
-        ]);
-    }
-
-    /**
-     * @return list<Section\CodeBlock|Section\Text>
+     * @return list<array{section: Section\CodeBlock|Section\Text, type: string}>
      */
     private function splitIntoSections(string $solutionText): array
     {
@@ -141,13 +92,18 @@ final class WebFormatter implements Formatter
 
         foreach ($lines as $content) {
             if (is_numeric($content[0])) {
-                $type = Section\CodeBlock::class;
+                $type = 'codeBlock';
+                $className = Section\CodeBlock::class;
             } else {
-                $type = Section\Text::class;
+                $type = 'text';
+                $className = Section\Text::class;
             }
 
-            if (!($section instanceof $type)) {
-                $result[] = $section = new $type();
+            if (!($section instanceof $className)) {
+                $result[] = [
+                    'section' => $section = new $className(),
+                    'type' => $type,
+                ];
             }
 
             if ($section instanceof Section\CodeBlock) {

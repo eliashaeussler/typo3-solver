@@ -1,0 +1,23 @@
+<form>
+    <f:for each="{choices}" as="choice" iteration="iterator">
+        <div class="solution-choice">
+            <f:if condition="{numberOfChoices} > 1">
+                <f:then>
+                    {iterator.index -> f:variable(name: 'index')}
+                    {f:if(condition: iterator.isFirst, then: '{numberOfChoices - 1}', else: '{index - 1}') -> f:variable(name: 'prevIndex')}
+                    {f:if(condition: iterator.isLast, then: 0, else: '{index + 1}') -> f:variable(name: 'nextIndex')}
+
+                    <f:render partial="Choice/MultipleChoices" arguments="{
+                        choice: choice,
+                        index: index,
+                        prevIndex: prevIndex,
+                        nextIndex: nextIndex
+                    }" />
+                </f:then>
+                <f:else>
+                    <f:render partial="Choice/SingleChoice" arguments="{choice: choice}" />
+                </f:else>
+            </f:if>
+        </div>
+    </f:for>
+</form>
