@@ -1,0 +1,8 @@
+<input type="radio" hidden
+       name="solution"
+       class="solution-selector"
+       id="solution-{index}"
+       {f:if(condition: '{index} == 0', then: 'checked')}
+>
+<label for="solution-{prevIndex}" class="solution-arrow solution-arrow-prev">&larr;</label>
+<label for="solution-{nextIndex}" class="solution-arrow solution-arrow-next">&rarr;</label>
