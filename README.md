@@ -142,8 +142,9 @@ The following input parameters are available:
 
 The extension icon ("lightbulb-on") is a modified version of the original
 [`actions-lightbulb-on`][6] icon from TYPO3 core. In addition, the icons
-[`actions-calendar`][7] and [`actions-cpu`][8] from TYPO3 core are used.
-All icons are originally licensed under [MIT License][9].
+[`actions-calendar`][7], [`actions-cpu`][8], [`actions-debug`][17] and
+[`actions-exclamation-triangle-alt`][18] from TYPO3 core are used. All icons
+are originally licensed under [MIT License][9].
 
 This project is highly inspired by the article [`Fix your Laravel exceptions with AI`][10]
 by [Marcel Pociot][11].
@@ -171,3 +172,5 @@ This project is licensed under [GNU General Public License 2.0 (or later)](LICEN
 [14]: https://platform.openai.com/docs/api-reference/completions/create#completions/create-max_tokens
 [15]: https://platform.openai.com/docs/api-reference/completions/create#completions/create-temperature
 [16]: https://platform.openai.com/docs/api-reference/completions/create#completions/create-n
+[17]: https://typo3.github.io/TYPO3.Icons/icons/actions/actions-debug.html
+[18]: https://typo3.github.io/TYPO3.Icons/icons/actions/actions-exclamation-triangle-alt.html

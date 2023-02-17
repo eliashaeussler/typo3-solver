@@ -27,6 +27,7 @@ use EliasHaeussler\Typo3Solver\Configuration;
 use EliasHaeussler\Typo3Solver\Exception;
 use EliasHaeussler\Typo3Solver\Formatter;
 use EliasHaeussler\Typo3Solver\ProblemSolving;
+use EliasHaeussler\Typo3Solver\View;
 use Throwable;
 use TYPO3\CMS\Core;
 
@@ -42,6 +43,7 @@ final class AiSolverExceptionHandler extends Core\Error\DebugExceptionHandler
 {
     private readonly Configuration\Configuration $configuration;
     private readonly Formatter\WebFormatter $webFormatter;
+    private readonly View\TemplateRenderer $renderer;
 
     public function __construct()
     {
@@ -49,6 +51,7 @@ final class AiSolverExceptionHandler extends Core\Error\DebugExceptionHandler
 
         $this->configuration = new Configuration\Configuration();
         $this->webFormatter = new Formatter\WebFormatter();
+        $this->renderer = new View\TemplateRenderer();
     }
 
     public function echoExceptionCLI(Throwable $exception): void
@@ -74,8 +77,8 @@ final class AiSolverExceptionHandler extends Core\Error\DebugExceptionHandler
         try {
             $solver = new ProblemSolving\Solver($this->configuration->getProvider(), $this->webFormatter);
             $solution = $solver->solve($throwable);
-        } catch (Exception\UnableToSolveException) {
-            return $content;
+        } catch (\Exception $exception) {
+            $solution = $this->renderException($exception);
         }
 
         if ($solution === null) {
@@ -88,5 +91,13 @@ final class AiSolverExceptionHandler extends Core\Error\DebugExceptionHandler
     protected function getStylesheet(): string
     {
         return parent::getStylesheet() . $this->webFormatter->getAdditionalStyles();
+    }
+
+    private function renderException(\Exception $exception): string
+    {
+        return $this->renderer->render('Message/Exception.html', [
+            'exception' => $exception,
+            'exceptionClass' => $exception::class,
+        ]);
     }
 }
