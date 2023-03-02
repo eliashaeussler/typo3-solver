@@ -1299,16 +1299,16 @@
         },
         {
             "name": "openai-php/client",
-            "version": "v0.3.1",
+            "version": "v0.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/openai-php/client.git",
-                "reference": "8c67360fca906e2f613f11e1839e32905a2ed28c"
+                "reference": "2ad7e55f91f893d04ca1dd1fb13a11e7d25ac30e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/openai-php/client/zipball/8c67360fca906e2f613f11e1839e32905a2ed28c",
-                "reference": "8c67360fca906e2f613f11e1839e32905a2ed28c",
+                "url": "https://api.github.com/repos/openai-php/client/zipball/2ad7e55f91f893d04ca1dd1fb13a11e7d25ac30e",
+                "reference": "2ad7e55f91f893d04ca1dd1fb13a11e7d25ac30e",
                 "shasum": ""
             },
             "require": {
@@ -1316,14 +1316,14 @@
                 "php": "^8.1.0"
             },
             "require-dev": {
-                "laravel/pint": "^1.4.1",
-                "nunomaduro/collision": "^7.0.0",
+                "laravel/pint": "^1.6.0",
+                "nunomaduro/collision": "^7.0.5",
                 "pestphp/pest": "^2.0.0",
                 "pestphp/pest-plugin-arch": "^2.0.0",
                 "pestphp/pest-plugin-mock": "^2.0.0",
-                "phpstan/phpstan": "^1.9.16",
+                "phpstan/phpstan": "^1.10.3",
                 "rector/rector": "^0.14.8",
-                "symfony/var-dumper": "^6.2.5"
+                "symfony/var-dumper": "^6.2.7"
             },
             "type": "library",
             "autoload": {
@@ -1360,7 +1360,7 @@
             ],
             "support": {
                 "issues": "https://github.com/openai-php/client/issues",
-                "source": "https://github.com/openai-php/client/tree/v0.3.1"
+                "source": "https://github.com/openai-php/client/tree/v0.3.3"
             },
             "funding": [
                 {
@@ -1376,7 +1376,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2023-02-07T21:22:36+00:00"
+            "time": "2023-03-02T08:57:28+00:00"
         },
         {
             "name": "psr/cache",
@@ -2476,16 +2476,16 @@
         },
         {
             "name": "symfony/deprecation-contracts",
-            "version": "v3.2.0",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/deprecation-contracts.git",
-                "reference": "1ee04c65529dea5d8744774d474e7cbd2f1206d3"
+                "reference": "e2d1534420bd723d0ef5aec58a22c5fe60ce6f5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/1ee04c65529dea5d8744774d474e7cbd2f1206d3",
-                "reference": "1ee04c65529dea5d8744774d474e7cbd2f1206d3",
+                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/e2d1534420bd723d0ef5aec58a22c5fe60ce6f5e",
+                "reference": "e2d1534420bd723d0ef5aec58a22c5fe60ce6f5e",
                 "shasum": ""
             },
             "require": {
@@ -2523,7 +2523,7 @@
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.2.0"
+                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.2.1"
             },
             "funding": [
                 {
@@ -2539,7 +2539,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-11-25T10:21:52+00:00"
+            "time": "2023-03-01T10:25:55+00:00"
         },
         {
             "name": "symfony/doctrine-messenger",
