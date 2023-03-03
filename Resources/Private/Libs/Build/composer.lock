@@ -339,16 +339,16 @@
         },
         {
             "name": "openai-php/client",
-            "version": "v0.3.3",
+            "version": "v0.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/openai-php/client.git",
-                "reference": "2ad7e55f91f893d04ca1dd1fb13a11e7d25ac30e"
+                "reference": "2e7490421dddd80085af4cde854e597a98395deb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/openai-php/client/zipball/2ad7e55f91f893d04ca1dd1fb13a11e7d25ac30e",
-                "reference": "2ad7e55f91f893d04ca1dd1fb13a11e7d25ac30e",
+                "url": "https://api.github.com/repos/openai-php/client/zipball/2e7490421dddd80085af4cde854e597a98395deb",
+                "reference": "2e7490421dddd80085af4cde854e597a98395deb",
                 "shasum": ""
             },
             "require": {
@@ -400,7 +400,7 @@
             ],
             "support": {
                 "issues": "https://github.com/openai-php/client/issues",
-                "source": "https://github.com/openai-php/client/tree/v0.3.3"
+                "source": "https://github.com/openai-php/client/tree/v0.3.4"
             },
             "funding": [
                 {
@@ -408,15 +408,15 @@
                     "type": "custom"
                 },
                 {
-                    "url": "https://github.com/nunomaduro",
+                    "url": "https://github.com/gehrisandro",
                     "type": "github"
                 },
                 {
-                    "url": "https://www.patreon.com/nunomaduro",
-                    "type": "patreon"
+                    "url": "https://github.com/nunomaduro",
+                    "type": "github"
                 }
             ],
-            "time": "2023-03-02T08:57:28+00:00"
+            "time": "2023-03-03T06:57:29+00:00"
         },
         {
             "name": "psr/http-client",
