@@ -151,7 +151,7 @@ final class Configuration
     }
 
     /**
-     * @return array<int>
+     * @return list<int>
      */
     public function getIgnoredCodes(): array
     {
