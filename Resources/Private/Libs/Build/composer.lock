@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "openai-php/client",
-            "version": "v0.4.0",
+            "version": "v0.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/openai-php/client.git",
-                "reference": "96bfd288e8a072e76be3e2f4de4c72db5ff91f8b"
+                "reference": "b16dbad9ac6507f7d9a3ec365b906f659e50e2b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/openai-php/client/zipball/96bfd288e8a072e76be3e2f4de4c72db5ff91f8b",
-                "reference": "96bfd288e8a072e76be3e2f4de4c72db5ff91f8b",
+                "url": "https://api.github.com/repos/openai-php/client/zipball/b16dbad9ac6507f7d9a3ec365b906f659e50e2b9",
+                "reference": "b16dbad9ac6507f7d9a3ec365b906f659e50e2b9",
                 "shasum": ""
             },
             "require": {
@@ -31,13 +31,12 @@
             },
             "require-dev": {
                 "guzzlehttp/guzzle": "^7.5.0",
-                "guzzlehttp/psr7": "^2.4.4",
-                "laravel/pint": "^1.6.0",
-                "nunomaduro/collision": "^7.1.2",
-                "pestphp/pest": "^2.0.0",
-                "pestphp/pest-plugin-arch": "^2.0.0",
+                "laravel/pint": "^1.7.0",
+                "nunomaduro/collision": "^7.3.3",
+                "pestphp/pest": "^2.2.3",
+                "pestphp/pest-plugin-arch": "^2.0.2",
                 "pestphp/pest-plugin-mock": "^2.0.0",
-                "phpstan/phpstan": "^1.10.7",
+                "phpstan/phpstan": "^1.10.8",
                 "rector/rector": "^0.14.8",
                 "symfony/var-dumper": "^6.2.7"
             },
@@ -79,7 +78,7 @@
             ],
             "support": {
                 "issues": "https://github.com/openai-php/client/issues",
-                "source": "https://github.com/openai-php/client/tree/v0.4.0"
+                "source": "https://github.com/openai-php/client/tree/v0.4.1"
             },
             "funding": [
                 {
@@ -95,7 +94,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-03-17T19:37:49+00:00"
+            "time": "2023-03-24T11:41:32+00:00"
         },
         {
             "name": "php-http/discovery",
