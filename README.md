@@ -36,7 +36,7 @@ provides a console command to solve problems from command line.
 * Caching integration for solved problems
 * Command to solve problems from command line
 * Customizable solution providers and prompts
-* Compatible with TYPO3 11.5 LTS and 12.2
+* Compatible with TYPO3 11.5 LTS and 12.3
 
 ## 🔥 Installation
 
