@@ -30,7 +30,7 @@ jobs:
 
       # Install dependencies
       - name: Install Composer dependencies
-        run: composer require --no-progress typo3/cms-core:"^11.5 || ^12.2"
+        run: composer require --no-progress typo3/cms-core:"^11.5 || ^12.3"
 
       # Check Composer dependencies
       - name: Check dependencies
