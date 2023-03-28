@@ -14,5 +14,10 @@
 		"php": "~8.1.0",
 		"openai-php/client": "^0.4.0",
 		"spatie/backtrace": "^1.2"
+	},
+	"config": {
+		"allow-plugins": {
+			"php-http/discovery": true
+		}
 	}
 }
