@@ -1,23 +1,39 @@
 .solution {
-    position: relative;
-}
-
-.solution-container {
     background-color: #fff;
     margin-bottom: 2rem;
     box-shadow: 0 2px 1px rgb(0 0 0 / 15%);
+    position: relative;
+}
+
+/*
+ * -- List ----------------------------------------------------------
+ */
+
+.solution-list {
+    padding: 0;
+    margin: 0;
+}
+
+.solution-list-item {
+    position: relative;
+    list-style: none;
 }
 
 /*
  * -- Controls ------------------------------------------------------
  */
 
-.solution-selector ~ .solution-container {
-    display: none;
+.solution-selector ~ .solution-body {
+    position: absolute;
+    left: 1000%;
+    opacity: 0;
 }
 
-.solution-selector:checked ~ .solution-container {
-    display: block;
+.solution-selector:checked ~ .solution-body {
+    position: initial;
+    left: 0;
+    opacity: 1;
+    transition: opacity 0.5s;
 }
 
 .solution-selector:checked ~ .solution-arrow {
@@ -41,6 +57,10 @@
 .solution-arrow:hover,
 .solution-arrow:focus {
     background-color: #8c8c8c;
+}
+
+.solution-streaming .solution-arrow {
+    display: none !important;
 }
 
 .solution-arrow-prev {
@@ -111,10 +131,6 @@
     line-height: 0.9em;
 }
 
-.solution-model {
-    margin-bottom: 0;
-}
-
 .solution-icon > svg {
     width: 2rem;
     height: 2rem;
@@ -126,29 +142,24 @@
  */
 
 .solution-body {
-    border-bottom: 1px solid #b9b9b9;
-}
-
-.solution-body:last-child {
-    border-bottom: none;
-}
-
-.solution-choice {
     padding: 1.5rem;
 }
 
-.solution-choice > *:first-child {
+.solution-body > *:first-child {
     margin-top: 0;
 }
 
-.solution-choice > *:last-child {
+.solution-body > *:last-child {
     margin-bottom: 0;
 }
 
-.solution-choice pre.text-raw {
-    white-space: break-spaces;
-    font-family: inherit;
-    border: none;
+.solution-body pre {
+    padding: 0.25rem 0.5rem;
+}
+
+.solution-body *:not(pre) > code {
+    padding: 0.125rem 0.25rem;
+    border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 /*
@@ -158,6 +169,7 @@
 .solution-prompt {
     padding: 1rem 1.5rem;
     font-size: 0.8em;
+    border-top: 1px solid #b9b9b9;
 }
 
 .solution-prompt summary {
@@ -167,4 +179,53 @@
 .solution-prompt pre {
     padding: 1rem;
     margin-bottom: 0.5rem;
+}
+
+/*
+ * -- Loader --------------------------------------------------------
+ */
+
+.solution-loading {
+    display: none;
+}
+
+.solution-streaming .solution-loading {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.125);
+}
+
+.solution-loading-container {
+    position: absolute;
+    display: flex;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: #10a37f;
+    color: #fff;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 1px rgb(0 0 0 / 15%);
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    gap: 0.5rem;
+}
+
+.solution-loading-spinner {
+    animation: 2s linear infinite spinner;
+    width: 1rem;
+    fill: currentColor;
+}
+
+/*
+ * -- Keyframes -----------------------------------------------------
+ */
+
+@keyframes spinner {
+    100% {
+        transform: rotate(360deg);
+    }
 }

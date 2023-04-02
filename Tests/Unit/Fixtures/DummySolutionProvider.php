@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Tests\Unit\Fixtures;
 
 use EliasHaeussler\Typo3Solver\ProblemSolving;
+use Throwable;
 
 /**
  * DummySolutionProvider
@@ -42,8 +43,13 @@ final class DummySolutionProvider implements ProblemSolving\Solution\Provider\So
         return $this->solution ?? new ProblemSolving\Solution\Solution([], 'foo', 'baz');
     }
 
-    public function canBeUsed(ProblemSolving\Problem\Problem $problem): bool
+    public function canBeUsed(Throwable $exception): bool
     {
         return $this->shouldBeUsed;
+    }
+
+    public function isCacheable(): bool
+    {
+        return true;
     }
 }

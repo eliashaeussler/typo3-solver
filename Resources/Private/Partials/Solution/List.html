@@ -1,0 +1,9 @@
+<ul class="solution-list">
+    <f:for each="{solution.choices}" as="choice" iteration="iterator">
+        <f:render partial="Solution/Container" arguments="{
+            solution: solution,
+            choice: choice,
+            iterator: iterator
+        }" />
+    </f:for>
+</ul>

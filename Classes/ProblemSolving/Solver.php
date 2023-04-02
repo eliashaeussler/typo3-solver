@@ -41,10 +41,10 @@ final class Solver
     private readonly Configuration\Configuration $configuration;
 
     public function __construct(
-        Solution\Provider\SolutionProvider $provider,
+        Solution\Provider\SolutionProvider $solutionProvider,
         private readonly Formatter\Formatter $formatter,
     ) {
-        $this->provider = new Solution\Provider\CacheSolutionProvider(new Cache\SolutionsCache(), $provider);
+        $this->provider = new Solution\Provider\CacheSolutionProvider(new Cache\SolutionsCache(), $solutionProvider);
         $this->configuration = new Configuration\Configuration();
     }
 
@@ -53,18 +53,39 @@ final class Solver
      */
     public function solve(Throwable $exception): ?string
     {
-        $problem = new Problem\Problem(
-            $exception,
-            $this->provider->getProvider(),
-            $this->configuration->getPrompt()->generate($exception),
-        );
+        $problem = $this->createProblem($exception);
 
-        if (!$this->provider->canBeUsed($problem)) {
+        if (!$this->provider->canBeUsed($exception)) {
             return null;
         }
 
         $solution = $this->provider->getSolution($problem);
 
-        return $this->formatter->format($solution);
+        return $this->formatter->format($problem, $solution);
+    }
+
+    /**
+     * @return iterable<string>
+     */
+    public function solveStreamed(Throwable $exception): iterable
+    {
+        $problem = $this->createProblem($exception);
+
+        if (!$this->provider->canBeUsed($exception)) {
+            return [];
+        }
+
+        foreach ($this->provider->getStreamedSolution($problem) as $solution) {
+            yield $this->formatter->format($problem, $solution);
+        }
+    }
+
+    private function createProblem(Throwable $exception): Problem\Problem
+    {
+        return new Problem\Problem(
+            $exception,
+            $this->provider->getProvider(),
+            $this->configuration->getPrompt()->generate($exception),
+        );
     }
 }

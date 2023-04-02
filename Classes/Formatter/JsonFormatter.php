@@ -35,8 +35,10 @@ use function json_encode;
  */
 final class JsonFormatter implements Formatter
 {
-    public function format(ProblemSolving\Solution\Solution $solution): string
-    {
+    public function format(
+        ProblemSolving\Problem\Problem $problem,
+        ProblemSolving\Solution\Solution $solution,
+    ): string {
         return json_encode($solution, JSON_THROW_ON_ERROR);
     }
 }

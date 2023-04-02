@@ -27,6 +27,12 @@ use Symfony\Component\Console;
 $application = new Console\Application();
 $application->add(new Command\CacheFlushCommand(new Cache\SolutionsCache()));
 $application->add(new Command\ListModelsCommand());
-$application->add(new Command\SolveCommand(new Configuration\Configuration(), new Cache\SolutionsCache()));
+$application->add(
+    new Command\SolveCommand(
+        new Configuration\Configuration(),
+        new Cache\ExceptionsCache(),
+        new Cache\SolutionsCache(),
+    ),
+);
 
 return $application;

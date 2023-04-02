@@ -33,5 +33,8 @@ use EliasHaeussler\Typo3Solver\ProblemSolving;
  */
 interface Formatter
 {
-    public function format(ProblemSolving\Solution\Solution $solution): string;
+    public function format(
+        ProblemSolving\Problem\Problem $problem,
+        ProblemSolving\Solution\Solution $solution,
+    ): string;
 }

@@ -1,0 +1,26 @@
+<html xmlns:s="http://typo3.org/ns/EliasHaeussler/Typo3Solver/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+{solution.choices -> f:count() -> f:variable(name: 'numberOfChoices')}
+{iterator.index -> f:variable(name: 'index')}
+{f:if(condition: iterator.isFirst, then: '{numberOfChoices - 1}', else: '{index - 1}') -> f:variable(name: 'prevIndex')}
+{f:if(condition: iterator.isLast, then: 0, else: '{index + 1}') -> f:variable(name: 'nextIndex')}
+
+<li class="solution-list-item" data-solution-choice-index="{index}"
+    aria-hidden="{f:if(condition: '{index} == 0', then: 'false', else: 'true')}"
+>
+    <f:if condition="{numberOfChoices} > 1">
+        <f:render partial="Solution/Controls" arguments="{
+            index: index,
+            prevIndex: prevIndex,
+            nextIndex: nextIndex
+        }" />
+    </f:if>
+
+    <f:render partial="Solution/Body" arguments="{
+        solution: solution,
+        choice: choice
+    }" />
+</li>
+
+</html>

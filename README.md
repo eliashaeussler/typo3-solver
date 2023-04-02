@@ -1,6 +1,6 @@
 <div align="center">
 
-![Error page screenshot](Documentation/Images/Screenshots/ErrorPage.png)
+![Error page screenshot](Documentation/Videos/ErrorPage.gif)
 
 # TYPO3 extension `solver`
 
@@ -66,7 +66,7 @@ The following extension configuration is available:
 | `prompt`                         | FQCN of the prompt generator                                                                                       | [`EliasHaeussler\Typo3Solver\Prompt\DefaultPrompt`][4]                     |
 | `ignoredCodes`                   | Comma-separated list of exception codes to ignore                                                                  | –                                                                          |
 | `api.key`                        | [API key](#api-key) for OpenAI requests                                                                            | –                                                                          |
-| `attributes.model`               | [OpenAI model][13] to use (see [List available models](#list-available-models) to show a list of available models) | `text-davinci-003`                                                         |
+| `attributes.model`               | [OpenAI model][13] to use (see [List available models](#list-available-models) to show a list of available models) | `gpt-3.5-turbo-0301`                                                       |
 | `attributes.maxTokens`           | [Maximum number of tokens][14] to use per request                                                                  | `300`                                                                      |
 | `attributes.temperature`         | [Temperature][15] to use for completion requests (must be a value between `0` and `1`)                             | `0.5`                                                                      |
 | `attributes.numberOfCompletions` | [Number of completions][16] to generate for each prompt                                                            | `1`                                                                        |
@@ -98,24 +98,39 @@ Next to the exception handler integration, one can also explicitly solve
 problems using the provided console command `solver:solve`.
 
 ```bash
-vendor/bin/typo3 solver:solve <problem> [--code=CODE] [--file=FILE] [--line=LINE] [--refresh] [--json]
+vendor/bin/typo3 solver:solve [<problem>] [options]
 ```
 
 The following input parameters are available:
 
-| Parameter         | Description                                                                         |
-|-------------------|-------------------------------------------------------------------------------------|
-| `problem`         | The exception message to solve                                                      |
-| `--code`, `-c`    | Optional exception code                                                             |
-| `--file`, `-f`    | Optional file where the exception occurs                                            |
-| `--line`, `-l`    | Optional line number within the given file                                          |
-| `--refresh`, `-r` | Refresh a cached solution (requests a new solution and ignores the cached solution) |
-| `--json`, `-j`    | Print solution as JSON                                                              |
+| Parameter            | Description                                                                         |
+|----------------------|-------------------------------------------------------------------------------------|
+| `problem`            | The exception message to solve                                                      |
+| `--identifier`, `-i` | An alternative cache identifier to load an exception from cache                     |
+| `--code`, `-c`       | Optional exception code                                                             |
+| `--file`, `-f`       | Optional file where the exception occurs                                            |
+| `--line`, `-l`       | Optional line number within the given file                                          |
+| `--refresh`, `-r`    | Refresh a cached solution (requests a new solution and ignores the cached solution) |
+| `--json`, `-j`       | Print solution as JSON                                                              |
+
+Problems can be solved in two ways on the command line:
+
+1. Pass the problem (= exception message) and additional metadata such as
+   exception code, file and line. By using this way, EXT:solver will create
+   a dummy exception and pass it to the solution provider.
+2. Pass an exception cache identifier to solve a cached exception. This way
+   is more accurate as it restores the original exception and passes it to
+   the solution provider.
+
+💡 You can find the exception cache identifier on exception pages. It is
+assigned as `data-exception-id` attribute to the solution container element.
 
 ### List available models
 
 The command `solver:list-models` can be used to list all available models
-for the configured OpenAI API key.
+for the configured OpenAI API key. Note that EXT:solver uses the
+[chat completion][20] component to generate solutions. You must select a
+model being available with the chat completion component only.
 
 ```bash
 vendor/bin/typo3 solver:list-models
@@ -139,13 +154,32 @@ The following input parameters are available:
 |--------------|----------------------------------------------------------|
 | `identifier` | Optional cache identifier to remove a single cache entry |
 
+## 🚧 Migration
+
+### 0.1.x → 0.2.x
+
+#### Chat completion component
+
+The used OpenAI component changed from text completion to chat completion.
+
+* Migrate the used model in your extension configuration. The new default
+  model is `gpt-3.5-turbo-0301`.
+
+#### Solution Stream
+
+Solutions are now streamed to exception pages.
+
+* Migrate custom solution providers to implement
+  [`ProblemSolving\Solution\Provider\StreamedSolutionProvider`](Classes/ProblemSolving/Solution/Provider/StreamedSolutionProvider.php).
+* Note the modified DOM structure for solutions on exception pages.
+
 ## 💎 Credits
 
 The extension icon ("lightbulb-on") is a modified version of the original
 [`actions-lightbulb-on`][6] icon from TYPO3 core. In addition, the icons
-[`actions-calendar`][7], [`actions-cpu`][8], [`actions-debug`][17] and
-[`actions-exclamation-triangle-alt`][18] from TYPO3 core are used. All icons
-are originally licensed under [MIT License][9].
+[`actions-calendar`][7], [`actions-cpu`][8], [`actions-debug`][17],
+[`actions-exclamation-triangle-alt`][18] and [`spinner-circle`][19] from
+TYPO3 core are used. All icons are originally licensed under [MIT License][9].
 
 This project is highly inspired by the article [`Fix your Laravel exceptions with AI`][10]
 by [Marcel Pociot][11].
@@ -175,3 +209,5 @@ This project is licensed under [GNU General Public License 2.0 (or later)](LICEN
 [16]: https://platform.openai.com/docs/api-reference/completions/create#completions/create-n
 [17]: https://typo3.github.io/TYPO3.Icons/icons/actions/actions-debug.html
 [18]: https://typo3.github.io/TYPO3.Icons/icons/actions/actions-exclamation-triangle-alt.html
+[19]: https://typo3.github.io/TYPO3.Icons/icons/spinner/spinner-circle.html
+[20]: https://platform.openai.com/docs/guides/chat

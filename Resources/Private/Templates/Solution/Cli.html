@@ -10,7 +10,7 @@ Prompt
 <f:spaceless><f:for each="{solution.choices}" as="choice" iteration="iterator">
 Solution #{iterator.cycle}
 ===========
-<f:spaceless>{choice.text -> f:format.raw()}</f:spaceless>
+<f:spaceless>{choice.message.content -> f:format.raw()}</f:spaceless>
 </f:for></f:spaceless>
 
 <f:spaceless><f:if condition="{solution.cacheIdentifier}">

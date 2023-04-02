@@ -23,7 +23,6 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver\Cache;
 
-use DateTimeImmutable;
 use EliasHaeussler\Typo3Solver\Configuration;
 use EliasHaeussler\Typo3Solver\ProblemSolving;
 use Symfony\Component\Filesystem;
@@ -33,7 +32,6 @@ use function dirname;
 use function implode;
 use function is_array;
 use function sprintf;
-use function time;
 use function var_export;
 
 /**
@@ -46,14 +44,16 @@ use function var_export;
  */
 final class SolutionsCache
 {
-    private readonly Filesystem\Filesystem $filesystem;
-    private string $cachePath;
     private readonly Configuration\Configuration $configuration;
+    private readonly Filesystem\Filesystem $filesystem;
+    private readonly Serializer\SolutionSerializer $serializer;
+    private string $cachePath;
 
     public function __construct()
     {
-        $this->filesystem = new Filesystem\Filesystem();
         $this->configuration = new Configuration\Configuration();
+        $this->filesystem = new Filesystem\Filesystem();
+        $this->serializer = new Serializer\SolutionSerializer();
 
         $this->initializeCache();
     }
@@ -68,37 +68,28 @@ final class SolutionsCache
             return null;
         }
 
-        [
-            'solution' => $solution,
-            'createdAt' => $createdAt,
-            'validUntil' => $validUntil,
-        ] = $cacheData['solutions'][$entryIdentifier];
+        $solution = $this->serializer->deserialize($cacheData['solutions'][$entryIdentifier]);
 
-        if ($validUntil < time()) {
+        // Early return if solution is expired
+        if ($solution === null) {
             $this->remove($entryIdentifier);
 
             return null;
         }
 
-        return ProblemSolving\Solution\Solution::fromArray($solution)
-            ->setCreateDate(new DateTimeImmutable('@' . $createdAt))
-            ->setCacheIdentifier($entryIdentifier);
+        return $solution->setCacheIdentifier($entryIdentifier);
     }
 
     public function set(ProblemSolving\Problem\Problem $problem, ProblemSolving\Solution\Solution $solution): void
     {
         // Early return if cache is disabled
-        if ($this->configuration->getCacheLifetime() === 0) {
+        if (!$problem->getSolutionProvider()->isCacheable() || $this->configuration->getCacheLifetime() === 0) {
             return;
         }
 
         $cacheData = require $this->cachePath;
         $entryIdentifier = $this->calculateCacheIdentifier($problem);
-        $cacheData['solutions'][$entryIdentifier] = [
-            'solution' => $solution->toArray(),
-            'createdAt' => time(),
-            'validUntil' => time() + $this->configuration->getCacheLifetime(),
-        ];
+        $cacheData['solutions'][$entryIdentifier] = $this->serializer->serialize($solution);
 
         $this->write($cacheData);
     }

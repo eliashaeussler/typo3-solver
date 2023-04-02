@@ -23,17 +23,14 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver\Formatter;
 
+use EliasHaeussler\Typo3Solver\Cache;
 use EliasHaeussler\Typo3Solver\ProblemSolving;
 use EliasHaeussler\Typo3Solver\View;
 use Symfony\Component\Filesystem;
-use TYPO3\CMS\Core;
 
-use function count;
 use function dirname;
-use function explode;
 use function file_exists;
 use function file_get_contents;
-use function is_numeric;
 
 /**
  * WebFormatter.
@@ -43,77 +40,47 @@ use function is_numeric;
  */
 final class WebFormatter implements Formatter
 {
+    private const SCRIPT_PATH = 'Resources/Public/JavaScript/solutions.js';
     private const STYLESHEET_PATH = 'Resources/Public/Css/solutions.css';
 
+    private readonly Cache\ExceptionsCache $exceptionsCache;
     private readonly View\TemplateRenderer $renderer;
 
     public function __construct()
     {
+        $this->exceptionsCache = new Cache\ExceptionsCache();
         $this->renderer = new View\TemplateRenderer();
     }
 
-    public function format(ProblemSolving\Solution\Solution $solution): string
-    {
-        $choices = [];
-
-        foreach ($solution as $choice) {
-            $choices[] = [
-                'sections' => $this->splitIntoSections($choice->text),
-            ];
-        }
-
+    public function format(
+        ProblemSolving\Problem\Problem $problem,
+        ProblemSolving\Solution\Solution $solution,
+    ): string {
         return $this->renderer->render('Solution/Web', [
             'solution' => $solution,
-            'choices' => $choices,
-            'numberOfChoices' => count($solution),
+            'exceptionCacheIdentifier' => $this->exceptionsCache->getIdentifier($problem->getException()),
         ]);
     }
 
     public function getAdditionalStyles(): string
     {
-        $rootPath = dirname(__DIR__, 2);
-        $stylesheetPath = Filesystem\Path::join($rootPath, self::STYLESHEET_PATH);
+        return $this->getFileContents(self::STYLESHEET_PATH);
+    }
 
-        if (file_exists($stylesheetPath)) {
-            return (string)@file_get_contents($stylesheetPath);
+    public function getAdditionalScripts(): string
+    {
+        return '<script>' . $this->getFileContents(self::SCRIPT_PATH) . '</script>';
+    }
+
+    private function getFileContents(string $filename): string
+    {
+        $rootPath = dirname(__DIR__, 2);
+        $filePath = Filesystem\Path::join($rootPath, $filename);
+
+        if (file_exists($filePath)) {
+            return (string)@file_get_contents($filePath);
         }
 
         return '';
-    }
-
-    /**
-     * @return list<array{section: Section\CodeBlock|Section\Text, type: string}>
-     */
-    private function splitIntoSections(string $solutionText): array
-    {
-        $result = [];
-        $section = null;
-        $lines = Core\Utility\GeneralUtility::trimExplode(PHP_EOL, $solutionText, true);
-
-        foreach ($lines as $content) {
-            if (is_numeric($content[0])) {
-                $type = 'codeBlock';
-                $className = Section\CodeBlock::class;
-            } else {
-                $type = 'text';
-                $className = Section\Text::class;
-            }
-
-            if (!($section instanceof $className)) {
-                $result[] = [
-                    'section' => $section = new $className(),
-                    'type' => $type,
-                ];
-            }
-
-            if ($section instanceof Section\CodeBlock) {
-                [$line, $code] = explode(' ', $content, 2);
-                $section->append(' ' . $code, (int)$line);
-            } else {
-                $section->append($content);
-            }
-        }
-
-        return $result;
     }
 }

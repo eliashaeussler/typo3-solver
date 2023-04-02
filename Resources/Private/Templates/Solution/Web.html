@@ -1,35 +1,17 @@
 <html xmlns:s="http://typo3.org/ns/EliasHaeussler/Typo3Solver/ViewHelpers"
       data-namespace-typo3-fluid="true">
 
-<form>
-    <f:for each="{choices}" as="choice" iteration="iterator">
-        {iterator.index -> f:variable(name: 'index')}
-        {f:if(condition: iterator.isFirst, then: '{numberOfChoices - 1}', else: '{index - 1}') -> f:variable(name: 'prevIndex')}
-        {f:if(condition: iterator.isLast, then: 0, else: '{index + 1}') -> f:variable(name: 'nextIndex')}
+<form class="solution {f:if(condition: solution.choices.0.finishReason, then: 'solution-provided')}"
+      data-exception-id="{exceptionCacheIdentifier}"
+>
+    <f:render partial="Solution/Head" arguments="{solution: solution}" />
 
-        <div class="solution">
-            <f:if condition="{numberOfChoices} > 1">
-                <f:render partial="Solution/Controls" arguments="{
-                    index: index,
-                    prevIndex: prevIndex,
-                    nextIndex: nextIndex
-                }" />
-            </f:if>
+    <div class="solution-container">
+        <f:render partial="Solution/List" arguments="{solution: solution}" />
+    </div>
 
-            <div class="solution-container">
-                <f:render partial="Solution/Head" arguments="{
-                    solution: solution,
-                    index: index,
-                    numberOfChoices: numberOfChoices
-                }" />
-                <f:render partial="Solution/Body" arguments="{
-                    solution: solution,
-                    choice: choice
-                }" />
-                <f:render partial="Solution/Prompt" arguments="{solution: solution}" />
-            </div>
-        </div>
-    </f:for>
+    <f:render partial="Solution/Prompt" arguments="{solution: solution}" />
+    <f:render partial="Solution/Loader" />
 </form>
 
 </html>
