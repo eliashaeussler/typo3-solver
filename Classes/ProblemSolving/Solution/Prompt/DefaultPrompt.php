@@ -28,6 +28,7 @@ use Spatie\Backtrace;
 use Throwable;
 use TYPO3\CMS\Core;
 
+use function preg_replace;
 use function trim;
 
 /**
@@ -49,14 +50,18 @@ final class DefaultPrompt implements Prompt
 
     public function generate(Throwable $exception): string
     {
-        $prompt = $this->renderer->render('Prompt/Default', [
-            'exception' => $exception,
-            'snippet' => $this->createCodeSnippet($exception),
-            'mode' => Core\Core\Environment::isComposerMode() ? 'composer' : 'classic (symlink)',
-            'typo3Version' => $this->typo3Version->getVersion(),
-        ]);
+        $prompt = trim(
+            $this->renderer->render('Prompt/Default', [
+                'exception' => $exception,
+                'exceptionClass' => $exception::class,
+                'snippet' => $this->createCodeSnippet($exception),
+                'mode' => Core\Core\Environment::isComposerMode() ? 'composer' : 'classic (symlink)',
+                'typo3Version' => $this->typo3Version->getVersion(),
+                'phpVersion' => PHP_VERSION,
+            ]),
+        );
 
-        return trim($prompt);
+        return preg_replace('/((?<!\n)\n(?!(\n|\d)))/', ' ', $prompt) ?? $prompt;
     }
 
     private function createCodeSnippet(Throwable $exception): string
@@ -75,6 +80,6 @@ final class DefaultPrompt implements Prompt
             $snippet .= $number . ' ' . $line . PHP_EOL;
         }
 
-        return $snippet;
+        return trim($snippet);
     }
 }

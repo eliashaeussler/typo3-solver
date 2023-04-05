@@ -27,7 +27,6 @@ use EliasHaeussler\Typo3Solver\Configuration;
 use EliasHaeussler\Typo3Solver\Exception;
 use EliasHaeussler\Typo3Solver\ProblemSolving;
 use OpenAI;
-
 use Throwable;
 
 use function in_array;

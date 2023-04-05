@@ -28,6 +28,9 @@ use Parsedown;
 
 use TYPO3Fluid\Fluid;
 
+use function preg_replace;
+use function preg_replace_callback;
+
 /**
  * MarkdownToHtmlViewHelper
  *
@@ -48,17 +51,66 @@ final class MarkdownToHtmlViewHelper extends Fluid\Core\ViewHelper\AbstractViewH
             'string',
             'The markdown text to convert',
         );
+        $this->registerArgument(
+            'replaceLineNumbersInCodeSnippets',
+            'boolean',
+            'Whether to replace line numbers following the error page markup',
+            false,
+            false,
+        );
     }
 
+    /**
+     * @param array{replaceLineNumbersInCodeSnippets?: bool} $arguments
+     */
     public static function renderStatic(
         array $arguments,
         Closure $renderChildrenClosure,
         Fluid\Core\Rendering\RenderingContextInterface $renderingContext,
     ): string {
         $markdown = $renderChildrenClosure();
+        $replaceLineNumbers = $arguments['replaceLineNumbersInCodeSnippets'] ?? false;
+
+        // Convert markdown to HTML
         $parsedown = new Parsedown();
         $parsedown->setSafeMode(true);
+        $html = $parsedown->text($markdown);
 
-        return $parsedown->text($markdown);
+        // Replace line numbers
+        if ($replaceLineNumbers) {
+            $html = self::replaceLineNumbersInCodeSnippets($html);
+        }
+
+        return $html;
+    }
+
+    private static function replaceLineNumbersInCodeSnippets(string $html): string
+    {
+        return preg_replace(
+            '/<\/span>\s*<span/',
+            '</span><span',
+            preg_replace_callback(
+                '/<pre><code>(.*?)<\/code><\/pre>/s',
+                static fn (array $matches) => self::replaceLineNumbersInCodeSnippet($matches[1]),
+                $html,
+            ) ?? $html,
+        ) ?? $html;
+    }
+
+    private static function replaceLineNumbersInCodeSnippet(string $codeSnippet): string
+    {
+        $replacements = 0;
+        $codeSnippetWithLineNumbers = preg_replace(
+            '/^(\d+)\s(.*)$/m',
+            '<span data-line="$1">$2</span>',
+            $codeSnippet,
+            count: $replacements,
+        );
+
+        if ($replacements === 0) {
+            return '<pre><code>' . $codeSnippet . '</code></pre>';
+        }
+
+        return '<pre class="has-line-numbers">' . $codeSnippetWithLineNumbers . '</pre>';
     }
 }
