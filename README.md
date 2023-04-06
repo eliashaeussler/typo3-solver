@@ -1,6 +1,6 @@
 <div align="center">
 
-![Error page screenshot](Documentation/Videos/ErrorPage.gif)
+![Error page screenshot](Documentation/Images/Screenshots/ErrorPage.png)
 
 # TYPO3 extension `solver`
 
