@@ -21,35 +21,31 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-return [
-    'directories' => [
-        '.build',
-        '.git',
-        '.github',
-        'bin',
-        'build',
-        'public',
-        'resources\\/private\\/libs\\/build',
-        'tailor-version-upload',
-        'tests',
-        'vendor',
-    ],
-    'files' => [
-        'DS_Store',
-        'CODE_OF_CONDUCT.md',
-        'codecov.yml',
-        'CODEOWNERS',
-        'composer.lock',
-        'editorconfig',
-        'editorconfig-lint.php',
-        'gitattributes',
-        'gitignore',
-        'packaging_exclude.php',
-        'php-cs-fixer.php',
-        'phpstan.neon',
-        'phpstan-baseline.neon',
-        'phpunit.coverage.xml',
-        'phpunit.xml',
-        'rector.php',
-    ],
-];
+namespace EliasHaeussler\Typo3Solver\Formatter\Message;
+
+use EliasHaeussler\Typo3Solver\View;
+use Throwable;
+
+/**
+ * ExceptionFormatter
+ *
+ * @author Elias Häußler <e.haeussler@familie-redlich.de>
+ * @license GPL-2.0-or-later
+ */
+final class ExceptionFormatter
+{
+    private readonly View\TemplateRenderer $renderer;
+
+    public function __construct()
+    {
+        $this->renderer = new View\TemplateRenderer();
+    }
+
+    public function format(Throwable $exception): string
+    {
+        return $this->renderer->render('Message/Exception', [
+            'exception' => $exception,
+            'exceptionClass' => $exception::class,
+        ]);
+    }
+}

@@ -91,7 +91,7 @@ final class MarkdownToHtmlViewHelper extends Fluid\Core\ViewHelper\AbstractViewH
             '</span><span',
             preg_replace_callback(
                 '/<pre><code>(.*?)<\/code><\/pre>/s',
-                static fn (array $matches) => self::replaceLineNumbersInCodeSnippet($matches[1]),
+                static fn (array $matches): string => self::replaceLineNumbersInCodeSnippet($matches[1]),
                 $html,
             ) ?? $html,
         ) ?? $html;

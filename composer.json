@@ -71,14 +71,22 @@
 		}
 	},
 	"scripts": {
+		"fix": [
+			"@fix:composer",
+			"@fix:editorconfig",
+			"@fix:php"
+		],
+		"fix:composer": "@composer normalize",
+		"fix:editorconfig": "@lint:editorconfig --fix",
+		"fix:php": "php-cs-fixer fix",
 		"lint": [
 			"@lint:composer",
 			"@lint:editorconfig",
 			"@lint:php"
 		],
-		"lint:composer": "@composer normalize",
-		"lint:editorconfig": "ec --fix",
-		"lint:php": "php-cs-fixer fix",
+		"lint:composer": "@fix:composer --dry-run",
+		"lint:editorconfig": "ec --finder-config .editorconfig-lint.php",
+		"lint:php": "@fix:php --dry-run",
 		"migration": [
 			"@migration:rector"
 		],

@@ -30,7 +30,6 @@ use EliasHaeussler\Typo3Solver\Formatter;
 use EliasHaeussler\Typo3Solver\Middleware;
 use EliasHaeussler\Typo3Solver\ProblemSolving;
 use EliasHaeussler\Typo3Solver\Utility;
-use EliasHaeussler\Typo3Solver\View;
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\RequestOptions;
@@ -47,8 +46,8 @@ final class AiSolverExceptionHandler extends Core\Error\DebugExceptionHandler
 {
     private readonly Client $client;
     private readonly Configuration\Configuration $configuration;
+    private readonly Formatter\Message\ExceptionFormatter $exceptionFormatter;
     private readonly Cache\ExceptionsCache $exceptionsCache;
-    private readonly View\TemplateRenderer $renderer;
     private readonly Cache\SolutionsCache $solutionsCache;
     private readonly Formatter\WebFormatter $webFormatter;
 
@@ -58,8 +57,8 @@ final class AiSolverExceptionHandler extends Core\Error\DebugExceptionHandler
 
         $this->client = $this->createClient();
         $this->configuration = new Configuration\Configuration();
+        $this->exceptionFormatter = new Formatter\Message\ExceptionFormatter();
         $this->exceptionsCache = new Cache\ExceptionsCache();
-        $this->renderer = new View\TemplateRenderer();
         $this->solutionsCache = new Cache\SolutionsCache();
         $this->webFormatter = new Formatter\WebFormatter();
     }
@@ -109,8 +108,8 @@ final class AiSolverExceptionHandler extends Core\Error\DebugExceptionHandler
             if ($solution !== null) {
                 $solution .= $this->webFormatter->getAdditionalScripts();
             }
-        } catch (\Exception $exception) {
-            $solution = $this->renderException($exception);
+        } catch (Throwable $exception) {
+            $solution = $this->exceptionFormatter->format($exception);
         }
 
         if ($solution === null) {
@@ -127,14 +126,6 @@ final class AiSolverExceptionHandler extends Core\Error\DebugExceptionHandler
     protected function getStylesheet(): string
     {
         return parent::getStylesheet() . $this->webFormatter->getAdditionalStyles();
-    }
-
-    private function renderException(\Exception $exception): string
-    {
-        return $this->renderer->render('Message/Exception', [
-            'exception' => $exception,
-            'exceptionClass' => $exception::class,
-        ]);
     }
 
     private function isStreamedResponseSupported(): bool

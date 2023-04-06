@@ -40,8 +40,8 @@ use function file_get_contents;
  */
 final class WebFormatter implements Formatter
 {
-    private const SCRIPT_PATH = 'Resources/Public/JavaScript/solutions.js';
-    private const STYLESHEET_PATH = 'Resources/Public/Css/solutions.css';
+    private const SCRIPT_PATH = 'Resources/Public/JavaScript/main.js';
+    private const STYLESHEET_PATH = 'Resources/Public/Css/main.css';
 
     private readonly Cache\ExceptionsCache $exceptionsCache;
     private readonly View\TemplateRenderer $renderer;

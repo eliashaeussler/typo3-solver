@@ -25,7 +25,6 @@ namespace EliasHaeussler\Typo3Solver\Formatter;
 
 use EliasHaeussler\Typo3Solver\ProblemSolving;
 use EliasHaeussler\Typo3Solver\View;
-
 use OpenAI\Responses;
 
 use function array_filter;
@@ -59,8 +58,6 @@ final class WebStreamFormatter implements Formatter
                 'numberOfChoices' => count($solution->getChoices()),
                 'numberOfPendingChoices' => count($this->filterPendingChoices($solution->getChoices())),
                 'prompt' => $solution->getPrompt(),
-                'createDate' => $solution->getCreateDate(),
-                'cacheIdentifier' => $solution->getCacheIdentifier(),
             ],
             'content' => $this->renderer->render('Solution/WebStream', [
                 'solution' => $solution,
@@ -78,7 +75,7 @@ final class WebStreamFormatter implements Formatter
     {
         return array_filter(
             $choices,
-            static fn (Responses\Chat\CreateResponseChoice $choice) => $choice->finishReason === null,
+            static fn (Responses\Chat\CreateResponseChoice $choice): bool => $choice->finishReason === null,
         );
     }
 }

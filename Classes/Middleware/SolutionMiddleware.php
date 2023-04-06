@@ -32,6 +32,7 @@ use EliasHaeussler\Typo3Solver\ProblemSolving;
 use EliasHaeussler\Typo3Solver\Utility;
 use Psr\Http\Message;
 use Psr\Http\Server;
+use Throwable;
 use TYPO3\CMS\Core;
 
 /**
@@ -47,6 +48,7 @@ final class SolutionMiddleware implements Server\MiddlewareInterface
     public function __construct(
         private readonly Configuration\Configuration $configuration,
         private readonly Cache\ExceptionsCache $exceptionsCache,
+        private readonly Formatter\Message\ExceptionStreamFormatter $exceptionFormatter,
     ) {
     }
 
@@ -77,8 +79,12 @@ final class SolutionMiddleware implements Server\MiddlewareInterface
         $eventStream = Http\EventStream::create($id);
 
         // Send solution stream
-        foreach ($solver->solveStreamed($exception) as $solution) {
-            $eventStream->sendMessage('solutionDelta', $solution);
+        try {
+            foreach ($solver->solveStreamed($exception) as $solution) {
+                $eventStream->sendMessage('solutionDelta', $solution);
+            }
+        } catch (Throwable $exception) {
+            $eventStream->sendMessage('solutionError', $this->exceptionFormatter->format($exception));
         }
 
         // Finish event stream

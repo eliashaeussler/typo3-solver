@@ -24,6 +24,7 @@ declare(strict_types=1);
 use Rector\Config\RectorConfig;
 use Rector\Core\ValueObject\PhpVersion;
 use Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector;
+use Rector\Privatization\Rector\Class_\ChangeReadOnlyVariableWithDefaultValueToConstantRector;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
 
@@ -38,6 +39,7 @@ return static function (RectorConfig $rectorConfig): void {
         __DIR__ . '/Tests/Build/console-application.php',
 
         AddLiteralSeparatorToNumberRector::class,
+        ChangeReadOnlyVariableWithDefaultValueToConstantRector::class,
     ]);
 
     $rectorConfig->phpVersion(PhpVersion::PHP_81);

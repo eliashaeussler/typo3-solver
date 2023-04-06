@@ -1,0 +1,34 @@
+{
+	"compilerOptions": {
+		"outDir": "../../Public/Frontend",
+		"rootDir": ".",
+		"sourceMap": true,
+		"noImplicitAny": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"module": "ES6",
+		"target": "esnext",
+		"strict": true,
+		"baseUrl": ".",
+		"moduleResolution": "node",
+		"esModuleInterop": true,
+		"lib": [
+			"dom",
+			"dom.iterable"
+		],
+		"allowSyntheticDefaultImports": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"typeRoots": [
+			"node_modules/@types",
+            "src/scripts/@types"
+		]
+	},
+	"include": [
+		"**/*.ts",
+		"**/*.tsx"
+	],
+	"exclude": [
+		"node_modules"
+	]
+}

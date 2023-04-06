@@ -20,8 +20,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: 8.1
-          # @todo switch back to composer-unused 0.8 once https://github.com/composer-unused/composer-unused/issues/444 is resolved
-          tools: composer:v2, composer-require-checker, composer-unused:0.7, cs2pr
+          tools: composer:v2, composer-require-checker, composer-unused, cs2pr
           coverage: none
 
       # Validation
@@ -44,15 +43,25 @@ jobs:
 
       # Linting
       - name: Lint composer.json
-        run: composer lint:composer -- --dry-run
+        run: composer lint:composer
       - name: Lint Editorconfig
-        run: .build/bin/ec
+        run: composer lint:editorconfig
       - name: Lint PHP
-        run: composer lint:php -- --dry-run --format=checkstyle | cs2pr
+        run: composer lint:php -- --format=checkstyle | cs2pr
 
       # SCA
       - name: SCA PHP
         run: composer sca:php -- --error-format github
+
+      # Install Frontend dependencies
+      - name: Install Frontend dependencies
+        run: yarn --cwd Resources/Private/Frontend --frozen-lockfile
+
+      # Frontend linting
+      - name: Lint SCSS
+        run: yarn --cwd Resources/Private/Frontend lint:scss
+      - name: Lint TypeScript
+        run: yarn --cwd Resources/Private/Frontend lint:ts
 
       # Migration
       - name: Rector migration

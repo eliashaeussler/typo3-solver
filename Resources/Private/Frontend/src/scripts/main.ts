@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+'use strict';
 
 /*
  * This file is part of the TYPO3 CMS extension "solver".
@@ -21,35 +19,17 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-return [
-    'directories' => [
-        '.build',
-        '.git',
-        '.github',
-        'bin',
-        'build',
-        'public',
-        'resources\\/private\\/libs\\/build',
-        'tailor-version-upload',
-        'tests',
-        'vendor',
-    ],
-    'files' => [
-        'DS_Store',
-        'CODE_OF_CONDUCT.md',
-        'codecov.yml',
-        'CODEOWNERS',
-        'composer.lock',
-        'editorconfig',
-        'editorconfig-lint.php',
-        'gitattributes',
-        'gitignore',
-        'packaging_exclude.php',
-        'php-cs-fixer.php',
-        'phpstan.neon',
-        'phpstan-baseline.neon',
-        'phpunit.coverage.xml',
-        'phpunit.xml',
-        'rector.php',
-    ],
-];
+import {Solution} from "./ProblemSolving/Solution/Solution";
+import {SolutionStream} from "./ProblemSolving/Solution/SolutionStream";
+
+try {
+  const solution: Solution = Solution.create();
+
+  if (solution.canBeStreamed()) {
+    (solution.createStream() as SolutionStream).start();
+  } else {
+    solution.handleSolutionSelection();
+  }
+} catch (e) {
+  // Intended fallthrough.
+}
