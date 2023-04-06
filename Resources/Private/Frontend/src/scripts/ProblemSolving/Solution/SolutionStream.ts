@@ -38,6 +38,7 @@ export class SolutionStream
   private readonly solutionPrompt: HTMLElement;
   private readonly solutionLoaderCount: HTMLElement;
   private eventSource: EventSource|null = null;
+  private caretInterval: ReturnType<typeof setInterval>|null = null;
 
   constructor(
     private readonly solution: Solution,
@@ -65,7 +66,7 @@ export class SolutionStream
     this.solution.element.classList.add(Classes.solutionStreaming);
 
     // Handle caret
-    setInterval(this.toggleCaret.bind(this), 750);
+    this.caretInterval = setInterval(this.toggleCaret.bind(this), 750);
 
     // Handle events
     this.eventSource.addEventListener(Events.solutionDelta, this.handleSolutionDelta.bind(this));
@@ -119,7 +120,13 @@ export class SolutionStream
   private handleSolutionFinished(): void
   {
     this.solution.element.classList.remove(Classes.solutionStreaming);
+    this.solution.element.classList.remove(Classes.solutionCaretVisible);
     this.solution.element.classList.add(Classes.solutionProvided);
+
+    // Stop caret interval
+    if (this.caretInterval !== null) {
+      clearInterval(this.caretInterval);
+    }
 
     // Close open event stream
     this.eventSource?.close();

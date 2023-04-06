@@ -25,6 +25,7 @@ const path = require('path');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const IgnoreEmitPlugin = require('ignore-emit-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const isDev = process.env.NODE_ENV !== 'production';
 
@@ -35,6 +36,19 @@ module.exports = [
     entry: './src/scripts/main.ts',
     output: {
       path: path.resolve(__dirname, '../../Public/JavaScript'),
+    },
+    optimization: {
+      minimize: !isDev,
+      minimizer: [
+        new TerserPlugin({
+          terserOptions: {
+            format: {
+              comments: false,
+            },
+          },
+          extractComments: false,
+        }),
+      ],
     },
     plugins: [
       new CleanWebpackPlugin(),
