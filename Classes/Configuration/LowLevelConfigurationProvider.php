@@ -24,9 +24,10 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Configuration;
 
 use EliasHaeussler\Typo3Solver\Extension;
-use EliasHaeussler\Typo3Solver\ProblemSolving;
 use Exception;
 use TYPO3\CMS\Core;
+
+use function is_array;
 
 /**
  * LowLevelConfigurationProvider
@@ -36,27 +37,17 @@ use TYPO3\CMS\Core;
  */
 final class LowLevelConfigurationProvider implements ConfigurationProvider
 {
-    /**
-     * @var array{
-     *     api?: array{key?: string},
-     *     attributes?: array{model?: string, maxTokens?: int, temperature?: float},
-     *     cache?: array{lifetime?: int},
-     *     provider?: class-string<ProblemSolving\Solution\Provider\SolutionProvider>,
-     *     prompt?: class-string<ProblemSolving\Solution\Prompt\Prompt>
-     * }
-     */
-    private readonly array $configuration;
-
-    public function __construct()
-    {
-        /* @phpstan-ignore-next-line */
-        $this->configuration = $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS'][Extension::KEY] ?? [];
-    }
-
     public function get(string $configPath, mixed $default = null): mixed
     {
+        /* @phpstan-ignore-next-line */
+        $extensionConfiguration = $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS'][Extension::KEY] ?? null;
+
+        if (!is_array($extensionConfiguration)) {
+            return $default;
+        }
+
         try {
-            return Core\Utility\ArrayUtility::getValueByPath($this->configuration, $configPath) ?? $default;
+            return Core\Utility\ArrayUtility::getValueByPath($extensionConfiguration, $configPath) ?? $default;
         } catch (Exception) {
             return $default;
         }
