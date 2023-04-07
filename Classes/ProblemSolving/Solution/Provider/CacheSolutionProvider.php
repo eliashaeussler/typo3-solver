@@ -27,6 +27,7 @@ use EliasHaeussler\Typo3Solver\Cache;
 use EliasHaeussler\Typo3Solver\ProblemSolving;
 use OpenAI\Responses;
 use Throwable;
+use Traversable;
 
 use function array_values;
 
@@ -59,7 +60,7 @@ final class CacheSolutionProvider implements StreamedSolutionProvider
         return $solution;
     }
 
-    public function getStreamedSolution(ProblemSolving\Problem\Problem $problem): iterable
+    public function getStreamedSolution(ProblemSolving\Problem\Problem $problem): Traversable
     {
         $solution = $this->cache->get($problem);
 

@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\ProblemSolving\Solution\Provider;
 
 use EliasHaeussler\Typo3Solver\ProblemSolving;
+use Traversable;
 
 /**
  * StreamedSolutionProvider
@@ -34,7 +35,7 @@ use EliasHaeussler\Typo3Solver\ProblemSolving;
 interface StreamedSolutionProvider extends SolutionProvider
 {
     /**
-     * @return iterable<ProblemSolving\Solution\Solution>
+     * @return Traversable<ProblemSolving\Solution\Solution>
      */
-    public function getStreamedSolution(ProblemSolving\Problem\Problem $problem): iterable;
+    public function getStreamedSolution(ProblemSolving\Problem\Problem $problem): Traversable;
 }

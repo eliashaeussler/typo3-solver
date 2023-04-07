@@ -28,6 +28,7 @@ use EliasHaeussler\Typo3Solver\Exception;
 use EliasHaeussler\Typo3Solver\ProblemSolving;
 use OpenAI;
 use Throwable;
+use Traversable;
 
 use function in_array;
 
@@ -65,7 +66,7 @@ final class OpenAISolutionProvider implements StreamedSolutionProvider
     /**
      * @throws Exception\ApiKeyMissingException
      */
-    public function getStreamedSolution(ProblemSolving\Problem\Problem $problem): iterable
+    public function getStreamedSolution(ProblemSolving\Problem\Problem $problem): Traversable
     {
         if ($this->configuration->getApiKey() === null) {
             throw Exception\ApiKeyMissingException::create();

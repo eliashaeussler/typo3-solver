@@ -28,6 +28,7 @@ use EliasHaeussler\Typo3Solver\Configuration;
 use EliasHaeussler\Typo3Solver\Exception;
 use EliasHaeussler\Typo3Solver\Formatter;
 use Throwable;
+use Traversable;
 
 /**
  * Solver
@@ -65,14 +66,14 @@ final class Solver
     }
 
     /**
-     * @return iterable<string>
+     * @return Traversable<string>
      */
-    public function solveStreamed(Throwable $exception): iterable
+    public function solveStreamed(Throwable $exception): Traversable
     {
         $problem = $this->createProblem($exception);
 
         if (!$this->provider->canBeUsed($exception)) {
-            return [];
+            return;
         }
 
         foreach ($this->provider->getStreamedSolution($problem) as $solution) {
