@@ -75,6 +75,9 @@ final class DateViewHelper extends Fluid\Core\ViewHelper\AbstractViewHelper
         $delta = $now->getTimestamp() - $date->getTimestamp();
         $diff = $date->diff($now);
 
+        if ($delta < 5) {
+            return 'a few moments ago';
+        }
         if ($delta < 60) {
             return self::renderDiff($diff->s, 'second');
         }
