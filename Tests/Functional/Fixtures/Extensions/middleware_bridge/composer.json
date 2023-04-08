@@ -1,0 +1,12 @@
+{
+	"name": "eliashaeussler/typo3-solver-middleware-bridge",
+	"type": "typo3-cms-extension",
+	"require": {
+		"typo3/cms-core": "*@dev"
+	},
+	"extra": {
+		"typo3/cms": {
+			"extension-key": "middleware_bridge"
+		}
+	}
+}

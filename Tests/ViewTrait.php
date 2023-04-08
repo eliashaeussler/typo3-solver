@@ -21,38 +21,33 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-return [
-    'directories' => [
-        '.build',
-        '.ddev',
-        '.git',
-        '.github',
-        'bin',
-        'build',
-        'public',
-        'resources\\/private\\/libs\\/build',
-        'tailor-version-upload',
-        'tests',
-        'vendor',
-    ],
-    'files' => [
-        'DS_Store',
-        'CODE_OF_CONDUCT.md',
-        'codecov.yml',
-        'CODEOWNERS',
-        'composer.lock',
-        'editorconfig',
-        'editorconfig-lint.php',
-        'gitattributes',
-        'gitignore',
-        'packaging_exclude.php',
-        'php-cs-fixer.php',
-        'phpstan.neon',
-        'phpstan-baseline.neon',
-        'phpunit.functional.coverage.xml',
-        'phpunit.functional.xml',
-        'phpunit.unit.coverage.xml',
-        'phpunit.unit.xml',
-        'rector.php',
-    ],
-];
+namespace EliasHaeussler\Typo3Solver\Tests;
+
+use TYPO3Fluid\Fluid;
+
+/**
+ * ViewTrait
+ *
+ * @author Elias Häußler <e.haeussler@familie-redlich.de>
+ * @license GPL-2.0-or-later
+ */
+trait ViewTrait
+{
+    private function createView(string $template): Fluid\View\TemplateView
+    {
+        /** @noinspection HtmlRequiredLangAttribute */
+        $templateSource = <<<FLUID
+<html xmlns:s="http://typo3.org/ns/EliasHaeussler/Typo3Solver/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+{$template}
+
+</html>
+FLUID;
+
+        $context = new Fluid\Core\Rendering\RenderingContext();
+        $context->getTemplatePaths()->setTemplateSource($templateSource);
+
+        return new Fluid\View\TemplateView($context);
+    }
+}

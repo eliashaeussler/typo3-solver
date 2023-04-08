@@ -21,38 +21,8 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-return [
-    'directories' => [
-        '.build',
-        '.ddev',
-        '.git',
-        '.github',
-        'bin',
-        'build',
-        'public',
-        'resources\\/private\\/libs\\/build',
-        'tailor-version-upload',
-        'tests',
-        'vendor',
-    ],
-    'files' => [
-        'DS_Store',
-        'CODE_OF_CONDUCT.md',
-        'codecov.yml',
-        'CODEOWNERS',
-        'composer.lock',
-        'editorconfig',
-        'editorconfig-lint.php',
-        'gitattributes',
-        'gitignore',
-        'packaging_exclude.php',
-        'php-cs-fixer.php',
-        'phpstan.neon',
-        'phpstan-baseline.neon',
-        'phpunit.functional.coverage.xml',
-        'phpunit.functional.xml',
-        'phpunit.unit.coverage.xml',
-        'phpunit.unit.xml',
-        'rector.php',
-    ],
-];
+use Symfony\Component\DependencyInjection;
+
+return static function (DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator): void {
+    $containerConfigurator->import('../../../../../../Configuration/Services.php');
+};

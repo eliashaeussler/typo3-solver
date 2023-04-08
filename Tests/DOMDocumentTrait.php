@@ -40,7 +40,7 @@ use function trim;
  */
 trait DOMDocumentTrait
 {
-    private function createDOMXPath(string $html): DOMXPath
+    private static function createDOMXPath(string $html): DOMXPath
     {
         $document = new DOMDocument();
         libxml_use_internal_errors(true);

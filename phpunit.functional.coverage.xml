@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          backupGlobals="true"
-         bootstrap=".build/vendor/typo3/testing-framework/Resources/Core/Build/UnitTestsBootstrap.php"
+         bootstrap=".build/vendor/typo3/testing-framework/Resources/Core/Build/FunctionalTestsBootstrap.php"
          colors="true"
          xsi:noNamespaceSchemaLocation=".build/vendor/phpunit/phpunit/phpunit.xsd"
 >
@@ -13,17 +13,17 @@
             <directory suffix=".php">Classes</directory>
         </include>
         <report>
-            <clover outputFile=".build/coverage/clover.xml"/>
-            <html outputDirectory=".build/coverage/html/"/>
+            <php outputFile=".build/coverage/php/functional.cov"/>
+            <html outputDirectory=".build/coverage/html/functional/"/>
             <text outputFile="php://stdout" showOnlySummary="true"/>
         </report>
     </coverage>
     <testsuites>
-        <testsuite name="unit">
-            <directory>Tests/Unit</directory>
+        <testsuite name="functional">
+            <directory>Tests/Functional</directory>
         </testsuite>
     </testsuites>
     <logging>
-        <junit outputFile=".build/coverage/junit.xml"/>
+        <junit outputFile=".build/coverage/junit/functional.xml"/>
     </logging>
 </phpunit>

@@ -21,38 +21,22 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-return [
-    'directories' => [
-        '.build',
-        '.ddev',
-        '.git',
-        '.github',
-        'bin',
-        'build',
-        'public',
-        'resources\\/private\\/libs\\/build',
-        'tailor-version-upload',
-        'tests',
-        'vendor',
-    ],
-    'files' => [
-        'DS_Store',
-        'CODE_OF_CONDUCT.md',
-        'codecov.yml',
-        'CODEOWNERS',
-        'composer.lock',
-        'editorconfig',
-        'editorconfig-lint.php',
-        'gitattributes',
-        'gitignore',
-        'packaging_exclude.php',
-        'php-cs-fixer.php',
-        'phpstan.neon',
-        'phpstan-baseline.neon',
-        'phpunit.functional.coverage.xml',
-        'phpunit.functional.xml',
-        'phpunit.unit.coverage.xml',
-        'phpunit.unit.xml',
-        'rector.php',
-    ],
-];
+namespace EliasHaeussler\Typo3Solver\Tests\Functional\Fixtures;
+
+use DateTime;
+
+use function time;
+
+/**
+ * LazyDateTime
+ *
+ * @author Elias Häußler <e.haeussler@familie-redlich.de>
+ * @license GPL-2.0-or-later
+ */
+final class LazyDateTime extends DateTime
+{
+    public function getTimestamp(): int
+    {
+        return time();
+    }
+}
