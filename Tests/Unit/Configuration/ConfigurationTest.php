@@ -83,7 +83,7 @@ final class ConfigurationTest extends TestingFramework\Core\Unit\UnitTestCase
      */
     public function getModelReturnsDefaultModelIfNoModelIsConfigured(): void
     {
-        self::assertSame('text-davinci-003', $this->subject->getModel());
+        self::assertSame('gpt-3.5-turbo-0301', $this->subject->getModel());
     }
 
     /**
@@ -95,7 +95,7 @@ final class ConfigurationTest extends TestingFramework\Core\Unit\UnitTestCase
             'attributes/model' => '',
         ];
 
-        self::assertSame('text-davinci-003', $this->subject->getModel());
+        self::assertSame('gpt-3.5-turbo-0301', $this->subject->getModel());
     }
 
     /**
