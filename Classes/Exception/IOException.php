@@ -23,8 +23,6 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver\Exception;
 
-use Exception;
-
 use function implode;
 use function sprintf;
 
