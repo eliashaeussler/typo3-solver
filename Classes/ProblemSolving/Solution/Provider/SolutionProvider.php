@@ -25,6 +25,7 @@ namespace EliasHaeussler\Typo3Solver\ProblemSolving\Solution\Provider;
 
 use EliasHaeussler\Typo3Solver\Exception;
 use EliasHaeussler\Typo3Solver\ProblemSolving;
+use Throwable;
 
 /**
  * SolutionProvider.
@@ -39,5 +40,7 @@ interface SolutionProvider
      */
     public function getSolution(ProblemSolving\Problem\Problem $problem): ProblemSolving\Solution\Solution;
 
-    public function canBeUsed(ProblemSolving\Problem\Problem $problem): bool;
+    public function canBeUsed(Throwable $exception): bool;
+
+    public function isCacheable(): bool;
 }

@@ -43,7 +43,7 @@ use function trim;
  */
 final class Configuration
 {
-    private const DEFAULT_MODEL = 'text-davinci-003';
+    private const DEFAULT_MODEL = 'gpt-3.5-turbo-0301';
     private const DEFAULT_TOKENS = 300;
     private const DEFAULT_TEMPERATURE = 0.5;
     private const DEFAULT_NUMBER_OF_COMPLETIONS = 1;

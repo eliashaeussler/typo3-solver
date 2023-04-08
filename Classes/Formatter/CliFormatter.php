@@ -45,8 +45,10 @@ final class CliFormatter implements Formatter
         $this->renderer = new View\TemplateRenderer();
     }
 
-    public function format(ProblemSolving\Solution\Solution $solution): string
-    {
+    public function format(
+        ProblemSolving\Problem\Problem $problem,
+        ProblemSolving\Solution\Solution $solution,
+    ): string {
         $formattedSolution = $this->renderer->render('Solution/Cli', [
             'solution' => $solution,
             'showPrompt' => $this->output?->isVerbose(),

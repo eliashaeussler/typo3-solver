@@ -47,7 +47,8 @@ final class SolveCommand extends Console\Command\Command
 
     public function __construct(
         private readonly Configuration\Configuration $configuration,
-        private readonly Cache\SolutionsCache $cache,
+        private readonly Cache\ExceptionsCache $exceptionsCache,
+        private readonly Cache\SolutionsCache $solutionsCache,
         ProblemSolving\Solution\Provider\SolutionProvider $solutionProvider = null,
     ) {
         parent::__construct();
@@ -61,10 +62,16 @@ final class SolveCommand extends Console\Command\Command
     {
         $this->addArgument(
             'problem',
-            Console\Input\InputArgument::REQUIRED,
+            Console\Input\InputArgument::OPTIONAL,
             'The exception message to solve',
         );
 
+        $this->addOption(
+            'identifier',
+            'i',
+            Console\Input\InputOption::VALUE_REQUIRED,
+            'The exception cache identifier',
+        );
         $this->addOption(
             'code',
             'c',
@@ -100,20 +107,36 @@ final class SolveCommand extends Console\Command\Command
         );
     }
 
+    /**
+     * @throws Exception\IOException
+     * @throws Exception\MissingCacheEntryException
+     */
     protected function execute(Console\Input\InputInterface $input, Console\Output\OutputInterface $output): int
     {
         $io = new Console\Style\SymfonyStyle($input, $output);
 
         // Parse parameters
         $problem = $input->getArgument('problem');
+        $identifier = $input->getOption('identifier');
         $code = (int)$input->getOption('code');
         $file = $input->getOption('file');
         $line = (int)$input->getOption('line');
         $refresh = $input->getOption('refresh');
         $json = $input->getOption('json');
 
+        // Validate parameters
+        if ($problem !== null && $identifier !== null) {
+            throw Exception\IOException::forConflictingParameters('problem', '--identifier');
+        }
+
         // Create exception
-        $exception = Exception\CustomSolvableException::create($problem, $code, $file, $line);
+        if ($identifier !== null) {
+            $exception = $this->getExceptionFromCache($identifier);
+        } elseif ($problem !== null) {
+            $exception = Exception\CustomSolvableException::create($problem, $code, $file, $line);
+        } else {
+            throw Exception\IOException::forMissingRequiredParameter('problem');
+        }
 
         // Remove cache entry when requested
         if ($refresh) {
@@ -143,6 +166,20 @@ final class SolveCommand extends Console\Command\Command
         return $solver->solve($exception);
     }
 
+    /**
+     * @throws Exception\MissingCacheEntryException
+     */
+    private function getExceptionFromCache(string $identifier): Throwable
+    {
+        $exception = $this->exceptionsCache->get($identifier);
+
+        if ($exception === null) {
+            throw Exception\MissingCacheEntryException::create($identifier);
+        }
+
+        return $exception;
+    }
+
     private function removeCacheEntry(Throwable $exception): void
     {
         $problem = new ProblemSolving\Problem\Problem(
@@ -151,7 +188,7 @@ final class SolveCommand extends Console\Command\Command
             $this->configuration->getPrompt()->generate($exception),
         );
 
-        $this->cache->remove($problem);
+        $this->solutionsCache->remove($problem);
     }
 
     private function createFormatter(Console\Output\OutputInterface $output, bool $json): Formatter\Formatter

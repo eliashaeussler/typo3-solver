@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "396becc093b0d54e1228ffbd659251e9",
+    "content-hash": "c18bc3c1f2190e3d37b27c991b6356dc",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -772,6 +772,56 @@
                 "source": "https://github.com/darylldoyle/svg-sanitizer/tree/0.15.4"
             },
             "time": "2022-02-21T09:13:59+00:00"
+        },
+        {
+            "name": "erusev/parsedown",
+            "version": "1.7.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/erusev/parsedown.git",
+                "reference": "cb17b6477dfff935958ba01325f2e8a2bfa6dab3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/erusev/parsedown/zipball/cb17b6477dfff935958ba01325f2e8a2bfa6dab3",
+                "reference": "cb17b6477dfff935958ba01325f2e8a2bfa6dab3",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.35"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Parsedown": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Emanuil Rusev",
+                    "email": "hello@erusev.com",
+                    "homepage": "http://erusev.com"
+                }
+            ],
+            "description": "Parser for Markdown.",
+            "homepage": "http://parsedown.org",
+            "keywords": [
+                "markdown",
+                "parser"
+            ],
+            "support": {
+                "issues": "https://github.com/erusev/parsedown/issues",
+                "source": "https://github.com/erusev/parsedown/tree/1.7.x"
+            },
+            "time": "2019-12-30T22:54:17+00:00"
         },
         {
             "name": "firebase/php-jwt",
@@ -7248,6 +7298,68 @@
             "time": "2020-10-26T13:16:10+00:00"
         },
         {
+            "name": "phpunit/phpcov",
+            "version": "8.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/phpcov.git",
+                "reference": "8ec45dde34a84914a0ace355fbd6d7af2242c9a4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpcov/zipball/8ec45dde34a84914a0ace355fbd6d7af2242c9a4",
+                "reference": "8ec45dde34a84914a0ace355fbd6d7af2242c9a4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "phpunit/php-code-coverage": "^9.2",
+                "phpunit/php-file-iterator": "^3.0",
+                "phpunit/phpunit": "^9.3",
+                "sebastian/cli-parser": "^1.0",
+                "sebastian/diff": "^4.0",
+                "sebastian/version": "^3.0"
+            },
+            "bin": [
+                "phpcov"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "8.2-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Bergmann",
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
+                }
+            ],
+            "description": "CLI frontend for php-code-coverage",
+            "homepage": "https://github.com/sebastianbergmann/phpcov",
+            "support": {
+                "issues": "https://github.com/sebastianbergmann/phpcov/issues",
+                "source": "https://github.com/sebastianbergmann/phpcov/tree/8.2.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-03-24T12:07:05+00:00"
+        },
+        {
             "name": "phpunit/phpunit",
             "version": "9.6.3",
             "source": {
@@ -9439,12 +9551,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3/testing-framework.git",
-                "reference": "bd1bc5e5021f7cc860f0515644d7f046a66bfe92"
+                "reference": "f9baa96ae38d71b42babb1bc72be6654dec870a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3/testing-framework/zipball/bd1bc5e5021f7cc860f0515644d7f046a66bfe92",
-                "reference": "bd1bc5e5021f7cc860f0515644d7f046a66bfe92",
+                "url": "https://api.github.com/repos/TYPO3/testing-framework/zipball/f9baa96ae38d71b42babb1bc72be6654dec870a4",
+                "reference": "f9baa96ae38d71b42babb1bc72be6654dec870a4",
                 "shasum": ""
             },
             "require": {
@@ -9452,7 +9564,7 @@
                 "guzzlehttp/psr7": "^1.7 || ^2.0",
                 "mikey179/vfsstream": "~1.6.11",
                 "php": ">= 7.4",
-                "phpunit/phpunit": "^9.5.25",
+                "phpunit/phpunit": "^9.5.25 || ^10.0.14",
                 "psr/container": "^1.1.0 || ^2.0.0",
                 "typo3/cms-backend": "11.*.*@dev || 12.*.*@dev",
                 "typo3/cms-core": "11.*.*@dev || 12.*.*@dev",
@@ -9508,7 +9620,7 @@
                 "issues": "https://github.com/TYPO3/testing-framework/issues",
                 "source": "https://github.com/TYPO3/testing-framework/tree/7"
             },
-            "time": "2022-12-01T15:20:32+00:00"
+            "time": "2023-04-06T11:23:39+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -9580,6 +9692,8 @@
         "php": "~8.1.0 || ~8.2.0",
         "ext-mbstring": "*"
     },
-    "platform-dev": [],
+    "platform-dev": {
+        "ext-dom": "*"
+    },
     "plugin-api-version": "2.3.0"
 }

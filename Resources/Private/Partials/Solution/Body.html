@@ -1,5 +1,8 @@
+<html xmlns:s="http://typo3.org/ns/EliasHaeussler/Typo3Solver/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
 <div class="solution-body">
-    <div class="solution-choice">
-        <f:render partial="Solution/Sections" arguments="{sections: choice.sections}" />
-    </div>
+    <s:markdownToHtml markdown="{choice.message.content}" replaceLineNumbersInCodeSnippets="1" />
 </div>
+
+</html>

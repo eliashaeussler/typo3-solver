@@ -1,0 +1,83 @@
+/*
+ * This file is part of the TYPO3 CMS extension "solver".
+ *
+ * Copyright (C) 2023 Elias Häußler <elias@haeussler.dev>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
+
+/*
+ * -- Animations ----------------------------------------------------
+ */
+
+$animation-caret: caret 1.25s step-end infinite;
+$animation-spinner: spinner 2s linear infinite;
+
+/*
+ * -- Colors --------------------------------------------------------
+ */
+
+$primary-color: #10a37f;
+$secondary-color: #e6f3f3;
+
+$white: #fff;
+$light-gray: #b9b9b9;
+$medium-gray: #8c8c8c;
+$black: #000;
+$black-transparent: rgba($black, 0.125);
+
+/*
+ * -- Controls ------------------------------------------------------
+ */
+
+$controls-arrow-size: 2rem;
+
+/*
+ * -- Font sizes ----------------------------------------------------
+ */
+
+$font-size-small: 0.8rem;
+$font-size-default: 1rem;
+$font-size-medium: 1.2rem;
+$font-size-large: 2rem;
+
+/*
+ * -- Gaps ----------------------------------------------------------
+ */
+
+$gap-small: 0.25rem;
+$gap-medium: 0.5rem;
+
+/*
+ * -- Loader --------------------------------------------------------
+ */
+
+$loader-gap: 2rem;
+
+/*
+ * -- Paddings ------------------------------------------------------
+ */
+
+$padding-small: 0.125rem 0.25rem;
+$padding-medium: 0.25rem 0.5rem;
+$padding-large: 0.5rem 1rem;
+
+$padding-container: 1.5rem;
+$padding-prompt: 1rem;
+
+/*
+ * -- Shadows -------------------------------------------------------
+ */
+
+$box-shadow: 0 2px 1px rgb(0 0 0 / 15%);

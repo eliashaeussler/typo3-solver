@@ -1,0 +1,72 @@
+/*
+ * This file is part of the TYPO3 CMS extension "solver".
+ *
+ * Copyright (C) 2023 Elias Häußler <elias@haeussler.dev>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
+
+@import "../variables";
+
+.solution-selector {
+    ~ .solution-body {
+        position: absolute;
+        left: 1000%;
+        opacity: 0;
+    }
+}
+
+.solution-selector:checked {
+    ~ .solution-body {
+        position: initial;
+        left: 0;
+        opacity: 1;
+        transition: opacity 0.5s;
+    }
+
+    ~ .solution-arrow {
+        display: block;
+    }
+}
+
+.solution-arrow {
+    display: none;
+    position: absolute;
+    background-color: $primary-color;
+    width: $controls-arrow-size;
+    height: $controls-arrow-size;
+    top: 8rem;
+    color: $white;
+    cursor: pointer;
+    font-size: $font-size-medium;
+    text-align: center;
+    line-height: $controls-arrow-size;
+
+    &:hover,
+    &:focus {
+        background-color: $medium-gray;
+    }
+
+    &-prev {
+        left: -$controls-arrow-size;
+    }
+
+    &-next {
+        right: -$controls-arrow-size;
+    }
+}
+
+.solution-streaming .solution-arrow {
+    display: none !important;
+}

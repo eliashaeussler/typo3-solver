@@ -24,7 +24,6 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Exception;
 
 use EliasHaeussler\Typo3Solver\ProblemSolving;
-use RuntimeException;
 
 use function sprintf;
 
@@ -34,7 +33,7 @@ use function sprintf;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
-final class UnableToSolveException extends RuntimeException
+final class UnableToSolveException extends Exception
 {
     public static function create(ProblemSolving\Problem\Problem $problem): self
     {

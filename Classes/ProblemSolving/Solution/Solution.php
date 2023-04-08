@@ -28,7 +28,7 @@ use Countable;
 use DateTimeInterface;
 use IteratorAggregate;
 use JsonSerializable;
-use OpenAI;
+use OpenAI\Responses;
 
 use Traversable;
 
@@ -42,28 +42,45 @@ use function count;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  *
- * @implements IteratorAggregate<int, OpenAI\Responses\Completions\CreateResponseChoice>
+ * @implements IteratorAggregate<int, Responses\Chat\CreateResponseChoice>
  *
  * @phpstan-type SolutionArray array{choices: list<array<string, mixed>>, model: string, prompt: string}
  */
 final class Solution implements Countable, IteratorAggregate, JsonSerializable
 {
+    /**
+     * @var list<Responses\Chat\CreateResponseChoice>
+     */
+    private readonly array $choices;
     private ?DateTimeInterface $createDate = null;
     private ?string $cacheIdentifier = null;
 
     /**
-     * @param list<OpenAI\Responses\Completions\CreateResponseChoice> $choices
+     * @param list<Responses\Chat\CreateResponseChoice|Responses\Chat\CreateStreamedResponseChoice> $choices
      */
     public function __construct(
-        private readonly array $choices,
+        array $choices,
         private readonly string $model,
         private readonly string $prompt,
     ) {
+        $this->choices = array_map($this->normalizeChoice(...), $choices);
     }
 
-    public static function fromResponse(OpenAI\Responses\Completions\CreateResponse $response, string $prompt): self
+    public static function fromResponse(Responses\Chat\CreateResponse $response, string $prompt): self
     {
         return new self(array_values($response->choices), $response->model, $prompt);
+    }
+
+    /**
+     * @param Responses\StreamResponse<Responses\Chat\CreateStreamedResponse> $stream
+     * @return Traversable<self>
+     */
+    public static function fromStream(Responses\StreamResponse $stream, string $prompt): Traversable
+    {
+        /** @var Responses\Chat\CreateStreamedResponse $response */
+        foreach ($stream as $response) {
+            yield new self(array_values($response->choices), $response->model, $prompt);
+        }
     }
 
     /**
@@ -73,7 +90,7 @@ final class Solution implements Countable, IteratorAggregate, JsonSerializable
     {
         $choices = array_map(
             /* @phpstan-ignore-next-line */
-            static fn (array $choice): OpenAI\Responses\Completions\CreateResponseChoice => OpenAI\Responses\Completions\CreateResponseChoice::from($choice),
+            static fn (array $choice): Responses\Chat\CreateResponseChoice => Responses\Chat\CreateResponseChoice::from($choice),
             $solution['choices'],
         );
 
@@ -86,7 +103,7 @@ final class Solution implements Countable, IteratorAggregate, JsonSerializable
     }
 
     /**
-     * @return list<OpenAI\Responses\Completions\CreateResponseChoice>
+     * @return list<Responses\Chat\CreateResponseChoice>
      */
     public function getChoices(): array
     {
@@ -139,7 +156,7 @@ final class Solution implements Countable, IteratorAggregate, JsonSerializable
     {
         return [
             'choices' => array_map(
-                static fn (OpenAI\Responses\Completions\CreateResponseChoice $choice): array => $choice->toArray(),
+                static fn (Responses\Chat\CreateResponseChoice $choice): array => $choice->toArray(),
                 $this->choices,
             ),
             'model' => $this->model,
@@ -153,5 +170,22 @@ final class Solution implements Countable, IteratorAggregate, JsonSerializable
     public function jsonSerialize(): array
     {
         return $this->toArray();
+    }
+
+    private function normalizeChoice(
+        Responses\Chat\CreateResponseChoice|Responses\Chat\CreateStreamedResponseChoice $choice,
+    ): Responses\Chat\CreateResponseChoice {
+        if ($choice instanceof Responses\Chat\CreateResponseChoice) {
+            return $choice;
+        }
+
+        return Responses\Chat\CreateResponseChoice::from([
+            'index' => $choice->index,
+            'message' => [
+                'role' => (string)$choice->delta->role,
+                'content' => (string)$choice->delta->content,
+            ],
+            'finish_reason' => $choice->finishReason,
+        ]);
     }
 }

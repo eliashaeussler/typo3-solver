@@ -23,12 +23,16 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver\Error;
 
+use EliasHaeussler\Typo3Solver\Cache;
 use EliasHaeussler\Typo3Solver\Configuration;
 use EliasHaeussler\Typo3Solver\Exception;
 use EliasHaeussler\Typo3Solver\Formatter;
+use EliasHaeussler\Typo3Solver\Middleware;
 use EliasHaeussler\Typo3Solver\ProblemSolving;
 use EliasHaeussler\Typo3Solver\Utility;
-use EliasHaeussler\Typo3Solver\View;
+use GuzzleHttp\Client;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\RequestOptions;
 use Throwable;
 use TYPO3\CMS\Core;
 
@@ -40,17 +44,23 @@ use TYPO3\CMS\Core;
  */
 final class AiSolverExceptionHandler extends Core\Error\DebugExceptionHandler
 {
+    private readonly Client $client;
     private readonly Configuration\Configuration $configuration;
+    private readonly Formatter\Message\ExceptionFormatter $exceptionFormatter;
+    private readonly Cache\ExceptionsCache $exceptionsCache;
+    private readonly Cache\SolutionsCache $solutionsCache;
     private readonly Formatter\WebFormatter $webFormatter;
-    private readonly View\TemplateRenderer $renderer;
 
     public function __construct()
     {
         parent::__construct();
 
+        $this->client = $this->createClient();
         $this->configuration = new Configuration\Configuration();
+        $this->exceptionFormatter = new Formatter\Message\ExceptionFormatter();
+        $this->exceptionsCache = new Cache\ExceptionsCache();
+        $this->solutionsCache = new Cache\SolutionsCache();
         $this->webFormatter = new Formatter\WebFormatter();
-        $this->renderer = new View\TemplateRenderer();
     }
 
     public function echoExceptionCLI(Throwable $exception): void
@@ -72,12 +82,34 @@ final class AiSolverExceptionHandler extends Core\Error\DebugExceptionHandler
     protected function getContent(Throwable $throwable): string
     {
         $content = parent::getContent($throwable);
+        $serverRequest = Utility\HttpUtility::getServerRequest();
+
+        // Early return if solver is disabled
+        if ($serverRequest->getQueryParams()['disableSolver'] ?? false) {
+            return $content;
+        }
+
+        $solutionProvider = $this->configuration->getProvider();
+
+        // Use solution stream if possible
+        if ($solutionProvider->canBeUsed($throwable) && $this->isStreamedResponseSupported()) {
+            $this->exceptionsCache->set($throwable);
+
+            $solutionProvider = new ProblemSolving\Solution\Provider\DelegatingCacheSolutionProvider(
+                $this->solutionsCache,
+                $solutionProvider,
+            );
+        }
 
         try {
-            $solver = new ProblemSolving\Solver($this->configuration->getProvider(), $this->webFormatter);
+            $solver = new ProblemSolving\Solver($solutionProvider, $this->webFormatter);
             $solution = $solver->solve($throwable);
-        } catch (\Exception $exception) {
-            $solution = $this->renderException($exception);
+
+            if ($solution !== null) {
+                $solution .= $this->webFormatter->getAdditionalScripts();
+            }
+        } catch (Throwable $exception) {
+            $solution = $this->exceptionFormatter->format($exception);
         }
 
         if ($solution === null) {
@@ -96,11 +128,27 @@ final class AiSolverExceptionHandler extends Core\Error\DebugExceptionHandler
         return parent::getStylesheet() . $this->webFormatter->getAdditionalStyles();
     }
 
-    private function renderException(\Exception $exception): string
+    private function isStreamedResponseSupported(): bool
     {
-        return $this->renderer->render('Message/Exception', [
-            'exception' => $exception,
-            'exceptionClass' => $exception::class,
+        $serverRequest = Utility\HttpUtility::getServerRequest();
+        $pingUri = $serverRequest->getUri()
+            ->withPath(Middleware\PingMiddleware::ROUTE_PATH)
+            ->withQuery('disableSolver=1')
+        ;
+        $pingResponse = $this->client->request('GET', $pingUri, [
+            RequestOptions::HEADERS => [
+                'Accept' => 'text/event-stream',
+            ],
         ]);
+
+        return $pingResponse->getStatusCode() === 200;
+    }
+
+    private function createClient(): Client
+    {
+        $handler = HandlerStack::create();
+        $handler->remove('http_errors');
+
+        return new Client(['handler' => $handler]);
     }
 }

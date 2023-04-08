@@ -1,0 +1,50 @@
+{
+  "name": "@eliashaeussler/typo3-solver",
+  "description": "Frontend for EXT:solver, an extension for TYPO3 CMS to extend TYPO3's exception handling with AI generated solutions",
+  "version": "0.1.4",
+  "license": "GPL-2.0-or-later",
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack",
+    "start": "cross-env NODE_ENV=development webpack --watch",
+    "fix": "npm-run-all lint:ts:fix lint:scss:fix",
+    "lint": "npm-run-all lint:ts lint:scss",
+    "lint:fix": "npm-run-all lint:ts:fix lint:scss:fix",
+    "lint:ts": "eslint 'src/scripts/**/*.{ts,tsx}'",
+    "lint:ts:fix": "eslint 'src/scripts/**/*.{ts,tsx}' --fix",
+    "lint:scss": "stylelint 'src/styles/**/*.scss'",
+    "lint:scss:fix": "stylelint 'src/styles/**/*.scss' --fix"
+  },
+  "author": {
+    "name": "Elias Häußler",
+    "email": "elias@haeussler.dev",
+    "url": "https://haeussler.dev"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.4",
+    "@babel/plugin-transform-reserved-words": "^7.18.6",
+    "@babel/plugin-transform-runtime": "^7.21.4",
+    "@babel/preset-env": "^7.21.4",
+    "@babel/preset-typescript": "^7.21.4",
+    "@types/webpack-env": "^1.18.0",
+    "@typescript-eslint/eslint-plugin": "^5.57.0",
+    "@typescript-eslint/parser": "^5.57.0",
+    "babel-loader": "^9.1.2",
+    "clean-webpack-plugin": "^4.0.0",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.7.3",
+    "eslint": "^8.37.0",
+    "eslint-plugin-sonarjs": "^0.19.0",
+    "ignore-emit-webpack-plugin": "^2.0.6",
+    "mini-css-extract-plugin": "^2.7.5",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.60.0",
+    "sass-loader": "^13.2.2",
+    "source-map-loader": "^4.0.1",
+    "stylelint": "^15.4.0",
+    "stylelint-config-sass-guidelines": "^10.0.0",
+    "terser-webpack-plugin": "^5.3.7",
+    "typescript": "^5.0.3",
+    "webpack": "^5.77.0",
+    "webpack-cli": "^5.0.1"
+  }
+}

@@ -1,13 +1,21 @@
-You are a very good PHP developer and an expert in developing websites with TYPO3 CMS.
-Use the following context to find a possible fix for the exception message at the end.
-The exception occurred in a TYPO3 system with version {typo3Version} installed. It runs in {mode} mode.
+Hi, I am working with TYPO3 CMS, and I have encountered an exception in my code.
+The exception message reads as follows:
 
-<f:if condition="{exception.file}">File: {exception.file}</f:if>
-Exception: {exception.message -> f:format.raw()}
-<f:if condition="{exception.line}">Line: {exception.line}</f:if>
-<f:if condition="{snippet}">
-Snippet including line numbers:
+{exceptionClass}: "{exception.message -> f:format.raw()}"
+<f:if condition="{exception.file}">in {exception.file}
+{f:if(condition: exception.line, then: 'on line {exception.line}')}</f:if>
+
+Here's the code snippet with line numbers where the exception occurred:
+
 {snippet -> f:format.raw()}
-</f:if>
 
-Possible fix:
+Please note that this TYPO3 CMS installation is in {mode} mode and using
+version {typo3Version}. The PHP version being used is {phpVersion}.
+
+Please provide a solution that is efficient, effective, and robust, enabling the
+TYPO3 CMS installation to function smoothly and without errors. Your response
+should be written in Markdown format and include a detailed explanation of how
+the solution works and why it is the most optimal solution to the problem. Please
+ensure that the solution is clear and concise, and highlight relevant aspects of
+the solution. Please ensure that any code snippets provided are correct, readable,
+and maintainable.

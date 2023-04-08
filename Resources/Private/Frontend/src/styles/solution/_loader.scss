@@ -1,0 +1,53 @@
+/*
+ * This file is part of the TYPO3 CMS extension "solver".
+ *
+ * Copyright (C) 2023 Elias Häußler <elias@haeussler.dev>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
+
+@import "../variables";
+
+.solution-loader {
+    display: none;
+
+    &-container {
+        position: absolute;
+        display: flex;
+        bottom: $loader-gap;
+        right: $loader-gap;
+        background-color: $primary-color;
+        color: $white;
+        border-radius: 0.25rem;
+        box-shadow: $box-shadow;
+        padding: $padding-large;
+        gap: $gap-medium;
+    }
+
+    &-spinner {
+        animation: $animation-spinner;
+        width: $font-size-default;
+    }
+}
+
+.solution-streaming .solution-loader {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background-color: $black-transparent;
+}

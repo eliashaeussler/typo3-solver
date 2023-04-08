@@ -24,6 +24,7 @@ declare(strict_types=1);
 return [
     'directories' => [
         '.build',
+        '.ddev',
         '.git',
         '.github',
         'bin',
@@ -41,14 +42,17 @@ return [
         'CODEOWNERS',
         'composer.lock',
         'editorconfig',
+        'editorconfig-lint.php',
         'gitattributes',
         'gitignore',
         'packaging_exclude.php',
         'php-cs-fixer.php',
         'phpstan.neon',
         'phpstan-baseline.neon',
-        'phpunit.coverage.xml',
-        'phpunit.xml',
+        'phpunit.functional.coverage.xml',
+        'phpunit.functional.xml',
+        'phpunit.unit.coverage.xml',
+        'phpunit.unit.xml',
         'rector.php',
     ],
 ];

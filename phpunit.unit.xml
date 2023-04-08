@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         backupGlobals="true"
+         bootstrap=".build/vendor/typo3/testing-framework/Resources/Core/Build/UnitTestsBootstrap.php"
+         colors="true"
+         xsi:noNamespaceSchemaLocation=".build/vendor/phpunit/phpunit/phpunit.xsd"
+>
+    <php>
+        <env name="COLUMNS" value="300" />
+    </php>
+    <coverage>
+        <include>
+            <directory suffix=".php">Classes</directory>
+        </include>
+    </coverage>
+    <testsuites>
+        <testsuite name="unit">
+            <directory>Tests/Unit</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

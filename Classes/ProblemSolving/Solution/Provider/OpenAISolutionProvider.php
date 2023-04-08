@@ -27,10 +27,12 @@ use EliasHaeussler\Typo3Solver\Configuration;
 use EliasHaeussler\Typo3Solver\Exception;
 use EliasHaeussler\Typo3Solver\ProblemSolving;
 use OpenAI;
+use Throwable;
+use Traversable;
 
 use function in_array;
 
-final class OpenAISolutionProvider implements SolutionProvider
+final class OpenAISolutionProvider implements StreamedSolutionProvider
 {
     private readonly Configuration\Configuration $configuration;
     private readonly OpenAI\Client $client;
@@ -53,13 +55,7 @@ final class OpenAISolutionProvider implements SolutionProvider
         }
 
         try {
-            $response = $this->client->completions()->create([
-                'model' => $this->configuration->getModel(),
-                'prompt' => $problem->getPrompt(),
-                'max_tokens' => $this->configuration->getMaxTokens(),
-                'temperature' => $this->configuration->getTemperature(),
-                'n' => $this->configuration->getNumberOfCompletions(),
-            ]);
+            $response = $this->client->chat()->create($this->buildParameters($problem));
         } catch (\Exception) {
             throw Exception\UnableToSolveException::create($problem);
         }
@@ -67,8 +63,56 @@ final class OpenAISolutionProvider implements SolutionProvider
         return ProblemSolving\Solution\Solution::fromResponse($response, $problem->getPrompt());
     }
 
-    public function canBeUsed(ProblemSolving\Problem\Problem $problem): bool
+    /**
+     * @throws Exception\ApiKeyMissingException
+     */
+    public function getStreamedSolution(ProblemSolving\Problem\Problem $problem): Traversable
     {
-        return !in_array($problem->getException()->getCode(), $this->configuration->getIgnoredCodes(), true);
+        if ($this->configuration->getApiKey() === null) {
+            throw Exception\ApiKeyMissingException::create();
+        }
+
+        try {
+            $stream = $this->client->chat()->createStreamed($this->buildParameters($problem));
+        } catch (\Exception) {
+            throw Exception\UnableToSolveException::create($problem);
+        }
+
+        yield from ProblemSolving\Solution\Solution::fromStream($stream, $problem->getPrompt());
+    }
+
+    public function canBeUsed(Throwable $exception): bool
+    {
+        return !in_array($exception->getCode(), $this->configuration->getIgnoredCodes(), true);
+    }
+
+    public function isCacheable(): bool
+    {
+        return true;
+    }
+
+    /**
+     * @return array{
+     *     model: string,
+     *     messages: list<array{role: string, content: string}>,
+     *     max_tokens: int,
+     *     temperature: float,
+     *     n: int,
+     * }
+     */
+    private function buildParameters(ProblemSolving\Problem\Problem $problem): array
+    {
+        return [
+            'model' => $this->configuration->getModel(),
+            'messages' => [
+                [
+                    'role' => 'user',
+                    'content' => $problem->getPrompt(),
+                ],
+            ],
+            'max_tokens' => $this->configuration->getMaxTokens(),
+            'temperature' => $this->configuration->getTemperature(),
+            'n' => $this->configuration->getNumberOfCompletions(),
+        ];
     }
 }
