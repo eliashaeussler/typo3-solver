@@ -22,6 +22,16 @@ updates:
       - dependencies
     open-pull-requests-limit: 10
 
+  - package-ecosystem: npm
+    directory: 'Resources/Private/Frontend'
+    schedule:
+      interval: daily
+    commit-message:
+      prefix: '[TASK]'
+    labels:
+      - dependencies
+    open-pull-requests-limit: 10
+
   - package-ecosystem: composer
     directory: 'Resources/Private/Libs/Build'
     schedule:
