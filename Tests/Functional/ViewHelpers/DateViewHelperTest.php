@@ -34,7 +34,7 @@ use function trim;
 /**
  * DateViewHelperTest
  *
- * @author Elias Häußler <e.haeussler@familie-redlich.de>
+ * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
 final class DateViewHelperTest extends TestingFramework\Core\Functional\FunctionalTestCase

@@ -32,7 +32,7 @@ use function dirname;
 /**
  * SolutionsCacheTest
  *
- * @author Elias Häußler <e.haeussler@familie-redlich.de>
+ * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
 final class SolutionsCacheTest extends TestingFramework\Core\Unit\UnitTestCase

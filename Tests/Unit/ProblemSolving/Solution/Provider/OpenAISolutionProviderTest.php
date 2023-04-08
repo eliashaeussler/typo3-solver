@@ -38,7 +38,7 @@ use function json_encode;
 /**
  * OpenAISolutionProviderTest
  *
- * @author Elias Häußler <e.haeussler@familie-redlich.de>
+ * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
 final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTestCase

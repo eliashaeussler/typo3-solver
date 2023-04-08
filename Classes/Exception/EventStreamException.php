@@ -26,7 +26,7 @@ namespace EliasHaeussler\Typo3Solver\Exception;
 /**
  * EventStreamException
  *
- * @author Elias Häußler <e.haeussler@familie-redlich.de>
+ * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
 final class EventStreamException extends Exception

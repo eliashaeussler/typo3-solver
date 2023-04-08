@@ -31,7 +31,7 @@ use function sprintf;
 /**
  * UnableToSolveExceptionTest
  *
- * @author Elias Häußler <e.haeussler@familie-redlich.de>
+ * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
 final class UnableToSolveExceptionTest extends TestingFramework\Core\Unit\UnitTestCase

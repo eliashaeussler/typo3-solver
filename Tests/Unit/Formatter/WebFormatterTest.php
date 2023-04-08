@@ -34,7 +34,7 @@ use function substr;
 /**
  * WebFormatterTest
  *
- * @author Elias Häußler <e.haeussler@familie-redlich.de>
+ * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
 final class WebFormatterTest extends TestingFramework\Core\Unit\UnitTestCase

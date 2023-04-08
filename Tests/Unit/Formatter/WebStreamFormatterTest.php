@@ -32,7 +32,7 @@ use function json_decode;
 /**
  * WebStreamFormatterTest
  *
- * @author Elias Häußler <e.haeussler@familie-redlich.de>
+ * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
 final class WebStreamFormatterTest extends TestingFramework\Core\Unit\UnitTestCase

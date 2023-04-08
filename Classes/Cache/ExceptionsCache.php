@@ -30,7 +30,7 @@ use TYPO3\CMS\Core;
 /**
  * ExceptionsCache
  *
- * @author Elias Häußler <e.haeussler@familie-redlich.de>
+ * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  *
  * @phpstan-import-type ExceptionArray from Serializer\ExceptionSerializer

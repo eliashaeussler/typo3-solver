@@ -35,7 +35,7 @@ use function json_encode;
 /**
  * SolutionTest
  *
- * @author Elias Häußler <e.haeussler@familie-redlich.de>
+ * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
 final class SolutionTest extends TestingFramework\Core\Unit\UnitTestCase

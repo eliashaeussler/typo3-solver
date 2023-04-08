@@ -29,7 +29,7 @@ use TYPO3\TestingFramework;
 /**
  * EventStreamExceptionTest
  *
- * @author Elias Häußler <e.haeussler@familie-redlich.de>
+ * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
 final class EventStreamExceptionTest extends TestingFramework\Core\Unit\UnitTestCase

@@ -30,7 +30,7 @@ use TYPO3\TestingFramework;
 /**
  * HttpUtilityTest
  *
- * @author Elias Häußler <e.haeussler@familie-redlich.de>
+ * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
 final class HttpUtilityTest extends TestingFramework\Core\Unit\UnitTestCase

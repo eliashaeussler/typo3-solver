@@ -33,7 +33,7 @@ use function iterator_to_array;
 /**
  * CacheSolutionProviderTest
  *
- * @author Elias Häußler <e.haeussler@familie-redlich.de>
+ * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
 final class CacheSolutionProviderTest extends TestingFramework\Core\Unit\UnitTestCase

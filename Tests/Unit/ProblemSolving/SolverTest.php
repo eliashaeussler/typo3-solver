@@ -34,7 +34,7 @@ use function json_encode;
 /**
  * SolverTest
  *
- * @author Elias Häußler <e.haeussler@familie-redlich.de>
+ * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
 final class SolverTest extends TestingFramework\Core\Unit\UnitTestCase

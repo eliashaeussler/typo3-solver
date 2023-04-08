@@ -32,7 +32,7 @@ use function trim;
 /**
  * MarkdownToHtmlViewHelperTest
  *
- * @author Elias Häußler <e.haeussler@familie-redlich.de>
+ * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
 final class MarkdownToHtmlViewHelperTest extends TestingFramework\Core\Functional\FunctionalTestCase
