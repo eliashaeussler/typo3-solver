@@ -21,36 +21,39 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace EliasHaeussler\Typo3Solver\Tests\Unit\Fixtures;
+namespace EliasHaeussler\Typo3Solver\Tests\Unit\Formatter;
 
-use EliasHaeussler\Typo3Solver\ProblemSolving;
-use Throwable;
+use EliasHaeussler\Typo3Solver as Src;
+use TYPO3\TestingFramework;
+
+use function json_encode;
 
 /**
- * DummySolutionProvider
+ * JsonFormatterTest
  *
- * @author Elias Häußler <elias@haeussler.dev>
+ * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
- * @internal
  */
-final class DummySolutionProvider implements ProblemSolving\Solution\Provider\SolutionProvider
+final class JsonFormatterTest extends TestingFramework\Core\Unit\UnitTestCase
 {
-    public ?ProblemSolving\Solution\Solution $solution = null;
-    public bool $shouldBeUsed = true;
-    public bool $isCacheable = true;
+    private Src\Formatter\JsonFormatter $subject;
 
-    public function getSolution(ProblemSolving\Problem\Problem $problem): ProblemSolving\Solution\Solution
+    protected function setUp(): void
     {
-        return $this->solution ?? new ProblemSolving\Solution\Solution([], 'foo', 'baz');
+        $this->subject = new Src\Formatter\JsonFormatter();
     }
 
-    public function canBeUsed(Throwable $exception): bool
+    /**
+     * @test
+     */
+    public function formatReturnsJsonSerializedSolution(): void
     {
-        return $this->shouldBeUsed;
-    }
+        $problem = Src\Tests\Unit\DataProvider\ProblemDataProvider::get();
+        $solution = Src\Tests\Unit\DataProvider\SolutionDataProvider::get();
 
-    public function isCacheable(): bool
-    {
-        return $this->isCacheable;
+        self::assertJsonStringEqualsJsonString(
+            json_encode($solution, JSON_THROW_ON_ERROR),
+            $this->subject->format($problem, $solution),
+        );
     }
 }

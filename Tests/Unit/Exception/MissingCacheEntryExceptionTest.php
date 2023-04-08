@@ -21,36 +21,27 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace EliasHaeussler\Typo3Solver\Tests\Unit\Fixtures;
+namespace EliasHaeussler\Typo3Solver\Tests\Unit\Exception;
 
-use EliasHaeussler\Typo3Solver\ProblemSolving;
-use Throwable;
+use EliasHaeussler\Typo3Solver as Src;
+use TYPO3\TestingFramework;
 
 /**
- * DummySolutionProvider
+ * MissingCacheEntryExceptionTest
  *
- * @author Elias Häußler <elias@haeussler.dev>
+ * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
- * @internal
  */
-final class DummySolutionProvider implements ProblemSolving\Solution\Provider\SolutionProvider
+final class MissingCacheEntryExceptionTest extends TestingFramework\Core\Unit\UnitTestCase
 {
-    public ?ProblemSolving\Solution\Solution $solution = null;
-    public bool $shouldBeUsed = true;
-    public bool $isCacheable = true;
-
-    public function getSolution(ProblemSolving\Problem\Problem $problem): ProblemSolving\Solution\Solution
+    /**
+     * @test
+     */
+    public function createReturnsExceptionForMissingCacheEntry(): void
     {
-        return $this->solution ?? new ProblemSolving\Solution\Solution([], 'foo', 'baz');
-    }
+        $actual = Src\Exception\MissingCacheEntryException::create('foo');
 
-    public function canBeUsed(Throwable $exception): bool
-    {
-        return $this->shouldBeUsed;
-    }
-
-    public function isCacheable(): bool
-    {
-        return $this->isCacheable;
+        self::assertSame('Unable to find a cache entry for identifier "foo".', $actual->getMessage());
+        self::assertSame(1680388703, $actual->getCode());
     }
 }

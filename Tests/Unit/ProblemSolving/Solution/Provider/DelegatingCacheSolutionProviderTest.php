@@ -55,7 +55,7 @@ final class DelegatingCacheSolutionProviderTest extends TestingFramework\Core\Un
      */
     public function getSolutionReturnsSolutionFromCache(): void
     {
-        $problem = new Src\ProblemSolving\Problem\Problem(new Exception(), $this->provider, 'foo');
+        $problem = Tests\Unit\DataProvider\ProblemDataProvider::get(solutionProvider: $this->provider);
         $solution = new Src\ProblemSolving\Solution\Solution(
             [
                 Responses\Chat\CreateResponseChoice::from([
@@ -81,8 +81,8 @@ final class DelegatingCacheSolutionProviderTest extends TestingFramework\Core\Un
      */
     public function getSolutionReturnsDummySolution(): void
     {
-        $problem = new Src\ProblemSolving\Problem\Problem(new Exception(), $this->provider, 'foo');
-        $solution = new Src\ProblemSolving\Solution\Solution([], 'foo', 'baz');
+        $problem = Tests\Unit\DataProvider\ProblemDataProvider::get(solutionProvider: $this->provider);
+        $solution = Tests\Unit\DataProvider\SolutionDataProvider::get();
 
         $this->cache->set($problem, $solution);
 

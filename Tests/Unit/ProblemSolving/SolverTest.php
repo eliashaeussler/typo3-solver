@@ -67,7 +67,7 @@ final class SolverTest extends TestingFramework\Core\Unit\UnitTestCase
      */
     public function solveReturnsFormattedSolution(): void
     {
-        $dummySolution = new Src\ProblemSolving\Solution\Solution([], 'foo', 'baz');
+        $dummySolution = Tests\Unit\DataProvider\SolutionDataProvider::get();
 
         $this->provider->solution = $dummySolution;
 
@@ -92,15 +92,17 @@ final class SolverTest extends TestingFramework\Core\Unit\UnitTestCase
      */
     public function solveStreamedYieldsFormattedSolutionStreams(): void
     {
-        $this->provider->solutionStream = [
-            $dummySolution1 = new Src\ProblemSolving\Solution\Solution([], 'foo', 'foo'),
-            $dummySolution2 = new Src\ProblemSolving\Solution\Solution([], 'baz', 'baz'),
-        ];
+        $solutions = iterator_to_array(Tests\Unit\DataProvider\SolutionDataProvider::getStream());
+
+        $this->provider->solutionStream = $solutions;
 
         $actual = iterator_to_array($this->subject->solveStreamed(new Exception()));
 
+        $expected1 = Tests\Unit\DataProvider\SolutionDataProvider::get();
+        $expected2 = Tests\Unit\DataProvider\SolutionDataProvider::get(message: 'message {index} ... message {index}');
+
         self::assertCount(2, $actual);
-        self::assertJsonStringEqualsJsonString(json_encode($dummySolution1, JSON_THROW_ON_ERROR), $actual[0]);
-        self::assertJsonStringEqualsJsonString(json_encode($dummySolution2, JSON_THROW_ON_ERROR), $actual[1]);
+        self::assertJsonStringEqualsJsonString(json_encode($expected1, JSON_THROW_ON_ERROR), $actual[0]);
+        self::assertJsonStringEqualsJsonString(json_encode($expected2, JSON_THROW_ON_ERROR), $actual[1]);
     }
 }

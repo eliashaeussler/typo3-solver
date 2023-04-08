@@ -21,36 +21,29 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace EliasHaeussler\Typo3Solver\Tests\Unit\Fixtures;
+namespace EliasHaeussler\Typo3Solver\Tests\Unit\DataProvider;
 
 use EliasHaeussler\Typo3Solver\ProblemSolving;
-use Throwable;
+use EliasHaeussler\Typo3Solver\Tests;
+use Exception;
 
 /**
- * DummySolutionProvider
+ * ProblemDataProvider
  *
- * @author Elias Häußler <elias@haeussler.dev>
+ * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
  * @internal
  */
-final class DummySolutionProvider implements ProblemSolving\Solution\Provider\SolutionProvider
+final class ProblemDataProvider
 {
-    public ?ProblemSolving\Solution\Solution $solution = null;
-    public bool $shouldBeUsed = true;
-    public bool $isCacheable = true;
+    public static function get(
+        string $message = 'Something went wrong.',
+        ProblemSolving\Solution\Provider\SolutionProvider $solutionProvider = null,
+        string $prompt = 'prompt',
+    ): ProblemSolving\Problem\Problem {
+        $exception = new Exception($message, 123);
+        $solutionProvider ??= new Tests\Unit\Fixtures\DummySolutionProvider();
 
-    public function getSolution(ProblemSolving\Problem\Problem $problem): ProblemSolving\Solution\Solution
-    {
-        return $this->solution ?? new ProblemSolving\Solution\Solution([], 'foo', 'baz');
-    }
-
-    public function canBeUsed(Throwable $exception): bool
-    {
-        return $this->shouldBeUsed;
-    }
-
-    public function isCacheable(): bool
-    {
-        return $this->isCacheable;
+        return new ProblemSolving\Problem\Problem($exception, $solutionProvider, $prompt);
     }
 }

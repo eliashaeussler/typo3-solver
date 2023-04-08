@@ -5,6 +5,9 @@
          colors="true"
          xsi:noNamespaceSchemaLocation=".build/vendor/phpunit/phpunit/phpunit.xsd"
 >
+    <php>
+        <env name="COLUMNS" value="300" />
+    </php>
     <coverage>
         <include>
             <directory suffix=".php">Classes</directory>
@@ -12,7 +15,7 @@
         <report>
             <clover outputFile=".build/coverage/clover.xml"/>
             <html outputDirectory=".build/coverage/html/"/>
-            <text outputFile="php://stdout" showUncoveredFiles="true"/>
+            <text outputFile="php://stdout" showOnlySummary="true"/>
         </report>
     </coverage>
     <testsuites>

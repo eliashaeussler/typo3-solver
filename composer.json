@@ -28,6 +28,7 @@
 		"typo3fluid/fluid": "^2.7"
 	},
 	"require-dev": {
+		"ext-dom": "*",
 		"armin/editorconfig-cli": "^1.5",
 		"ergebnis/composer-normalize": "^2.29",
 		"phpstan/extension-installer": "^1.2",

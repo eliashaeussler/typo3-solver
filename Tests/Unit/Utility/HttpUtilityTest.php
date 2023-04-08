@@ -78,6 +78,7 @@ final class HttpUtilityTest extends TestingFramework\Core\Unit\UnitTestCase
     {
         $emptyStream = new Core\Http\Stream('php://temp');
 
+        // Simulate TYPO3 request url
         Core\Utility\GeneralUtility::setIndpEnv('TYPO3_REQUEST_URL', 'https://www.example.com');
 
         $expected = Core\Http\ServerRequestFactory::fromGlobals()->withBody($emptyStream);
@@ -85,6 +86,7 @@ final class HttpUtilityTest extends TestingFramework\Core\Unit\UnitTestCase
 
         self::assertEquals($expected, $actual);
 
+        // Revert simulated TYPO3 request url
         Core\Utility\GeneralUtility::flushInternalRuntimeCaches();
     }
 }

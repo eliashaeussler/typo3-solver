@@ -5,6 +5,9 @@
          colors="true"
          xsi:noNamespaceSchemaLocation=".build/vendor/phpunit/phpunit/phpunit.xsd"
 >
+    <php>
+        <env name="COLUMNS" value="300" />
+    </php>
     <coverage>
         <include>
             <directory suffix=".php">Classes</directory>

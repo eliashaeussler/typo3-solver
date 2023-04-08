@@ -24,12 +24,12 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Tests\Unit\ProblemSolving\Solution\Provider;
 
 use EliasHaeussler\Typo3Solver as Src;
+use EliasHaeussler\Typo3Solver\Tests;
 use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler;
 use GuzzleHttp\Psr7;
 use OpenAI;
-use OpenAI\Responses;
 use TYPO3\TestingFramework;
 
 use function iterator_to_array;
@@ -57,7 +57,7 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
         ;
 
         $this->subject = new Src\ProblemSolving\Solution\Provider\OpenAISolutionProvider($client);
-        $this->problem = new Src\ProblemSolving\Problem\Problem(new Exception('error', 123), $this->subject, 'foo');
+        $this->problem = Tests\Unit\DataProvider\ProblemDataProvider::get(solutionProvider: $this->subject);
 
         // Configure API key
         /* @phpstan-ignore-next-line */
@@ -126,7 +126,7 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
         $this->mockHandler->append($response);
 
         self::assertEquals(
-            Src\ProblemSolving\Solution\Solution::fromResponse(Responses\Chat\CreateResponse::from($payload), 'foo'),
+            Tests\Unit\DataProvider\SolutionDataProvider::get(message: 'content'),
             $this->subject->getSolution($this->problem),
         );
     }
@@ -187,30 +187,7 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
 
         $this->mockHandler->append($response);
 
-        $expected = Src\ProblemSolving\Solution\Solution::fromResponse(
-            Responses\Chat\CreateResponse::from([
-                'id' => 'id',
-                'object' => 'object',
-                'created' => 123,
-                'model' => 'model',
-                'choices' => [
-                    [
-                        'index' => 0,
-                        'message' => [
-                            'role' => 'role',
-                            'content' => 'content',
-                        ],
-                        'finish_reason' => null,
-                    ],
-                ],
-                'usage' => [
-                    'prompt_tokens' => 123,
-                    'completion_tokens' => 123,
-                    'total_tokens' => 123,
-                ],
-            ]),
-            'foo',
-        );
+        $expected = Tests\Unit\DataProvider\SolutionDataProvider::get(message: 'content');
 
         self::assertEquals([$expected], iterator_to_array($this->subject->getStreamedSolution($this->problem)));
     }

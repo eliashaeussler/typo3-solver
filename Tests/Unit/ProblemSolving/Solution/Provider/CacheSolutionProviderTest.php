@@ -26,7 +26,6 @@ namespace EliasHaeussler\Typo3Solver\Tests\Unit\ProblemSolving\Solution\Provider
 use EliasHaeussler\Typo3Solver as Src;
 use EliasHaeussler\Typo3Solver\Tests;
 use Exception;
-use OpenAI\Responses;
 use TYPO3\TestingFramework;
 
 use function iterator_to_array;
@@ -57,8 +56,8 @@ final class CacheSolutionProviderTest extends TestingFramework\Core\Unit\UnitTes
      */
     public function getSolutionReturnsSolutionFromCache(): void
     {
-        $problem = new Src\ProblemSolving\Problem\Problem(new Exception(), $this->provider, 'foo');
-        $solution = new Src\ProblemSolving\Solution\Solution([], 'foo', 'baz');
+        $problem = Tests\Unit\DataProvider\ProblemDataProvider::get(solutionProvider: $this->provider);
+        $solution = Tests\Unit\DataProvider\SolutionDataProvider::get();
 
         $this->cache->set($problem, $solution);
 
@@ -72,8 +71,10 @@ final class CacheSolutionProviderTest extends TestingFramework\Core\Unit\UnitTes
      */
     public function getSolutionReturnsSolutionFromProviderAndStoresItInCache(): void
     {
-        $problem = new Src\ProblemSolving\Problem\Problem(new Exception(), $this->provider, 'foo');
-        $solution = new Src\ProblemSolving\Solution\Solution([], 'foo', 'baz');
+        $problem = Tests\Unit\DataProvider\ProblemDataProvider::get(solutionProvider: $this->provider);
+        $solution = Tests\Unit\DataProvider\SolutionDataProvider::get();
+
+        $this->provider->solution = $solution;
 
         self::assertNull($this->cache->get($problem));
 
@@ -88,8 +89,8 @@ final class CacheSolutionProviderTest extends TestingFramework\Core\Unit\UnitTes
      */
     public function getStreamedSolutionYieldsSolutionFromCache(): void
     {
-        $problem = new Src\ProblemSolving\Problem\Problem(new Exception(), $this->provider, 'foo');
-        $solution = new Src\ProblemSolving\Solution\Solution([], 'foo', 'baz');
+        $problem = Tests\Unit\DataProvider\ProblemDataProvider::get(solutionProvider: $this->provider);
+        $solution = Tests\Unit\DataProvider\SolutionDataProvider::get();
 
         $this->cache->set($problem, $solution);
 
@@ -104,8 +105,8 @@ final class CacheSolutionProviderTest extends TestingFramework\Core\Unit\UnitTes
      */
     public function getStreamedSolutionYieldsSolutionFromNonStreamedProvider(): void
     {
-        $problem = new Src\ProblemSolving\Problem\Problem(new Exception(), $this->provider, 'foo');
-        $solution = new Src\ProblemSolving\Solution\Solution([], 'foo', 'baz');
+        $problem = Tests\Unit\DataProvider\ProblemDataProvider::get(solutionProvider: $this->provider);
+        $solution = Tests\Unit\DataProvider\SolutionDataProvider::get();
 
         $provider = new Tests\Unit\Fixtures\DummySolutionProvider();
         $provider->solution = $solution;
@@ -122,99 +123,13 @@ final class CacheSolutionProviderTest extends TestingFramework\Core\Unit\UnitTes
      */
     public function getStreamedSolutionYieldsSolutionsFromProvider(): void
     {
-        $problem = new Src\ProblemSolving\Problem\Problem(new Exception(), $this->provider, 'foo');
+        $problem = Tests\Unit\DataProvider\ProblemDataProvider::get(solutionProvider: $this->provider);
+        $solution = iterator_to_array(Tests\Unit\DataProvider\SolutionDataProvider::getStream(2, 2));
 
-        $this->provider->solutionStream = [
-            new Src\ProblemSolving\Solution\Solution(
-                [
-                    Responses\Chat\CreateStreamedResponseChoice::from([
-                        'index' => 0,
-                        'delta' => [
-                            'role' => 'role 1',
-                            'content' => 'content 1',
-                        ],
-                        'finish_reason' => null,
-                    ]),
-                    Responses\Chat\CreateStreamedResponseChoice::from([
-                        'index' => 1,
-                        'delta' => [
-                            'role' => 'role 2',
-                            'content' => 'content 2',
-                        ],
-                        'finish_reason' => null,
-                    ]),
-                ],
-                'foo',
-                'baz',
-            ),
-            new Src\ProblemSolving\Solution\Solution(
-                [
-                    Responses\Chat\CreateStreamedResponseChoice::from([
-                        'index' => 0,
-                        'delta' => [
-                            'role' => 'role 1',
-                            'content' => ' ... end 1',
-                        ],
-                        'finish_reason' => null,
-                    ]),
-                    Responses\Chat\CreateStreamedResponseChoice::from([
-                        'index' => 1,
-                        'delta' => [
-                            'role' => 'role 2',
-                            'content' => ' ... end 2',
-                        ],
-                        'finish_reason' => null,
-                    ]),
-                ],
-                'foo',
-                'baz',
-            ),
-        ];
+        $this->provider->solutionStream = $solution;
 
-        $expected1 = new Src\ProblemSolving\Solution\Solution(
-            [
-                Responses\Chat\CreateResponseChoice::from([
-                    'index' => 0,
-                    'message' => [
-                        'role' => 'role 1',
-                        'content' => 'content 1',
-                    ],
-                    'finish_reason' => null,
-                ]),
-                Responses\Chat\CreateResponseChoice::from([
-                    'index' => 1,
-                    'message' => [
-                        'role' => 'role 2',
-                        'content' => 'content 2',
-                    ],
-                    'finish_reason' => null,
-                ]),
-            ],
-            'foo',
-            'baz',
-        );
-        $expected2 = new Src\ProblemSolving\Solution\Solution(
-            [
-                Responses\Chat\CreateResponseChoice::from([
-                    'index' => 0,
-                    'message' => [
-                        'role' => 'role 1',
-                        'content' => 'content 1 ... end 1',
-                    ],
-                    'finish_reason' => null,
-                ]),
-                Responses\Chat\CreateResponseChoice::from([
-                    'index' => 1,
-                    'message' => [
-                        'role' => 'role 2',
-                        'content' => 'content 2 ... end 2',
-                    ],
-                    'finish_reason' => null,
-                ]),
-            ],
-            'foo',
-            'baz',
-        );
+        $expected1 = Tests\Unit\DataProvider\SolutionDataProvider::get(2);
+        $expected2 = Tests\Unit\DataProvider\SolutionDataProvider::get(2, 'message {index} ... message {index}');
 
         $actual = iterator_to_array($this->subject->getStreamedSolution($problem));
 

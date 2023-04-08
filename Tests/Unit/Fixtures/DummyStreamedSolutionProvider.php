@@ -40,7 +40,7 @@ final class DummyStreamedSolutionProvider implements ProblemSolving\Solution\Pro
     public bool $shouldBeUsed = true;
 
     /**
-     * @var list<ProblemSolving\Solution\Solution>
+     * @var array<ProblemSolving\Solution\Solution>
      */
     public array $solutionStream = [];
 

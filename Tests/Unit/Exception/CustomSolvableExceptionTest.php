@@ -21,36 +21,34 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace EliasHaeussler\Typo3Solver\Tests\Unit\Fixtures;
+namespace EliasHaeussler\Typo3Solver\Tests\Unit\Exception;
 
-use EliasHaeussler\Typo3Solver\ProblemSolving;
-use Throwable;
+use EliasHaeussler\Typo3Solver as Src;
+use TYPO3\TestingFramework;
 
 /**
- * DummySolutionProvider
+ * CustomSolvableExceptionTest
  *
- * @author Elias Häußler <elias@haeussler.dev>
+ * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
- * @internal
  */
-final class DummySolutionProvider implements ProblemSolving\Solution\Provider\SolutionProvider
+final class CustomSolvableExceptionTest extends TestingFramework\Core\Unit\UnitTestCase
 {
-    public ?ProblemSolving\Solution\Solution $solution = null;
-    public bool $shouldBeUsed = true;
-    public bool $isCacheable = true;
-
-    public function getSolution(ProblemSolving\Problem\Problem $problem): ProblemSolving\Solution\Solution
+    /**
+     * @test
+     */
+    public function createReturnsCustomSolvableException(): void
     {
-        return $this->solution ?? new ProblemSolving\Solution\Solution([], 'foo', 'baz');
-    }
+        $actual = Src\Exception\CustomSolvableException::create(
+            'Something went wrong.',
+            123,
+            __FILE__,
+            1,
+        );
 
-    public function canBeUsed(Throwable $exception): bool
-    {
-        return $this->shouldBeUsed;
-    }
-
-    public function isCacheable(): bool
-    {
-        return $this->isCacheable;
+        self::assertSame('Something went wrong.', $actual->getMessage());
+        self::assertSame(123, $actual->getCode());
+        self::assertSame(__FILE__, $actual->getFile());
+        self::assertSame(1, $actual->getLine());
     }
 }
