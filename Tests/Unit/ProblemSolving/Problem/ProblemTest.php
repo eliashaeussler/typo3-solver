@@ -42,6 +42,8 @@ final class ProblemTest extends TestingFramework\Core\Unit\UnitTestCase
 
     protected function setUp(): void
     {
+        parent::setUp();
+
         $this->exception = new Exception();
         $this->provider = new Tests\Unit\Fixtures\DummySolutionProvider();
         $this->subject = new Src\ProblemSolving\Problem\Problem($this->exception, $this->provider, 'foo');

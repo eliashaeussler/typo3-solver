@@ -38,6 +38,8 @@ final class ExceptionSerializerTest extends TestingFramework\Core\Unit\UnitTestC
 
     protected function setUp(): void
     {
+        parent::setUp();
+
         $this->subject = new Src\Cache\Serializer\ExceptionSerializer();
     }
 

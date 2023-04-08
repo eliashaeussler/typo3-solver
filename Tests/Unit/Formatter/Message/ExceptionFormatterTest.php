@@ -42,6 +42,8 @@ final class ExceptionFormatterTest extends TestingFramework\Core\Unit\UnitTestCa
 
     protected function setUp(): void
     {
+        parent::setUp();
+
         $this->subject = new Src\Formatter\Message\ExceptionFormatter();
     }
 

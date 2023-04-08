@@ -45,6 +45,8 @@ final class SolutionTest extends TestingFramework\Core\Unit\UnitTestCase
 
     protected function setUp(): void
     {
+        parent::setUp();
+
         $this->choice = Responses\Chat\CreateResponseChoice::from([
             'index' => 0,
             'message' => [

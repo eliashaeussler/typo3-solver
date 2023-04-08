@@ -44,6 +44,8 @@ final class CacheSolutionProviderTest extends TestingFramework\Core\Unit\UnitTes
 
     protected function setUp(): void
     {
+        parent::setUp();
+
         $this->cache = new Src\Cache\SolutionsCache();
         $this->provider = new Tests\Unit\Fixtures\DummyStreamedSolutionProvider();
         $this->subject = new Src\ProblemSolving\Solution\Provider\CacheSolutionProvider($this->cache, $this->provider);

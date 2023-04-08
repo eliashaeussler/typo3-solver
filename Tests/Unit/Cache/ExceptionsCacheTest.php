@@ -43,6 +43,8 @@ final class ExceptionsCacheTest extends TestingFramework\Core\Unit\UnitTestCase
 
     protected function setUp(): void
     {
+        parent::setUp();
+
         $this->subject = new Src\Cache\ExceptionsCache();
         $this->exception = new Exception('Something went wrong.', 123);
     }

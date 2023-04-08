@@ -42,6 +42,8 @@ final class CacheFlushCommandTest extends TestingFramework\Core\Unit\UnitTestCas
 
     protected function setUp(): void
     {
+        parent::setUp();
+
         $this->cache = new Src\Cache\SolutionsCache();
         $this->commandTester = new Console\Tester\CommandTester(new Src\Command\CacheFlushCommand($this->cache));
 

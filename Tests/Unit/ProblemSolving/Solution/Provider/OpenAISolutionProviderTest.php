@@ -49,6 +49,8 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
 
     protected function setUp(): void
     {
+        parent::setUp();
+
         $this->mockHandler = new Handler\MockHandler();
 
         $client = OpenAI::factory()

@@ -47,6 +47,8 @@ final class SolveCommandTest extends TestingFramework\Core\Unit\UnitTestCase
 
     protected function setUp(): void
     {
+        parent::setUp();
+
         $this->exceptionsCache = new Src\Cache\ExceptionsCache();
         $this->solutionsCache = new Src\Cache\SolutionsCache();
         $this->provider = new Tests\Unit\Fixtures\DummySolutionProvider();

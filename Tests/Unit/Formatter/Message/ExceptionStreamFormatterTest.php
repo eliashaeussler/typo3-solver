@@ -42,6 +42,8 @@ final class ExceptionStreamFormatterTest extends TestingFramework\Core\Unit\Unit
 
     protected function setUp(): void
     {
+        parent::setUp();
+
         $this->subject = new Src\Formatter\Message\ExceptionStreamFormatter();
     }
 

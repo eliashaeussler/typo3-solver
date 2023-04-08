@@ -40,6 +40,8 @@ final class DefaultPromptTest extends TestingFramework\Core\Unit\UnitTestCase
 
     protected function setUp(): void
     {
+        parent::setUp();
+
         $this->subject = new Src\ProblemSolving\Solution\Prompt\DefaultPrompt();
     }
 

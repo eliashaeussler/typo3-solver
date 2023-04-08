@@ -42,6 +42,8 @@ final class SolutionSerializerTest extends TestingFramework\Core\Unit\UnitTestCa
 
     protected function setUp(): void
     {
+        parent::setUp();
+
         $this->subject = new Src\Cache\Serializer\SolutionSerializer();
         $this->configuration = new Src\Configuration\Configuration();
     }

@@ -43,6 +43,8 @@ final class WebStreamFormatterTest extends TestingFramework\Core\Unit\UnitTestCa
 
     protected function setUp(): void
     {
+        parent::setUp();
+
         $this->subject = new Src\Formatter\WebStreamFormatter();
     }
 

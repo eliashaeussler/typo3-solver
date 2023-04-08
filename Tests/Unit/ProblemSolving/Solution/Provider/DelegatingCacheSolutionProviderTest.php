@@ -43,6 +43,8 @@ final class DelegatingCacheSolutionProviderTest extends TestingFramework\Core\Un
 
     protected function setUp(): void
     {
+        parent::setUp();
+
         $this->cache = new Src\Cache\SolutionsCache();
         $this->provider = new Tests\Unit\Fixtures\DummySolutionProvider();
         $this->subject = new Src\ProblemSolving\Solution\Provider\DelegatingCacheSolutionProvider($this->cache, $this->provider);

@@ -43,6 +43,8 @@ final class SolutionsCacheTest extends TestingFramework\Core\Unit\UnitTestCase
 
     protected function setUp(): void
     {
+        parent::setUp();
+
         $this->subject = new Src\Cache\SolutionsCache();
         $this->problem = Src\Tests\Unit\DataProvider\ProblemDataProvider::get();
         $this->solution = Src\Tests\Unit\DataProvider\SolutionDataProvider::get();
