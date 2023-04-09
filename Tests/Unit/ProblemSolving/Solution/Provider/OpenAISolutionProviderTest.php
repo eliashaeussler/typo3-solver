@@ -167,7 +167,7 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
      */
     public function getStreamedSolutionReturnsSolutionFromClientResponse(): void
     {
-        $payload = [
+        $streamedResponse1 = [
             'id' => 'id',
             'object' => 'object',
             'created' => 123,
@@ -177,21 +177,42 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
                     'index' => 0,
                     'delta' => [
                         'role' => 'role',
-                        'content' => 'content',
+                        'content' => 'content 1',
                     ],
                     'finish_reason' => null,
                 ],
             ],
         ];
-        $response = new Psr7\Response(headers: ['Content-Type' => 'application/json']);
-        $response->getBody()->write('data: ' . json_encode($payload, JSON_THROW_ON_ERROR));
+        $streamedResponse2 = [
+            'id' => 'id',
+            'object' => 'object',
+            'created' => 123,
+            'model' => 'model',
+            'choices' => [
+                [
+                    'index' => 0,
+                    'delta' => [
+                        'role' => 'role',
+                        'content' => ' ... content 2',
+                    ],
+                    'finish_reason' => null,
+                ],
+            ],
+        ];
+
+        $response = new Psr7\Response();
+        $response->getBody()->write('data: ' . json_encode($streamedResponse1) . PHP_EOL);
+        $response->getBody()->write('data: ' . json_encode($streamedResponse2) . PHP_EOL);
         $response->getBody()->rewind();
 
         $this->mockHandler->append($response);
 
-        $expected = Tests\Unit\DataProvider\SolutionDataProvider::get(message: 'content');
+        $expected = [
+            Tests\Unit\DataProvider\SolutionDataProvider::get(message: 'content 1'),
+            Tests\Unit\DataProvider\SolutionDataProvider::get(message: 'content 1 ... content 2'),
+        ];
 
-        self::assertEquals([$expected], iterator_to_array($this->subject->getStreamedSolution($this->problem)));
+        self::assertEquals($expected, iterator_to_array($this->subject->getStreamedSolution($this->problem)));
     }
 
     /**

@@ -29,7 +29,6 @@ use DateTimeInterface;
 use IteratorAggregate;
 use JsonSerializable;
 use OpenAI\Responses;
-
 use Traversable;
 
 use function array_map;
@@ -48,39 +47,22 @@ use function count;
  */
 final class Solution implements Countable, IteratorAggregate, JsonSerializable
 {
-    /**
-     * @var list<Responses\Chat\CreateResponseChoice>
-     */
-    private readonly array $choices;
     private ?DateTimeInterface $createDate = null;
     private ?string $cacheIdentifier = null;
 
     /**
-     * @param list<Responses\Chat\CreateResponseChoice|Responses\Chat\CreateStreamedResponseChoice> $choices
+     * @param list<Responses\Chat\CreateResponseChoice> $choices
      */
     public function __construct(
-        array $choices,
+        private readonly array $choices,
         private readonly string $model,
         private readonly string $prompt,
     ) {
-        $this->choices = array_map($this->normalizeChoice(...), $choices);
     }
 
     public static function fromResponse(Responses\Chat\CreateResponse $response, string $prompt): self
     {
         return new self(array_values($response->choices), $response->model, $prompt);
-    }
-
-    /**
-     * @param Responses\StreamResponse<Responses\Chat\CreateStreamedResponse> $stream
-     * @return Traversable<self>
-     */
-    public static function fromStream(Responses\StreamResponse $stream, string $prompt): Traversable
-    {
-        /** @var Responses\Chat\CreateStreamedResponse $response */
-        foreach ($stream as $response) {
-            yield new self(array_values($response->choices), $response->model, $prompt);
-        }
     }
 
     /**
@@ -170,22 +152,5 @@ final class Solution implements Countable, IteratorAggregate, JsonSerializable
     public function jsonSerialize(): array
     {
         return $this->toArray();
-    }
-
-    private function normalizeChoice(
-        Responses\Chat\CreateResponseChoice|Responses\Chat\CreateStreamedResponseChoice $choice,
-    ): Responses\Chat\CreateResponseChoice {
-        if ($choice instanceof Responses\Chat\CreateResponseChoice) {
-            return $choice;
-        }
-
-        return Responses\Chat\CreateResponseChoice::from([
-            'index' => $choice->index,
-            'message' => [
-                'role' => (string)$choice->delta->role,
-                'content' => (string)$choice->delta->content,
-            ],
-            'finish_reason' => $choice->finishReason,
-        ]);
     }
 }

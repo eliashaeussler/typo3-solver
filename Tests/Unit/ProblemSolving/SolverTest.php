@@ -40,7 +40,6 @@ use function json_encode;
 final class SolverTest extends TestingFramework\Core\Unit\UnitTestCase
 {
     private Tests\Unit\Fixtures\DummyStreamedSolutionProvider $provider;
-    private Src\Formatter\JsonFormatter $formatter;
     private Src\ProblemSolving\Solver $subject;
 
     protected function setUp(): void
@@ -48,8 +47,7 @@ final class SolverTest extends TestingFramework\Core\Unit\UnitTestCase
         parent::setUp();
 
         $this->provider = new Tests\Unit\Fixtures\DummyStreamedSolutionProvider();
-        $this->formatter = new Src\Formatter\JsonFormatter();
-        $this->subject = new Src\ProblemSolving\Solver($this->provider, $this->formatter);
+        $this->subject = new Src\ProblemSolving\Solver($this->provider, new Src\Formatter\JsonFormatter());
 
         (new Src\Cache\SolutionsCache())->flush();
     }
@@ -101,7 +99,7 @@ final class SolverTest extends TestingFramework\Core\Unit\UnitTestCase
         $actual = iterator_to_array($this->subject->solveStreamed(new Exception()));
 
         $expected1 = Tests\Unit\DataProvider\SolutionDataProvider::get();
-        $expected2 = Tests\Unit\DataProvider\SolutionDataProvider::get(message: 'message {index} ... message {index}');
+        $expected2 = Tests\Unit\DataProvider\SolutionDataProvider::get(message: ' ... message {index}');
 
         self::assertCount(2, $actual);
         self::assertJsonStringEqualsJsonString(json_encode($expected1, JSON_THROW_ON_ERROR), $actual[0]);
