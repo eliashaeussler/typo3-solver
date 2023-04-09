@@ -41,6 +41,7 @@ return [
         'codecov.yml',
         'CODEOWNERS',
         'composer.lock',
+        'CONTRIBUTING.md',
         'editorconfig',
         'editorconfig-lint.php',
         'gitattributes',

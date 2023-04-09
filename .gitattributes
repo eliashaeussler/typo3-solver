@@ -12,6 +12,7 @@
 /codecov.yml                        export-ignore
 /CODEOWNERS                         export-ignore
 /composer.lock                      export-ignore
+/CONTRIBUTING.md                    export-ignore
 /ext_localconf.php                  export-ignore
 /packaging_exclude.php              export-ignore
 /phpstan.neon                       export-ignore
