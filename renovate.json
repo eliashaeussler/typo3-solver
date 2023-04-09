@@ -8,16 +8,16 @@
 			"extends": [
 				":automergeDisabled"
 			],
-			"matchPaths": [
-				"Resources/Private/Libs/Build/**"
+			"matchFiles": [
+				"Resources/Private/Libs/Build/composer.json"
 			],
 			"matchDepNames": [
 				"php"
 			]
 		},
 		{
-			"matchPaths": [
-				"Tests/Functional/Fixtures/Extensions/**"
+			"matchFiles": [
+				"Tests/Functional/Fixtures/Extensions/middleware_bridge/composer.json"
 			],
 			"enabled": false
 		}
