@@ -36,12 +36,10 @@ use function sprintf;
  */
 final class CacheFlushCommand extends Console\Command\Command
 {
-    protected static $defaultName = 'solver:cache:flush';
-
     public function __construct(
         private readonly Cache\SolutionsCache $cache,
     ) {
-        parent::__construct();
+        parent::__construct('solver:cache:flush');
     }
 
     protected function configure(): void
