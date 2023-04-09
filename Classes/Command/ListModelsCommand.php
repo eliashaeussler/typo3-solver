@@ -38,13 +38,12 @@ use function sort;
  */
 final class ListModelsCommand extends Console\Command\Command
 {
-    protected static $defaultName = 'solver:list-models';
-
     private readonly OpenAI\Client $client;
 
     public function __construct()
     {
-        parent::__construct();
+        parent::__construct('solver:list-models');
+
         $this->client = OpenAI::client((new Configuration\Configuration())->getApiKey() ?? '');
     }
 

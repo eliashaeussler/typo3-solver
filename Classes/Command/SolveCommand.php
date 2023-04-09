@@ -39,8 +39,6 @@ use Throwable;
  */
 final class SolveCommand extends Console\Command\Command
 {
-    protected static $defaultName = 'solver:solve';
-
     private readonly ProblemSolving\Solution\Provider\SolutionProvider $solutionProvider;
     private readonly Formatter\CliFormatter $cliFormatter;
     private readonly Formatter\JsonFormatter $jsonFormatter;
@@ -51,7 +49,7 @@ final class SolveCommand extends Console\Command\Command
         private readonly Cache\SolutionsCache $solutionsCache,
         ProblemSolving\Solution\Provider\SolutionProvider $solutionProvider = null,
     ) {
-        parent::__construct();
+        parent::__construct('solver:solve');
 
         $this->solutionProvider = $solutionProvider ?? $this->configuration->getProvider();
         $this->cliFormatter = new Formatter\CliFormatter();
