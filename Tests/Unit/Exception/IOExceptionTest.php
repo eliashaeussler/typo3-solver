@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Tests\Unit\Exception;
 
 use EliasHaeussler\Typo3Solver as Src;
+use PHPUnit\Framework;
 use TYPO3\TestingFramework;
 
 /**
@@ -34,9 +35,7 @@ use TYPO3\TestingFramework;
  */
 final class IOExceptionTest extends TestingFramework\Core\Unit\UnitTestCase
 {
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function forConflictingParametersReturnsExceptionForConflictingParameters(): void
     {
         $actual = Src\Exception\IOException::forConflictingParameters('foo', 'baz');
@@ -45,9 +44,7 @@ final class IOExceptionTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertSame(1680388489, $actual->getCode());
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function forMissingRequiredParameterReturnsExceptionForMissingRequiredParameter(): void
     {
         $actual = Src\Exception\IOException::forMissingRequiredParameter('foo');

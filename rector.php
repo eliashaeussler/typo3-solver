@@ -24,6 +24,7 @@ declare(strict_types=1);
 use EliasHaeussler\RectorConfig\Config\Config;
 use Rector\Config\RectorConfig;
 use Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector;
+use Rector\Php80\Rector\Class_\AnnotationToAttributeRector;
 use Rector\Privatization\Rector\Class_\ChangeReadOnlyVariableWithDefaultValueToConstantRector;
 use Rector\PSR4\Rector\FileWithoutNamespace\NormalizeNamespaceByPSR4ComposerAutoloadRector;
 use Rector\Symfony\Rector\Class_\CommandPropertyToAttributeRector;
@@ -39,6 +40,9 @@ return static function (RectorConfig $rectorConfig): void {
     $config->withSymfony();
 
     $config->skip(AddLiteralSeparatorToNumberRector::class);
+    $config->skip(AnnotationToAttributeRector::class, [
+        __DIR__ . '/Classes/Extension.php',
+    ]);
     $config->skip(ChangeReadOnlyVariableWithDefaultValueToConstantRector::class);
     $config->skip(CommandPropertyToAttributeRector::class);
     $config->skip(NormalizeNamespaceByPSR4ComposerAutoloadRector::class, [
