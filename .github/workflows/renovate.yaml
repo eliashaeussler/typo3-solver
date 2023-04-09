@@ -1,25 +1,36 @@
-name: Dependabot update
+name: Renovate update
 on:
   push:
     branches:
-      - 'dependabot/npm_and_yarn/**'
+      - 'renovate/**'
   pull_request:
     branches:
-      - 'dependabot/npm_and_yarn/**'
+      - 'renovate/**'
 
 jobs:
-  dependabot-update:
-    if: ${{ github.actor == 'dependabot[bot]' }}
+  renovate-update:
+    if: ${{ github.actor == 'renovate[bot]' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
+      # Prepare environment
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
         with:
-          fetch-depth: 2
-          token: ${{ secrets.MERGE_TOKEN }}
+          php-version: 8.1
+          tools: composer:v2
+          coverage: none
 
       # Install dependencies
-      - name: Install dependencies
+      - name: Install Composer dependencies
+        uses: ramsey/composer-install@v2
+      - name: Install Frontend dependencies
         run: yarn --cwd Resources/Private/Frontend --frozen-lockfile
+
+      # Normalize composer.json
+      - name: Normalize composer.json
+        run: composer normalize --no-check-lock
 
       # Re-create Frontend dist files
       - name: Re-create dist files
