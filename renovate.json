@@ -3,6 +3,9 @@
 	"extends": [
 		"local>eliashaeussler/renovate-config"
 	],
+	"composerIgnorePlatformReqs": [
+		"ext-intl"
+	],
 	"packageRules": [
 		{
 			"extends": [
