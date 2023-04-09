@@ -24,7 +24,6 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Tests\Unit\Cache\Serializer;
 
 use EliasHaeussler\Typo3Solver as Src;
-use PHPUnit\Framework;
 use TYPO3\TestingFramework;
 
 /**
@@ -44,7 +43,9 @@ final class ExceptionSerializerTest extends TestingFramework\Core\Unit\UnitTestC
         $this->subject = new Src\Cache\Serializer\ExceptionSerializer();
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function serializeReturnsSerializedException(): void
     {
         $exception = Src\Exception\CustomSolvableException::create(
@@ -67,7 +68,9 @@ final class ExceptionSerializerTest extends TestingFramework\Core\Unit\UnitTestC
         self::assertSame($expected, $this->subject->serialize($exception));
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function deserializeReturnsDeserializedException(): void
     {
         $exceptionArray = [

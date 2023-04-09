@@ -25,7 +25,6 @@ namespace EliasHaeussler\Typo3Solver\Tests\Unit\View;
 
 use EliasHaeussler\Typo3Solver as Src;
 use Exception;
-use PHPUnit\Framework;
 use TYPO3\TestingFramework;
 
 use function trim;
@@ -47,7 +46,9 @@ final class TemplateRendererTest extends TestingFramework\Core\Unit\UnitTestCase
         $this->subject = new Src\View\TemplateRenderer();
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function renderRendersTemplateWithGivenVariables(): void
     {
         $file = __FILE__;

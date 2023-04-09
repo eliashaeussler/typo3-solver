@@ -25,7 +25,6 @@ namespace EliasHaeussler\Typo3Solver\Tests\Unit\Cache;
 
 use EliasHaeussler\Typo3Solver as Src;
 use Exception;
-use PHPUnit\Framework;
 use Symfony\Component\Filesystem;
 use TYPO3\TestingFramework;
 
@@ -50,7 +49,9 @@ final class ExceptionsCacheTest extends TestingFramework\Core\Unit\UnitTestCase
         $this->exception = new Exception('Something went wrong.', 123);
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function constructorCreatesCacheFileIfNotExists(): void
     {
         $cacheFile = dirname(__DIR__, 3) . '/var/cache/data/tx_solver/exceptions.php';
@@ -66,7 +67,9 @@ final class ExceptionsCacheTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertSame([], require $cacheFile);
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function getReturnsNullOnEmptyCache(): void
     {
         $this->subject->flush();
@@ -74,7 +77,9 @@ final class ExceptionsCacheTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertNull($this->subject->get('foo'));
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function getReturnsNullOnMissingCacheEntry(): void
     {
         $this->subject->flush();
@@ -84,7 +89,9 @@ final class ExceptionsCacheTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertNull($this->subject->get('foo'));
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function getReturnsCacheEntry(): void
     {
         $this->subject->flush();
@@ -99,7 +106,9 @@ final class ExceptionsCacheTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertSame($this->exception->getLine(), $actual->getLine());
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function removeRemovesGivenExceptionFromCache(): void
     {
         $this->subject->set($this->exception);

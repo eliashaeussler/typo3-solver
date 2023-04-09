@@ -26,7 +26,6 @@ namespace EliasHaeussler\Typo3Solver\Tests\Unit\Formatter\Message;
 use EliasHaeussler\Typo3Solver as Src;
 use EliasHaeussler\Typo3Solver\Tests;
 use Exception;
-use PHPUnit\Framework;
 use TYPO3\TestingFramework;
 
 /**
@@ -48,7 +47,9 @@ final class ExceptionStreamFormatterTest extends TestingFramework\Core\Unit\Unit
         $this->subject = new Src\Formatter\Message\ExceptionStreamFormatter();
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function formatReturnsJsonEncodedExceptionStream(): void
     {
         $exception = new Exception('Something went wrong.', 123);

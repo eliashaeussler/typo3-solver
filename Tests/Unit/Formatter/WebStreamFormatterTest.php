@@ -25,7 +25,6 @@ namespace EliasHaeussler\Typo3Solver\Tests\Unit\Formatter;
 
 use EliasHaeussler\Typo3Solver as Src;
 use EliasHaeussler\Typo3Solver\Tests;
-use PHPUnit\Framework;
 use TYPO3\TestingFramework;
 
 use function json_decode;
@@ -49,7 +48,9 @@ final class WebStreamFormatterTest extends TestingFramework\Core\Unit\UnitTestCa
         $this->subject = new Src\Formatter\WebStreamFormatter();
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function formatReturnsJsonEncodedSolutionStream(): void
     {
         $problem = Src\Tests\Unit\DataProvider\ProblemDataProvider::get();

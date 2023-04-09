@@ -24,7 +24,6 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Tests\Unit\Utility;
 
 use EliasHaeussler\Typo3Solver as Src;
-use PHPUnit\Framework;
 use TYPO3\TestingFramework;
 
 /**
@@ -35,7 +34,9 @@ use TYPO3\TestingFramework;
  */
 final class StringUtilityTest extends TestingFramework\Core\Unit\UnitTestCase
 {
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function replaceFirstOccurrenceDoesNothingIfSearchedStringDoesNotExistInSubject(): void
     {
         $subject = 'foo baz foo baz';
@@ -43,7 +44,9 @@ final class StringUtilityTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertSame($subject, Src\Utility\StringUtility::replaceFirstOccurrence('x', 'y', $subject));
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function replaceFirstOccurrenceReplacesFirstOccurrenceOfSearchedStringInSubject(): void
     {
         $subject = 'foo baz foo baz';
