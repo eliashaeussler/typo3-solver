@@ -27,6 +27,8 @@ use EliasHaeussler\Typo3Solver\Configuration;
 use EliasHaeussler\Typo3Solver\Exception;
 use EliasHaeussler\Typo3Solver\ProblemSolving;
 use OpenAI;
+use OpenAI\Client;
+use OpenAI\Responses;
 use Throwable;
 use Traversable;
 
@@ -35,10 +37,10 @@ use function in_array;
 final class OpenAISolutionProvider implements StreamedSolutionProvider
 {
     private readonly Configuration\Configuration $configuration;
-    private readonly OpenAI\Client $client;
+    private readonly Client $client;
 
     public function __construct(
-        OpenAI\Client $client = null,
+        Client $client = null,
     ) {
         $this->configuration = new Configuration\Configuration();
         $this->client = $client ?? OpenAI::client($this->configuration->getApiKey() ?? '');
@@ -72,13 +74,38 @@ final class OpenAISolutionProvider implements StreamedSolutionProvider
             throw Exception\ApiKeyMissingException::create();
         }
 
+        // Create solution stream
         try {
             $stream = $this->client->chat()->createStreamed($this->buildParameters($problem));
         } catch (\Exception) {
             throw Exception\UnableToSolveException::create($problem);
         }
 
-        yield from ProblemSolving\Solution\Solution::fromStream($stream, $problem->getPrompt());
+        // Store all choices in array to merge them during streaming
+        $choices = [];
+
+        /** @var Responses\Chat\CreateStreamedResponse $response */
+        foreach ($stream as $response) {
+            foreach ($response->choices as $choice) {
+                // Merge previous choices with currently streamed solution choices
+                $previousMessages = ($choices[$choice->index] ?? null)?->message->content;
+                $choices[$choice->index] = Responses\Chat\CreateResponseChoice::from([
+                    'index' => $choice->index,
+                    'message' => [
+                        'role' => (string)$choice->delta->role,
+                        'content' => $previousMessages . $choice->delta->content,
+                    ],
+                    'finish_reason' => $choice->finishReason,
+                ]);
+            }
+
+            // Yield solution with merged choices
+            yield new ProblemSolving\Solution\Solution(
+                array_values($choices),
+                $response->model,
+                $problem->getPrompt(),
+            );
+        }
     }
 
     public function canBeUsed(Throwable $exception): bool

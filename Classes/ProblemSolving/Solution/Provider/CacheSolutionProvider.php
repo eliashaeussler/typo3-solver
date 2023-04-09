@@ -25,11 +25,8 @@ namespace EliasHaeussler\Typo3Solver\ProblemSolving\Solution\Provider;
 
 use EliasHaeussler\Typo3Solver\Cache;
 use EliasHaeussler\Typo3Solver\ProblemSolving;
-use OpenAI\Responses;
 use Throwable;
 use Traversable;
-
-use function array_values;
 
 /**
  * CacheSolutionProvider.
@@ -78,25 +75,14 @@ final class CacheSolutionProvider implements StreamedSolutionProvider
 
         // Create empty solution
         $solution = null;
-        $choices = [];
 
-        // Create streamed solutions
-        foreach ($this->provider->getStreamedSolution($problem) as $streamedSolution) {
-            foreach ($streamedSolution->getChoices() as $choice) {
-                $previousMessages = ($choices[$choice->index] ?? null)?->message->content;
-                $choiceArray = $choice->toArray();
-                $choiceArray['message']['content'] = $previousMessages . $choice->message->content;
-
-                $choices[$choice->index] = Responses\Chat\CreateResponseChoice::from($choiceArray);
-            }
-
-            yield $solution = new ProblemSolving\Solution\Solution(
-                array_values($choices),
-                $streamedSolution->getModel(),
-                $streamedSolution->getPrompt(),
-            );
+        // Yield streamed solutions
+        /* @phpstan-ignore-next-line */
+        foreach ($this->provider->getStreamedSolution($problem) as $solution) {
+            yield $solution;
         }
 
+        // Cache last streamed solution
         if ($solution !== null) {
             $this->cache->set($problem, $solution);
         }

@@ -25,7 +25,6 @@ namespace EliasHaeussler\Typo3Solver\Tests\Unit\ProblemSolving\Solution;
 
 use DateTimeImmutable;
 use EliasHaeussler\Typo3Solver as Src;
-use GuzzleHttp\Psr7;
 use OpenAI\Responses;
 use TYPO3\TestingFramework;
 
@@ -98,79 +97,6 @@ final class SolutionTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertSame('prompt', $actual->getPrompt());
         self::assertSame('model', $actual->getModel());
         self::assertEquals([$choice], $actual->getChoices());
-    }
-
-    /**
-     * @test
-     */
-    public function fromStreamReturnsSolution(): void
-    {
-        $streamedResponse1 = [
-            'id' => 'id',
-            'object' => 'object',
-            'created' => 123,
-            'model' => 'model',
-            'choices' => [
-                [
-                    'index' => 0,
-                    'delta' => [
-                        'role' => 'role',
-                        'content' => 'content',
-                    ],
-                    'finish_reason' => null,
-                ],
-            ],
-        ];
-        $streamedResponse2 = [
-            'id' => 'id 2',
-            'object' => 'object 2',
-            'created' => 1234,
-            'model' => 'model 2',
-            'choices' => [
-                [
-                    'index' => 0,
-                    'delta' => [
-                        'role' => 'role 2',
-                        'content' => 'content 2',
-                    ],
-                    'finish_reason' => null,
-                ],
-            ],
-        ];
-
-        $response = new Psr7\Response();
-        $response->getBody()->write('data: ' . json_encode($streamedResponse1) . PHP_EOL);
-        $response->getBody()->write('data: ' . json_encode($streamedResponse2) . PHP_EOL);
-        $response->getBody()->rewind();
-
-        $stream = new Responses\StreamResponse(Responses\Chat\CreateStreamedResponse::class, $response);
-
-        $choice1 = Responses\Chat\CreateResponseChoice::from([
-            'index' => 0,
-            'message' => [
-                'role' => 'role',
-                'content' => 'content',
-            ],
-            'finish_reason' => null,
-        ]);
-        $choice2 = Responses\Chat\CreateResponseChoice::from([
-            'index' => 0,
-            'message' => [
-                'role' => 'role 2',
-                'content' => 'content 2',
-            ],
-            'finish_reason' => null,
-        ]);
-
-        $actual = iterator_to_array(Src\ProblemSolving\Solution\Solution::fromStream($stream, 'prompt'));
-
-        self::assertCount(2, $actual);
-        self::assertSame('prompt', $actual[0]->getPrompt());
-        self::assertSame('model', $actual[0]->getModel());
-        self::assertEquals([$choice1], $actual[0]->getChoices());
-        self::assertSame('prompt', $actual[1]->getPrompt());
-        self::assertSame('model 2', $actual[1]->getModel());
-        self::assertEquals([$choice2], $actual[1]->getChoices());
     }
 
     /**

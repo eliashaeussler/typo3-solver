@@ -131,7 +131,7 @@ final class CacheSolutionProviderTest extends TestingFramework\Core\Unit\UnitTes
         $this->provider->solutionStream = $solution;
 
         $expected1 = Tests\Unit\DataProvider\SolutionDataProvider::get(2);
-        $expected2 = Tests\Unit\DataProvider\SolutionDataProvider::get(2, 'message {index} ... message {index}');
+        $expected2 = Tests\Unit\DataProvider\SolutionDataProvider::get(2, ' ... message {index}');
 
         $actual = iterator_to_array($this->subject->getStreamedSolution($problem));
 
