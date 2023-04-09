@@ -256,7 +256,7 @@ vendor/bin/typo3 solver:list-models
 
 Every solution is cached to reduce the amount of requests sent by
 the OpenAI client. In order to flush the solution cache or remove
-single cache entries, the command `solver:cache:flush` cam be used.
+single cache entries, the command `solver:cache:flush` can be used.
 
 ```bash
 vendor/bin/typo3 solver:cache:flush [<identifier>]
@@ -280,15 +280,15 @@ vendor/bin/typo3 solver:cache:flush 65e89b311899aa4728a4c1bced1d6f6335674422
 
 The used OpenAI component changed from text completion to chat completion.
 
-* Migrate the used model in your extension configuration. The new default
-  model is `gpt-3.5-turbo-0301`.
+* Migrate the used model in your [extension configuration](#attributesmodel).
+  The new default model is `gpt-3.5-turbo-0301`.
 
 #### Solution Stream
 
 Solutions are now streamed to exception pages.
 
 * Migrate custom solution providers to implement
-  [`ProblemSolving\Solution\Provider\StreamedSolutionProvider`](Classes/ProblemSolving/Solution/Provider/StreamedSolutionProvider.php).
+  [`ProblemSolving\Solution\Provider\StreamedSolutionProvider`][21].
 * Note the modified DOM structure for solutions on exception pages.
 
 ## 💎 Credits
@@ -329,3 +329,4 @@ This project is licensed under [GNU General Public License 2.0 (or later)](LICEN
 [18]: https://typo3.github.io/TYPO3.Icons/icons/actions/actions-exclamation-triangle-alt.html
 [19]: https://typo3.github.io/TYPO3.Icons/icons/spinner/spinner-circle.html
 [20]: https://platform.openai.com/docs/guides/chat
+[21]: Classes/ProblemSolving/Solution/Provider/StreamedSolutionProvider.php
