@@ -79,7 +79,10 @@
 			"@fix:editorconfig",
 			"@fix:php"
 		],
-		"fix:composer": "@composer normalize",
+		"fix:composer": [
+			"@composer normalize",
+			"@composer normalize Resources/Private/Libs/Build/composer.json"
+		],
 		"fix:editorconfig": "@lint:editorconfig --fix",
 		"fix:php": "php-cs-fixer fix",
 		"lint": [
