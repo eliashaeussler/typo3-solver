@@ -12,11 +12,19 @@ cd typo3-solver
 
 # Start DDEV project
 ddev start
+
+# Install dependencies
+ddev composer install
+
+# Install Node dependencies
+ddev frontend install
 ```
 
 You can access the DDEV site at <https://typo3-ext-solver.ddev.site/>.
 
 ## Run linters
+
+### TYPO3
 
 ```bash
 # All linters
@@ -34,7 +42,29 @@ ddev composer fix
 ddev composer fix:composer
 ddev composer fix:editorconfig
 ddev composer fix:php
+```
 
+### Frontend
+
+```bash
+# All linters
+ddev frontend lint
+
+# Specific linters
+ddev frontend lint:scss
+ddev frontend lint:ts
+
+# Fix all CGL issues
+ddev frontend fix
+
+# Fix specific CGL issues
+ddev frontend fix:scss
+ddev frontend fix:ts
+```
+
+## Run static code analysis
+
+```bash
 # All static code analyzers
 ddev composer sca
 

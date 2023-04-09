@@ -6,13 +6,12 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
     "start": "cross-env NODE_ENV=development webpack --watch",
-    "fix": "npm-run-all lint:ts:fix lint:scss:fix",
-    "lint": "npm-run-all lint:ts lint:scss",
-    "lint:fix": "npm-run-all lint:ts:fix lint:scss:fix",
-    "lint:ts": "eslint 'src/scripts/**/*.{ts,tsx}'",
-    "lint:ts:fix": "eslint 'src/scripts/**/*.{ts,tsx}' --fix",
-    "lint:scss": "stylelint 'src/styles/**/*.scss'",
-    "lint:scss:fix": "stylelint 'src/styles/**/*.scss' --fix"
+    "lint": "npm-run-all lint:scss lint:ts",
+		"lint:scss": "stylelint 'src/styles/**/*.scss'",
+		"lint:ts": "eslint 'src/scripts/**/*.{ts,tsx}'",
+    "fix": "npm-run-all fix:scss fix:ts",
+		"fix:scss": "stylelint 'src/styles/**/*.scss' --fix",
+		"fix:ts": "eslint 'src/scripts/**/*.{ts,tsx}' --fix"
   },
   "author": {
     "name": "Elias Häußler",
