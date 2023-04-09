@@ -1,0 +1,25 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"extends": [
+		"local>eliashaeussler/renovate-config"
+	],
+	"packageRules": [
+		{
+			"extends": [
+				":automergeDisabled"
+			],
+			"matchFiles": [
+				"Resources/Private/Libs/Build/composer.json"
+			],
+			"matchDepNames": [
+				"php"
+			]
+		},
+		{
+			"matchFiles": [
+				"Tests/Functional/Fixtures/Extensions/middleware_bridge/composer.json"
+			],
+			"enabled": false
+		}
+	]
+}
