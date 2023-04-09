@@ -2,5 +2,18 @@
 	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
 	"extends": [
 		"local>eliashaeussler/renovate-config"
+	],
+	"packageRules": [
+		{
+			"extends": [
+				":automergeDisabled"
+			],
+			"matchPaths": [
+				"Resources/Private/Libs/Build/**"
+			],
+			"matchDepNames": [
+				"php"
+			]
+		}
 	]
 }
