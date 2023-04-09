@@ -21,37 +21,29 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
+use EliasHaeussler\RectorConfig\Config\Config;
 use Rector\Config\RectorConfig;
-use Rector\Core\ValueObject\PhpVersion;
 use Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector;
 use Rector\Privatization\Rector\Class_\ChangeReadOnlyVariableWithDefaultValueToConstantRector;
 use Rector\PSR4\Rector\FileWithoutNamespace\NormalizeNamespaceByPSR4ComposerAutoloadRector;
-use Rector\Set\ValueObject\LevelSetList;
-use Rector\Set\ValueObject\SetList;
+use Rector\Symfony\Rector\Class_\CommandPropertyToAttributeRector;
 
 return static function (RectorConfig $rectorConfig): void {
-    $rectorConfig->paths([
+    $config = Config::create($rectorConfig)->in(
         __DIR__ . '/Classes',
         __DIR__ . '/Configuration',
         __DIR__ . '/Tests',
+    );
+
+    $config->withPHPUnit();
+    $config->withSymfony();
+
+    $config->skip(AddLiteralSeparatorToNumberRector::class);
+    $config->skip(ChangeReadOnlyVariableWithDefaultValueToConstantRector::class);
+    $config->skip(CommandPropertyToAttributeRector::class);
+    $config->skip(NormalizeNamespaceByPSR4ComposerAutoloadRector::class, [
+        __DIR__ . '/Tests/Functional/Fixtures/Extensions',
     ]);
 
-    $rectorConfig->skip([
-        __DIR__ . '/Tests/Build/console-application.php',
-
-        AddLiteralSeparatorToNumberRector::class,
-        ChangeReadOnlyVariableWithDefaultValueToConstantRector::class,
-        NormalizeNamespaceByPSR4ComposerAutoloadRector::class => [
-            __DIR__ . '/Tests/Functional/Fixtures/Extensions',
-        ],
-    ]);
-
-    $rectorConfig->phpVersion(PhpVersion::PHP_81);
-
-    $rectorConfig->sets([
-        LevelSetList::UP_TO_PHP_81,
-        SetList::PRIVATIZATION,
-        SetList::PSR_4,
-        SetList::TYPE_DECLARATION,
-    ]);
+    $config->apply();
 };
