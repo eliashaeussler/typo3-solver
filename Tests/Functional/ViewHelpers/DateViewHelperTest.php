@@ -66,6 +66,7 @@ final class DateViewHelperTest extends TestingFramework\Core\Functional\Function
     /**
      * @test
      * @dataProvider renderStaticReturnsHumanReadableDateDataProvider
+     * @param non-empty-string $expected
      */
     public function renderStaticReturnsHumanReadableDate(DateTimeInterface $date, string $expected): void
     {
@@ -76,7 +77,7 @@ final class DateViewHelperTest extends TestingFramework\Core\Functional\Function
     }
 
     /**
-     * @return Generator<string, array{DateTimeInterface, string}>
+     * @return Generator<string, array{DateTimeInterface, non-empty-string}>
      */
     public static function renderStaticReturnsHumanReadableDateDataProvider(): Generator
     {
