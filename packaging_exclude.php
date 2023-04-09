@@ -55,5 +55,6 @@ return [
         'phpunit.unit.coverage.xml',
         'phpunit.unit.xml',
         'rector.php',
+        'renovate.json',
     ],
 ];

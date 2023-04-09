@@ -22,3 +22,4 @@
 /phpunit.unit.coverage.xml          export-ignore
 /phpunit.unit.xml                   export-ignore
 /rector.php                         export-ignore
+/renovate.json                      export-ignore
