@@ -24,7 +24,6 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Tests\Unit\Formatter;
 
 use EliasHaeussler\Typo3Solver as Src;
-use PHPUnit\Framework;
 use TYPO3\TestingFramework;
 
 use function json_encode;
@@ -46,7 +45,9 @@ final class JsonFormatterTest extends TestingFramework\Core\Unit\UnitTestCase
         $this->subject = new Src\Formatter\JsonFormatter();
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function formatReturnsJsonSerializedSolution(): void
     {
         $problem = Src\Tests\Unit\DataProvider\ProblemDataProvider::get();

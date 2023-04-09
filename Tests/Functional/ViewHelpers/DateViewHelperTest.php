@@ -27,7 +27,6 @@ use DateTimeImmutable;
 use DateTimeInterface;
 use EliasHaeussler\Typo3Solver\Tests;
 use Generator;
-use PHPUnit\Framework;
 use TYPO3\TestingFramework;
 
 use function trim;
@@ -48,7 +47,9 @@ final class DateViewHelperTest extends TestingFramework\Core\Functional\Function
 
     protected bool $initializeDatabase = false;
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function renderStaticReturnsNonReadableFormattedDate(): void
     {
         $date = new DateTimeImmutable();
@@ -63,10 +64,10 @@ final class DateViewHelperTest extends TestingFramework\Core\Functional\Function
     }
 
     /**
+     * @test
+     * @dataProvider renderStaticReturnsHumanReadableDateDataProvider
      * @param non-empty-string $expected
      */
-    #[Framework\Attributes\Test]
-    #[Framework\Attributes\DataProvider('renderStaticReturnsHumanReadableDateDataProvider')]
     public function renderStaticReturnsHumanReadableDate(DateTimeInterface $date, string $expected): void
     {
         $view = $this->createView('<s:date date="{date}" readable="1" />');

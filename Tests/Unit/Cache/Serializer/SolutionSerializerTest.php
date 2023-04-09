@@ -25,7 +25,6 @@ namespace EliasHaeussler\Typo3Solver\Tests\Unit\Cache\Serializer;
 
 use DateTimeImmutable;
 use EliasHaeussler\Typo3Solver as Src;
-use PHPUnit\Framework;
 use TYPO3\TestingFramework;
 
 use function time;
@@ -49,7 +48,9 @@ final class SolutionSerializerTest extends TestingFramework\Core\Unit\UnitTestCa
         $this->configuration = new Src\Configuration\Configuration();
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function serializeReturnsSerializedSolution(): void
     {
         $solution = Src\Tests\Unit\DataProvider\SolutionDataProvider::get();
@@ -61,7 +62,9 @@ final class SolutionSerializerTest extends TestingFramework\Core\Unit\UnitTestCa
         self::assertGreaterThanOrEqual(time() + $this->configuration->getCacheLifetime(), $actual['validUntil']);
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function deserializeReturnsNullIfSolutionIsExpired(): void
     {
         $solutionArray = [
@@ -73,7 +76,9 @@ final class SolutionSerializerTest extends TestingFramework\Core\Unit\UnitTestCa
         self::assertNull($this->subject->deserialize($solutionArray));
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function deserializeReturnsDeserializedSolution(): void
     {
         $solution = Src\Tests\Unit\DataProvider\SolutionDataProvider::get();

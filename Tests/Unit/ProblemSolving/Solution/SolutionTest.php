@@ -26,7 +26,6 @@ namespace EliasHaeussler\Typo3Solver\Tests\Unit\ProblemSolving\Solution;
 use DateTimeImmutable;
 use EliasHaeussler\Typo3Solver as Src;
 use OpenAI\Responses;
-use PHPUnit\Framework;
 use TYPO3\TestingFramework;
 
 use function iterator_to_array;
@@ -58,7 +57,9 @@ final class SolutionTest extends TestingFramework\Core\Unit\UnitTestCase
         $this->subject = new Src\ProblemSolving\Solution\Solution([$this->choice], 'foo', 'baz');
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function fromResponseReturnsSolution(): void
     {
         $response = Responses\Chat\CreateResponse::from([
@@ -98,7 +99,9 @@ final class SolutionTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertEquals([$choice], $actual->getChoices());
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function fromArrayReturnsSolution(): void
     {
         $solution = [
@@ -148,7 +151,9 @@ final class SolutionTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertEquals([$choice1, $choice2], $actual->getChoices());
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function setCreateDateAppliesCreateDate(): void
     {
         self::assertNull($this->subject->getCreateDate());
@@ -158,26 +163,34 @@ final class SolutionTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertSame($createDate, $this->subject->setCreateDate($createDate)->getCreateDate());
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function setCacheIdentifierAppliesCacheIdentifier(): void
     {
         self::assertNull($this->subject->getCacheIdentifier());
         self::assertSame('foo', $this->subject->setCacheIdentifier('foo')->getCacheIdentifier());
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function subjectIsCountable(): void
     {
         self::assertCount(1, $this->subject);
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function subjectIsIterable(): void
     {
         self::assertSame([$this->choice], iterator_to_array($this->subject));
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function toArrayReturnsArrayRepresentation(): void
     {
         $expected = [
@@ -191,7 +204,9 @@ final class SolutionTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertSame($expected, $this->subject->toArray());
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function subjectIsJsonSerializable(): void
     {
         $expected = [

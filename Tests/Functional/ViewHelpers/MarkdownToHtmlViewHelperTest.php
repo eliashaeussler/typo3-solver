@@ -25,7 +25,6 @@ namespace EliasHaeussler\Typo3Solver\Tests\Functional\ViewHelpers;
 
 use EliasHaeussler\Typo3Solver\Tests;
 use Parsedown;
-use PHPUnit\Framework;
 use TYPO3\TestingFramework;
 
 use function trim;
@@ -56,7 +55,9 @@ final class MarkdownToHtmlViewHelperTest extends TestingFramework\Core\Functiona
         $this->parsedown = new Parsedown();
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function renderStaticConvertsMarkdownToHtml(): void
     {
         $markdown = <<<'MARKDOWN'
@@ -74,7 +75,9 @@ MARKDOWN;
         );
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function renderStaticCanBeUsedWithContentArgument(): void
     {
         $markdown = <<<'MARKDOWN'
@@ -92,7 +95,9 @@ MARKDOWN;
         );
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function renderStaticReplacesLinNumbersInCodeSnippets(): void
     {
         $markdown = <<<'MARKDOWN'

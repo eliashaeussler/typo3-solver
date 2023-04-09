@@ -26,7 +26,6 @@ namespace EliasHaeussler\Typo3Solver\Tests\Unit\ProblemSolving\Solution\Provider
 use EliasHaeussler\Typo3Solver as Src;
 use EliasHaeussler\Typo3Solver\Tests;
 use Exception;
-use PHPUnit\Framework;
 use TYPO3\TestingFramework;
 
 use function iterator_to_array;
@@ -54,7 +53,9 @@ final class CacheSolutionProviderTest extends TestingFramework\Core\Unit\UnitTes
         $this->cache->flush();
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function getSolutionReturnsSolutionFromCache(): void
     {
         $problem = Tests\Unit\DataProvider\ProblemDataProvider::get(solutionProvider: $this->provider);
@@ -67,7 +68,9 @@ final class CacheSolutionProviderTest extends TestingFramework\Core\Unit\UnitTes
         self::assertEquals($this->cache->get($problem), $actual);
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function getSolutionReturnsSolutionFromProviderAndStoresItInCache(): void
     {
         $problem = Tests\Unit\DataProvider\ProblemDataProvider::get(solutionProvider: $this->provider);
@@ -83,7 +86,9 @@ final class CacheSolutionProviderTest extends TestingFramework\Core\Unit\UnitTes
         self::assertNotNull($this->cache->get($problem));
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function getStreamedSolutionYieldsSolutionFromCache(): void
     {
         $problem = Tests\Unit\DataProvider\ProblemDataProvider::get(solutionProvider: $this->provider);
@@ -97,7 +102,9 @@ final class CacheSolutionProviderTest extends TestingFramework\Core\Unit\UnitTes
         self::assertEquals([$this->cache->get($problem)], $actual);
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function getStreamedSolutionYieldsSolutionFromNonStreamedProvider(): void
     {
         $problem = Tests\Unit\DataProvider\ProblemDataProvider::get(solutionProvider: $this->provider);
@@ -113,7 +120,9 @@ final class CacheSolutionProviderTest extends TestingFramework\Core\Unit\UnitTes
         self::assertSame([$solution], $actual);
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function getStreamedSolutionYieldsSolutionsFromProvider(): void
     {
         $problem = Tests\Unit\DataProvider\ProblemDataProvider::get(solutionProvider: $this->provider);
@@ -131,7 +140,9 @@ final class CacheSolutionProviderTest extends TestingFramework\Core\Unit\UnitTes
         self::assertEquals($expected2, $actual[1]);
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function canBeUsedDelegatesRequestToProvider(): void
     {
         $exception = new Exception();
@@ -145,13 +156,17 @@ final class CacheSolutionProviderTest extends TestingFramework\Core\Unit\UnitTes
         self::assertFalse($this->subject->canBeUsed($exception));
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function isCacheableReturnsTrue(): void
     {
         self::assertTrue($this->subject->isCacheable());
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function getProviderReturnsProvider(): void
     {
         self::assertSame($this->provider, $this->subject->getProvider());

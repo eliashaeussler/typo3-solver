@@ -26,7 +26,6 @@ namespace EliasHaeussler\Typo3Solver\Tests\Unit\ProblemSolving\Problem;
 use EliasHaeussler\Typo3Solver as Src;
 use EliasHaeussler\Typo3Solver\Tests;
 use Exception;
-use PHPUnit\Framework;
 use TYPO3\TestingFramework;
 
 /**
@@ -50,19 +49,25 @@ final class ProblemTest extends TestingFramework\Core\Unit\UnitTestCase
         $this->subject = new Src\ProblemSolving\Problem\Problem($this->exception, $this->provider, 'foo');
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function getExceptionReturnsException(): void
     {
         self::assertSame($this->exception, $this->subject->getException());
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function getSolutionProviderReturnsSolutionProvider(): void
     {
         self::assertSame($this->provider, $this->subject->getSolutionProvider());
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function getPromptReturnsPrompt(): void
     {
         self::assertSame('foo', $this->subject->getPrompt());

@@ -25,7 +25,6 @@ namespace EliasHaeussler\Typo3Solver\Tests\Unit\Formatter;
 
 use EliasHaeussler\Typo3Solver as Src;
 use EliasHaeussler\Typo3Solver\Tests;
-use PHPUnit\Framework;
 use TYPO3\TestingFramework;
 
 use function dirname;
@@ -53,7 +52,9 @@ final class WebFormatterTest extends TestingFramework\Core\Unit\UnitTestCase
         $this->exceptionsCache = new Src\Cache\ExceptionsCache();
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function formatReturnsFormattedSolution(): void
     {
         $problem = Src\Tests\Unit\DataProvider\ProblemDataProvider::get();
@@ -100,7 +101,9 @@ final class WebFormatterTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertNodeContentEqualsString('prompt', '//form/details[1]/pre[1]/text()', $xpath);
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function getAdditionalStylesReturnsAdditionalStylesheet(): void
     {
         self::assertStringEqualsFile(
@@ -109,7 +112,9 @@ final class WebFormatterTest extends TestingFramework\Core\Unit\UnitTestCase
         );
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function getAdditionalScriptsReturnsAdditionalJavaScript(): void
     {
         self::assertStringEqualsFile(

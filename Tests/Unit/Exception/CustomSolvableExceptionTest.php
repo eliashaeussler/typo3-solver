@@ -24,7 +24,6 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Tests\Unit\Exception;
 
 use EliasHaeussler\Typo3Solver as Src;
-use PHPUnit\Framework;
 use TYPO3\TestingFramework;
 
 /**
@@ -35,7 +34,9 @@ use TYPO3\TestingFramework;
  */
 final class CustomSolvableExceptionTest extends TestingFramework\Core\Unit\UnitTestCase
 {
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function createReturnsCustomSolvableException(): void
     {
         $actual = Src\Exception\CustomSolvableException::create(

@@ -24,7 +24,6 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Tests\Functional\Middleware;
 
 use EliasHaeussler\Typo3Solver\Tests;
-use PHPUnit\Framework;
 use TYPO3\TestingFramework;
 
 /**
@@ -43,7 +42,9 @@ final class SolutionMiddlewareTest extends TestingFramework\Core\Functional\Func
 
     protected bool $initializeDatabase = false;
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function middlewareIsSkippedOnUnsupportedRequest(): void
     {
         $request = self::createRequest('/tx_solver/solution')->withoutHeader('Accept');
@@ -52,7 +53,9 @@ final class SolutionMiddlewareTest extends TestingFramework\Core\Functional\Func
         self::assertNotSame(200, $response->getStatusCode());
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function middlewareIsSkippedOnNonMatchingRoute(): void
     {
         $request = self::createRequest('/');
@@ -61,7 +64,9 @@ final class SolutionMiddlewareTest extends TestingFramework\Core\Functional\Func
         self::assertNotSame(200, $response->getStatusCode());
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function middlewareReturnsEarlyIfNoExceptionIdentifierIsGiven(): void
     {
         $request = self::createRequest('/tx_solver/solution');

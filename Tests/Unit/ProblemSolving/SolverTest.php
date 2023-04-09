@@ -26,7 +26,6 @@ namespace EliasHaeussler\Typo3Solver\Tests\Unit\ProblemSolving;
 use EliasHaeussler\Typo3Solver as Src;
 use EliasHaeussler\Typo3Solver\Tests;
 use Exception;
-use PHPUnit\Framework;
 use TYPO3\TestingFramework;
 
 use function iterator_to_array;
@@ -53,7 +52,9 @@ final class SolverTest extends TestingFramework\Core\Unit\UnitTestCase
         (new Src\Cache\SolutionsCache())->flush();
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function solveReturnsNullIfProviderCannotBeUsed(): void
     {
         $this->provider->shouldBeUsed = false;
@@ -61,7 +62,9 @@ final class SolverTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertNull($this->subject->solve(new Exception()));
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function solveReturnsFormattedSolution(): void
     {
         $dummySolution = Tests\Unit\DataProvider\SolutionDataProvider::get();
@@ -74,7 +77,9 @@ final class SolverTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertJsonStringEqualsJsonString(json_encode($dummySolution, JSON_THROW_ON_ERROR), $actual);
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function solveStreamedYieldsEmptySolutionStreamIfProviderCannotBeUsed(): void
     {
         $this->provider->shouldBeUsed = false;
@@ -82,7 +87,9 @@ final class SolverTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertSame([], iterator_to_array($this->subject->solveStreamed(new Exception())));
     }
 
-    #[Framework\Attributes\Test]
+    /**
+     * @test
+     */
     public function solveStreamedYieldsFormattedSolutionStreams(): void
     {
         $solutions = iterator_to_array(Tests\Unit\DataProvider\SolutionDataProvider::getStream());
