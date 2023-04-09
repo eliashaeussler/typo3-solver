@@ -1,0 +1,7 @@
+#!/bin/bash
+
+## Description: Run yarn command for the Frontend subproject
+## Usage: frontend [command] [options]
+## Example: ddev yarn install\nddev yarn start\nddev yarn build\nddev yarn lint\nddev yarn fix
+
+yarn --cwd /var/www/html/Resources/Private/Frontend "$@"
