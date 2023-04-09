@@ -62,63 +62,74 @@ The following extension configuration is available:
 
 #### `provider`
 
-> FQCN of the solution provider
+FQCN of the solution provider to use.
 
-*Default value*: [`EliasHaeussler\Typo3Solver\Solution\Provider\OpenAISolutionProvider`][3]
+* *Required:* ✅
+* *Default:* [`EliasHaeussler\Typo3Solver\Solution\Provider\OpenAISolutionProvider`][3]
 
 #### `prompt`
 
-> FQCN of the prompt generator
+FQCN of the prompt generator to use.
 
-*Default value*: [`EliasHaeussler\Typo3Solver\Prompt\DefaultPrompt`][4]
+* *Required:* ✅
+* *Default:* [`EliasHaeussler\Typo3Solver\Prompt\DefaultPrompt`][4]
 
 #### `ignoredCodes`
 
-> Comma-separated list of exception codes to ignore
+Comma-separated list of exception codes to ignore.
 
-*Default value*: –
+* *Required:* –
+* *Default:* –
 
 #### `api.key`
 
-> [API key](#api-key) for OpenAI requests
+[API key](#api-key) for OpenAI requests.
 
-*Default value*: –
+* *Required:* ✅
+* *Default:* –
 
 #### `attributes.model`
 
-> [OpenAI model][13] to use (see [List available models](#list-available-models) to show a list of available models)
+[OpenAI model][13] to use (see [List available models](#list-available-models)
+to show a list of available models).
 
-*Default value*: `gpt-3.5-turbo-0301`
+* *Required:* ✅
+* *Default:* `gpt-3.5-turbo-0301`
+
 #### `attributes.maxTokens`
 
-> [Maximum number of tokens][14] to use per request
+[Maximum number of tokens][14] to use per request.
 
-*Default value*: `300`
+* *Required:* ✅
+* *Default:* `300`
 
 #### `attributes.temperature`
 
-> [Temperature][15] to use for completion requests (must be a value between `0` and `1`)
+[Temperature][15] to use for completion requests (must be a value between `0` and `1`).
 
-*Default value*: `0.5`
+* *Required:* ✅
+* *Default:* `0.5`
 
 #### `attributes.numberOfCompletions`
 
-> [Number of completions][16] to generate for each prompt
+[Number of completions][16] to generate for each prompt.
 
-*Default value*: `1`
+* *Required:* ✅
+* *Default:* `1`
 
 #### `cache.lifetime`
 
-> Lifetime in seconds of the solutions cache (use `0` to disable caching)
+Lifetime in seconds of the solutions cache (use `0` to disable caching).
 
-*Default value*: `86400` (1 day)
+* *Required:* ✅
+* *Default:* `86400` *(= 1 day)*
 
 ## ⚡ Usage
 
 ### Exception handler
 
 The extension provides a modified debug exception handler in [`Error/AiSolverExceptionHandler`][5].
-It can be activated in the system configuration (aka `LocalConfiguration.php`):
+It can be activated in the system configuration (formerly `LocalConfiguration.php`):
 
 ```php
 # config/system/settings.php
@@ -142,29 +153,91 @@ problems using the provided console command `solver:solve`.
 vendor/bin/typo3 solver:solve [<problem>] [options]
 ```
 
-The following input parameters are available:
-
-| Parameter            | Description                                                                         |
-|----------------------|-------------------------------------------------------------------------------------|
-| `problem`            | The exception message to solve                                                      |
-| `--identifier`, `-i` | An alternative cache identifier to load an exception from cache                     |
-| `--code`, `-c`       | Optional exception code                                                             |
-| `--file`, `-f`       | Optional file where the exception occurs                                            |
-| `--line`, `-l`       | Optional line number within the given file                                          |
-| `--refresh`, `-r`    | Refresh a cached solution (requests a new solution and ignores the cached solution) |
-| `--json`, `-j`       | Print solution as JSON                                                              |
-
 Problems can be solved in two ways on the command line:
 
-1. Pass the problem (= exception message) and additional metadata such as
-   exception code, file and line. By using this way, EXT:solver will create
-   a dummy exception and pass it to the solution provider.
-2. Pass an exception cache identifier to solve a cached exception. This way
-   is more accurate as it restores the original exception and passes it to
-   the solution provider.
+1. Pass the [problem](#problem) (= exception message) and additional metadata
+   such as exception [code](#--code--c), [file](#--file--f) and
+   [line](#--line--l). By using this way, EXT:solver will create a dummy
+   exception and pass it to the solution provider.
+2. Pass an exception [cache identifier](#--identifier--i) to solve a cached
+   exception. This way is more accurate as it restores the original exception
+   and passes it to the solution provider.
 
 💡 You can find the exception cache identifier on exception pages. It is
 assigned as `data-exception-id` attribute to the solution container element.
+
+The following input parameters are available:
+
+#### `problem`
+
+The exception message to solve.
+
+> **Note** You must either pass the [`problem`](#problem) argument
+or [`--identifier`](#--identifier--i) option.
+
+```bash
+vendor/bin/typo3 solver:solve "No TypoScript record found!"
+```
+
+#### `--identifier`, `-i`
+
+An alternative cache identifier to load an exception from cache.
+
+> **Note** You must either pass the [`problem`](#problem) argument
+  or [`--identifier`](#--identifier--i) option.
+
+```bash
+vendor/bin/typo3 solver:solve -i c98d277467ab5da857483dff2b1d267d36c0c24a
+```
+
+#### `--code`, `-c`
+
+Optional exception code.
+
+> **Note** This option is only respected in combination with the
+  [`problem`](#problem) argument.
+
+```bash
+vendor/bin/typo3 solver:solve "No TypoScript record found!" -c 1294587218
+```
+
+#### `--file`, `-f`
+
+Optional file where the exception occurs.
+
+> **Note** This option is only respected in combination with the
+  [`problem`](#problem) argument.
+
+```bash
+vendor/bin/typo3 solver:solve "No TypoScript record found!" -f /var/www/html/vendor/typo3/cms-frontend/Classes/Controller/TypoScriptFrontendController.php
+```
+
+#### `--line`, `-l`
+
+Optional line number within the given file.
+
+> **Note** This option is only respected in combination with the
+  [`problem`](#problem) argument.
+
+```bash
+vendor/bin/typo3 solver:solve "No TypoScript record found!" -l 1190
+```
+
+#### `--refresh`, `-r`
+
+Refresh a cached solution (removes the cached solution and requests a new solution).
+
+```bash
+vendor/bin/typo3 solver:solve "No TypoScript record found!" --refresh
+```
+
+#### `--json`, `-j`
+
+Print solution as JSON.
+
+```bash
+vendor/bin/typo3 solver:solve "No TypoScript record found!" --json
+```
 
 ### List available models
 
@@ -191,9 +264,13 @@ vendor/bin/typo3 solver:cache:flush [<identifier>]
 
 The following input parameters are available:
 
-| Parameter    | Description                                              |
-|--------------|----------------------------------------------------------|
-| `identifier` | Optional cache identifier to remove a single cache entry |
+#### `identifier`
+
+Optional cache identifier to remove a single cache entry.
+
+```bash
+vendor/bin/typo3 solver:cache:flush 65e89b311899aa4728a4c1bced1d6f6335674422
+```
 
 ## 🚧 Migration
 
