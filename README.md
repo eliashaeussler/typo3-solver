@@ -204,9 +204,9 @@ This project is licensed under [GNU General Public License 2.0 (or later)](LICEN
 [11]: https://pociot.dev/
 [12]: https://nunomaduro.com/
 [13]: https://platform.openai.com/docs/models
-[14]: https://platform.openai.com/docs/api-reference/completions/create#completions/create-max_tokens
-[15]: https://platform.openai.com/docs/api-reference/completions/create#completions/create-temperature
-[16]: https://platform.openai.com/docs/api-reference/completions/create#completions/create-n
+[14]: https://platform.openai.com/docs/api-reference/chat/create#chat/create-max_tokens
+[15]: https://platform.openai.com/docs/api-reference/chat/create#chat/create-temperature
+[16]: https://platform.openai.com/docs/api-reference/chat/create#chat/create-n
 [17]: https://typo3.github.io/TYPO3.Icons/icons/actions/actions-debug.html
 [18]: https://typo3.github.io/TYPO3.Icons/icons/actions/actions-exclamation-triangle-alt.html
 [19]: https://typo3.github.io/TYPO3.Icons/icons/spinner/spinner-circle.html
