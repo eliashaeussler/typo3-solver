@@ -291,6 +291,10 @@ Solutions are now streamed to exception pages.
   [`ProblemSolving\Solution\Provider\StreamedSolutionProvider`][21].
 * Note the modified DOM structure for solutions on exception pages.
 
+## 🧑‍💻 Contributing
+
+Please have a look at [`CONTRIBUTING.md`](CONTRIBUTING.md).
+
 ## 💎 Credits
 
 The extension icon ("lightbulb-on") is a modified version of the original
