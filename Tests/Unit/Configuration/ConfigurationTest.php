@@ -25,6 +25,7 @@ namespace EliasHaeussler\Typo3Solver\Tests\Unit\Configuration;
 
 use EliasHaeussler\Typo3Solver as Src;
 use EliasHaeussler\Typo3Solver\Tests;
+use PHPUnit\Framework;
 use TYPO3\TestingFramework;
 
 /**
@@ -46,17 +47,13 @@ final class ConfigurationTest extends TestingFramework\Core\Unit\UnitTestCase
         $this->subject = new Src\Configuration\Configuration($this->configurationProvider);
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getApiKeyReturnsNullIfNoApiKeyIsConfigured(): void
     {
         self::assertNull($this->subject->getApiKey());
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getApiKeyReturnsNullIfConfiguredApiKeyIsInvalid(): void
     {
         $this->configurationProvider->configuration = [
@@ -66,9 +63,7 @@ final class ConfigurationTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertNull($this->subject->getApiKey());
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getApiKeyReturnsConfiguredApiKey(): void
     {
         $this->configurationProvider->configuration = [
@@ -78,17 +73,13 @@ final class ConfigurationTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertSame('foo', $this->subject->getApiKey());
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getModelReturnsDefaultModelIfNoModelIsConfigured(): void
     {
         self::assertSame('gpt-3.5-turbo-0301', $this->subject->getModel());
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getModelReturnsDefaultModelIfConfiguredModelIsInvalid(): void
     {
         $this->configurationProvider->configuration = [
@@ -98,9 +89,7 @@ final class ConfigurationTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertSame('gpt-3.5-turbo-0301', $this->subject->getModel());
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getModelReturnsConfiguredModel(): void
     {
         $this->configurationProvider->configuration = [
@@ -110,17 +99,13 @@ final class ConfigurationTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertSame('foo', $this->subject->getModel());
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getMaxTokensReturnsDefaultMaxTokensIfNoMaxTokensAreConfigured(): void
     {
         self::assertSame(300, $this->subject->getMaxTokens());
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getMaxTokensReturnsDefaultMaxTokensIfConfiguredMaxTokensAreInvalid(): void
     {
         $this->configurationProvider->configuration = [
@@ -130,9 +115,7 @@ final class ConfigurationTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertSame(300, $this->subject->getMaxTokens());
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getMaxTokensReturnsConfiguredMaxTokens(): void
     {
         $this->configurationProvider->configuration = [
@@ -142,17 +125,13 @@ final class ConfigurationTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertSame(150, $this->subject->getMaxTokens());
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getTemperatureReturnsDefaultTemperatureIfNoTemperatureIsConfigured(): void
     {
         self::assertSame(0.5, $this->subject->getTemperature());
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getTemperatureReturnsDefaultTemperatureIfConfiguredTemperatureIsInvalid(): void
     {
         $this->configurationProvider->configuration = [
@@ -162,9 +141,7 @@ final class ConfigurationTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertSame(0.5, $this->subject->getTemperature());
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getTemperatureReturnsConfiguredTemperature(): void
     {
         $this->configurationProvider->configuration = [
@@ -174,17 +151,13 @@ final class ConfigurationTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertSame(0.75, $this->subject->getTemperature());
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getNumberOfCompletionsReturnsDefaultNumberOfCompletionsIfNoNumberOfCompletionsIsConfigured(): void
     {
         self::assertSame(1, $this->subject->getNumberOfCompletions());
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getNumberOfCompletionsReturnsDefaultNumberOfCompletionsIfConfiguredNumberOfCompletionsIsInvalid(): void
     {
         $this->configurationProvider->configuration = [
@@ -194,9 +167,7 @@ final class ConfigurationTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertSame(1, $this->subject->getNumberOfCompletions());
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getNumberOfCompletionsReturnsConfiguredNumberOfCompletions(): void
     {
         $this->configurationProvider->configuration = [
@@ -206,17 +177,13 @@ final class ConfigurationTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertSame(5, $this->subject->getNumberOfCompletions());
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getCacheLifetimeReturnsDefaultCacheLifetimeIfNoCacheLifetimeIsConfigured(): void
     {
         self::assertSame(60 * 60 * 24, $this->subject->getCacheLifetime());
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getCacheLifetimeReturnsDefaultCacheLifetimeIfConfiguredCacheLifetimeIsInvalid(): void
     {
         $this->configurationProvider->configuration = [
@@ -226,9 +193,7 @@ final class ConfigurationTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertSame(60 * 60 * 24, $this->subject->getCacheLifetime());
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getCacheLifetimeReturnsConfiguredCacheLifetime(): void
     {
         $this->configurationProvider->configuration = [
@@ -238,9 +203,7 @@ final class ConfigurationTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertSame(3600, $this->subject->getCacheLifetime());
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getProviderReturnsDefaultProviderIfNoProviderIsConfigured(): void
     {
         self::assertInstanceOf(
@@ -249,9 +212,7 @@ final class ConfigurationTest extends TestingFramework\Core\Unit\UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getProviderReturnsDefaultProviderIfConfiguredProviderIsInvalid(): void
     {
         $this->configurationProvider->configuration = [
@@ -264,9 +225,7 @@ final class ConfigurationTest extends TestingFramework\Core\Unit\UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getProviderReturnsConfiguredProvider(): void
     {
         $this->configurationProvider->configuration = [
@@ -279,9 +238,7 @@ final class ConfigurationTest extends TestingFramework\Core\Unit\UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getPromptReturnsDefaultPromptIfNoPromptIsConfigured(): void
     {
         self::assertInstanceOf(
@@ -290,9 +247,7 @@ final class ConfigurationTest extends TestingFramework\Core\Unit\UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getPromptReturnsDefaultPromptIfConfiguredPromptIsInvalid(): void
     {
         $this->configurationProvider->configuration = [
@@ -305,9 +260,7 @@ final class ConfigurationTest extends TestingFramework\Core\Unit\UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getPromptReturnsConfiguredPrompt(): void
     {
         $this->configurationProvider->configuration = [
@@ -320,17 +273,13 @@ final class ConfigurationTest extends TestingFramework\Core\Unit\UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getIgnoredCodesReturnsEmptyArrayIfCodesToIgnoreAreNotConfigured(): void
     {
         self::assertSame([], $this->subject->getIgnoredCodes());
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getIgnoredCodesReturnsEmptyArrayIfCodesToIgnoreAreInvalid(): void
     {
         $this->configurationProvider->configuration = [
@@ -340,9 +289,7 @@ final class ConfigurationTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertSame([], $this->subject->getIgnoredCodes());
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getIgnoredCodesReturnsConfiguredCodesToIgnore(): void
     {
         $this->configurationProvider->configuration = [

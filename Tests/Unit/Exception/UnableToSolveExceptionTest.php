@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Tests\Unit\Exception;
 
 use EliasHaeussler\Typo3Solver as Src;
+use PHPUnit\Framework;
 use TYPO3\TestingFramework;
 
 use function sprintf;
@@ -36,9 +37,7 @@ use function sprintf;
  */
 final class UnableToSolveExceptionTest extends TestingFramework\Core\Unit\UnitTestCase
 {
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function createReturnsExceptionForGivenProblem(): void
     {
         $problem = Src\Tests\Unit\DataProvider\ProblemDataProvider::get();
