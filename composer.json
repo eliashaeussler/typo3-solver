@@ -30,12 +30,10 @@
 	"require-dev": {
 		"ext-dom": "*",
 		"armin/editorconfig-cli": "^1.5",
+		"eliashaeussler/phpstan-config": "^1.0",
 		"eliashaeussler/rector-config": "^1.1.1",
 		"ergebnis/composer-normalize": "^2.29",
 		"phpstan/extension-installer": "^1.2",
-		"phpstan/phpstan": "^1.9",
-		"phpstan/phpstan-deprecation-rules": "^1.1",
-		"phpstan/phpstan-strict-rules": "^1.4",
 		"phpstan/phpstan-symfony": "^1.2",
 		"phpunit/phpcov": "^8.2",
 		"saschaegerer/phpstan-typo3": "^1.8",
