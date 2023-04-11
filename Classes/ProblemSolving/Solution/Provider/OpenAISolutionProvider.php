@@ -25,8 +25,8 @@ namespace EliasHaeussler\Typo3Solver\ProblemSolving\Solution\Provider;
 
 use EliasHaeussler\Typo3Solver\Configuration;
 use EliasHaeussler\Typo3Solver\Exception;
+use EliasHaeussler\Typo3Solver\Http;
 use EliasHaeussler\Typo3Solver\ProblemSolving;
-use OpenAI;
 use OpenAI\Client;
 use OpenAI\Responses;
 use Throwable;
@@ -36,14 +36,18 @@ use function in_array;
 
 final class OpenAISolutionProvider implements StreamedSolutionProvider
 {
-    private readonly Configuration\Configuration $configuration;
-    private readonly Client $client;
-
     public function __construct(
-        Client $client = null,
+        private readonly Configuration\Configuration $configuration,
+        private readonly Client $client,
     ) {
-        $this->configuration = new Configuration\Configuration();
-        $this->client = $client ?? OpenAI::client($this->configuration->getApiKey() ?? '');
+    }
+
+    public static function create(Client $client = null): static
+    {
+        $configuration = new Configuration\Configuration();
+        $client ??= (new Http\ClientFactory($configuration))->get();
+
+        return new self($configuration, $client);
     }
 
     /**

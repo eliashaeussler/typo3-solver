@@ -21,7 +21,7 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace EliasHaeussler\Typo3Solver\Tests\Unit\ProblemSolving\Prompt;
+namespace EliasHaeussler\Typo3Solver\Tests\Unit\ProblemSolving\Solution\Prompt;
 
 use EliasHaeussler\Typo3Solver as Src;
 use Exception;
@@ -42,7 +42,7 @@ final class DefaultPromptTest extends TestingFramework\Core\Unit\UnitTestCase
     {
         parent::setUp();
 
-        $this->subject = new Src\ProblemSolving\Solution\Prompt\DefaultPrompt();
+        $this->subject = new Src\ProblemSolving\Solution\Prompt\DefaultPrompt(new Src\View\TemplateRenderer());
     }
 
     /**

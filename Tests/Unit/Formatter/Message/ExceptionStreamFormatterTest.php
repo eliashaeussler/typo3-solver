@@ -44,7 +44,7 @@ final class ExceptionStreamFormatterTest extends TestingFramework\Core\Unit\Unit
     {
         parent::setUp();
 
-        $this->subject = new Src\Formatter\Message\ExceptionStreamFormatter();
+        $this->subject = new Src\Formatter\Message\ExceptionStreamFormatter(new Src\View\TemplateRenderer());
     }
 
     /**

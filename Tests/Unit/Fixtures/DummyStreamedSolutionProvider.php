@@ -44,6 +44,11 @@ final class DummyStreamedSolutionProvider implements ProblemSolving\Solution\Pro
      */
     public array $solutionStream = [];
 
+    public static function create(): static
+    {
+        return new self();
+    }
+
     public function getSolution(ProblemSolving\Problem\Problem $problem): ProblemSolving\Solution\Solution
     {
         return $this->solution ?? new ProblemSolving\Solution\Solution([], 'foo', 'baz');

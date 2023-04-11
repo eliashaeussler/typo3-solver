@@ -49,6 +49,7 @@ final class SolutionMiddleware implements Server\MiddlewareInterface
         private readonly Configuration\Configuration $configuration,
         private readonly Cache\ExceptionsCache $exceptionsCache,
         private readonly Formatter\Message\ExceptionStreamFormatter $exceptionFormatter,
+        private readonly Formatter\WebStreamFormatter $webFormatter,
     ) {
     }
 
@@ -73,7 +74,7 @@ final class SolutionMiddleware implements Server\MiddlewareInterface
         }
 
         // Create solver
-        $solver = new ProblemSolving\Solver($this->configuration->getProvider(), new Formatter\WebStreamFormatter());
+        $solver = new ProblemSolving\Solver($this->configuration, $this->webFormatter);
 
         // Create event stream
         $eventStream = Http\EventStream::create($id);

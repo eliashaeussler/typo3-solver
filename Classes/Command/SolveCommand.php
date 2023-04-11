@@ -40,20 +40,18 @@ use Throwable;
 final class SolveCommand extends Console\Command\Command
 {
     private readonly ProblemSolving\Solution\Provider\SolutionProvider $solutionProvider;
-    private readonly Formatter\CliFormatter $cliFormatter;
-    private readonly Formatter\JsonFormatter $jsonFormatter;
 
     public function __construct(
         private readonly Configuration\Configuration $configuration,
         private readonly Cache\ExceptionsCache $exceptionsCache,
         private readonly Cache\SolutionsCache $solutionsCache,
+        private readonly Formatter\CliFormatter $cliFormatter,
+        private readonly Formatter\JsonFormatter $jsonFormatter,
         ProblemSolving\Solution\Provider\SolutionProvider $solutionProvider = null,
     ) {
         parent::__construct('solver:solve');
 
         $this->solutionProvider = $solutionProvider ?? $this->configuration->getProvider();
-        $this->cliFormatter = new Formatter\CliFormatter();
-        $this->jsonFormatter = new Formatter\JsonFormatter();
     }
 
     protected function configure(): void
@@ -159,7 +157,7 @@ final class SolveCommand extends Console\Command\Command
 
     private function solveProblem(Throwable $exception, Formatter\Formatter $formatter): ?string
     {
-        $solver = new ProblemSolving\Solver($this->solutionProvider, $formatter);
+        $solver = new ProblemSolving\Solver($this->configuration, $formatter, $this->solutionProvider);
 
         return $solver->solve($exception);
     }

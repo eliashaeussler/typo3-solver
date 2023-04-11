@@ -43,13 +43,10 @@ final class WebFormatter implements Formatter
     private const SCRIPT_PATH = 'Resources/Public/JavaScript/main.js';
     private const STYLESHEET_PATH = 'Resources/Public/Css/main.css';
 
-    private readonly Cache\ExceptionsCache $exceptionsCache;
-    private readonly View\TemplateRenderer $renderer;
-
-    public function __construct()
-    {
-        $this->exceptionsCache = new Cache\ExceptionsCache();
-        $this->renderer = new View\TemplateRenderer();
+    public function __construct(
+        private readonly Cache\ExceptionsCache $exceptionsCache,
+        private readonly View\TemplateRenderer $renderer,
+    ) {
     }
 
     public function format(
@@ -81,6 +78,6 @@ final class WebFormatter implements Formatter
             return (string)@file_get_contents($filePath);
         }
 
-        return '';
+        return ''; // @codeCoverageIgnore
     }
 }

@@ -37,12 +37,11 @@ use function trim;
  */
 final class CliFormatter implements Formatter
 {
-    private readonly View\TemplateRenderer $renderer;
     private ?Console\Output\OutputInterface $output = null;
 
-    public function __construct()
-    {
-        $this->renderer = new View\TemplateRenderer();
+    public function __construct(
+        private readonly View\TemplateRenderer $renderer,
+    ) {
     }
 
     public function format(

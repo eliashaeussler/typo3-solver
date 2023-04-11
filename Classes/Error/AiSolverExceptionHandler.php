@@ -30,6 +30,7 @@ use EliasHaeussler\Typo3Solver\Formatter;
 use EliasHaeussler\Typo3Solver\Middleware;
 use EliasHaeussler\Typo3Solver\ProblemSolving;
 use EliasHaeussler\Typo3Solver\Utility;
+use EliasHaeussler\Typo3Solver\View;
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\RequestOptions;
@@ -49,24 +50,28 @@ final class AiSolverExceptionHandler extends Core\Error\DebugExceptionHandler
     private readonly Formatter\Message\ExceptionFormatter $exceptionFormatter;
     private readonly Cache\ExceptionsCache $exceptionsCache;
     private readonly Cache\SolutionsCache $solutionsCache;
+    private readonly Formatter\CliFormatter $cliFormatter;
     private readonly Formatter\WebFormatter $webFormatter;
 
     public function __construct()
     {
         parent::__construct();
 
+        $renderer = new View\TemplateRenderer();
+
         $this->client = $this->createClient();
         $this->configuration = new Configuration\Configuration();
-        $this->exceptionFormatter = new Formatter\Message\ExceptionFormatter();
+        $this->exceptionFormatter = new Formatter\Message\ExceptionFormatter($renderer);
         $this->exceptionsCache = new Cache\ExceptionsCache();
         $this->solutionsCache = new Cache\SolutionsCache();
-        $this->webFormatter = new Formatter\WebFormatter();
+        $this->cliFormatter = new Formatter\CliFormatter($renderer);
+        $this->webFormatter = new Formatter\WebFormatter($this->exceptionsCache, $renderer);
     }
 
     public function echoExceptionCLI(Throwable $exception): void
     {
         try {
-            $solver = new ProblemSolving\Solver($this->configuration->getProvider(), new Formatter\CliFormatter());
+            $solver = new ProblemSolving\Solver($this->configuration, $this->cliFormatter);
             $solution = $solver->solve($exception);
 
             if ($solution !== null) {
@@ -102,7 +107,7 @@ final class AiSolverExceptionHandler extends Core\Error\DebugExceptionHandler
         }
 
         try {
-            $solver = new ProblemSolving\Solver($solutionProvider, $this->webFormatter);
+            $solver = new ProblemSolving\Solver($this->configuration, $this->webFormatter, $solutionProvider);
             $solution = $solver->solve($throwable);
 
             if ($solution !== null) {

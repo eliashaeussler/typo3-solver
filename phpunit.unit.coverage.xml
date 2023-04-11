@@ -8,6 +8,9 @@
     <php>
         <env name="COLUMNS" value="300" />
     </php>
+    <extensions>
+        <extension class="EliasHaeussler\Typo3Solver\Tests\Hook\ExtensionConfigurationHook" />
+    </extensions>
     <coverage>
         <include>
             <directory suffix=".php">Classes</directory>

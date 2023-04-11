@@ -35,6 +35,8 @@ use Throwable;
  */
 interface SolutionProvider
 {
+    public static function create(): static;
+
     /**
      * @throws Exception\UnableToSolveException
      */

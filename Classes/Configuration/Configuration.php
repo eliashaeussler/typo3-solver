@@ -133,7 +133,7 @@ final class Configuration
             $providerClass = self::DEFAULT_PROVIDER;
         }
 
-        return new $providerClass();
+        return $providerClass::create();
     }
 
     public function getPrompt(): ProblemSolving\Solution\Prompt\Prompt
@@ -147,7 +147,7 @@ final class Configuration
             $promptClass = self::DEFAULT_PROMPT;
         }
 
-        return new $promptClass();
+        return $promptClass::create();
     }
 
     /**

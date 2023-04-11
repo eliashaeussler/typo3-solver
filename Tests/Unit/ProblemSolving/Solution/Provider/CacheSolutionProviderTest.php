@@ -56,6 +56,29 @@ final class CacheSolutionProviderTest extends TestingFramework\Core\Unit\UnitTes
     /**
      * @test
      */
+    public function createThrowsExceptionIfDelegatingProviderIsNotGiven(): void
+    {
+        $this->expectExceptionObject(
+            Src\Exception\MissingSolutionProviderException::forDelegate(),
+        );
+
+        Src\ProblemSolving\Solution\Provider\CacheSolutionProvider::create();
+    }
+
+    /**
+     * @test
+     */
+    public function createReturnsInitializedProviderWithGivenDelegate(): void
+    {
+        self::assertEquals(
+            $this->subject,
+            Src\ProblemSolving\Solution\Provider\CacheSolutionProvider::create($this->provider),
+        );
+    }
+
+    /**
+     * @test
+     */
     public function getSolutionReturnsSolutionFromCache(): void
     {
         $problem = Tests\Unit\DataProvider\ProblemDataProvider::get(solutionProvider: $this->provider);

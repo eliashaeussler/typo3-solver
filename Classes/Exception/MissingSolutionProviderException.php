@@ -21,29 +21,18 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace EliasHaeussler\Typo3Solver\Tests\Unit\Fixtures;
-
-use EliasHaeussler\Typo3Solver\ProblemSolving;
-use Throwable;
+namespace EliasHaeussler\Typo3Solver\Exception;
 
 /**
- * DummyPrompt
+ * MissingSolutionProviderException
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
- * @internal
  */
-final class DummyPrompt implements ProblemSolving\Solution\Prompt\Prompt
+final class MissingSolutionProviderException extends Exception
 {
-    public string $prompt = '';
-
-    public static function create(): static
+    public static function forDelegate(): self
     {
-        return new self();
-    }
-
-    public function generate(Throwable $exception): string
-    {
-        return $this->prompt;
+        return new self('No delegating solution provider given.', 1681199893);
     }
 }

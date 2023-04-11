@@ -21,39 +21,38 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace EliasHaeussler\Typo3Solver\Formatter\Message;
+namespace EliasHaeussler\Typo3Solver\Tests\Hook;
 
-use EliasHaeussler\Typo3Solver\View;
-use Throwable;
-
-use function json_encode;
+use EliasHaeussler\Typo3Solver as Src;
+use PHPUnit\Runner;
 
 /**
- * ExceptionStreamFormatter
+ * ExtensionConfigurationHook
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
-final class ExceptionStreamFormatter
+final class ExtensionConfigurationHook implements Runner\BeforeTestHook
 {
-    public function __construct(
-        private readonly View\TemplateRenderer $renderer,
-    ) {
-    }
-
-    public function format(Throwable $exception): string
+    public function executeBeforeTest(string $test): void
     {
-        $json = [
-            'data' => [
-                'message' => $exception->getMessage(),
-                'code' => $exception->getCode(),
+        /* @phpstan-ignore-next-line */
+        $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS'][Src\Extension::KEY] = [
+            'api' => [
+                'key' => 'foo',
             ],
-            'content' => $this->renderer->render('Message/Exception', [
-                'exception' => $exception,
-                'exceptionClass' => $exception::class,
-            ]),
+            'attributes' => [
+                'maxTokens' => '300',
+                'model' => 'gpt-3.5-turbo-0301',
+                'numberOfCompletions' => '1',
+                'temperature' => '0.5',
+            ],
+            'cache' => [
+                'lifetime' => '86400',
+            ],
+            'ignoredCodes' => '',
+            'prompt' => Src\ProblemSolving\Solution\Prompt\DefaultPrompt::class,
+            'provider' => Src\ProblemSolving\Solution\Provider\OpenAISolutionProvider::class,
         ];
-
-        return json_encode($json, JSON_THROW_ON_ERROR);
     }
 }
