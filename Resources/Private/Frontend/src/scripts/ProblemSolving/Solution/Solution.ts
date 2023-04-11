@@ -50,7 +50,10 @@ export class Solution
    */
   public canBeStreamed(): boolean
   {
-    return 'exceptionId' in this.element.dataset && !this.element.classList.contains(Classes.solutionProvided);
+    return 'exceptionId' in this.element.dataset
+      && 'streamHash' in this.element.dataset
+      && !this.element.classList.contains(Classes.solutionProvided)
+    ;
   }
 
   /**
@@ -63,10 +66,11 @@ export class Solution
       return null;
     }
 
-    // Fetch exception id
+    // Fetch exception id and stream hash
     const exceptionId: string = this.element.dataset.exceptionId as string;
+    const streamHash: string = this.element.dataset.streamHash as string;
 
-    return new SolutionStream(this, exceptionId);
+    return new SolutionStream(this, exceptionId, streamHash);
   }
 
   /**

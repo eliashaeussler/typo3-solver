@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver\Middleware;
 
+use EliasHaeussler\Typo3Solver\Authentication;
 use EliasHaeussler\Typo3Solver\Cache;
 use EliasHaeussler\Typo3Solver\Configuration;
 use EliasHaeussler\Typo3Solver\Exception;
@@ -34,6 +35,8 @@ use Psr\Http\Message;
 use Psr\Http\Server;
 use Throwable;
 use TYPO3\CMS\Core;
+
+use function is_string;
 
 /**
  * SolutionMiddleware
@@ -50,12 +53,10 @@ final class SolutionMiddleware implements Server\MiddlewareInterface
         private readonly Cache\ExceptionsCache $exceptionsCache,
         private readonly Formatter\Message\ExceptionStreamFormatter $exceptionFormatter,
         private readonly Formatter\WebStreamFormatter $webFormatter,
+        private readonly Authentication\StreamAuthentication $authentication,
     ) {
     }
 
-    /**
-     * @throws Exception\EventStreamException
-     */
     public function process(
         Message\ServerRequestInterface $request,
         Server\RequestHandlerInterface $handler,
@@ -65,31 +66,47 @@ final class SolutionMiddleware implements Server\MiddlewareInterface
             return $handler->handle($request);
         }
 
-        // Get exception identifier
-        $id = $request->getQueryParams()['exception'] ?? null;
-
-        // Early return if exception identifier is invalid
-        if (!is_string($id) || ($exception = $this->exceptionsCache->get($id)) === null) {
-            return new Core\Http\Response();
-        }
-
-        // Create solver
-        $solver = new ProblemSolving\Solver($this->configuration, $this->webFormatter);
-
         // Create event stream
-        $eventStream = Http\EventStream::create($id);
+        $eventStream = Http\EventStream::create();
 
-        // Send solution stream
         try {
+            // Get exception identifier and stream hash
+            $hash = $request->getQueryParams()['hash'] ?? null;
+            $id = $request->getQueryParams()['exception'] ?? null;
+
+            // Throw exception if stream hash is invalid
+            if (!is_string($hash)) {
+                throw Exception\AuthenticationFailureException::create();
+            }
+
+            // Authenticate with stream hash
+            $this->authentication->authenticate($hash);
+
+            // Throw exception if exception identifier is invalid
+            if (!is_string($id)) {
+                throw Exception\UnrecoverableExceptionException::forMissingIdentifier();
+            }
+
+            // Restore exception
+            $exception = $this->exceptionsCache->get($id);
+
+            // Throw exception if original exception cannot be restored
+            if ($exception === null) {
+                throw Exception\UnrecoverableExceptionException::create($id);
+            }
+
+            // Create solver
+            $solver = new ProblemSolving\Solver($this->configuration, $this->webFormatter);
+
+            // Send solution stream
             foreach ($solver->solveStreamed($exception) as $solution) {
                 $eventStream->sendMessage('solutionDelta', $solution);
             }
-        } catch (Throwable $exception) {
-            $eventStream->sendMessage('solutionError', $this->exceptionFormatter->format($exception));
+        } catch (Throwable $e) {
+            $eventStream->sendMessage('solutionError', $this->exceptionFormatter->format($e));
+        } finally {
+            $eventStream->close('solutionFinished');
         }
-
-        // Finish event stream
-        $eventStream->close('solutionFinished');
 
         return new Core\Http\Response();
     }

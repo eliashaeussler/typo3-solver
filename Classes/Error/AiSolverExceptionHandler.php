@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver\Error;
 
+use EliasHaeussler\Typo3Solver\Authentication;
 use EliasHaeussler\Typo3Solver\Cache;
 use EliasHaeussler\Typo3Solver\Configuration;
 use EliasHaeussler\Typo3Solver\Exception;
@@ -65,7 +66,11 @@ final class AiSolverExceptionHandler extends Core\Error\DebugExceptionHandler
         $this->exceptionsCache = new Cache\ExceptionsCache();
         $this->solutionsCache = new Cache\SolutionsCache();
         $this->cliFormatter = new Formatter\CliFormatter($renderer);
-        $this->webFormatter = new Formatter\WebFormatter($this->exceptionsCache, $renderer);
+        $this->webFormatter = new Formatter\WebFormatter(
+            $this->exceptionsCache,
+            $renderer,
+            new Authentication\StreamAuthentication(),
+        );
     }
 
     public function echoExceptionCLI(Throwable $exception): void

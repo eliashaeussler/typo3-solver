@@ -21,46 +21,38 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace EliasHaeussler\Typo3Solver\Tests\Functional\Middleware;
+namespace EliasHaeussler\Typo3Solver\Tests\Unit\Exception;
 
-use EliasHaeussler\Typo3Solver\Tests;
+use EliasHaeussler\Typo3Solver as Src;
 use TYPO3\TestingFramework;
 
 /**
- * SolutionMiddlewareTest
+ * UnrecoverableExceptionExceptionTest
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
-final class SolutionMiddlewareTest extends TestingFramework\Core\Functional\FunctionalTestCase
+final class UnrecoverableExceptionExceptionTest extends TestingFramework\Core\Unit\UnitTestCase
 {
-    use Tests\InternalRequestTrait;
-
-    protected array $testExtensionsToLoad = [
-        'typo3conf/ext/solver/Tests/Functional/Fixtures/Extensions/middleware_bridge',
-    ];
-
-    protected bool $initializeDatabase = false;
-
     /**
      * @test
      */
-    public function middlewareIsSkippedOnUnsupportedRequest(): void
+    public function createReturnsExceptionForUnrecoverableException(): void
     {
-        $request = self::createRequest('/tx_solver/solution')->withoutHeader('Accept');
-        $response = $this->executeFrontendSubRequest($request);
+        $actual = Src\Exception\UnrecoverableExceptionException::create('foo');
 
-        self::assertNotSame(200, $response->getStatusCode());
+        self::assertSame('Exception with cache identifier "foo" cannot be restored.', $actual->getMessage());
+        self::assertSame(1681219687, $actual->getCode());
     }
 
     /**
      * @test
      */
-    public function middlewareIsSkippedOnNonMatchingRoute(): void
+    public function forMissingIdentifierReturnsExceptionForMissingIdentifier(): void
     {
-        $request = self::createRequest('/');
-        $response = $this->executeFrontendSubRequest($request);
+        $actual = Src\Exception\UnrecoverableExceptionException::forMissingIdentifier();
 
-        self::assertNotSame(200, $response->getStatusCode());
+        self::assertSame('Unable to restore an exception without identifier.', $actual->getMessage());
+        self::assertSame(1681219703, $actual->getCode());
     }
 }

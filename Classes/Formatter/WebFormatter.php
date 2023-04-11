@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver\Formatter;
 
+use EliasHaeussler\Typo3Solver\Authentication;
 use EliasHaeussler\Typo3Solver\Cache;
 use EliasHaeussler\Typo3Solver\ProblemSolving;
 use EliasHaeussler\Typo3Solver\View;
@@ -46,6 +47,7 @@ final class WebFormatter implements Formatter
     public function __construct(
         private readonly Cache\ExceptionsCache $exceptionsCache,
         private readonly View\TemplateRenderer $renderer,
+        private readonly Authentication\StreamAuthentication $authentication,
     ) {
     }
 
@@ -56,6 +58,7 @@ final class WebFormatter implements Formatter
         return $this->renderer->render('Solution/Web', [
             'solution' => $solution,
             'exceptionCacheIdentifier' => $this->exceptionsCache->getIdentifier($problem->getException()),
+            'streamHash' => $this->authentication->register(),
         ]);
     }
 
