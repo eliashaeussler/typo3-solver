@@ -7706,16 +7706,16 @@
         },
         {
             "name": "sbuerk/typo3-cmscomposerinstallers-testingframework-bridge",
-            "version": "0.1.2",
+            "version": "0.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sbuerk/typo3-cmscomposerinstallers-testingframework-bridge.git",
-                "reference": "0b821f290424d1ba7c7ebadc3d2c8098deed69bd"
+                "reference": "dadf2835b10115574e0e66dc4f0d1b6dd5c5a191"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sbuerk/typo3-cmscomposerinstallers-testingframework-bridge/zipball/0b821f290424d1ba7c7ebadc3d2c8098deed69bd",
-                "reference": "0b821f290424d1ba7c7ebadc3d2c8098deed69bd",
+                "url": "https://api.github.com/repos/sbuerk/typo3-cmscomposerinstallers-testingframework-bridge/zipball/dadf2835b10115574e0e66dc4f0d1b6dd5c5a191",
+                "reference": "dadf2835b10115574e0e66dc4f0d1b6dd5c5a191",
                 "shasum": ""
             },
             "require": {
@@ -7748,13 +7748,14 @@
                     "email": "stefan@buerk.tech"
                 }
             ],
+            "description": "Compatibility patch for extension testing with TYPO3 v12",
             "homepage": "https://github.com/sbuerk/typo3-cmscomposerinstallers-testingframework-bridge",
             "support": {
                 "general": "https://github.com/sbuerk/typo3-cmscomposerinstallers-testingframework-bridge/issues",
                 "issues": "https://github.com/sbuerk/typo3-cmscomposerinstallers-testingframework-bridge/issues",
-                "source": "https://github.com/sbuerk/typo3-cmscomposerinstallers-testingframework-bridge/tree/0.1.2"
+                "source": "https://github.com/sbuerk/typo3-cmscomposerinstallers-testingframework-bridge/tree/0.1.3"
             },
-            "time": "2023-01-13T19:59:15+00:00"
+            "time": "2023-04-11T13:28:11+00:00"
         },
         {
             "name": "sebastian/cli-parser",
