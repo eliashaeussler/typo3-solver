@@ -40,12 +40,16 @@ use function trim;
 final class DefaultPrompt implements Prompt
 {
     private readonly Core\Information\Typo3Version $typo3Version;
-    private readonly View\TemplateRenderer $renderer;
 
-    public function __construct()
-    {
+    public function __construct(
+        private readonly View\TemplateRenderer $renderer,
+    ) {
         $this->typo3Version = new Core\Information\Typo3Version();
-        $this->renderer = new View\TemplateRenderer();
+    }
+
+    public static function create(): static
+    {
+        return new self(new View\TemplateRenderer());
     }
 
     public function generate(Throwable $exception): string

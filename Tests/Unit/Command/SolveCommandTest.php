@@ -51,13 +51,15 @@ final class SolveCommandTest extends TestingFramework\Core\Unit\UnitTestCase
 
         $this->exceptionsCache = new Src\Cache\ExceptionsCache();
         $this->solutionsCache = new Src\Cache\SolutionsCache();
-        $this->provider = new Tests\Unit\Fixtures\DummySolutionProvider();
-        $this->prompt = new Src\ProblemSolving\Solution\Prompt\DefaultPrompt();
+        $this->provider = Tests\Unit\Fixtures\DummySolutionProvider::create();
+        $this->prompt = Src\ProblemSolving\Solution\Prompt\DefaultPrompt::create();
 
         $command = new Src\Command\SolveCommand(
             new Src\Configuration\Configuration(),
             $this->exceptionsCache,
             $this->solutionsCache,
+            new Src\Formatter\CliFormatter(new Src\View\TemplateRenderer()),
+            new Src\Formatter\JsonFormatter(),
             $this->provider,
         );
 

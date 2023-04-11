@@ -19,19 +19,21 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-use EliasHaeussler\Typo3Solver\Cache;
-use EliasHaeussler\Typo3Solver\Command;
-use EliasHaeussler\Typo3Solver\Configuration;
+use EliasHaeussler\Typo3Solver as Src;
+use EliasHaeussler\Typo3Solver\Tests;
 use Symfony\Component\Console;
 
 $application = new Console\Application();
-$application->add(new Command\CacheFlushCommand(new Cache\SolutionsCache()));
-$application->add(new Command\ListModelsCommand());
+$application->add(new Src\Command\CacheFlushCommand(new Src\Cache\SolutionsCache()));
+$application->add(new Src\Command\ListModelsCommand(OpenAI::factory()->make()));
 $application->add(
-    new Command\SolveCommand(
-        new Configuration\Configuration(),
-        new Cache\ExceptionsCache(),
-        new Cache\SolutionsCache(),
+    new Src\Command\SolveCommand(
+        new Src\Configuration\Configuration(),
+        new Src\Cache\ExceptionsCache(),
+        new Src\Cache\SolutionsCache(),
+        new Src\Formatter\CliFormatter(new Src\View\TemplateRenderer()),
+        new Src\Formatter\JsonFormatter(),
+        Tests\Unit\Fixtures\DummySolutionProvider::create(),
     ),
 );
 

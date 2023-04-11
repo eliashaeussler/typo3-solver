@@ -6,6 +6,13 @@ services:
 
   EliasHaeussler\Typo3Solver\:
     resource: '../Classes/*'
+    exclude:
+      - '../Classes/Error/*'
+      - '../Classes/Exception/*'
+      - '../Classes/Extension.php'
+      - '../Classes/Http/EventStream.php'
+      - '../Classes/ProblemSolving/Problem/Problem.php'
+      - '../Classes/ProblemSolving/Solution/Solution.php'
 
   EliasHaeussler\Typo3Solver\Command\CacheFlushCommand:
     tags:
@@ -26,3 +33,6 @@ services:
         command: 'solver:solve'
         description: 'Solve a specific problem'
         schedulable: false
+
+  OpenAI\Client:
+    factory: ['@EliasHaeussler\Typo3Solver\Http\ClientFactory', 'get']

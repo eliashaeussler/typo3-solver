@@ -45,7 +45,7 @@ final class WebStreamFormatterTest extends TestingFramework\Core\Unit\UnitTestCa
     {
         parent::setUp();
 
-        $this->subject = new Src\Formatter\WebStreamFormatter();
+        $this->subject = new Src\Formatter\WebStreamFormatter(new Src\View\TemplateRenderer());
     }
 
     /**

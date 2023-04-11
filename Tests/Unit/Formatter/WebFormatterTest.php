@@ -41,15 +41,15 @@ final class WebFormatterTest extends TestingFramework\Core\Unit\UnitTestCase
 {
     use Tests\DOMDocumentTrait;
 
-    private Src\Formatter\WebFormatter $subject;
     private Src\Cache\ExceptionsCache $exceptionsCache;
+    private Src\Formatter\WebFormatter $subject;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->subject = new Src\Formatter\WebFormatter();
         $this->exceptionsCache = new Src\Cache\ExceptionsCache();
+        $this->subject = new Src\Formatter\WebFormatter($this->exceptionsCache, new Src\View\TemplateRenderer());
     }
 
     /**

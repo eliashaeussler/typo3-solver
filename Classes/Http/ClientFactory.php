@@ -21,29 +21,39 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace EliasHaeussler\Typo3Solver\Tests\Unit\Fixtures;
+namespace EliasHaeussler\Typo3Solver\Http;
 
-use EliasHaeussler\Typo3Solver\ProblemSolving;
-use Throwable;
+use EliasHaeussler\Typo3Solver\Configuration;
+use EliasHaeussler\Typo3Solver\Exception;
+use OpenAI;
+use OpenAI\Client;
+
+use function trim;
 
 /**
- * DummyPrompt
+ * ClientFactory
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
- * @internal
  */
-final class DummyPrompt implements ProblemSolving\Solution\Prompt\Prompt
+final class ClientFactory
 {
-    public string $prompt = '';
-
-    public static function create(): static
-    {
-        return new self();
+    public function __construct(
+        private readonly Configuration\Configuration $configuration,
+    ) {
     }
 
-    public function generate(Throwable $exception): string
+    /**
+     * @throws Exception\ApiKeyMissingException
+     */
+    public function get(): Client
     {
-        return $this->prompt;
+        $apiKey = $this->configuration->getApiKey();
+
+        if ($apiKey === null || trim($apiKey) === '') {
+            throw Exception\ApiKeyMissingException::create();
+        }
+
+        return OpenAI::client($apiKey);
     }
 }

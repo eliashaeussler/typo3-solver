@@ -44,7 +44,7 @@ final class CliFormatterTest extends TestingFramework\Core\Unit\UnitTestCase
     {
         parent::setUp();
 
-        $this->subject = new Src\Formatter\CliFormatter();
+        $this->subject = new Src\Formatter\CliFormatter(new Src\View\TemplateRenderer());
     }
 
     /**

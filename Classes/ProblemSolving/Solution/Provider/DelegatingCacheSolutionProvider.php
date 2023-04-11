@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\ProblemSolving\Solution\Provider;
 
 use EliasHaeussler\Typo3Solver\Cache;
+use EliasHaeussler\Typo3Solver\Exception;
 use EliasHaeussler\Typo3Solver\ProblemSolving;
 use OpenAI\Responses;
 use Throwable;
@@ -42,6 +43,18 @@ final class DelegatingCacheSolutionProvider implements SolutionProvider
         private readonly Cache\SolutionsCache $cache,
         private readonly SolutionProvider $delegate,
     ) {
+    }
+
+    /**
+     * @throws Exception\MissingSolutionProviderException
+     */
+    public static function create(SolutionProvider $delegate = null): static
+    {
+        if ($delegate === null) {
+            throw Exception\MissingSolutionProviderException::forDelegate();
+        }
+
+        return new self(new Cache\SolutionsCache(), $delegate);
     }
 
     public function getSolution(ProblemSolving\Problem\Problem $problem): ProblemSolving\Solution\Solution

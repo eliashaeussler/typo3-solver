@@ -33,5 +33,7 @@ use Throwable;
  */
 interface Prompt
 {
+    public static function create(): static;
+
     public function generate(Throwable $exception): string;
 }

@@ -44,6 +44,7 @@ use function json_encode;
 final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTestCase
 {
     private Handler\MockHandler $mockHandler;
+    private OpenAI\Client $client;
     private Src\ProblemSolving\Solution\Provider\OpenAISolutionProvider $subject;
     private Src\ProblemSolving\Problem\Problem $problem;
 
@@ -52,18 +53,27 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
         parent::setUp();
 
         $this->mockHandler = new Handler\MockHandler();
-
-        $client = OpenAI::factory()
-            ->withHttpClient(new Client(['handler' => $this->mockHandler]))
-            ->make()
-        ;
-
-        $this->subject = new Src\ProblemSolving\Solution\Provider\OpenAISolutionProvider($client);
+        $this->client = OpenAI::factory()->withHttpClient(new Client(['handler' => $this->mockHandler]))->make();
+        $this->subject = new Src\ProblemSolving\Solution\Provider\OpenAISolutionProvider(
+            new Src\Configuration\Configuration(),
+            $this->client,
+        );
         $this->problem = Tests\Unit\DataProvider\ProblemDataProvider::get(solutionProvider: $this->subject);
 
         // Configure API key
         /* @phpstan-ignore-next-line */
         $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS'][Src\Extension::KEY]['api']['key'] = 'foo';
+    }
+
+    /**
+     * @test
+     */
+    public function createReturnsInitializedProvider(): void
+    {
+        self::assertEquals(
+            $this->subject,
+            Src\ProblemSolving\Solution\Provider\OpenAISolutionProvider::create($this->client),
+        );
     }
 
     /**

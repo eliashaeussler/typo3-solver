@@ -41,11 +41,9 @@ use function json_encode;
  */
 final class WebStreamFormatter implements Formatter
 {
-    private readonly View\TemplateRenderer $renderer;
-
-    public function __construct()
-    {
-        $this->renderer = new View\TemplateRenderer();
+    public function __construct(
+        private readonly View\TemplateRenderer $renderer,
+    ) {
     }
 
     public function format(

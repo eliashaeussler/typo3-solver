@@ -47,7 +47,11 @@ final class SolverTest extends TestingFramework\Core\Unit\UnitTestCase
         parent::setUp();
 
         $this->provider = new Tests\Unit\Fixtures\DummyStreamedSolutionProvider();
-        $this->subject = new Src\ProblemSolving\Solver($this->provider, new Src\Formatter\JsonFormatter());
+        $this->subject = new Src\ProblemSolving\Solver(
+            new Src\Configuration\Configuration(),
+            new Src\Formatter\JsonFormatter(),
+            $this->provider,
+        );
 
         (new Src\Cache\SolutionsCache())->flush();
     }

@@ -23,8 +23,8 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver\Command;
 
-use EliasHaeussler\Typo3Solver\Configuration;
-use OpenAI;
+use OpenAI\Client;
+use OpenAI\Responses;
 use Symfony\Component\Console;
 
 use function array_map;
@@ -38,13 +38,10 @@ use function sort;
  */
 final class ListModelsCommand extends Console\Command\Command
 {
-    private readonly OpenAI\Client $client;
-
-    public function __construct()
-    {
+    public function __construct(
+        private readonly Client $client,
+    ) {
         parent::__construct('solver:list-models');
-
-        $this->client = OpenAI::client((new Configuration\Configuration())->getApiKey() ?? '');
     }
 
     protected function execute(Console\Input\InputInterface $input, Console\Output\OutputInterface $output): int
@@ -52,7 +49,7 @@ final class ListModelsCommand extends Console\Command\Command
         $io = new Console\Style\SymfonyStyle($input, $output);
 
         $models = array_map(
-            static fn (OpenAI\Responses\Models\RetrieveResponse $response): string => $response->id,
+            static fn (Responses\Models\RetrieveResponse $response): string => $response->id,
             $this->client->models()->list()->data,
         );
 

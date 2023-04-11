@@ -39,14 +39,16 @@ use Traversable;
 final class Solver
 {
     private readonly Solution\Provider\CacheSolutionProvider $provider;
-    private readonly Configuration\Configuration $configuration;
 
     public function __construct(
-        Solution\Provider\SolutionProvider $solutionProvider,
+        private readonly Configuration\Configuration $configuration,
         private readonly Formatter\Formatter $formatter,
+        Solution\Provider\SolutionProvider $solutionProvider = null,
     ) {
-        $this->provider = new Solution\Provider\CacheSolutionProvider(new Cache\SolutionsCache(), $solutionProvider);
-        $this->configuration = new Configuration\Configuration();
+        $this->provider = new Solution\Provider\CacheSolutionProvider(
+            new Cache\SolutionsCache(),
+            $solutionProvider ?? $this->configuration->getProvider(),
+        );
     }
 
     /**

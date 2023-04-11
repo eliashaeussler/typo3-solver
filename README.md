@@ -283,13 +283,24 @@ The used OpenAI component changed from text completion to chat completion.
 * Migrate the used model in your [extension configuration](#attributesmodel).
   The new default model is `gpt-3.5-turbo-0301`.
 
-#### Solution Stream
+#### Solution stream
 
 Solutions are now streamed to exception pages.
 
 * Migrate custom solution providers to implement
   [`ProblemSolving\Solution\Provider\StreamedSolutionProvider`][21].
 * Note the modified DOM structure for solutions on exception pages.
+
+#### Dependency injection
+
+Several classes are now ready for dependency injection.
+
+* Migrate custom classes to use dependency injection.
+* Implement new static factory method `create()` within custom solution
+  providers and prompts.
+* Make sure custom classes can be used without dependency injection as
+  well, since exception handling may happen on a very low level where DI
+  is not available (yet).
 
 ## 🧑‍💻 Contributing
 
