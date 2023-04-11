@@ -28,6 +28,8 @@ use EliasHaeussler\Typo3Solver\Tests;
 use TYPO3\TestingFramework;
 
 use function dirname;
+use function end;
+use function file;
 use function strlen;
 use function substr;
 
@@ -49,7 +51,11 @@ final class WebFormatterTest extends TestingFramework\Core\Unit\UnitTestCase
         parent::setUp();
 
         $this->exceptionsCache = new Src\Cache\ExceptionsCache();
-        $this->subject = new Src\Formatter\WebFormatter($this->exceptionsCache, new Src\View\TemplateRenderer());
+        $this->subject = new Src\Formatter\WebFormatter(
+            $this->exceptionsCache,
+            new Src\View\TemplateRenderer(),
+            new Src\Authentication\StreamAuthentication(),
+        );
     }
 
     /**
@@ -64,8 +70,14 @@ final class WebFormatterTest extends TestingFramework\Core\Unit\UnitTestCase
         $actual = $this->subject->format($problem, $solution);
         $xpath = self::createDOMXPath($actual);
 
+        // Get last stream hash
+        $streamHash = $this->getLastGeneratedStreamHash();
+
         // Exception identifier
         self::assertNodeContentEqualsString($exceptionIdentifier, '//form/@data-exception-id', $xpath);
+
+        // Stream hash
+        self::assertNodeContentEqualsString($streamHash, '//form/@data-stream-hash', $xpath);
 
         // Number of choices
         self::assertNodeContentEqualsString('3', '//form/div[1]/div[1]/div[1]/h3[1]/span[1]/span[2]/text()', $xpath);
@@ -121,5 +133,18 @@ final class WebFormatterTest extends TestingFramework\Core\Unit\UnitTestCase
             dirname(__DIR__, 3) . '/Resources/Public/JavaScript/main.js',
             substr($this->subject->getAdditionalScripts(), strlen('<script>'), -strlen('</script>')),
         );
+    }
+
+    private function getLastGeneratedStreamHash(): string
+    {
+        $registeredHashes = file(dirname(__DIR__, 3) . '/var/transient/tx_solver/stream_auth.txt');
+
+        self::assertIsArray($registeredHashes);
+
+        $lastHash = end($registeredHashes);
+
+        self::assertIsString($lastHash);
+
+        return $lastHash;
     }
 }

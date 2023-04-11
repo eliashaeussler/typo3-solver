@@ -43,6 +43,7 @@ export class SolutionStream
   constructor(
     private readonly solution: Solution,
     private readonly exceptionId: string,
+    private readonly streamHash: string,
   ) {
     this.solutionContainer = this.solution.element.querySelector(Selectors.solutionContainer) as HTMLElement;
     this.solutionModel = this.solution.element.querySelector(Selectors.solutionModel) as HTMLElement;
@@ -61,8 +62,14 @@ export class SolutionStream
       return;
     }
 
+    // Build URL
+    const url = new URL(window.location.href);
+    url.pathname = '/tx_solver/solution';
+    url.searchParams.set('exception', this.exceptionId);
+    url.searchParams.set('hash', this.streamHash);
+
     // Start event source
-    this.eventSource = new EventSource('/tx_solver/solution?exception=' + this.exceptionId);
+    this.eventSource = new EventSource(url.toString());
     this.solution.element.classList.add(Classes.solutionStreaming);
 
     // Handle caret

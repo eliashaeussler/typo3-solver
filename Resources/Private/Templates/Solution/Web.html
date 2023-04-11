@@ -3,6 +3,7 @@
 
 <form class="solution {f:if(condition: solution.choices.0.finishReason, then: 'solution-provided')}"
       data-exception-id="{exceptionCacheIdentifier}"
+      data-stream-hash="{streamHash}"
 >
     <f:render partial="Solution/Head" arguments="{solution: solution}" />
 
