@@ -40,7 +40,7 @@ use function var_export;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  *
- * @phpstan-import-type SolutionArray from ProblemSolving\Solution\Solution
+ * @phpstan-import-type SolutionArray from Serializer\SolutionSerializer
  */
 final class SolutionsCache
 {
@@ -60,7 +60,7 @@ final class SolutionsCache
 
     public function get(ProblemSolving\Problem\Problem $problem): ?ProblemSolving\Solution\Solution
     {
-        /** @phpstan-var array{solutions: array<string, array{solution: SolutionArray, createdAt: int, validUntil: int}>} $cacheData */
+        /** @phpstan-var array{solutions: array<string, SolutionArray>} $cacheData */
         $cacheData = require $this->cachePath;
         $entryIdentifier = $this->calculateCacheIdentifier($problem);
 
