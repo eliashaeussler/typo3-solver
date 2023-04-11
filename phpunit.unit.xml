@@ -9,7 +9,7 @@
         <env name="COLUMNS" value="300" />
     </php>
     <extensions>
-        <extension class="EliasHaeussler\Typo3Solver\Tests\Hook\ExtensionConfigurationHook" />
+        <extension class="EliasHaeussler\Typo3Solver\Tests\Hooks\ExtensionConfigurationHook" />
     </extensions>
     <coverage>
         <include>

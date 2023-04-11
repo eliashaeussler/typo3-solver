@@ -21,7 +21,7 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace EliasHaeussler\Typo3Solver\Tests\Hook;
+namespace EliasHaeussler\Typo3Solver\Tests\Hooks;
 
 use EliasHaeussler\Typo3Solver as Src;
 use PHPUnit\Runner;
