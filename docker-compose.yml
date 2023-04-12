@@ -1,0 +1,9 @@
+version: '3.6'
+
+services:
+  docs:
+    image: ghcr.io/t3docs/render-documentation:develop
+    command: makehtml
+    volumes:
+      - .:/PROJECT:ro
+      - .build/docs:/RESULT

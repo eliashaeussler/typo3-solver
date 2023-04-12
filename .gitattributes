@@ -1,6 +1,7 @@
 *                                   text=auto
 /.ddev                              export-ignore
 /.github                            export-ignore
+/Documentation                      export-ignore
 /Resources/Private/Libs             export-ignore
 /Tests                              export-ignore
 /.editorconfig                      export-ignore
@@ -13,6 +14,7 @@
 /CODEOWNERS                         export-ignore
 /composer.lock                      export-ignore
 /CONTRIBUTING.md                    export-ignore
+/docker-compose.yml                 export-ignore
 /ext_localconf.php                  export-ignore
 /packaging_exclude.php              export-ignore
 /phpstan.neon                       export-ignore
