@@ -47,7 +47,7 @@ The extension icon ("lightbulb-on") is a modified version of the original
 [`actions-exclamation-triangle-alt`][6] and [`spinner-circle`][7] from
 TYPO3 core are used. All icons are originally licensed under [MIT License][8].
 
-This project is highly inspired by the article [`Fix your Laravel exceptions with AI`][9]
+This project is highly inspired by the article [*Fix your Laravel exceptions with AI*][9]
 by [Marcel Pociot][10].
 
 In addition, I'd like to thank [Nuno Maduro][11] and all contributors
