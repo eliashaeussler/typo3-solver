@@ -25,7 +25,6 @@ namespace EliasHaeussler\Typo3Solver\ViewHelpers;
 
 use Closure;
 use Parsedown;
-
 use TYPO3Fluid\Fluid;
 
 use function preg_replace;
