@@ -73,6 +73,14 @@
 		}
 	},
 	"scripts": {
+		"docs": [
+			"@docs:cleanup",
+			"@docs:build",
+			"@docs:open"
+		],
+		"docs:build": "docker-compose run --rm docs",
+		"docs:cleanup": "rm -rf .build/docs",
+		"docs:open": "open .build/docs/Result/project/0.0.0/Index.html",
 		"fix": [
 			"@fix:composer",
 			"@fix:editorconfig",
