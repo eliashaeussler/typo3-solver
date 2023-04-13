@@ -11,6 +11,12 @@
 			"role": "Maintainer"
 		}
 	],
+	"support": {
+		"issues": "https://github.com/eliashaeussler/typo3-solver/issues",
+		"chat": "https://typo3.slack.com/archives/C04Q3440HS6",
+		"source": "https://github.com/eliashaeussler/typo3-solver",
+		"docs": "https://docs.typo3.org/p/eliashaeussler/typo3-solver/main/en-us/Index.html"
+	},
 	"require": {
 		"php": "~8.1.0 || ~8.2.0",
 		"ext-mbstring": "*",
