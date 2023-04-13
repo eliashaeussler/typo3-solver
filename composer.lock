@@ -6862,16 +6862,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.10.11",
+            "version": "1.10.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "8aa62e6ea8b58ffb650e02940e55a788cbc3fe21"
+                "reference": "f07bf8c6980b81bf9e49d44bd0caf2e737614a70"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/8aa62e6ea8b58ffb650e02940e55a788cbc3fe21",
-                "reference": "8aa62e6ea8b58ffb650e02940e55a788cbc3fe21",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/f07bf8c6980b81bf9e49d44bd0caf2e737614a70",
+                "reference": "f07bf8c6980b81bf9e49d44bd0caf2e737614a70",
                 "shasum": ""
             },
             "require": {
@@ -6920,7 +6920,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-04-04T19:17:42+00:00"
+            "time": "2023-04-12T19:29:52+00:00"
         },
         {
             "name": "phpstan/phpstan-deprecation-rules",
@@ -7636,16 +7636,16 @@
         },
         {
             "name": "saschaegerer/phpstan-typo3",
-            "version": "1.8.3",
+            "version": "1.8.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sascha-egerer/phpstan-typo3.git",
-                "reference": "4f3a47b57d25ba50063d2288c558bd26934cbab9"
+                "reference": "52bdb11bca788236dad7376e5b4af01b08a3aede"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sascha-egerer/phpstan-typo3/zipball/4f3a47b57d25ba50063d2288c558bd26934cbab9",
-                "reference": "4f3a47b57d25ba50063d2288c558bd26934cbab9",
+                "url": "https://api.github.com/repos/sascha-egerer/phpstan-typo3/zipball/52bdb11bca788236dad7376e5b4af01b08a3aede",
+                "reference": "52bdb11bca788236dad7376e5b4af01b08a3aede",
                 "shasum": ""
             },
             "require": {
@@ -7654,8 +7654,8 @@
                 "nikic/php-parser": "^4.15.1",
                 "php": "^7.2 || ^8.0",
                 "phpstan/phpstan": "^1.8.9",
-                "typo3/cms-core": "^10.4 || ^11.5 || ^12.2",
-                "typo3/cms-extbase": "^10.4 || ^11.5 || ^12.2"
+                "typo3/cms-core": "^10.4 || ^11.5 || ^12.3",
+                "typo3/cms-extbase": "^10.4 || ^11.5 || ^12.3"
             },
             "require-dev": {
                 "consistence-community/coding-standard": "^3.10.1",
@@ -7690,7 +7690,7 @@
             "description": "TYPO3 CMS class reflection extension for PHPStan",
             "support": {
                 "issues": "https://github.com/sascha-egerer/phpstan-typo3/issues",
-                "source": "https://github.com/sascha-egerer/phpstan-typo3/tree/1.8.3"
+                "source": "https://github.com/sascha-egerer/phpstan-typo3/tree/1.8.4"
             },
             "funding": [
                 {
@@ -7702,7 +7702,7 @@
                     "type": "liberapay"
                 }
             ],
-            "time": "2023-03-19T20:25:37+00:00"
+            "time": "2023-04-13T09:55:45+00:00"
         },
         {
             "name": "sbuerk/typo3-cmscomposerinstallers-testingframework-bridge",
