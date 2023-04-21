@@ -45,6 +45,11 @@ final class ListModelsCommandTest extends TestingFramework\Core\Unit\UnitTestCas
     private Handler\MockHandler $mockHandler;
     private Console\Tester\CommandTester $commandTester;
 
+    /**
+     * @var array<string, mixed>
+     */
+    private array $listResponse;
+
     protected function setUp(): void
     {
         $this->mockHandler = new Handler\MockHandler();
@@ -54,6 +59,40 @@ final class ListModelsCommandTest extends TestingFramework\Core\Unit\UnitTestCas
         );
 
         $this->commandTester = new Console\Tester\CommandTester($command);
+        $this->listResponse = $this->createListResponse();
+    }
+
+    /**
+     * @test
+     */
+    public function executeListsAllGPTModels(): void
+    {
+        $response = new Psr7\Response(headers: ['Content-Type' => 'application/json']);
+        $response->getBody()->write(json_encode($this->listResponse, JSON_THROW_ON_ERROR));
+        $response->getBody()->rewind();
+
+        $this->mockHandler->append($response);
+
+        $this->commandTester->execute([]);
+
+        self::assertStringContainsString(
+            'Available GPT models',
+            $this->commandTester->getDisplay(),
+        );
+        self::assertStringNotContainsString(
+            implode(PHP_EOL, [
+                ' * baz-1 (created at 01/01/2022)',
+                ' * foo-1 (created at 01/01/2023)',
+            ]),
+            $this->commandTester->getDisplay(),
+        );
+        self::assertStringContainsString(
+            implode(PHP_EOL, [
+                ' * gpt-3.5 (created at 28/02/2023)',
+                ' * gpt-3.5-turbo-0301 (created at 01/03/2023)',
+            ]),
+            $this->commandTester->getDisplay(),
+        );
     }
 
     /**
@@ -61,9 +100,42 @@ final class ListModelsCommandTest extends TestingFramework\Core\Unit\UnitTestCas
      */
     public function executeListsAllAvailableModels(): void
     {
+        $response = new Psr7\Response(headers: ['Content-Type' => 'application/json']);
+        $response->getBody()->write(json_encode($this->listResponse, JSON_THROW_ON_ERROR));
+        $response->getBody()->rewind();
+
+        $this->mockHandler->append($response);
+
+        $this->commandTester->execute([
+            '--all' => true,
+        ]);
+
+        self::assertStringContainsString(
+            'Available OpenAI models',
+            $this->commandTester->getDisplay(),
+        );
+        self::assertStringContainsString(
+            implode(PHP_EOL, [
+                ' * baz-1 (created at 01/01/2022)',
+                ' * foo-1 (created at 01/01/2023)',
+                ' * gpt-3.5 (created at 28/02/2023)',
+                ' * gpt-3.5-turbo-0301 (created at 01/03/2023)',
+            ]),
+            $this->commandTester->getDisplay(),
+        );
+        self::assertStringContainsString(
+            'Only GPT models can be used with this extension.',
+            $this->commandTester->getDisplay(),
+        );
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function createListResponse(): array
+    {
         $defaults = [
             'object' => 'object',
-            'created' => 123,
             'owned_by' => 'owned_by',
             'permission' => [
                 [
@@ -85,42 +157,34 @@ final class ListModelsCommandTest extends TestingFramework\Core\Unit\UnitTestCas
             'parent' => 'parent',
         ];
 
-        $response = new Psr7\Response(headers: ['Content-Type' => 'application/json']);
-        $response->getBody()->write(json_encode([
+        return [
             'object' => 'object',
             'data' => [
                 [
                     'id' => 'foo-1',
+                    // 01/01/2023
+                    'created' => 1672574400,
                     ...$defaults,
                 ],
                 [
-                    'id' => 'foo-2',
+                    'id' => 'gpt-3.5',
+                    // 28/02/2023
+                    'created' => 1677585600,
                     ...$defaults,
                 ],
                 [
-                    'id' => 'baz-2',
+                    'id' => 'gpt-3.5-turbo-0301',
+                    // 01/03/2023
+                    'created' => 1677672000,
                     ...$defaults,
                 ],
                 [
                     'id' => 'baz-1',
+                    // 01/01/2022
+                    'created' => 1641038400,
                     ...$defaults,
                 ],
             ],
-        ], JSON_THROW_ON_ERROR));
-        $response->getBody()->rewind();
-
-        $this->mockHandler->append($response);
-
-        $this->commandTester->execute([]);
-
-        self::assertStringContainsString(
-            implode(PHP_EOL, [
-                ' * baz-1',
-                ' * baz-2',
-                ' * foo-1',
-                ' * foo-2',
-            ]),
-            $this->commandTester->getDisplay(),
-        );
+        ];
     }
 }

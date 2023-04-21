@@ -27,8 +27,13 @@ use OpenAI\Client;
 use OpenAI\Responses;
 use Symfony\Component\Console;
 
+use function array_filter;
 use function array_map;
+use function date;
 use function sort;
+use function sprintf;
+use function str_starts_with;
+use function strtolower;
 
 /**
  * ListModelsCommand
@@ -44,19 +49,58 @@ final class ListModelsCommand extends Console\Command\Command
         parent::__construct('solver:list-models');
     }
 
+    protected function configure(): void
+    {
+        $this->addOption(
+            'all',
+            'a',
+            Console\Input\InputOption::VALUE_NONE,
+            'List all available models, even those which cannot be used',
+        );
+    }
+
     protected function execute(Console\Input\InputInterface $input, Console\Output\OutputInterface $output): int
     {
         $io = new Console\Style\SymfonyStyle($input, $output);
+        $listAll = $input->getOption('all');
 
+        // Retrieve all available models
+        $modelListResponse = $this->client->models()->list()->data;
+
+        if ($listAll) {
+            $io->title('Available OpenAI models');
+        } else {
+            $io->title('Available GPT models');
+
+            // Filter by GPT models
+            $modelListResponse = array_filter($modelListResponse, $this->isGPTModel(...));
+        }
+
+        // Map responses to model IDs
         $models = array_map(
-            static fn (Responses\Models\RetrieveResponse $response): string => $response->id,
-            $this->client->models()->list()->data,
+            $this->decorateModel(...),
+            $modelListResponse,
         );
 
         sort($models);
 
         $io->listing($models);
 
+        if ($listAll) {
+            $io->writeln('💡 <comment>Only GPT models can be used with this extension.</comment>');
+            $io->newLine();
+        }
+
         return self::SUCCESS;
+    }
+
+    private function isGPTModel(Responses\Models\RetrieveResponse $response): bool
+    {
+        return str_starts_with(strtolower($response->id), 'gpt-');
+    }
+
+    private function decorateModel(Responses\Models\RetrieveResponse $response): string
+    {
+        return sprintf('%s <fg=gray>(created at %s)</>', $response->id, date('d/m/Y', $response->created));
     }
 }
