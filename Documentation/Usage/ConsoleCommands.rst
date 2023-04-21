@@ -265,8 +265,24 @@ The following input parameters are available:
 `solver:list-models`
 ====================
 
-The command `solver:list-models` can be used to list all available
-models for the configured OpenAI :ref:`API key <api-key>`.
+The command `solver:list-models` can be used to list available OpenAI
+models for the configured OpenAI :ref:`API key <api-key>`. By default,
+the command lists only GPT models since all other models cannot be
+used with the extension.
+
+..  tabs::
+
+    ..  group-tab:: Composer-based installation
+
+        ..  code-block:: bash
+
+            vendor/bin/typo3 solver:list-models [options]
+
+    ..  group-tab:: Legacy installation
+
+        ..  code-block:: bash
+
+            typo3/sysext/core/bin/typo3 solver:list-models [options]
 
 ..  note::
 
@@ -281,19 +297,37 @@ models for the configured OpenAI :ref:`API key <api-key>`.
 
     This command is not :ref:`schedulable <t3coreapi:schedulable>`.
 
-..  tabs::
+The following input parameters are available:
 
-    ..  group-tab:: Composer-based installation
+..  _solver-list-models-all:
 
-        ..  code-block:: bash
+..  confval:: -a|--all
 
-            vendor/bin/typo3 solver:list-models
+    :Required: false
+    :type: boolean
+    :Default: false
 
-    ..  group-tab:: Legacy installation
+    List all available models rather than only GPT models.
 
-        ..  code-block:: bash
+    ..  note::
 
-            typo3/sysext/core/bin/typo3 solver:list-models
+        Only GPT models can be used with the extension.
+
+    Example:
+
+    ..  tabs::
+
+        ..  group-tab:: Composer-based installation
+
+            ..  code-block:: bash
+
+                vendor/bin/typo3 solver:list-models --all
+
+        ..  group-tab:: Legacy installation
+
+            ..  code-block:: bash
+
+                typo3/sysext/core/bin/typo3 solver:list-models --all
 
 ..  _solver-cache-flush:
 

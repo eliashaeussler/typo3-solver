@@ -24,7 +24,7 @@ services:
     tags:
       - name: console.command
         command: 'solver:list-models'
-        description: 'List all available models'
+        description: 'List available OpenAI models'
         schedulable: false
 
   EliasHaeussler\Typo3Solver\Command\SolveCommand:
