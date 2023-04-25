@@ -47,7 +47,7 @@
 		"sbuerk/typo3-cmscomposerinstallers-testingframework-bridge": "^0.1.2",
 		"symfony/dependency-injection": "^5.4 || ^6.0",
 		"typo3/coding-standards": "^0.7.1",
-		"typo3/testing-framework": "^7.0@dev"
+		"typo3/testing-framework": "^8.0.0@dev"
 	},
 	"autoload": {
 		"psr-4": {
