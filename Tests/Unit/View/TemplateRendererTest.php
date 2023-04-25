@@ -68,7 +68,7 @@ Here's the code snippet with line numbers where the exception occurred:
 Hello world!
 
 Please note that this TYPO3 CMS installation is in composer mode and using
-version 12.3.0. The PHP version being used is 8.2.4.
+version 12.4.0. The PHP version being used is 8.2.4.
 
 Please provide a solution that is efficient, effective, and robust, enabling the
 TYPO3 CMS installation to function smoothly and without errors. Your response
@@ -84,7 +84,7 @@ TEMPLATE;
             'exceptionClass' => $exception::class,
             'snippet' => 'Hello world!',
             'mode' => 'composer',
-            'typo3Version' => '12.3.0',
+            'typo3Version' => '12.4.0',
             'phpVersion' => '8.2.4',
         ]);
 
