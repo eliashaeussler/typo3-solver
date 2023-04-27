@@ -7,7 +7,5 @@ parameters:
 		- Classes
 		- Configuration
 		- Tests
-	bootstrapFiles:
-		- Tests/Build/phpstan-bootstrap.php
 	symfony:
 		consoleApplicationLoader: Tests/Build/console-application.php
