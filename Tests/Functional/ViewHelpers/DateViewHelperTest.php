@@ -42,7 +42,7 @@ final class DateViewHelperTest extends TestingFramework\Core\Functional\Function
     use Tests\ViewTrait;
 
     protected array $testExtensionsToLoad = [
-        'typo3conf/ext/solver',
+        'solver',
     ];
 
     protected bool $initializeDatabase = false;

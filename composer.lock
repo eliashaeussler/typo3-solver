@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "84157ee92b1dc291895eeb750a6be515",
+    "content-hash": "38fcc09936f1a412007038fa336405de",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -5656,6 +5656,27 @@
                 "source": "https://github.com/eliashaeussler/rector-config/tree/1.1.1"
             },
             "time": "2023-04-09T15:26:54+00:00"
+        },
+        {
+            "name": "eliashaeussler/typo3-solver-middleware-bridge",
+            "version": "1.0.0",
+            "dist": {
+                "type": "path",
+                "url": "Tests/Functional/Fixtures/Extensions/middleware_bridge",
+                "reference": "8e26cd2fcf6852b5f7446e3667565cac52b77ae3"
+            },
+            "require": {
+                "typo3/cms-core": "*@dev"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "middleware_bridge"
+                }
+            },
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "ergebnis/composer-normalize",
