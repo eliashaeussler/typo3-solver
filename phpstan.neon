@@ -8,6 +8,6 @@ parameters:
 		- Configuration
 		- Tests
 	bootstrapFiles:
-		- .build/vendor/typo3/testing-framework/Resources/Core/Build/UnitTestsBootstrap.php
+		- Tests/Build/phpstan-bootstrap.php
 	symfony:
 		consoleApplicationLoader: Tests/Build/console-application.php

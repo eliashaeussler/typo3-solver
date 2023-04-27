@@ -39,6 +39,8 @@ final class ClientFactoryTest extends TestingFramework\Core\Unit\UnitTestCase
 
     protected function setUp(): void
     {
+        parent::setUp();
+
         $this->provider = new Src\Tests\Unit\Fixtures\DummyConfigurationProvider();
         $this->subject = new Src\Http\ClientFactory(new Src\Configuration\Configuration($this->provider));
     }

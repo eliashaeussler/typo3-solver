@@ -44,6 +44,8 @@ final class StreamAuthenticationTest extends TestingFramework\Core\Unit\UnitTest
 
     protected function setUp(): void
     {
+        parent::setUp();
+
         $this->filename = dirname(__DIR__, 3) . '/var/transient/tx_solver/stream_auth.txt';
         $this->filesystem = new Filesystem\Filesystem();
         $this->filesystem->remove($this->filename);

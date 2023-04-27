@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9122dac24f3ba1c48242e960bfbb0277",
+    "content-hash": "38fcc09936f1a412007038fa336405de",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -5658,6 +5658,27 @@
             "time": "2023-04-09T15:26:54+00:00"
         },
         {
+            "name": "eliashaeussler/typo3-solver-middleware-bridge",
+            "version": "1.0.0",
+            "dist": {
+                "type": "path",
+                "url": "Tests/Functional/Fixtures/Extensions/middleware_bridge",
+                "reference": "8e26cd2fcf6852b5f7446e3667565cac52b77ae3"
+            },
+            "require": {
+                "typo3/cms-core": "*@dev"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "middleware_bridge"
+                }
+            },
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
             "name": "ergebnis/composer-normalize",
             "version": "2.30.2",
             "source": {
@@ -6321,57 +6342,6 @@
                 }
             ],
             "time": "2020-07-06T04:49:32+00:00"
-        },
-        {
-            "name": "mikey179/vfsstream",
-            "version": "v1.6.11",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/bovigo/vfsStream.git",
-                "reference": "17d16a85e6c26ce1f3e2fa9ceeacdc2855db1e9f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/bovigo/vfsStream/zipball/17d16a85e6c26ce1f3e2fa9ceeacdc2855db1e9f",
-                "reference": "17d16a85e6c26ce1f3e2fa9ceeacdc2855db1e9f",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.5|^5.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.6.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "org\\bovigo\\vfs\\": "src/main/php"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Frank Kleine",
-                    "homepage": "http://frankkleine.de/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Virtual file system to mock the real file system in unit tests.",
-            "homepage": "http://vfs.bovigo.org/",
-            "support": {
-                "issues": "https://github.com/bovigo/vfsStream/issues",
-                "source": "https://github.com/bovigo/vfsStream/tree/master",
-                "wiki": "https://github.com/bovigo/vfsStream/wiki"
-            },
-            "time": "2022-02-23T02:02:42+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -7704,59 +7674,6 @@
                 }
             ],
             "time": "2023-04-13T09:55:45+00:00"
-        },
-        {
-            "name": "sbuerk/typo3-cmscomposerinstallers-testingframework-bridge",
-            "version": "0.1.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sbuerk/typo3-cmscomposerinstallers-testingframework-bridge.git",
-                "reference": "dadf2835b10115574e0e66dc4f0d1b6dd5c5a191"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sbuerk/typo3-cmscomposerinstallers-testingframework-bridge/zipball/dadf2835b10115574e0e66dc4f0d1b6dd5c5a191",
-                "reference": "dadf2835b10115574e0e66dc4f0d1b6dd5c5a191",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^2.0.0",
-                "php": "^7.4 || ^8.0 || ^8.1 || ^8.2"
-            },
-            "require-dev": {
-                "composer/composer": "2.0.*@dev",
-                "friendsofphp/php-cs-fixer": "^3.4.0",
-                "overtrue/phplint": "^2.4.1",
-                "phpstan/phpstan": "^1.8.4",
-                "phpstan/phpstan-strict-rules": "^1.4.3"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "class": "SBUERK\\TYPO3CmsComposerInstallersTestingFrameworkBridge\\Installer\\Plugin"
-            },
-            "autoload": {
-                "psr-4": {
-                    "SBUERK\\TYPO3CmsComposerInstallersTestingFrameworkBridge\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Stefan Bürk",
-                    "email": "stefan@buerk.tech"
-                }
-            ],
-            "description": "Compatibility patch for extension testing with TYPO3 v12",
-            "homepage": "https://github.com/sbuerk/typo3-cmscomposerinstallers-testingframework-bridge",
-            "support": {
-                "general": "https://github.com/sbuerk/typo3-cmscomposerinstallers-testingframework-bridge/issues",
-                "issues": "https://github.com/sbuerk/typo3-cmscomposerinstallers-testingframework-bridge/issues",
-                "source": "https://github.com/sbuerk/typo3-cmscomposerinstallers-testingframework-bridge/tree/0.1.3"
-            },
-            "time": "2023-04-11T13:28:11+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -9662,24 +9579,23 @@
         },
         {
             "name": "typo3/testing-framework",
-            "version": "7.x-dev",
+            "version": "7.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3/testing-framework.git",
-                "reference": "f9baa96ae38d71b42babb1bc72be6654dec870a4"
+                "reference": "d6e911b82c26a68d46aa0f08749d196c7992e85e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3/testing-framework/zipball/f9baa96ae38d71b42babb1bc72be6654dec870a4",
-                "reference": "f9baa96ae38d71b42babb1bc72be6654dec870a4",
+                "url": "https://api.github.com/repos/TYPO3/testing-framework/zipball/d6e911b82c26a68d46aa0f08749d196c7992e85e",
+                "reference": "d6e911b82c26a68d46aa0f08749d196c7992e85e",
                 "shasum": ""
             },
             "require": {
                 "ext-pdo": "*",
-                "guzzlehttp/psr7": "^1.7 || ^2.0",
-                "mikey179/vfsstream": "~1.6.11",
+                "guzzlehttp/psr7": "^2.4.3",
                 "php": ">= 7.4",
-                "phpunit/phpunit": "^9.5.25 || ^10.0.14",
+                "phpunit/phpunit": "^9.5.25 || ^10.1",
                 "psr/container": "^1.1.0 || ^2.0.0",
                 "typo3/cms-backend": "11.*.*@dev || 12.*.*@dev",
                 "typo3/cms-core": "11.*.*@dev || 12.*.*@dev",
@@ -9692,6 +9608,9 @@
             },
             "conflict": {
                 "doctrine/dbal": "2.13.0 || 2.13.1"
+            },
+            "replace": {
+                "sbuerk/typo3-cmscomposerinstallers-testingframework-bridge": "*"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^3.11.0",
@@ -9733,9 +9652,9 @@
             "support": {
                 "general": "https://typo3.org/support/",
                 "issues": "https://github.com/TYPO3/testing-framework/issues",
-                "source": "https://github.com/TYPO3/testing-framework/tree/7"
+                "source": "https://github.com/TYPO3/testing-framework/tree/7.0.1"
             },
-            "time": "2023-04-06T11:23:39+00:00"
+            "time": "2023-04-26T12:44:38+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -9798,9 +9717,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "typo3/testing-framework": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

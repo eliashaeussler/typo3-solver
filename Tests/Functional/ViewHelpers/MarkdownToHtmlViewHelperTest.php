@@ -41,7 +41,7 @@ final class MarkdownToHtmlViewHelperTest extends TestingFramework\Core\Functiona
     use Tests\ViewTrait;
 
     protected array $testExtensionsToLoad = [
-        'typo3conf/ext/solver',
+        'solver',
     ];
 
     protected bool $initializeDatabase = false;

@@ -1,6 +1,7 @@
 {
 	"name": "eliashaeussler/typo3-solver-middleware-bridge",
 	"type": "typo3-cms-extension",
+	"version": "1.0.0",
 	"require": {
 		"typo3/cms-core": "*@dev"
 	},
