@@ -23,6 +23,12 @@
 				"Tests/Functional/Fixtures/Extensions/middleware_bridge/composer.json"
 			],
 			"enabled": false
+		},
+		{
+			"matchDepNames": [
+				"eliashaeussler/typo3-solver-middleware-bridge"
+			],
+			"enabled": false
 		}
 	]
 }
