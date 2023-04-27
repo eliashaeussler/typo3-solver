@@ -57,7 +57,7 @@ final class DefaultPromptTest extends TestingFramework\Core\Unit\UnitTestCase
 
         self::assertStringContainsString('Exception: "Something went wrong."', $actual);
         self::assertStringContainsString(
-            'Please note that this TYPO3 CMS installation is in classic (symlink) mode and using version ' . $typo3Version,
+            'Please note that this TYPO3 CMS installation is in composer mode and using version ' . $typo3Version,
             $actual,
         );
         self::assertStringContainsString('The PHP version being used is ' . PHP_VERSION, $actual);
