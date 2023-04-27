@@ -243,6 +243,7 @@ final class ConfigurationTest extends TestingFramework\Core\Unit\UnitTestCase
      */
     public function getProviderReturnsDefaultProviderIfNoProviderIsConfigured(): void
     {
+        /** @phpstan-ignore-next-line  */
         $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['solver']['api']['key'] = 'foo';
 
         self::assertInstanceOf(
@@ -256,6 +257,7 @@ final class ConfigurationTest extends TestingFramework\Core\Unit\UnitTestCase
      */
     public function getProviderReturnsDefaultProviderIfConfiguredProviderIsInvalid(): void
     {
+        /** @phpstan-ignore-next-line  */
         $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['solver']['api']['key'] = 'foo';
 
         $this->configurationProvider->configuration = [
