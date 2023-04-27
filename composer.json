@@ -45,7 +45,7 @@
 		"saschaegerer/phpstan-typo3": "^1.8",
 		"symfony/dependency-injection": "^5.4 || ^6.0",
 		"typo3/coding-standards": "^0.7.1",
-		"typo3/testing-framework": "^7.0 || ^8.0"
+		"typo3/testing-framework": "^7.0.1 || ^8.0"
 	},
 	"autoload": {
 		"psr-4": {
