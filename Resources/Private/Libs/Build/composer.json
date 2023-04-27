@@ -11,7 +11,7 @@
 		}
 	],
 	"require": {
-		"php": "~8.1.0",
+		"php": "~8.1.0 || ~8.2.0",
 		"erusev/parsedown": "^1.7",
 		"openai-php/client": "^0.4.1",
 		"spatie/backtrace": "^1.2"
