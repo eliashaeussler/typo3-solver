@@ -22,8 +22,19 @@
 use EliasHaeussler\Typo3Solver as Src;
 use EliasHaeussler\Typo3Solver\Tests;
 use Symfony\Component\Console;
+use TYPO3\CMS\Core;
 
+// Create core environment
+Core\Core\SystemEnvironmentBuilder::run(0, Core\Core\SystemEnvironmentBuilder::REQUESTTYPE_CLI);
+
+// Initialize default TYPO3_CONF_VARS
+$configurationManager = new Core\Configuration\ConfigurationManager();
+$GLOBALS['TYPO3_CONF_VARS'] = $configurationManager->getDefaultConfiguration();
+
+// Create application
 $application = new Console\Application();
+
+// Add console commands
 $application->add(new Src\Command\CacheFlushCommand(new Src\Cache\SolutionsCache()));
 $application->add(new Src\Command\ListModelsCommand(OpenAI::factory()->make()));
 $application->add(
