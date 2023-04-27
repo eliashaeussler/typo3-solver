@@ -52,6 +52,8 @@ final class ListModelsCommandTest extends TestingFramework\Core\Unit\UnitTestCas
 
     protected function setUp(): void
     {
+        parent::setUp();
+
         $this->mockHandler = new Handler\MockHandler();
 
         $command = new Src\Command\ListModelsCommand(
