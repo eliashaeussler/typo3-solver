@@ -69,7 +69,6 @@
 			"ergebnis/composer-normalize": true,
 			"php-http/discovery": true,
 			"phpstan/extension-installer": true,
-			"sbuerk/typo3-cmscomposerinstallers-testingframework-bridge": true,
 			"typo3/class-alias-loader": true,
 			"typo3/cms-composer-installers": true
 		},
