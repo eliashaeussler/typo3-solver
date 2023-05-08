@@ -80,7 +80,6 @@ final class ExceptionSerializer
         foreach ($properties as $propertyName => $propertyValue) {
             if ($reflectionClass->hasProperty($propertyName)) {
                 $reflectionProperty = $reflectionClass->getProperty($propertyName);
-                $reflectionProperty->setAccessible(true);
                 $reflectionProperty->setValue($exception, $propertyValue);
             }
         }
