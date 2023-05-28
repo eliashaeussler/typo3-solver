@@ -50,7 +50,7 @@ return [
         'gitignore',
         'packaging_exclude.php',
         'php-cs-fixer.php',
-        'phpstan.neon',
+        'phpstan.php',
         'phpstan-baseline.neon',
         'phpunit.functional.xml',
         'phpunit.unit.xml',
