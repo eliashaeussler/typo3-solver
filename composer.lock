@@ -5497,26 +5497,30 @@
         },
         {
             "name": "eliashaeussler/phpstan-config",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eliashaeussler/phpstan-config.git",
-                "reference": "82a4e4bdca0b66d41b77d9847c986ccd1bab0d50"
+                "reference": "0028c7b29734623a5e3e1bdfe1b01d3a80b238b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/phpstan-config/zipball/82a4e4bdca0b66d41b77d9847c986ccd1bab0d50",
-                "reference": "82a4e4bdca0b66d41b77d9847c986ccd1bab0d50",
+                "url": "https://api.github.com/repos/eliashaeussler/phpstan-config/zipball/0028c7b29734623a5e3e1bdfe1b01d3a80b238b7",
+                "reference": "0028c7b29734623a5e3e1bdfe1b01d3a80b238b7",
                 "shasum": ""
             },
             "require": {
+                "php": "~8.1.0 || ~8.2.0",
                 "phpstan/phpstan": "^1.9",
                 "phpstan/phpstan-deprecation-rules": "^1.1",
                 "phpstan/phpstan-strict-rules": "^1.4"
             },
             "require-dev": {
                 "armin/editorconfig-cli": "^1.5",
-                "ergebnis/composer-normalize": "^2.29"
+                "eliashaeussler/php-cs-fixer-config": "^1.2",
+                "eliashaeussler/rector-config": "^1.6",
+                "ergebnis/composer-normalize": "^2.29",
+                "phpunit/phpunit": "^10.1"
             },
             "type": "library",
             "extra": {
@@ -5524,6 +5528,11 @@
                     "includes": [
                         "phpstan-base.neon.dist"
                     ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "EliasHaeussler\\PHPStanConfig\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -5541,9 +5550,9 @@
             "description": "My personal configuration for PHPStan",
             "support": {
                 "issues": "https://github.com/eliashaeussler/phpstan-config/issues",
-                "source": "https://github.com/eliashaeussler/phpstan-config/tree/1.0.2"
+                "source": "https://github.com/eliashaeussler/phpstan-config/tree/1.1.0"
             },
-            "time": "2023-02-20T17:41:19+00:00"
+            "time": "2023-05-27T15:05:05+00:00"
         },
         {
             "name": "eliashaeussler/rector-config",
@@ -6921,16 +6930,16 @@
         },
         {
             "name": "phpstan/phpstan-symfony",
-            "version": "1.3.1",
+            "version": "1.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan-symfony.git",
-                "reference": "7e78605a699d183f5a6936cf91904f4c16ca79b2"
+                "reference": "7332b90dfc291ac5b4b83fbca2081936faa1e3f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan-symfony/zipball/7e78605a699d183f5a6936cf91904f4c16ca79b2",
-                "reference": "7e78605a699d183f5a6936cf91904f4c16ca79b2",
+                "url": "https://api.github.com/repos/phpstan/phpstan-symfony/zipball/7332b90dfc291ac5b4b83fbca2081936faa1e3f9",
+                "reference": "7332b90dfc291ac5b4b83fbca2081936faa1e3f9",
                 "shasum": ""
             },
             "require": {
@@ -6986,9 +6995,9 @@
             "description": "Symfony Framework extensions and rules for PHPStan",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan-symfony/issues",
-                "source": "https://github.com/phpstan/phpstan-symfony/tree/1.3.1"
+                "source": "https://github.com/phpstan/phpstan-symfony/tree/1.3.2"
             },
-            "time": "2023-04-14T16:59:18+00:00"
+            "time": "2023-05-16T12:46:15+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
