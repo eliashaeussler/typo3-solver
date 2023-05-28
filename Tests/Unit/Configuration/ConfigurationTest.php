@@ -241,6 +241,30 @@ final class ConfigurationTest extends TestingFramework\Core\Unit\UnitTestCase
     /**
      * @test
      */
+    public function isCacheEnabledReturnsTrueIfCacheLifetimeIsGreaterThanZero(): void
+    {
+        $this->configurationProvider->configuration = [
+            'cache/lifetime' => 3600,
+        ];
+
+        self::assertTrue($this->subject->isCacheEnabled());
+    }
+
+    /**
+     * @test
+     */
+    public function isCacheEnabledReturnsFalseIfCacheLifetimeIsZero(): void
+    {
+        $this->configurationProvider->configuration = [
+            'cache/lifetime' => 0,
+        ];
+
+        self::assertFalse($this->subject->isCacheEnabled());
+    }
+
+    /**
+     * @test
+     */
     public function getProviderReturnsDefaultProviderIfNoProviderIsConfigured(): void
     {
         self::assertInstanceOf(
