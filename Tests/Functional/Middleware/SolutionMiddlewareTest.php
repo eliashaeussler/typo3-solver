@@ -37,7 +37,7 @@ final class SolutionMiddlewareTest extends TestingFramework\Core\Functional\Func
     use Tests\InternalRequestTrait;
 
     protected array $testExtensionsToLoad = [
-        'middleware_bridge',
+        'typo3conf/ext/solver/Tests/Functional/Fixtures/Extensions/middleware_bridge',
     ];
 
     protected bool $initializeDatabase = false;

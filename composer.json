@@ -38,7 +38,6 @@
 		"armin/editorconfig-cli": "^1.5",
 		"eliashaeussler/phpstan-config": "^1.0",
 		"eliashaeussler/rector-config": "^1.1.1",
-		"eliashaeussler/typo3-solver-middleware-bridge": "^1.0",
 		"ergebnis/composer-normalize": "^2.29",
 		"phpstan/extension-installer": "^1.2",
 		"phpstan/phpstan-symfony": "^1.2",
@@ -47,14 +46,8 @@
 		"saschaegerer/phpstan-typo3": "^1.8",
 		"symfony/dependency-injection": "^5.4 || ^6.0",
 		"typo3/coding-standards": "^0.7.1",
-		"typo3/testing-framework": "^7.0.1 || ^8.0"
+		"typo3/testing-framework": "^7.0.2 || ^8.0.1"
 	},
-	"repositories": [
-		{
-			"type": "path",
-			"url": "Tests/Functional/Fixtures/Extensions/*"
-		}
-	],
 	"autoload": {
 		"psr-4": {
 			"EliasHaeussler\\Typo3Solver\\": "Classes/"

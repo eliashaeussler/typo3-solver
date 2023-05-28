@@ -37,7 +37,7 @@ final class PingMiddlewareTest extends TestingFramework\Core\Functional\Function
     use Tests\InternalRequestTrait;
 
     protected array $testExtensionsToLoad = [
-        'middleware_bridge',
+        'typo3conf/ext/solver/Tests/Functional/Fixtures/Extensions/middleware_bridge',
     ];
 
     protected bool $initializeDatabase = false;
