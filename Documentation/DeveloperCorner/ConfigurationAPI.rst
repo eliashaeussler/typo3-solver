@@ -52,6 +52,14 @@ an appropriate class method.
 
         :returntype: int
 
+    ..  php:method:: isCacheEnabled()
+
+        Check whether solution caching is currently enabled. The cache is
+        enabled if the configured :ref:`cache lifetime <extconf-cache-lifetime>`
+        is greater than :php:`0`.
+
+        :returntype: bool
+
     ..  php:method:: getProvider()
 
         Get the configured :ref:`solution provider <extconf-provider>`.

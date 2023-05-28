@@ -60,6 +60,11 @@ final class SolutionsCache
 
     public function get(ProblemSolving\Problem\Problem $problem): ?ProblemSolving\Solution\Solution
     {
+        // Early return if cache is disabled
+        if (!$problem->getSolutionProvider()->isCacheable() || !$this->configuration->isCacheEnabled()) {
+            return null;
+        }
+
         /** @phpstan-var array{solutions: array<string, SolutionArray>} $cacheData */
         $cacheData = require $this->cachePath;
         $entryIdentifier = $this->calculateCacheIdentifier($problem);
@@ -83,7 +88,7 @@ final class SolutionsCache
     public function set(ProblemSolving\Problem\Problem $problem, ProblemSolving\Solution\Solution $solution): void
     {
         // Early return if cache is disabled
-        if (!$problem->getSolutionProvider()->isCacheable() || $this->configuration->getCacheLifetime() === 0) {
+        if (!$problem->getSolutionProvider()->isCacheable() || !$this->configuration->isCacheEnabled()) {
             return;
         }
 

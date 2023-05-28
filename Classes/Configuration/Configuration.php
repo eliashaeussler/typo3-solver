@@ -122,6 +122,11 @@ final class Configuration
         return (int)$cacheLifetime;
     }
 
+    public function isCacheEnabled(): bool
+    {
+        return $this->getCacheLifetime() > 0;
+    }
+
     public function getProvider(): ProblemSolving\Solution\Provider\SolutionProvider
     {
         $providerClass = $this->provider->get('provider', self::DEFAULT_PROVIDER);
