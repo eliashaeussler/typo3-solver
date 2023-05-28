@@ -15,10 +15,18 @@
         <include>
             <directory suffix=".php">Classes</directory>
         </include>
+        <report>
+            <php outputFile=".build/coverage/php/unit.cov"/>
+            <html outputDirectory=".build/coverage/html/unit/"/>
+            <text outputFile="php://stdout" showOnlySummary="true"/>
+        </report>
     </coverage>
     <testsuites>
         <testsuite name="unit">
             <directory>Tests/Unit</directory>
         </testsuite>
     </testsuites>
+    <logging>
+        <junit outputFile=".build/coverage/junit/unit.xml"/>
+    </logging>
 </phpunit>
