@@ -122,10 +122,10 @@
 			"@test:coverage:unit",
 			"@test:coverage:merge"
 		],
-		"test:coverage:functional": "phpunit -c phpunit.functional.coverage.xml",
+		"test:coverage:functional": "phpunit -c phpunit.functional.xml",
 		"test:coverage:merge": "phpcov merge --html .build/coverage/html/_merged --clover .build/coverage/clover.xml --text php://stdout .build/coverage/php",
-		"test:coverage:unit": "phpunit -c phpunit.unit.coverage.xml",
-		"test:functional": "phpunit -c phpunit.functional.xml",
-		"test:unit": "phpunit -c phpunit.unit.xml"
+		"test:coverage:unit": "phpunit -c phpunit.unit.xml",
+		"test:functional": "@test:coverage:functional --no-coverage",
+		"test:unit": "@test:coverage:unit --no-coverage"
 	}
 }

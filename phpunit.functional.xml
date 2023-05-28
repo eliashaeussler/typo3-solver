@@ -12,10 +12,18 @@
         <include>
             <directory suffix=".php">Classes</directory>
         </include>
+        <report>
+            <php outputFile=".build/coverage/php/functional.cov"/>
+            <html outputDirectory=".build/coverage/html/functional/"/>
+            <text outputFile="php://stdout" showOnlySummary="true"/>
+        </report>
     </coverage>
     <testsuites>
         <testsuite name="functional">
             <directory>Tests/Functional</directory>
         </testsuite>
     </testsuites>
+    <logging>
+        <junit outputFile=".build/coverage/junit/functional.xml"/>
+    </logging>
 </phpunit>

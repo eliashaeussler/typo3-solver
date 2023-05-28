@@ -19,9 +19,7 @@
 /packaging_exclude.php              export-ignore
 /phpstan.neon                       export-ignore
 /phpstan-baseline.neon              export-ignore
-/phpunit.functional.coverage.xml    export-ignore
 /phpunit.functional.xml             export-ignore
-/phpunit.unit.coverage.xml          export-ignore
 /phpunit.unit.xml                   export-ignore
 /rector.php                         export-ignore
 /renovate.json                      export-ignore
