@@ -59,9 +59,6 @@ final class TemplateRenderer
         $rootPath = dirname(__DIR__, 2) . '/Resources/Private';
         $renderingContext = new Fluid\Core\Rendering\RenderingContext();
 
-        // Can be removed once https://github.com/TYPO3/Fluid/issues/694 is resolved
-        $renderingContext->setControllerName('');
-
         $templatePaths = $renderingContext->getTemplatePaths();
         $templatePaths->setTemplateRootPaths([$rootPath . '/Templates']);
         $templatePaths->setPartialRootPaths([$rootPath . '/Partials']);
