@@ -1345,16 +1345,16 @@
         },
         {
             "name": "openai-php/client",
-            "version": "v0.5.2",
+            "version": "v0.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/openai-php/client.git",
-                "reference": "ad6ec1e23dce42431df32a1cee7a6985ac22c853"
+                "reference": "a0ca38da78f7420a0b381e4274e416abbf6e563d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/openai-php/client/zipball/ad6ec1e23dce42431df32a1cee7a6985ac22c853",
-                "reference": "ad6ec1e23dce42431df32a1cee7a6985ac22c853",
+                "url": "https://api.github.com/repos/openai-php/client/zipball/a0ca38da78f7420a0b381e4274e416abbf6e563d",
+                "reference": "a0ca38da78f7420a0b381e4274e416abbf6e563d",
                 "shasum": ""
             },
             "require": {
@@ -1367,16 +1367,17 @@
                 "psr/http-message": "^1.1.0|^2.0.0"
             },
             "require-dev": {
-                "guzzlehttp/guzzle": "^7.6.1",
+                "guzzlehttp/guzzle": "^7.7.0",
                 "guzzlehttp/psr7": "^2.5.0",
                 "laravel/pint": "^1.10.0",
                 "nunomaduro/collision": "^7.5.2",
-                "pestphp/pest": "^2.6.1",
-                "pestphp/pest-plugin-arch": "^2.1.2",
+                "pestphp/pest": "dev-develop as 2.6.2",
+                "pestphp/pest-plugin-arch": "^2.2.0",
                 "pestphp/pest-plugin-mock": "^2.0.0",
+                "pestphp/pest-plugin-type-coverage": "^2.0.0",
                 "phpstan/phpstan": "^1.10.15",
-                "rector/rector": "^0.14.8",
-                "symfony/var-dumper": "^6.2.10"
+                "rector/rector": "^0.16.0",
+                "symfony/var-dumper": "^6.3.0"
             },
             "type": "library",
             "autoload": {
@@ -1416,7 +1417,7 @@
             ],
             "support": {
                 "issues": "https://github.com/openai-php/client/issues",
-                "source": "https://github.com/openai-php/client/tree/v0.5.2"
+                "source": "https://github.com/openai-php/client/tree/v0.5.3"
             },
             "funding": [
                 {
@@ -1432,7 +1433,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-05-27T08:25:54+00:00"
+            "time": "2023-06-07T16:17:31+00:00"
         },
         {
             "name": "php-http/discovery",
@@ -5281,16 +5282,16 @@
         },
         {
             "name": "typo3fluid/fluid",
-            "version": "2.9.0",
+            "version": "2.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3/Fluid.git",
-                "reference": "203c14fab96482ece91cd311efe17bc2bef7efe8"
+                "reference": "a502df38b21016fcee5adb38f949d04fed1054e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3/Fluid/zipball/203c14fab96482ece91cd311efe17bc2bef7efe8",
-                "reference": "203c14fab96482ece91cd311efe17bc2bef7efe8",
+                "url": "https://api.github.com/repos/TYPO3/Fluid/zipball/a502df38b21016fcee5adb38f949d04fed1054e5",
+                "reference": "a502df38b21016fcee5adb38f949d04fed1054e5",
                 "shasum": ""
             },
             "require": {
@@ -5327,7 +5328,7 @@
                 "issues": "https://github.com/TYPO3/Fluid/issues",
                 "source": "https://github.com/TYPO3/Fluid"
             },
-            "time": "2023-06-07T10:06:26+00:00"
+            "time": "2023-06-08T10:12:29+00:00"
         }
     ],
     "packages-dev": [
@@ -7007,16 +7008,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.10.16",
+            "version": "1.10.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "352bdbb960bb523e3d71b834862589f910921c23"
+                "reference": "52b6416c579663eebdd2f1d97df21971daf3b43f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/352bdbb960bb523e3d71b834862589f910921c23",
-                "reference": "352bdbb960bb523e3d71b834862589f910921c23",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/52b6416c579663eebdd2f1d97df21971daf3b43f",
+                "reference": "52b6416c579663eebdd2f1d97df21971daf3b43f",
                 "shasum": ""
             },
             "require": {
@@ -7065,7 +7066,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-06-05T08:21:46+00:00"
+            "time": "2023-06-07T22:00:43+00:00"
         },
         {
             "name": "phpstan/phpstan-deprecation-rules",
