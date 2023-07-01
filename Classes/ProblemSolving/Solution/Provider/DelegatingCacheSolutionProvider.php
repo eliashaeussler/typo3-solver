@@ -75,6 +75,7 @@ final class DelegatingCacheSolutionProvider implements SolutionProvider
             'message' => [
                 'role' => '',
                 'content' => 'Please wait…',
+                'function_call' => null,
             ],
             'finish_reason' => null,
         ]);
