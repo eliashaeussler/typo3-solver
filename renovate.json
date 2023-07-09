@@ -11,7 +11,7 @@
 			"extends": [
 				":automergeDisabled"
 			],
-			"matchFiles": [
+			"matchFileNames": [
 				"Resources/Private/Libs/Build/composer.json"
 			],
 			"matchDepNames": [
@@ -19,7 +19,7 @@
 			]
 		},
 		{
-			"matchFiles": [
+			"matchFileNames": [
 				"Tests/Functional/Fixtures/Extensions/middleware_bridge/composer.json"
 			],
 			"enabled": false
