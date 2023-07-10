@@ -1349,21 +1349,21 @@
         },
         {
             "name": "openai-php/client",
-            "version": "v0.6.2",
+            "version": "v0.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/openai-php/client.git",
-                "reference": "aca5cfcfdc7effa1418f4b6997c3510826786b25"
+                "reference": "b703dba3bee84c68f14d454f6e30170774d11734"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/openai-php/client/zipball/aca5cfcfdc7effa1418f4b6997c3510826786b25",
-                "reference": "aca5cfcfdc7effa1418f4b6997c3510826786b25",
+                "url": "https://api.github.com/repos/openai-php/client/zipball/b703dba3bee84c68f14d454f6e30170774d11734",
+                "reference": "b703dba3bee84c68f14d454f6e30170774d11734",
                 "shasum": ""
             },
             "require": {
                 "php": "^8.1.0",
-                "php-http/discovery": "^1.18.1",
+                "php-http/discovery": "^1.19.0",
                 "php-http/multipart-stream-builder": "^1.3.0",
                 "psr/http-client": "^1.0.2",
                 "psr/http-client-implementation": "^1.0.1",
@@ -1373,15 +1373,15 @@
             "require-dev": {
                 "guzzlehttp/guzzle": "^7.7.0",
                 "guzzlehttp/psr7": "^2.5.0",
-                "laravel/pint": "^1.10.2",
-                "nunomaduro/collision": "^7.5.2",
+                "laravel/pint": "^1.10.3",
+                "nunomaduro/collision": "^7.7.0",
                 "pestphp/pest": "dev-develop as 2.6.2",
-                "pestphp/pest-plugin-arch": "^2.2.0",
+                "pestphp/pest-plugin-arch": "^2.2.1",
                 "pestphp/pest-plugin-mock": "^2.0.0",
                 "pestphp/pest-plugin-type-coverage": "^2.0.0",
-                "phpstan/phpstan": "^1.10.15",
+                "phpstan/phpstan": "^1.10.25",
                 "rector/rector": "^0.16.0",
-                "symfony/var-dumper": "^6.3.0"
+                "symfony/var-dumper": "^6.3.1"
             },
             "type": "library",
             "autoload": {
@@ -1421,7 +1421,7 @@
             ],
             "support": {
                 "issues": "https://github.com/openai-php/client/issues",
-                "source": "https://github.com/openai-php/client/tree/v0.6.2"
+                "source": "https://github.com/openai-php/client/tree/v0.6.3"
             },
             "funding": [
                 {
@@ -1437,7 +1437,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-06-23T20:13:33+00:00"
+            "time": "2023-07-07T12:49:58+00:00"
         },
         {
             "name": "php-http/discovery",
@@ -5860,22 +5860,22 @@
         },
         {
             "name": "ergebnis/composer-normalize",
-            "version": "2.32.0",
+            "version": "2.33.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ergebnis/composer-normalize.git",
-                "reference": "7198c83a4ae261bec72726663be20a7639653a27"
+                "reference": "23ecbe11eee14691094ad994ac3365aad46d1339"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ergebnis/composer-normalize/zipball/7198c83a4ae261bec72726663be20a7639653a27",
-                "reference": "7198c83a4ae261bec72726663be20a7639653a27",
+                "url": "https://api.github.com/repos/ergebnis/composer-normalize/zipball/23ecbe11eee14691094ad994ac3365aad46d1339",
+                "reference": "23ecbe11eee14691094ad994ac3365aad46d1339",
                 "shasum": ""
             },
             "require": {
                 "composer-plugin-api": "^2.0.0",
                 "ergebnis/json": "^1.0.1",
-                "ergebnis/json-normalizer": "^4.1.0",
+                "ergebnis/json-normalizer": "^4.2.0",
                 "ergebnis/json-printer": "^3.3.0",
                 "ext-json": "*",
                 "justinrainbow/json-schema": "^5.2.12",
@@ -5885,7 +5885,7 @@
             "require-dev": {
                 "composer/composer": "^2.5.8",
                 "ergebnis/license": "^2.1.0",
-                "ergebnis/php-cs-fixer-config": "^5.10.0",
+                "ergebnis/php-cs-fixer-config": "^5.11.0",
                 "ergebnis/phpunit-slow-test-detector": "^2.3.0",
                 "fakerphp/faker": "^1.23.0",
                 "infection/infection": "~0.27.0",
@@ -5932,7 +5932,7 @@
                 "security": "https://github.com/ergebnis/composer-normalize/blob/main/.github/SECURITY.md",
                 "source": "https://github.com/ergebnis/composer-normalize"
             },
-            "time": "2023-06-30T10:51:27+00:00"
+            "time": "2023-07-09T16:32:12+00:00"
         },
         {
             "name": "ergebnis/json",
@@ -5998,16 +5998,16 @@
         },
         {
             "name": "ergebnis/json-normalizer",
-            "version": "4.1.0",
+            "version": "4.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ergebnis/json-normalizer.git",
-                "reference": "e38f8b27f908686b200e3bd68e1b7bdfb5d53061"
+                "reference": "7d06355857dc5fad96e8b296996f26150dfab299"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ergebnis/json-normalizer/zipball/e38f8b27f908686b200e3bd68e1b7bdfb5d53061",
-                "reference": "e38f8b27f908686b200e3bd68e1b7bdfb5d53061",
+                "url": "https://api.github.com/repos/ergebnis/json-normalizer/zipball/7d06355857dc5fad96e8b296996f26150dfab299",
+                "reference": "7d06355857dc5fad96e8b296996f26150dfab299",
                 "shasum": ""
             },
             "require": {
@@ -6017,21 +6017,22 @@
                 "ergebnis/json-schema-validator": "^4.0.0",
                 "ext-json": "*",
                 "justinrainbow/json-schema": "^5.2.12",
-                "php": "~8.0.0 || ~8.1.0 || ~8.2.0"
+                "php": "~8.1.0 || ~8.2.0"
             },
             "require-dev": {
                 "composer/semver": "^3.2.1",
-                "ergebnis/data-provider": "^1.3.0",
+                "ergebnis/data-provider": "^2.0.0",
                 "ergebnis/license": "^2.1.0",
-                "ergebnis/php-cs-fixer-config": "^5.5.2",
-                "fakerphp/faker": "^1.21.0",
-                "infection/infection": "~0.26.19",
-                "phpunit/phpunit": "^9.6.7",
+                "ergebnis/php-cs-fixer-config": "^5.11.0",
+                "ergebnis/phpunit-slow-test-detector": "^2.3.0",
+                "fakerphp/faker": "^1.23.0",
+                "infection/infection": "~0.27.0",
+                "phpunit/phpunit": "^10.2.3",
                 "psalm/plugin-phpunit": "~0.18.4",
-                "rector/rector": "~0.15.25",
-                "symfony/filesystem": "^6.0.19",
-                "symfony/finder": "^6.0.19",
-                "vimeo/psalm": "^5.9.0"
+                "rector/rector": "~0.17.2",
+                "symfony/filesystem": "^6.3.1",
+                "symfony/finder": "^6.3.0",
+                "vimeo/psalm": "^5.13.1"
             },
             "suggest": {
                 "composer/semver": "If you want to use ComposerJsonNormalizer or VersionConstraintNormalizer"
@@ -6062,7 +6063,7 @@
                 "issues": "https://github.com/ergebnis/json-normalizer/issues",
                 "source": "https://github.com/ergebnis/json-normalizer"
             },
-            "time": "2023-05-02T11:08:03+00:00"
+            "time": "2023-07-09T16:22:57+00:00"
         },
         {
             "name": "ergebnis/json-pointer",
