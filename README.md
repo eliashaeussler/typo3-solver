@@ -4,23 +4,12 @@
 
 # TYPO3 extension `solver`
 
-[![Coverage](https://codecov.io/gh/eliashaeussler/typo3-solver/branch/main/graph/badge.svg?token=fj60tJlnHW)](https://codecov.io/gh/eliashaeussler/typo3-solver)
-[![Maintainability](https://api.codeclimate.com/v1/badges/1dd3e21a767e5ffb03cf/maintainability)](https://codeclimate.com/github/eliashaeussler/typo3-solver/maintainability)
-[![Tests](https://github.com/eliashaeussler/typo3-solver/actions/workflows/tests.yaml/badge.svg)](https://github.com/eliashaeussler/typo3-solver/actions/workflows/tests.yaml)
-[![CGL](https://github.com/eliashaeussler/typo3-solver/actions/workflows/cgl.yaml/badge.svg)](https://github.com/eliashaeussler/typo3-solver/actions/workflows/cgl.yaml)
-[![Release](https://github.com/eliashaeussler/typo3-solver/actions/workflows/release.yaml/badge.svg)](https://github.com/eliashaeussler/typo3-solver/actions/workflows/release.yaml)
-[![License](http://poser.pugx.org/eliashaeussler/typo3-solver/license)](LICENSE.md)\
-[![Version](https://shields.io/endpoint?url=https://typo3-badges.dev/badge/solver/version/shields)](https://extensions.typo3.org/extension/solver)
-[![Downloads](https://shields.io/endpoint?url=https://typo3-badges.dev/badge/solver/downloads/shields)](https://extensions.typo3.org/extension/solver)
-[![Supported TYPO3 versions](https://shields.io/endpoint?url=https://typo3-badges.dev/badge/solver/typo3/shields)](https://extensions.typo3.org/extension/solver)
-[![Extension stability](https://shields.io/endpoint?url=https://typo3-badges.dev/badge/solver/stability/shields)](https://extensions.typo3.org/extension/solver)
+[![Coverage](https://img.shields.io/codecov/c/github/eliashaeussler/typo3-solver?logo=codecov&token=fj60tJlnHW)](https://codecov.io/gh/eliashaeussler/typo3-solver)
+[![Maintainability](https://img.shields.io/codeclimate/maintainability/eliashaeussler/typo3-solver?logo=codeclimate)](https://codeclimate.com/github/eliashaeussler/typo3-solver/maintainability)
+[![CGL](https://img.shields.io/github/actions/workflow/status/eliashaeussler/typo3-solver/cgl.yaml?label=cgl&logo=github)](https://github.com/eliashaeussler/typo3-solver/actions/workflows/cgl.yaml)
+[![Tests](https://img.shields.io/github/actions/workflow/status/eliashaeussler/typo3-solver/tests.yaml?label=tests&logo=github)](https://github.com/eliashaeussler/typo3-solver/actions/workflows/tests.yaml)
+[![Supported TYPO3 versions](https://typo3-badges.dev/badge/solver/typo3/shields.svg)](https://extensions.typo3.org/extension/solver)
 [![Slack](https://img.shields.io/badge/slack-%23ext--solver-4a154b?logo=slack)](https://typo3.slack.com/archives/C04Q3440HS6)
-
-**📙&nbsp;[Documentation](https://docs.typo3.org/p/eliashaeussler/typo3-solver/main/en-us/Index.html)** |
-📦&nbsp;[Packagist](https://packagist.org/packages/eliashaeussler/typo3-solver) |
-🐥&nbsp;[TYPO3 extension repository](https://extensions.typo3.org/extension/solver) |
-💾&nbsp;[Repository](https://github.com/eliashaeussler/typo3-solver) |
-🐛&nbsp;[Issue tracker](https://github.com/eliashaeussler/typo3-solver/issues)
 
 </div>
 
@@ -38,6 +27,30 @@ provides a console command to solve problems from command line.
 * Command to solve problems from command line
 * Customizable solution providers and prompts
 * Compatible with TYPO3 11.5 LTS and 12.4 LTS
+
+## 🔥 Installation
+
+### Composer
+
+[![Packagist](https://img.shields.io/packagist/v/eliashaeussler/typo3-solver?label=version&logo=packagist)](https://packagist.org/packages/eliashaeussler/typo3-solver)
+[![Packagist Downloads](https://img.shields.io/packagist/dt/eliashaeussler/typo3-solver?color=brightgreen)](https://packagist.org/packages/eliashaeussler/typo3-solver)
+
+```bash
+composer require eliashaeussler/typo3-solver
+```
+
+### TER
+
+[![TER version](https://typo3-badges.dev/badge/solver/version/shields.svg)](https://extensions.typo3.org/extension/solver)
+[![TER downloads](https://typo3-badges.dev/badge/solver/downloads/shields.svg)](https://extensions.typo3.org/extension/solver)
+
+Download the zip file from
+[TYPO3 extension repository (TER)](https://extensions.typo3.org/extension/solver).
+
+## 📙 Documentation
+
+Please have a look at the
+[official extension documentation](https://docs.typo3.org/p/eliashaeussler/typo3-solver/main/en-us/).
 
 ## 💎 Credits
 
