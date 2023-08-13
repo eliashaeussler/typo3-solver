@@ -23,27 +23,17 @@ declare(strict_types=1);
 
 use EliasHaeussler\RectorConfig\Config\Config;
 use Rector\Config\RectorConfig;
-use Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector;
-use Rector\Privatization\Rector\Class_\ChangeReadOnlyVariableWithDefaultValueToConstantRector;
-use Rector\PSR4\Rector\FileWithoutNamespace\NormalizeNamespaceByPSR4ComposerAutoloadRector;
-use Rector\Symfony\Rector\Class_\CommandPropertyToAttributeRector;
+use Rector\Core\ValueObject\PhpVersion;
 
 return static function (RectorConfig $rectorConfig): void {
-    $config = Config::create($rectorConfig)->in(
-        __DIR__ . '/Classes',
-        __DIR__ . '/Configuration',
-        __DIR__ . '/Tests',
-    );
-
-    $config->withPHPUnit();
-    $config->withSymfony();
-
-    $config->skip(AddLiteralSeparatorToNumberRector::class);
-    $config->skip(ChangeReadOnlyVariableWithDefaultValueToConstantRector::class);
-    $config->skip(CommandPropertyToAttributeRector::class);
-    $config->skip(NormalizeNamespaceByPSR4ComposerAutoloadRector::class, [
-        __DIR__ . '/Tests/Functional/Fixtures/Extensions',
-    ]);
-
-    $config->apply();
+    Config::create($rectorConfig, PhpVersion::PHP_81)
+        ->in(
+            __DIR__ . '/Classes',
+            __DIR__ . '/Configuration',
+            __DIR__ . '/Tests',
+        )
+        ->withPHPUnit()
+        ->withSymfony()
+        ->apply()
+    ;
 };
