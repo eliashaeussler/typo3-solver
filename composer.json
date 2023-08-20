@@ -42,7 +42,7 @@
 		"phpstan/extension-installer": "^1.2",
 		"phpstan/phpstan-symfony": "^1.2",
 		"phpunit/phpcov": "^8.2 || ^9.0",
-		"phpunit/phpunit": "^9.6",
+		"phpunit/phpunit": "^9.6 || ^10.0",
 		"saschaegerer/phpstan-typo3": "^1.8",
 		"symfony/dependency-injection": "^5.4 || ^6.0",
 		"typo3/coding-standards": "^0.7.1",
