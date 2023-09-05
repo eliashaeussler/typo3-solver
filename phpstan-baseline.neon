@@ -19,3 +19,8 @@ parameters:
 			message: "#^Parameter \\#1 \\$arguments \\(array\\{replaceLineNumbersInCodeSnippets\\?\\: bool\\}\\) of method EliasHaeussler\\\\Typo3Solver\\\\ViewHelpers\\\\MarkdownToHtmlViewHelper\\:\\:renderStatic\\(\\) should be contravariant with parameter \\$arguments \\(array\\<string, mixed\\>\\) of method TYPO3Fluid\\\\Fluid\\\\Core\\\\ViewHelper\\\\ViewHelperInterface\\:\\:renderStatic\\(\\)$#"
 			count: 1
 			path: Classes/ViewHelpers/MarkdownToHtmlViewHelper.php
+
+		-
+			message: "#^Static method OpenAI\\\\Responses\\\\Chat\\\\CreateResponse\\:\\:from\\(\\) invoked with 1 parameter, 2 required\\.$#"
+			count: 1
+			path: Tests/Unit/ProblemSolving/Solution/SolutionTest.php

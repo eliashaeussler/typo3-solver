@@ -131,7 +131,11 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
                 'total_tokens' => 123,
             ],
         ];
-        $response = new Psr7\Response(headers: ['Content-Type' => 'application/json']);
+        $response = new Psr7\Response(headers: [
+            'Content-Type' => 'application/json',
+            'x-request-id' => 'foo',
+            'openai-processing-ms' => '0',
+        ]);
         $response->getBody()->write(json_encode($payload, JSON_THROW_ON_ERROR));
         $response->getBody()->rewind();
 
