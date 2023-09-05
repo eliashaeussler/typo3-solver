@@ -28,6 +28,7 @@ use EliasHaeussler\Typo3Solver as Src;
 use OpenAI\Responses;
 use TYPO3\TestingFramework;
 
+use function class_exists;
 use function iterator_to_array;
 use function json_encode;
 
@@ -63,7 +64,7 @@ final class SolutionTest extends TestingFramework\Core\Unit\UnitTestCase
      */
     public function fromResponseReturnsSolution(): void
     {
-        $response = Responses\Chat\CreateResponse::from([
+        $attributes = [
             'id' => 'id',
             'object' => 'object',
             'created' => 123,
@@ -84,7 +85,27 @@ final class SolutionTest extends TestingFramework\Core\Unit\UnitTestCase
                 'completion_tokens' => 123,
                 'total_tokens' => 123,
             ],
-        ]);
+        ];
+
+        if (class_exists(Responses\Meta\MetaInformation::class)) {
+            $meta = Responses\Meta\MetaInformation::from([
+                'x-request-id' => ['foo'],
+                'openai-model' => ['foo'],
+                'openai-organization' => ['foo'],
+                'openai-version' => ['foo'],
+                'openai-processing-ms' => ['foo'],
+                'x-ratelimit-limit-requests' => ['foo'],
+                'x-ratelimit-remaining-requests' => ['foo'],
+                'x-ratelimit-reset-requests' => ['foo'],
+                'x-ratelimit-limit-tokens' => ['foo'],
+                'x-ratelimit-remaining-tokens' => ['foo'],
+                'x-ratelimit-reset-tokens' => ['foo'],
+            ]);
+            $response = Responses\Chat\CreateResponse::from($attributes, $meta);
+        } else {
+            $response = Responses\Chat\CreateResponse::from($attributes);
+        }
+
         $choice = Responses\Chat\CreateResponseChoice::from([
             'index' => 0,
             'message' => [

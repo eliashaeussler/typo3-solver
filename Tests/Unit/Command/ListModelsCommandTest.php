@@ -69,7 +69,11 @@ final class ListModelsCommandTest extends TestingFramework\Core\Unit\UnitTestCas
      */
     public function executeListsAllGPTModels(): void
     {
-        $response = new Psr7\Response(headers: ['Content-Type' => 'application/json']);
+        $response = new Psr7\Response(headers: [
+            'Content-Type' => 'application/json',
+            'x-request-id' => 'foo',
+            'openai-processing-ms' => '0',
+        ]);
         $response->getBody()->write(json_encode($this->listResponse, JSON_THROW_ON_ERROR));
         $response->getBody()->rewind();
 
@@ -102,7 +106,11 @@ final class ListModelsCommandTest extends TestingFramework\Core\Unit\UnitTestCas
      */
     public function executeListsAllAvailableModels(): void
     {
-        $response = new Psr7\Response(headers: ['Content-Type' => 'application/json']);
+        $response = new Psr7\Response(headers: [
+            'Content-Type' => 'application/json',
+            'x-request-id' => 'foo',
+            'openai-processing-ms' => '0',
+        ]);
         $response->getBody()->write(json_encode($this->listResponse, JSON_THROW_ON_ERROR));
         $response->getBody()->rewind();
 
