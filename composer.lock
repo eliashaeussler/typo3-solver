@@ -6974,16 +6974,16 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.23.1",
+            "version": "1.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "846ae76eef31c6d7790fac9bc399ecee45160b26"
+                "reference": "3510b0a6274cc42f7219367cb3abfc123ffa09d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/846ae76eef31c6d7790fac9bc399ecee45160b26",
-                "reference": "846ae76eef31c6d7790fac9bc399ecee45160b26",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/3510b0a6274cc42f7219367cb3abfc123ffa09d6",
+                "reference": "3510b0a6274cc42f7219367cb3abfc123ffa09d6",
                 "shasum": ""
             },
             "require": {
@@ -7015,9 +7015,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.23.1"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.24.0"
             },
-            "time": "2023-08-03T16:32:59+00:00"
+            "time": "2023-09-07T20:46:32+00:00"
         },
         {
             "name": "phpstan/phpstan",
@@ -7791,16 +7791,16 @@
         },
         {
             "name": "saschaegerer/phpstan-typo3",
-            "version": "1.8.9",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sascha-egerer/phpstan-typo3.git",
-                "reference": "d2b88a241863eab32f9f4edf824340b9b23b8f27"
+                "reference": "ebfc11409ec6f6e2a524982b6591090cf5214f43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sascha-egerer/phpstan-typo3/zipball/d2b88a241863eab32f9f4edf824340b9b23b8f27",
-                "reference": "d2b88a241863eab32f9f4edf824340b9b23b8f27",
+                "url": "https://api.github.com/repos/sascha-egerer/phpstan-typo3/zipball/ebfc11409ec6f6e2a524982b6591090cf5214f43",
+                "reference": "ebfc11409ec6f6e2a524982b6591090cf5214f43",
                 "shasum": ""
             },
             "require": {
@@ -7840,9 +7840,12 @@
                 "MIT"
             ],
             "description": "TYPO3 CMS class reflection extension for PHPStan",
+            "keywords": [
+                "static analysis"
+            ],
             "support": {
                 "issues": "https://github.com/sascha-egerer/phpstan-typo3/issues",
-                "source": "https://github.com/sascha-egerer/phpstan-typo3/tree/1.8.9"
+                "source": "https://github.com/sascha-egerer/phpstan-typo3/tree/1.9.0"
             },
             "funding": [
                 {
@@ -7854,7 +7857,7 @@
                     "type": "liberapay"
                 }
             ],
-            "time": "2023-06-26T07:27:45+00:00"
+            "time": "2023-09-05T21:36:56+00:00"
         },
         {
             "name": "sebastian/cli-parser",
