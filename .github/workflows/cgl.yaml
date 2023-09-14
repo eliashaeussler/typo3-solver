@@ -59,6 +59,13 @@ jobs:
       - name: Install Frontend dependencies
         run: yarn --cwd Resources/Private/Frontend --frozen-lockfile
 
+      # Check asset integrity
+      - name: Check Frontend asset integrity
+        run: |
+          yarn --cwd Resources/Private/Frontend build
+          git add Resources/Public
+          git diff --exit-code --staged Resources/Public
+
       # Frontend linting
       - name: Lint SCSS
         run: yarn --cwd Resources/Private/Frontend lint:scss
