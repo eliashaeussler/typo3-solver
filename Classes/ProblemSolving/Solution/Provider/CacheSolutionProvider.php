@@ -40,8 +40,7 @@ final class CacheSolutionProvider implements StreamedSolutionProvider
     public function __construct(
         private readonly Cache\SolutionsCache $cache,
         private readonly SolutionProvider $provider,
-    ) {
-    }
+    ) {}
 
     /**
      * @throws Exception\MissingSolutionProviderException

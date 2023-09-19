@@ -38,8 +38,7 @@ final class ExceptionStreamFormatter
 {
     public function __construct(
         private readonly View\TemplateRenderer $renderer,
-    ) {
-    }
+    ) {}
 
     public function format(Throwable $exception): string
     {

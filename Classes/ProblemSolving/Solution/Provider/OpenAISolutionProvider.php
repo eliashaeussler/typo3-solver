@@ -39,8 +39,7 @@ final class OpenAISolutionProvider implements StreamedSolutionProvider
     public function __construct(
         private readonly Configuration\Configuration $configuration,
         private readonly Client $client,
-    ) {
-    }
+    ) {}
 
     public static function create(Client $client = null): static
     {

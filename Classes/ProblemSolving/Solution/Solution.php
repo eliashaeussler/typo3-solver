@@ -57,8 +57,7 @@ final class Solution implements Countable, IteratorAggregate, JsonSerializable
         private readonly array $choices,
         private readonly string $model,
         private readonly string $prompt,
-    ) {
-    }
+    ) {}
 
     public static function fromResponse(Responses\Chat\CreateResponse $response, string $prompt): self
     {

@@ -42,8 +42,7 @@ final class DelegatingCacheSolutionProvider implements SolutionProvider
     public function __construct(
         private readonly Cache\SolutionsCache $cache,
         private readonly SolutionProvider $delegate,
-    ) {
-    }
+    ) {}
 
     /**
      * @throws Exception\MissingSolutionProviderException

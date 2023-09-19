@@ -38,8 +38,7 @@ final class Problem
         private readonly Throwable $exception,
         private readonly ProblemSolving\Solution\Provider\SolutionProvider $solutionProvider,
         private readonly string $prompt,
-    ) {
-    }
+    ) {}
 
     public function getException(): Throwable
     {

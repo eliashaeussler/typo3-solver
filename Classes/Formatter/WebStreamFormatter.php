@@ -43,8 +43,7 @@ final class WebStreamFormatter implements Formatter
 {
     public function __construct(
         private readonly View\TemplateRenderer $renderer,
-    ) {
-    }
+    ) {}
 
     public function format(
         ProblemSolving\Problem\Problem $problem,
