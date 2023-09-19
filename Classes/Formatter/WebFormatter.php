@@ -48,8 +48,7 @@ final class WebFormatter implements Formatter
         private readonly Cache\ExceptionsCache $exceptionsCache,
         private readonly View\TemplateRenderer $renderer,
         private readonly Authentication\StreamAuthentication $authentication,
-    ) {
-    }
+    ) {}
 
     public function format(
         ProblemSolving\Problem\Problem $problem,

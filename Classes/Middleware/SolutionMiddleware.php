@@ -54,8 +54,7 @@ final class SolutionMiddleware implements Server\MiddlewareInterface
         private readonly Formatter\Message\ExceptionStreamFormatter $exceptionFormatter,
         private readonly Formatter\WebStreamFormatter $webFormatter,
         private readonly Authentication\StreamAuthentication $authentication,
-    ) {
-    }
+    ) {}
 
     public function process(
         Message\ServerRequestInterface $request,

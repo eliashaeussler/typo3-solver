@@ -40,8 +40,7 @@ final class ClientFactory
 {
     public function __construct(
         private readonly Configuration\Configuration $configuration,
-    ) {
-    }
+    ) {}
 
     /**
      * @throws Exception\ApiKeyMissingException

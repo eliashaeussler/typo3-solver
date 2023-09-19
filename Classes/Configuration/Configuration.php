@@ -53,8 +53,7 @@ final class Configuration
 
     public function __construct(
         private readonly ConfigurationProvider $provider = new LazyConfigurationProvider(),
-    ) {
-    }
+    ) {}
 
     public function getApiKey(): ?string
     {
