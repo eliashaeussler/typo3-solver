@@ -1,0 +1,28 @@
+name: Frontend assets
+on:
+  pull_request:
+    paths:
+      - 'Resources/Private/Frontend/**'
+
+jobs:
+  rebuild:
+    if: ${{ github.actor == 'renovate[bot]' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Install Frontend dependencies
+      - name: Install Frontend dependencies
+        run: yarn --cwd Resources/Private/Frontend --frozen-lockfile
+
+      # Re-create Frontend dist files
+      - name: Re-create dist files
+        run: yarn --cwd Resources/Private/Frontend build
+
+      # Update PR
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: '[TASK] Automatically rebuild frontend assets'
+          commit_author: 'Elias Häußler <elias@haeussler.dev>'
