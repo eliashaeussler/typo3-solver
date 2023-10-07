@@ -22,7 +22,7 @@ jobs:
         run: yarn --cwd Resources/Private/Frontend build
 
       # Update PR
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: '[TASK] Automatically rebuild frontend assets'
           commit_author: 'Elias Häußler <elias@haeussler.dev>'
