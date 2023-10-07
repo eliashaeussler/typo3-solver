@@ -1,12 +1,13 @@
 name: Frontend assets
 on:
-  pull_request:
+  push:
+    branches:
+      - 'renovate/**'
     paths:
       - 'Resources/Private/Frontend/**'
 
 jobs:
   rebuild:
-    if: ${{ github.actor == 'renovate[bot]' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

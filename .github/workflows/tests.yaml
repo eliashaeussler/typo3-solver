@@ -3,11 +3,8 @@ on:
   push:
     branches:
       - main
-      - 'renovate/**'
   pull_request:
-    branches:
-      - '**'
-      - '!renovate/**'
+  workflow_call:
 
 jobs:
   tests:
