@@ -89,6 +89,7 @@ jobs:
       - name: Upload coverage artifact
         uses: actions/upload-artifact@v3
         with:
+          name: coverage
           path: .build/coverage/clover.xml
           retention-days: 7
 
@@ -103,8 +104,10 @@ jobs:
 
       # Download artifact
       - name: Download coverage artifact
-        uses: actions/download-artifact@v3
         id: download
+        uses: actions/download-artifact@v3
+        with:
+          name: coverage
 
       # CodeClimate
       - name: CodeClimate report
