@@ -96,6 +96,7 @@ jobs:
   coverage-report:
     name: report test coverage
     runs-on: ubuntu-latest
+    needs: coverage
     steps:
       - uses: actions/checkout@v4
         with:
