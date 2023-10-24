@@ -1,18 +1,18 @@
 name: Frontend assets
 on:
-  push:
-    branches:
-      - 'renovate/**'
+  pull_request:
     paths:
       - 'Resources/Private/Frontend/**'
 
 jobs:
   rebuild:
+    if: ${{ github.actor == 'renovate[bot]' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.REBUILD_ASSETS_TOKEN }}
 
       # Install Frontend dependencies
       - name: Install Frontend dependencies
