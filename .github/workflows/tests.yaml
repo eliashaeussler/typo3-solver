@@ -5,9 +5,6 @@ on:
       - main
       - 'renovate/**'
   pull_request:
-    branches:
-      - '**'
-      - '!renovate/**'
 
 jobs:
   tests:
@@ -85,10 +82,34 @@ jobs:
       - name: Run tests
         run: composer test:coverage
 
-      # Report coverage
+      # Upload artifact
       - name: Fix coverage path
         working-directory: .build/coverage
         run: sed -i 's#/home/runner/work/typo3-solver/typo3-solver#${{ github.workspace }}#g' clover.xml
+      - name: Upload coverage artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage
+          path: .build/coverage/clover.xml
+          retention-days: 7
+
+  coverage-report:
+    name: Report test coverage
+    runs-on: ubuntu-latest
+    needs: coverage
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Download artifact
+      - name: Download coverage artifact
+        id: download
+        uses: actions/download-artifact@v3
+        with:
+          name: coverage
+
+      # CodeClimate
       - name: CodeClimate report
         uses: paambaati/codeclimate-action@v5.0.0
         if: env.CC_TEST_REPORTER_ID
@@ -96,11 +117,14 @@ jobs:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
           coverageLocations: |
-            ${{ github.workspace }}/.build/coverage/clover.xml:clover
+            ${{ steps.download.outputs.download-path }}/clover.xml:clover
+
+      # codecov
       - name: codecov report
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          directory: .build/coverage
+          files: |
+            ${{ steps.download.outputs.download-path }}/clover.xml
           fail_ci_if_error: true
           verbose: true
