@@ -89,7 +89,6 @@ jobs:
       - name: Upload coverage artifact
         uses: actions/upload-artifact@v3
         with:
-          name: coverage-${{ matrix.php-version }}-${{ matrix.typo3-version }}-${{ matrix.dependencies }}
           path: .build/coverage/clover.xml
           retention-days: 7
 
