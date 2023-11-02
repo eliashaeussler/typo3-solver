@@ -18,7 +18,7 @@
 		"docs": "https://docs.typo3.org/p/eliashaeussler/typo3-solver/main/en-us/Index.html"
 	},
 	"require": {
-		"php": "~8.1.0 || ~8.2.0",
+		"php": "~8.1.0 || ~8.2.0 || ~8.3.0",
 		"ext-mbstring": "*",
 		"erusev/parsedown": "^1.7",
 		"guzzlehttp/guzzle": "^7.5",
