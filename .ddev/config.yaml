@@ -1,7 +1,7 @@
 name: typo3-ext-solver
 type: typo3
 docroot: .build/web
-php_version: "8.1"
+php_version: "8.2"
 webserver_type: nginx-fpm
 router_http_port: "80"
 router_https_port: "443"
@@ -11,7 +11,7 @@ additional_fqdns: []
 database:
     type: mariadb
     version: "10.4"
-webimage_extra_packages: [php8.1-pcov]
+webimage_extra_packages: [php8.2-pcov]
 use_dns_when_possible: true
 composer_version: "2"
 web_environment:
@@ -58,7 +58,7 @@ nodejs_version: "16"
 # "ddev xhprof" to enable xhprof and "ddev xhprof off" to disable it work better,
 # as leaving xhprof enabled all the time is a big performance hit.
 
-# webserver_type: nginx-fpm, apache-fpm, or nginx-gunicorn 
+# webserver_type: nginx-fpm, apache-fpm, or nginx-gunicorn
 
 # timezone: Europe/Berlin
 # This is the timezone used in the containers and by PHP;
@@ -100,7 +100,7 @@ nodejs_version: "16"
 # Please take care with this because it can cause great confusion.
 
 # upload_dirs: "custom/upload/dir"
-#    
+#
 # upload_dirs:
 #   - custom/upload/dir
 #   - ../private
