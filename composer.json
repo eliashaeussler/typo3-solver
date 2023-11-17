@@ -37,7 +37,7 @@
 		"ext-dom": "*",
 		"armin/editorconfig-cli": "^1.5",
 		"eliashaeussler/phpstan-config": "^2.0",
-		"eliashaeussler/rector-config": "^1.1.1",
+		"eliashaeussler/rector-config": "^1.1.1 || ^2.0.0",
 		"ergebnis/composer-normalize": "^2.29",
 		"phpstan/extension-installer": "^1.2",
 		"phpstan/phpstan-symfony": "^1.2",
