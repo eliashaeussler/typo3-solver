@@ -53,6 +53,7 @@ final class SolutionTest extends TestingFramework\Core\Unit\UnitTestCase
                 'role' => '',
                 'content' => 'hello world',
                 'function_call' => null,
+                'tool_calls' => null,
             ],
             'finish_reason' => null,
         ]);
@@ -76,6 +77,7 @@ final class SolutionTest extends TestingFramework\Core\Unit\UnitTestCase
                         'role' => 'role',
                         'content' => 'content',
                         'function_call' => null,
+                        'tool_calls' => null,
                     ],
                     'finish_reason' => null,
                 ],
@@ -112,6 +114,7 @@ final class SolutionTest extends TestingFramework\Core\Unit\UnitTestCase
                 'role' => 'role',
                 'content' => 'content',
                 'function_call' => null,
+                'tool_calls' => null,
             ],
             'finish_reason' => null,
         ]);
@@ -157,6 +160,7 @@ final class SolutionTest extends TestingFramework\Core\Unit\UnitTestCase
                 'role' => 'role 1',
                 'content' => 'content 1',
                 'function_call' => null,
+                'tool_calls' => null,
             ],
             'finish_reason' => null,
         ]);
@@ -166,6 +170,7 @@ final class SolutionTest extends TestingFramework\Core\Unit\UnitTestCase
                 'role' => 'role 2',
                 'content' => 'content 2',
                 'function_call' => null,
+                'tool_calls' => null,
             ],
             'finish_reason' => null,
         ]);

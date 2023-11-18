@@ -89,6 +89,7 @@ final class DelegatingCacheSolutionProviderTest extends TestingFramework\Core\Un
                         'role' => '',
                         'content' => 'Please wait…',
                         'function_call' => null,
+                        'tool_calls' => null,
                     ],
                     'finish_reason' => null,
                 ]),
