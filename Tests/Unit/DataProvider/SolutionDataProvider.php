@@ -73,6 +73,7 @@ final class SolutionDataProvider
                 'role' => 'role',
                 'content' => $message,
                 'function_call' => null,
+                'tool_calls' => null,
             ],
             'finish_reason' => null,
         ]);

@@ -98,6 +98,7 @@ final class OpenAISolutionProvider implements StreamedSolutionProvider
                         'role' => (string)$choice->delta->role,
                         'content' => $previousMessages . $choice->delta->content,
                         'function_call' => null,
+                        'tool_calls' => null,
                     ],
                     'finish_reason' => $choice->finishReason,
                 ]);
