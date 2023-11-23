@@ -1692,9 +1692,9 @@ camelcase@^6.3.0:
   integrity sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
 
 caniuse-lite@^1.0.30001541:
-  version "1.0.30001563"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001563.tgz#aa68a64188903e98f36eb9c56e48fba0c1fe2a32"
-  integrity sha512-na2WUmOxnwIZtwnFI2CZ/3er0wdNzU7hN+cPYz/z2ajHThnkWjNBOpEPP4n+4r2WPM847JaMotaJE3bnfzjyKw==
+  version "1.0.30001564"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001564.tgz#eaa8bbc58c0cbccdcb7b41186df39dd2ba591889"
+  integrity sha512-DqAOf+rhof+6GVx1y+xzbFPeOumfQnhYzVnZD6LAXijR77yPtm9mfOcqOnT3mpnJiZVT+kwLAFnRlZcIz+c6bg==
 
 chalk@^2.4.1, chalk@^2.4.2:
   version "2.4.2"
@@ -1960,9 +1960,9 @@ doctrine@^3.0.0:
     esutils "^2.0.2"
 
 electron-to-chromium@^1.4.535:
-  version "1.4.590"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.590.tgz#85a428fbabb77265a4804040837ed4f2538e3300"
-  integrity sha512-hohItzsQcG7/FBsviCYMtQwUSWvVF7NVqPOnJCErWsAshsP/CR2LAXdmq276RbESNdhxiAq5/vRo1g2pxGXVww==
+  version "1.4.592"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.592.tgz#1ffd49ba3da3da3077ea20014b066c910d50c913"
+  integrity sha512-D3NOkROIlF+d5ixnz7pAf3Lu/AuWpd6AYgI9O67GQXMXTcCP1gJQRotOq35eQy5Sb4hez33XH1YdTtILA7Udww==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
