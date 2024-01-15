@@ -3,5 +3,8 @@
 	"extends": [
 		"local>eliashaeussler/renovate-config",
 		"local>eliashaeussler/renovate-config:typo3-extension"
-	]
+	],
+	"constraints": {
+		"php": "8.1.*"
+	}
 }
