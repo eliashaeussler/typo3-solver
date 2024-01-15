@@ -35,7 +35,7 @@
 	},
 	"require-dev": {
 		"ext-dom": "*",
-		"armin/editorconfig-cli": "^1.5",
+		"armin/editorconfig-cli": "^1.5 || ^2.0",
 		"eliashaeussler/phpstan-config": "^2.0",
 		"eliashaeussler/rector-config": "^2.0",
 		"ergebnis/composer-normalize": "^2.29",
