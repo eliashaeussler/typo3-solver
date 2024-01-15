@@ -27,9 +27,9 @@
 		"psr/http-server-handler": "^1.0",
 		"psr/http-server-middleware": "^1.0",
 		"spatie/backtrace": "^1.2",
-		"symfony/console": "^5.4 || ^6.0",
-		"symfony/filesystem": "^5.4 || ^6.0",
-		"symfony/routing": "^5.4 || ^6.0",
+		"symfony/console": "^5.4 || ^6.0 || ^7.0",
+		"symfony/filesystem": "^5.4 || ^6.0 || ^7.0",
+		"symfony/routing": "^5.4 || ^6.0 || ^7.0",
 		"typo3/cms-core": "^11.5 || ^12.4",
 		"typo3fluid/fluid": "^2.9"
 	},
@@ -44,7 +44,7 @@
 		"phpunit/phpcov": "^8.2 || ^9.0",
 		"phpunit/phpunit": "^9.6",
 		"saschaegerer/phpstan-typo3": "^1.8",
-		"symfony/dependency-injection": "^5.4 || ^6.0",
+		"symfony/dependency-injection": "^5.4 || ^6.0 || ^7.0",
 		"typo3/coding-standards": "^0.7.1",
 		"typo3/testing-framework": "^7.0.2 || ^8.0.1"
 	},
