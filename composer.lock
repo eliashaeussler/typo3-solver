@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2ca17b4696c6a11722bf3e81c78ac844",
+    "content-hash": "161efce4443962b38075cdab3770ed36",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -5708,22 +5708,22 @@
         },
         {
             "name": "eliashaeussler/rector-config",
-            "version": "2.0.1",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eliashaeussler/rector-config.git",
-                "reference": "5a98a3bee2e67a7c4c3cb7acb7821e7edeaeda7e"
+                "reference": "55bd32b120c9d6b2156d9870c9bb1c6c892a9a0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/rector-config/zipball/5a98a3bee2e67a7c4c3cb7acb7821e7edeaeda7e",
-                "reference": "5a98a3bee2e67a7c4c3cb7acb7821e7edeaeda7e",
+                "url": "https://api.github.com/repos/eliashaeussler/rector-config/zipball/55bd32b120c9d6b2156d9870c9bb1c6c892a9a0f",
+                "reference": "55bd32b120c9d6b2156d9870c9bb1c6c892a9a0f",
                 "shasum": ""
             },
             "require": {
                 "composer-runtime-api": "^2.0",
                 "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
-                "rector/rector": "^0.15.21 || ^0.16.0 || ^0.17.0 || ^0.18.0"
+                "rector/rector": "^1.0"
             },
             "require-dev": {
                 "armin/editorconfig-cli": "^1.8 || ^2.0",
@@ -5731,15 +5731,15 @@
                 "eliashaeussler/php-cs-fixer-config": "^2.0",
                 "eliashaeussler/phpstan-config": "^2.0",
                 "ergebnis/composer-normalize": "^2.30",
+                "illuminate/container": "^10.39",
                 "phpstan/extension-installer": "^1.2",
                 "phpunit/phpunit": "^10.1",
-                "ssch/typo3-rector": "^1.2",
+                "ssch/typo3-rector": "^2.0",
                 "symfony/config": "^5.4 || ^6.0 || ^7.0",
-                "symfony/dependency-injection": "^5.4 || ^6.0 || ^7.0",
-                "typo3/cms-core": "^12.4"
+                "typo3/cms-core": "^12.4 || ^13.0"
             },
             "suggest": {
-                "ssch/typo3-rector": "Configures additional Rector rules for TYPO3 CMS projects"
+                "ssch/typo3-rector": "Configures additional Rector rules for TYPO3 CMS projects (^2.0)"
             },
             "type": "library",
             "autoload": {
@@ -5762,9 +5762,9 @@
             "description": "My personal configuration for Rector",
             "support": {
                 "issues": "https://github.com/eliashaeussler/rector-config/issues",
-                "source": "https://github.com/eliashaeussler/rector-config/tree/2.0.1"
+                "source": "https://github.com/eliashaeussler/rector-config/tree/3.0.1"
             },
-            "time": "2024-01-19T10:03:24+00:00"
+            "time": "2024-02-14T17:21:32+00:00"
         },
         {
             "name": "ergebnis/composer-normalize",
@@ -6932,16 +6932,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.10.54",
+            "version": "1.10.58",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "3e25f279dada0adc14ffd7bad09af2e2fc3523bb"
+                "reference": "a23518379ec4defd9e47cbf81019526861623ec2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/3e25f279dada0adc14ffd7bad09af2e2fc3523bb",
-                "reference": "3e25f279dada0adc14ffd7bad09af2e2fc3523bb",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/a23518379ec4defd9e47cbf81019526861623ec2",
+                "reference": "a23518379ec4defd9e47cbf81019526861623ec2",
                 "shasum": ""
             },
             "require": {
@@ -6990,7 +6990,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-01-05T15:50:47+00:00"
+            "time": "2024-02-12T20:02:57+00:00"
         },
         {
             "name": "phpstan/phpstan-deprecation-rules",
@@ -7647,21 +7647,21 @@
         },
         {
             "name": "rector/rector",
-            "version": "0.18.13",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "f8011a76d36aa4f839f60f3b4f97707d97176618"
+                "reference": "362258a1f6369fc88d02d469a5478d220f78b0e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/f8011a76d36aa4f839f60f3b4f97707d97176618",
-                "reference": "f8011a76d36aa4f839f60f3b4f97707d97176618",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/362258a1f6369fc88d02d469a5478d220f78b0e6",
+                "reference": "362258a1f6369fc88d02d469a5478d220f78b0e6",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2|^8.0",
-                "phpstan/phpstan": "^1.10.35"
+                "phpstan/phpstan": "^1.10.56"
             },
             "conflict": {
                 "rector/rector-doctrine": "*",
@@ -7691,7 +7691,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rectorphp/rector/issues",
-                "source": "https://github.com/rectorphp/rector/tree/0.18.13"
+                "source": "https://github.com/rectorphp/rector/tree/1.0.0"
             },
             "funding": [
                 {
@@ -7699,7 +7699,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-12-20T16:08:01+00:00"
+            "time": "2024-02-06T13:38:07+00:00"
         },
         {
             "name": "saschaegerer/phpstan-typo3",
