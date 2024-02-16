@@ -31,6 +31,7 @@ return [
         'build',
         'documentation',
         'public',
+        'resources\\/private\\/frontend',
         'resources\\/private\\/libs\\/build',
         'tailor-version-upload',
         'tests',
