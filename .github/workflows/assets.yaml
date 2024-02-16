@@ -13,14 +13,19 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
           token: ${{ secrets.REBUILD_ASSETS_TOKEN }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: 'Resources/Private/Frontend/package-lock.json'
 
       # Install Frontend dependencies
       - name: Install Frontend dependencies
-        run: yarn --cwd Resources/Private/Frontend --frozen-lockfile
+        run: npm --prefix Resources/Private/Frontend ci
 
       # Re-create Frontend dist files
       - name: Re-create dist files
-        run: yarn --cwd Resources/Private/Frontend build
+        run: npm --prefix Resources/Private/Frontend run build
 
       # Update PR
       - uses: stefanzweifel/git-auto-commit-action@v5

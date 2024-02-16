@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
-## Description: Run yarn command for the Frontend subproject
+## Description: Run npm command for the Frontend subproject
 ## Usage: frontend [command] [options]
-## Example: ddev frontend install\nddev frontend start\nddev frontend build\nddev frontend lint\nddev frontend fix
+## Example: ddev frontend install\nddev frontend start\nddev frontend run build\nddev frontend run lint\nddev frontend run fix
 
-yarn --cwd /var/www/html/Resources/Private/Frontend "$@"
+npm --prefix /var/www/html/Resources/Private/Frontend "$@"
