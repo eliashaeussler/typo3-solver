@@ -110,18 +110,18 @@ Frontend
 ..  code-block:: bash
 
     # All linters
-    ddev frontend lint
+    ddev frontend run lint
 
     # Specific linters
-    ddev frontend lint:scss
-    ddev frontend lint:ts
+    ddev frontend run lint:scss
+    ddev frontend run lint:ts
 
     # Fix all CGL issues
-    ddev frontend fix
+    ddev frontend run fix
 
     # Fix specific CGL issues
-    ddev frontend fix:scss
-    ddev frontend fix:ts
+    ddev frontend run fix:scss
+    ddev frontend run fix:ts
 
 ..  _run-tests:
 

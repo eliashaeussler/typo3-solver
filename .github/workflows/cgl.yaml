@@ -15,6 +15,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: 'Resources/Private/Frontend/package-lock.json'
 
       # Prepare environment
       - name: Setup PHP
@@ -58,20 +63,20 @@ jobs:
 
       # Install Frontend dependencies
       - name: Install Frontend dependencies
-        run: yarn --cwd Resources/Private/Frontend --frozen-lockfile
+        run: npm --prefix Resources/Private/Frontend ci
 
       # Check asset integrity
       - name: Check Frontend asset integrity
         run: |
-          yarn --cwd Resources/Private/Frontend build
+          npm --prefix Resources/Private/Frontend run build
           git add Resources/Public
           git diff --exit-code --staged Resources/Public
 
       # Frontend linting
       - name: Lint SCSS
-        run: yarn --cwd Resources/Private/Frontend lint:scss
+        run: npm --prefix Resources/Private/Frontend run lint:scss
       - name: Lint TypeScript
-        run: yarn --cwd Resources/Private/Frontend lint:ts
+        run: npm --prefix Resources/Private/Frontend run lint:ts
 
       # Migration
       - name: Rector migration
