@@ -41,7 +41,7 @@
 		"ergebnis/composer-normalize": "^2.29",
 		"phpstan/extension-installer": "^1.2",
 		"phpstan/phpstan-symfony": "^1.2",
-		"phpunit/phpcov": "^8.2 || ^9.0",
+		"phpunit/phpcov": "^8.2 || ^9.0 || ^10.0",
 		"phpunit/phpunit": "^9.6",
 		"saschaegerer/phpstan-typo3": "^1.8",
 		"symfony/dependency-injection": "^5.4 || ^6.0",
