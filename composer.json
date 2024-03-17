@@ -30,7 +30,7 @@
 		"symfony/console": "^5.4 || ^6.0",
 		"symfony/filesystem": "^5.4 || ^6.0",
 		"symfony/routing": "^5.4 || ^6.0",
-		"typo3/cms-core": "^11.5 || ^12.4 || ^13.0",
+		"typo3/cms-core": "^11.5 || ^12.4 || ~13.0.0",
 		"typo3fluid/fluid": "^2.9"
 	},
 	"require-dev": {
