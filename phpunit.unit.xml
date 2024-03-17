@@ -9,12 +9,9 @@
         <env name="COLUMNS" value="300" />
     </php>
     <extensions>
-        <extension class="EliasHaeussler\Typo3Solver\Tests\Hooks\ExtensionConfigurationHook" />
+        <bootstrap class="EliasHaeussler\Typo3Solver\Tests\Extension\ExtensionConfigurationExtension"/>
     </extensions>
     <coverage>
-        <include>
-            <directory suffix=".php">Classes</directory>
-        </include>
         <report>
             <php outputFile=".build/coverage/php/unit.cov"/>
             <html outputDirectory=".build/coverage/html/unit/"/>
@@ -29,4 +26,9 @@
     <logging>
         <junit outputFile=".build/coverage/junit/unit.xml"/>
     </logging>
+    <source>
+        <include>
+            <directory>Classes</directory>
+        </include>
+    </source>
 </phpunit>

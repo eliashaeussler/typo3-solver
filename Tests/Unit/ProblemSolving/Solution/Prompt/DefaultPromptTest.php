@@ -25,6 +25,7 @@ namespace EliasHaeussler\Typo3Solver\Tests\Unit\ProblemSolving\Solution\Prompt;
 
 use EliasHaeussler\Typo3Solver as Src;
 use Exception;
+use PHPUnit\Framework;
 use TYPO3\CMS\Core;
 use TYPO3\TestingFramework;
 
@@ -45,9 +46,7 @@ final class DefaultPromptTest extends TestingFramework\Core\Unit\UnitTestCase
         $this->subject = new Src\ProblemSolving\Solution\Prompt\DefaultPrompt(new Src\View\TemplateRenderer());
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function generateReturnsGeneratedPrompt(): void
     {
         $exception = new Exception('Something went wrong.', 1680791875);

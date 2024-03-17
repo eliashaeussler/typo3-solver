@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Tests\Unit\Http;
 
 use EliasHaeussler\Typo3Solver as Src;
+use PHPUnit\Framework;
 use TYPO3\TestingFramework;
 
 /**
@@ -45,9 +46,7 @@ final class ClientFactoryTest extends TestingFramework\Core\Unit\UnitTestCase
         $this->subject = new Src\Http\ClientFactory(new Src\Configuration\Configuration($this->provider));
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getThrowsExceptionIfApiKeyIsNotConfigured(): void
     {
         $this->expectExceptionObject(
@@ -57,9 +56,7 @@ final class ClientFactoryTest extends TestingFramework\Core\Unit\UnitTestCase
         $this->subject->get();
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getReturnsOpenAIClient(): void
     {
         $exception = null;

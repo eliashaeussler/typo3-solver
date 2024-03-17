@@ -30,6 +30,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler;
 use GuzzleHttp\Psr7;
 use OpenAI;
+use PHPUnit\Framework;
 use TYPO3\TestingFramework;
 
 use function iterator_to_array;
@@ -65,9 +66,7 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
         $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS'][Src\Extension::KEY]['api']['key'] = 'foo';
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function createReturnsInitializedProvider(): void
     {
         self::assertEquals(
@@ -76,9 +75,7 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
         );
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getSolutionThrowsExceptionIfApiKeyIsNotConfigured(): void
     {
         /* @phpstan-ignore-next-line */
@@ -91,9 +88,7 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
         $this->subject->getSolution($this->problem);
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getSolutionThrowsExceptionIfRequestFails(): void
     {
         $this->expectExceptionObject(
@@ -105,9 +100,7 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
         $this->subject->getSolution($this->problem);
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getSolutionReturnsSolutionFromClientResponse(): void
     {
         $payload = [
@@ -147,9 +140,7 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
         );
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getStreamedSolutionThrowsExceptionIfApiKeyIsNotConfigured(): void
     {
         /* @phpstan-ignore-next-line */
@@ -162,9 +153,7 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
         iterator_to_array($this->subject->getStreamedSolution($this->problem));
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getStreamedSolutionThrowsExceptionIfRequestFails(): void
     {
         $this->expectExceptionObject(
@@ -176,9 +165,7 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
         iterator_to_array($this->subject->getStreamedSolution($this->problem));
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getStreamedSolutionReturnsSolutionFromClientResponse(): void
     {
         $streamedResponse1 = [
@@ -229,9 +216,7 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
         self::assertEquals($expected, iterator_to_array($this->subject->getStreamedSolution($this->problem)));
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function canBeUsedChecksIfIgnoredExceptionCodesAreConfigured(): void
     {
         /* @phpstan-ignore-next-line */
@@ -245,9 +230,7 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
         self::assertTrue($this->subject->canBeUsed($this->problem->getException()));
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function isCacheableReturnsTrue(): void
     {
         self::assertTrue($this->subject->isCacheable());

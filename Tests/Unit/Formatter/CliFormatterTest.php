@@ -25,6 +25,7 @@ namespace EliasHaeussler\Typo3Solver\Tests\Unit\Formatter;
 
 use DateTimeImmutable;
 use EliasHaeussler\Typo3Solver as Src;
+use PHPUnit\Framework;
 use Symfony\Component\Console;
 use TYPO3\TestingFramework;
 
@@ -47,9 +48,7 @@ final class CliFormatterTest extends TestingFramework\Core\Unit\UnitTestCase
         $this->subject = new Src\Formatter\CliFormatter(new Src\View\TemplateRenderer());
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function formatFormatsSolution(): void
     {
         $now = new DateTimeImmutable();
@@ -80,9 +79,7 @@ TEXT;
         self::assertSame(trim($expected), $this->subject->format($problem, $solution));
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function formatIncludesPromptIfOutputIsVerbose(): void
     {
         $output = new Console\Output\BufferedOutput();

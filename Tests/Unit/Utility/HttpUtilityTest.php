@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Tests\Unit\Utility;
 
 use EliasHaeussler\Typo3Solver as Src;
+use PHPUnit\Framework;
 use TYPO3\CMS\Core;
 use TYPO3\TestingFramework;
 
@@ -35,9 +36,7 @@ use TYPO3\TestingFramework;
  */
 final class HttpUtilityTest extends TestingFramework\Core\Unit\UnitTestCase
 {
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function uriMatchesRequestReturnsTrueIfGivenRoutePathMatchesRequestUri(): void
     {
         $routePath = '/foo';
@@ -46,9 +45,7 @@ final class HttpUtilityTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertTrue(Src\Utility\HttpUtility::uriMatchesRequest($routePath, $request));
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function uriMatchesRequestReturnsFalseIfGivenRoutePathDoesNotMatchRequestUri(): void
     {
         $routePath = '/foo';
@@ -57,9 +54,7 @@ final class HttpUtilityTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertFalse(Src\Utility\HttpUtility::uriMatchesRequest($routePath, $request));
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getServerRequestReturnsGlobalServerRequest(): void
     {
         $request = new Core\Http\ServerRequest();
@@ -71,9 +66,7 @@ final class HttpUtilityTest extends TestingFramework\Core\Unit\UnitTestCase
         unset($GLOBALS['TYPO3_REQUEST']);
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getServerRequestCreatesServerRequestIfNoGlobalServerRequestIsAvailable(): void
     {
         $emptyStream = new Core\Http\Stream('php://temp');

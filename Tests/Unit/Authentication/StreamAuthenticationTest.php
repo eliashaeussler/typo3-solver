@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Tests\Unit\Authentication;
 
 use EliasHaeussler\Typo3Solver as Src;
+use PHPUnit\Framework;
 use Symfony\Component\Filesystem;
 use TYPO3\TestingFramework;
 
@@ -52,9 +53,7 @@ final class StreamAuthenticationTest extends TestingFramework\Core\Unit\UnitTest
         $this->subject = new Src\Authentication\StreamAuthentication();
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function constructorCreatesTransientFileIfNotExists(): void
     {
         $this->filesystem->remove($this->filename);
@@ -67,9 +66,7 @@ final class StreamAuthenticationTest extends TestingFramework\Core\Unit\UnitTest
         self::assertSame('', file_get_contents($this->filename));
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function authenticateThrowsExceptionIfFileCannotBeRead(): void
     {
         $this->filesystem->remove($this->filename);
@@ -81,9 +78,7 @@ final class StreamAuthenticationTest extends TestingFramework\Core\Unit\UnitTest
         $this->subject->authenticate('foo');
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function authenticateThrowsExceptionIfHashIsNotRegistered(): void
     {
         $this->expectExceptionObject(
@@ -93,9 +88,7 @@ final class StreamAuthenticationTest extends TestingFramework\Core\Unit\UnitTest
         $this->subject->authenticate('foo');
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function authenticateRemovesHashFromTransientFileOnSuccessfulAuthentication(): void
     {
         $registeredHash = $this->subject->register();
@@ -112,9 +105,7 @@ final class StreamAuthenticationTest extends TestingFramework\Core\Unit\UnitTest
         self::assertNotContains($registeredHash, $registeredHashesAfterAuthentication);
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function registerWritesHashToTransientFile(): void
     {
         $actual = $this->subject->register();

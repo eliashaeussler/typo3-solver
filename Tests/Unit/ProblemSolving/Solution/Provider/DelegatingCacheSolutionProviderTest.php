@@ -27,6 +27,7 @@ use EliasHaeussler\Typo3Solver as Src;
 use EliasHaeussler\Typo3Solver\Tests;
 use Exception;
 use OpenAI\Responses;
+use PHPUnit\Framework;
 use TYPO3\TestingFramework;
 
 /**
@@ -52,9 +53,7 @@ final class DelegatingCacheSolutionProviderTest extends TestingFramework\Core\Un
         $this->cache->flush();
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function createThrowsExceptionIfDelegatingProviderIsNotGiven(): void
     {
         $this->expectExceptionObject(
@@ -64,9 +63,7 @@ final class DelegatingCacheSolutionProviderTest extends TestingFramework\Core\Un
         Src\ProblemSolving\Solution\Provider\DelegatingCacheSolutionProvider::create();
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function createReturnsInitializedProviderWithGivenDelegate(): void
     {
         self::assertEquals(
@@ -75,9 +72,7 @@ final class DelegatingCacheSolutionProviderTest extends TestingFramework\Core\Un
         );
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getSolutionReturnsSolutionFromCache(): void
     {
         $problem = Tests\Unit\DataProvider\ProblemDataProvider::get(solutionProvider: $this->provider);
@@ -103,9 +98,7 @@ final class DelegatingCacheSolutionProviderTest extends TestingFramework\Core\Un
         self::assertEquals($solution, $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getSolutionReturnsDummySolution(): void
     {
         $problem = Tests\Unit\DataProvider\ProblemDataProvider::get(solutionProvider: $this->provider);
@@ -118,17 +111,13 @@ final class DelegatingCacheSolutionProviderTest extends TestingFramework\Core\Un
         self::assertEquals($this->cache->get($problem), $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function canBeUsedReturnsTrue(): void
     {
         self::assertTrue($this->subject->canBeUsed(new Exception()));
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function isCacheableReturnsFalse(): void
     {
         self::assertFalse($this->subject->isCacheable());
