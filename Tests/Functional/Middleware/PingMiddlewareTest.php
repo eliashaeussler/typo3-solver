@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Tests\Functional\Middleware;
 
 use EliasHaeussler\Typo3Solver\Tests;
+use PHPUnit\Framework;
 use TYPO3\TestingFramework;
 
 /**
@@ -42,9 +43,7 @@ final class PingMiddlewareTest extends TestingFramework\Core\Functional\Function
 
     protected bool $initializeDatabase = false;
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function middlewareIsSkippedOnUnsupportedRequest(): void
     {
         $request = self::createRequest('/tx_solver/ping')->withoutHeader('Accept');
@@ -53,9 +52,7 @@ final class PingMiddlewareTest extends TestingFramework\Core\Functional\Function
         self::assertNotSame(200, $response->getStatusCode());
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function middlewareIsSkippedOnNonMatchingRoute(): void
     {
         $request = self::createRequest('/');

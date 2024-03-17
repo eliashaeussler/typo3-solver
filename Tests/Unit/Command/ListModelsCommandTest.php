@@ -28,6 +28,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler;
 use GuzzleHttp\Psr7;
 use OpenAI;
+use PHPUnit\Framework;
 use Symfony\Component\Console;
 use TYPO3\TestingFramework;
 
@@ -64,9 +65,7 @@ final class ListModelsCommandTest extends TestingFramework\Core\Unit\UnitTestCas
         $this->listResponse = $this->createListResponse();
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function executeListsAllGPTModels(): void
     {
         $response = new Psr7\Response(headers: [
@@ -101,9 +100,7 @@ final class ListModelsCommandTest extends TestingFramework\Core\Unit\UnitTestCas
         );
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function executeListsAllAvailableModels(): void
     {
         $response = new Psr7\Response(headers: [

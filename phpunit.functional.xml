@@ -9,9 +9,6 @@
         <env name="COLUMNS" value="300" />
     </php>
     <coverage>
-        <include>
-            <directory suffix=".php">Classes</directory>
-        </include>
         <report>
             <php outputFile=".build/coverage/php/functional.cov"/>
             <html outputDirectory=".build/coverage/html/functional/"/>
@@ -26,4 +23,9 @@
     <logging>
         <junit outputFile=".build/coverage/junit/functional.xml"/>
     </logging>
+    <source>
+        <include>
+            <directory>Classes</directory>
+        </include>
+    </source>
 </phpunit>

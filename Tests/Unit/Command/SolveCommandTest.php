@@ -26,6 +26,7 @@ namespace EliasHaeussler\Typo3Solver\Tests\Unit\Command;
 use EliasHaeussler\Typo3Solver as Src;
 use EliasHaeussler\Typo3Solver\Tests;
 use Exception;
+use PHPUnit\Framework;
 use Symfony\Component\Console;
 use TYPO3\TestingFramework;
 
@@ -69,9 +70,7 @@ final class SolveCommandTest extends TestingFramework\Core\Unit\UnitTestCase
         $this->solutionsCache->flush();
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function executeThrowsExceptionIfConflictingParametersAreGiven(): void
     {
         $this->expectExceptionObject(
@@ -84,9 +83,7 @@ final class SolveCommandTest extends TestingFramework\Core\Unit\UnitTestCase
         ]);
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function executeThrowsExceptionIfExceptionCacheEntryForGivenCacheIdentifierDoesNotExist(): void
     {
         $this->expectExceptionObject(
@@ -96,9 +93,7 @@ final class SolveCommandTest extends TestingFramework\Core\Unit\UnitTestCase
         $this->commandTester->execute(['--identifier' => 'foo']);
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function executeProvidesSolutionForGivenExceptionIdentifier(): void
     {
         $exception = new Exception('Something went wrong.', 123);
@@ -118,9 +113,7 @@ final class SolveCommandTest extends TestingFramework\Core\Unit\UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function executeProvidesSolutionForGivenReconstructedProblem(): void
     {
         $exception = Src\Exception\CustomSolvableException::create(
@@ -148,9 +141,7 @@ final class SolveCommandTest extends TestingFramework\Core\Unit\UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function executeThrowsExceptionIfRequiredParametersAreMissing(): void
     {
         $this->expectExceptionObject(
@@ -160,9 +151,7 @@ final class SolveCommandTest extends TestingFramework\Core\Unit\UnitTestCase
         $this->commandTester->execute([]);
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function executeRemovesCacheEntryWithRefreshOption(): void
     {
         $exception = Src\Exception\CustomSolvableException::create(
@@ -186,9 +175,7 @@ final class SolveCommandTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertNotEquals($solution->getChoices(), $this->solutionsCache->get($problem)->getChoices());
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function executeFailsIfProviderCannotBeUsed(): void
     {
         $exception = new Exception('Something went wrong.');
@@ -204,9 +191,7 @@ final class SolveCommandTest extends TestingFramework\Core\Unit\UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function executeUsesJsonFormatterWithJsonOption(): void
     {
         $solution = Tests\Unit\DataProvider\SolutionDataProvider::get();

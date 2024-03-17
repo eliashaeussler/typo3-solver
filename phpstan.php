@@ -34,7 +34,10 @@ return PHPStanConfig\Config\Config::create(__DIR__)
         'Tests',
     )
     ->withBaseline()
-    ->withBleedingEdge()
+    ->withBleedingEdge([
+        // Avoids errors with $GLOBALS['TYPO3_CONF_VARS'] access
+        'explicitMixedForGlobalVariables' => false,
+    ])
     ->maxLevel()
     ->withSets($symfonySet)
     ->toArray()

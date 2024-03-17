@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Tests\Unit\Command;
 
 use EliasHaeussler\Typo3Solver as Src;
+use PHPUnit\Framework;
 use Symfony\Component\Console;
 use TYPO3\TestingFramework;
 
@@ -50,9 +51,7 @@ final class CacheFlushCommandTest extends TestingFramework\Core\Unit\UnitTestCas
         $this->cache->flush();
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function executeRemovesSpecificCacheEntryFromCache(): void
     {
         $problem = Src\Tests\Unit\DataProvider\ProblemDataProvider::get();
@@ -75,9 +74,7 @@ final class CacheFlushCommandTest extends TestingFramework\Core\Unit\UnitTestCas
         self::assertNull($this->cache->get($problem));
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function executeFlushesCompleteCache(): void
     {
         $problem1 = Src\Tests\Unit\DataProvider\ProblemDataProvider::get('message 1');

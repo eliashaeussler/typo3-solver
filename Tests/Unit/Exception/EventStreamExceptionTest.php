@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Tests\Unit\Exception;
 
 use EliasHaeussler\Typo3Solver as Src;
+use PHPUnit\Framework;
 use TYPO3\TestingFramework;
 
 /**
@@ -34,9 +35,7 @@ use TYPO3\TestingFramework;
  */
 final class EventStreamExceptionTest extends TestingFramework\Core\Unit\UnitTestCase
 {
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function forActiveResponseReturnsExceptionForActiveResponse(): void
     {
         $actual = Src\Exception\EventStreamException::forActiveResponse();
@@ -45,9 +44,7 @@ final class EventStreamExceptionTest extends TestingFramework\Core\Unit\UnitTest
         self::assertSame(1680364482, $actual->getCode());
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function forClosedStreamReturnsExceptionForClosedStream(): void
     {
         $actual = Src\Exception\EventStreamException::forClosedStream();

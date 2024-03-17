@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Tests\Unit\Exception;
 
 use EliasHaeussler\Typo3Solver as Src;
+use PHPUnit\Framework;
 use TYPO3\TestingFramework;
 
 /**
@@ -34,9 +35,7 @@ use TYPO3\TestingFramework;
  */
 final class UnrecoverableExceptionExceptionTest extends TestingFramework\Core\Unit\UnitTestCase
 {
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function createReturnsExceptionForUnrecoverableException(): void
     {
         $actual = Src\Exception\UnrecoverableExceptionException::create('foo');
@@ -45,9 +44,7 @@ final class UnrecoverableExceptionExceptionTest extends TestingFramework\Core\Un
         self::assertSame(1681219687, $actual->getCode());
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function forMissingIdentifierReturnsExceptionForMissingIdentifier(): void
     {
         $actual = Src\Exception\UnrecoverableExceptionException::forMissingIdentifier();

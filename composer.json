@@ -27,10 +27,10 @@
 		"psr/http-server-handler": "^1.0",
 		"psr/http-server-middleware": "^1.0",
 		"spatie/backtrace": "^1.2",
-		"symfony/console": "^5.4 || ^6.0",
-		"symfony/filesystem": "^5.4 || ^6.0",
-		"symfony/routing": "^5.4 || ^6.0",
-		"typo3/cms-core": "^11.5 || ^12.4",
+		"symfony/console": "^5.4 || ^6.0 || ^7.0",
+		"symfony/filesystem": "^5.4 || ^6.0 || ^7.0",
+		"symfony/routing": "^5.4 || ^6.0 || ^7.0",
+		"typo3/cms-core": "^11.5 || ^12.4 || ~13.0.0",
 		"typo3fluid/fluid": "^2.9"
 	},
 	"require-dev": {
@@ -41,12 +41,11 @@
 		"ergebnis/composer-normalize": "^2.29",
 		"phpstan/extension-installer": "^1.2",
 		"phpstan/phpstan-symfony": "^1.2",
-		"phpunit/phpcov": "^8.2 || ^9.0",
-		"phpunit/phpunit": "^9.6",
+		"phpunit/phpcov": "^9.0 || ^10.0",
 		"saschaegerer/phpstan-typo3": "^1.8",
-		"symfony/dependency-injection": "^5.4 || ^6.0",
-		"typo3/coding-standards": "^0.7.1",
-		"typo3/testing-framework": "^7.0.2 || ^8.0.1"
+		"symfony/dependency-injection": "^5.4 || ^6.0 || ^7.0",
+		"typo3/coding-standards": "^0.8.0@dev",
+		"typo3/testing-framework": "^7.0.2 || ^8.0.9"
 	},
 	"autoload": {
 		"psr-4": {

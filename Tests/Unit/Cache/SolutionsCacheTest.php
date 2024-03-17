@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Tests\Unit\Cache;
 
 use EliasHaeussler\Typo3Solver as Src;
+use PHPUnit\Framework;
 use Symfony\Component\Filesystem;
 use TYPO3\TestingFramework;
 
@@ -50,9 +51,7 @@ final class SolutionsCacheTest extends TestingFramework\Core\Unit\UnitTestCase
         $this->solution = Src\Tests\Unit\DataProvider\SolutionDataProvider::get();
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function constructorCreatesCacheFileIfNotExists(): void
     {
         $cacheFile = dirname(__DIR__, 3) . '/var/cache/data/tx_solver/solutions.php';
@@ -68,9 +67,7 @@ final class SolutionsCacheTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertSame([], require $cacheFile);
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getReturnsNullIfSolutionProviderIsNotCacheable(): void
     {
         $solutionProvider = $this->problem->getSolutionProvider();
@@ -82,21 +79,16 @@ final class SolutionsCacheTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertNull($this->subject->get($this->problem));
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getReturnsNullIfCacheIsDisabled(): void
     {
         // Disable cache
-        /* @phpstan-ignore-next-line */
         $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS'][Src\Extension::KEY]['cache']['lifetime'] = 0;
 
         self::assertNull($this->subject->get($this->problem));
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getReturnsNullOnEmptyCache(): void
     {
         $this->subject->flush();
@@ -104,9 +96,7 @@ final class SolutionsCacheTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertNull($this->subject->get($this->problem));
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getReturnsCacheEntry(): void
     {
         $this->subject->flush();
@@ -125,13 +115,10 @@ final class SolutionsCacheTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertEquals($expected, $actual);
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function getRemovesExpiredCacheEntryAndReturnsNull(): void
     {
         // Manipulate cache lifetime
-        /* @phpstan-ignore-next-line */
         $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS'][Src\Extension::KEY]['cache']['lifetime'] = 2;
 
         $this->subject->flush();
@@ -145,9 +132,7 @@ final class SolutionsCacheTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertNull($this->subject->get($this->problem));
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function setDoesNothingIfSolutionProviderIsNotCacheable(): void
     {
         $this->subject->flush();
@@ -163,13 +148,10 @@ final class SolutionsCacheTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertNull($this->subject->get($this->problem));
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function setDoesNothingIfCacheIsDisabled(): void
     {
         // Disable cache
-        /* @phpstan-ignore-next-line */
         $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS'][Src\Extension::KEY]['cache']['lifetime'] = 0;
 
         $this->subject->flush();
@@ -178,9 +160,7 @@ final class SolutionsCacheTest extends TestingFramework\Core\Unit\UnitTestCase
         self::assertNull($this->subject->get($this->problem));
     }
 
-    /**
-     * @test
-     */
+    #[Framework\Attributes\Test]
     public function removeRemovesGivenExceptionFromCache(): void
     {
         $this->subject->set($this->problem, $this->solution);

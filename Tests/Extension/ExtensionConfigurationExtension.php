@@ -21,22 +21,32 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace EliasHaeussler\Typo3Solver\Tests\Hooks;
+namespace EliasHaeussler\Typo3Solver\Tests\Extension;
 
 use EliasHaeussler\Typo3Solver as Src;
+use PHPUnit\Event;
 use PHPUnit\Runner;
+use PHPUnit\TextUI;
 
 /**
- * ExtensionConfigurationHook
+ * ExtensionConfigurationExtension
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
+ * @internal
  */
-final class ExtensionConfigurationHook implements Runner\BeforeTestHook
+final class ExtensionConfigurationExtension implements Runner\Extension\Extension, Event\Test\BeforeTestMethodCalledSubscriber
 {
-    public function executeBeforeTest(string $test): void
+    public function bootstrap(
+        TextUI\Configuration\Configuration $configuration,
+        Runner\Extension\Facade $facade,
+        Runner\Extension\ParameterCollection $parameters,
+    ): void {
+        $facade->registerSubscriber($this);
+    }
+
+    public function notify(Event\Test\BeforeTestMethodCalled $event): void
     {
-        /* @phpstan-ignore-next-line */
         $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS'][Src\Extension::KEY] = [
             'api' => [
                 'key' => 'foo',

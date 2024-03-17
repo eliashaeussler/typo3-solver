@@ -21,7 +21,7 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-return (static function () {
+return (static function() {
     $middlewares = require dirname(__DIR__, 6) . '/Configuration/RequestMiddlewares.php';
 
     foreach ($middlewares as &$contextMiddlewares) {
