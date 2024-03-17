@@ -124,12 +124,8 @@ jobs:
           coverageLocations: |
             ${{ steps.download.outputs.download-path }}/clover.xml:clover
 
-      # codecov
-      - name: codecov report
-        uses: codecov/codecov-action@v4
+      # Coveralls
+      - name: Coveralls report
+        uses: coverallsapp/github-action@v2
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: |
-            ${{ steps.download.outputs.download-path }}/clover.xml
-          fail_ci_if_error: true
-          verbose: true
+          file: ${{ steps.download.outputs.download-path }}/clover.xml

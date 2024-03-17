@@ -133,8 +133,8 @@ Run tests
 
 ..  rst-class:: d-inline-block mb-3
 
-..  image:: https://codecov.io/gh/eliashaeussler/typo3-solver/branch/main/graph/badge.svg?token=fj60tJlnHW
-    :target: https://codecov.io/gh/eliashaeussler/typo3-solver
+..  image:: https://img.shields.io/coverallsCoverage/github/eliashaeussler/typo3-solver?logo=coveralls
+    :target: https://coveralls.io/github/eliashaeussler/typo3-solver
 
 ..  code-block:: bash
 

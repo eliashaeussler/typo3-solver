@@ -4,7 +4,7 @@
 
 # TYPO3 extension `solver`
 
-[![Coverage](https://img.shields.io/codecov/c/github/eliashaeussler/typo3-solver?logo=codecov&token=fj60tJlnHW)](https://codecov.io/gh/eliashaeussler/typo3-solver)
+[![Coverage](https://img.shields.io/coverallsCoverage/github/eliashaeussler/typo3-solver?logo=coveralls)](https://coveralls.io/github/eliashaeussler/typo3-solver)
 [![Maintainability](https://img.shields.io/codeclimate/maintainability/eliashaeussler/typo3-solver?logo=codeclimate)](https://codeclimate.com/github/eliashaeussler/typo3-solver/maintainability)
 [![CGL](https://img.shields.io/github/actions/workflow/status/eliashaeussler/typo3-solver/cgl.yaml?label=cgl&logo=github)](https://github.com/eliashaeussler/typo3-solver/actions/workflows/cgl.yaml)
 [![Tests](https://img.shields.io/github/actions/workflow/status/eliashaeussler/typo3-solver/tests.yaml?label=tests&logo=github)](https://github.com/eliashaeussler/typo3-solver/actions/workflows/tests.yaml)
