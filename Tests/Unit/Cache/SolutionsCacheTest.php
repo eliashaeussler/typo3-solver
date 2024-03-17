@@ -83,7 +83,6 @@ final class SolutionsCacheTest extends TestingFramework\Core\Unit\UnitTestCase
     public function getReturnsNullIfCacheIsDisabled(): void
     {
         // Disable cache
-        /* @phpstan-ignore-next-line */
         $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS'][Src\Extension::KEY]['cache']['lifetime'] = 0;
 
         self::assertNull($this->subject->get($this->problem));
@@ -120,7 +119,6 @@ final class SolutionsCacheTest extends TestingFramework\Core\Unit\UnitTestCase
     public function getRemovesExpiredCacheEntryAndReturnsNull(): void
     {
         // Manipulate cache lifetime
-        /* @phpstan-ignore-next-line */
         $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS'][Src\Extension::KEY]['cache']['lifetime'] = 2;
 
         $this->subject->flush();
@@ -154,7 +152,6 @@ final class SolutionsCacheTest extends TestingFramework\Core\Unit\UnitTestCase
     public function setDoesNothingIfCacheIsDisabled(): void
     {
         // Disable cache
-        /* @phpstan-ignore-next-line */
         $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS'][Src\Extension::KEY]['cache']['lifetime'] = 0;
 
         $this->subject->flush();

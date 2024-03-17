@@ -39,7 +39,6 @@ final class LowLevelConfigurationProvider implements ConfigurationProvider
 {
     public function get(string $configPath, mixed $default = null): mixed
     {
-        /* @phpstan-ignore-next-line */
         $extensionConfiguration = $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS'][Extension::KEY] ?? null;
 
         if (!is_array($extensionConfiguration)) {

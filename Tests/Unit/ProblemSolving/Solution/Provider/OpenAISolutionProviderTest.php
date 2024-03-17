@@ -62,7 +62,6 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
         $this->problem = Tests\Unit\DataProvider\ProblemDataProvider::get(solutionProvider: $this->subject);
 
         // Configure API key
-        /* @phpstan-ignore-next-line */
         $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS'][Src\Extension::KEY]['api']['key'] = 'foo';
     }
 
@@ -78,7 +77,6 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
     #[Framework\Attributes\Test]
     public function getSolutionThrowsExceptionIfApiKeyIsNotConfigured(): void
     {
-        /* @phpstan-ignore-next-line */
         unset($GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS'][Src\Extension::KEY]['api']['key']);
 
         $this->expectExceptionObject(
@@ -143,7 +141,6 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
     #[Framework\Attributes\Test]
     public function getStreamedSolutionThrowsExceptionIfApiKeyIsNotConfigured(): void
     {
-        /* @phpstan-ignore-next-line */
         unset($GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS'][Src\Extension::KEY]['api']['key']);
 
         $this->expectExceptionObject(
@@ -219,12 +216,10 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
     #[Framework\Attributes\Test]
     public function canBeUsedChecksIfIgnoredExceptionCodesAreConfigured(): void
     {
-        /* @phpstan-ignore-next-line */
         $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS'][Src\Extension::KEY]['ignoredCodes'] = '123';
 
         self::assertFalse($this->subject->canBeUsed($this->problem->getException()));
 
-        /* @phpstan-ignore-next-line */
         $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS'][Src\Extension::KEY]['ignoredCodes'] = '';
 
         self::assertTrue($this->subject->canBeUsed($this->problem->getException()));
