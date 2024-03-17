@@ -81,7 +81,7 @@ final class DateViewHelperTest extends TestingFramework\Core\Functional\Function
      */
     public static function renderStaticReturnsHumanReadableDateDataProvider(): Generator
     {
-        $format = static fn(int $interval, string $unit): array => [
+        $format = static fn (int $interval, string $unit): array => [
             new DateTimeImmutable($interval . ' ' . $unit . ' ago'),
             $unit . ' ago',
         ];

@@ -71,7 +71,7 @@ final class Solution implements Countable, IteratorAggregate, JsonSerializable
     {
         $choices = array_map(
             /* @phpstan-ignore-next-line */
-            static fn(array $choice): Responses\Chat\CreateResponseChoice => Responses\Chat\CreateResponseChoice::from($choice),
+            static fn (array $choice): Responses\Chat\CreateResponseChoice => Responses\Chat\CreateResponseChoice::from($choice),
             $solution['choices'],
         );
 
@@ -137,7 +137,7 @@ final class Solution implements Countable, IteratorAggregate, JsonSerializable
     {
         return [
             'choices' => array_map(
-                static fn(Responses\Chat\CreateResponseChoice $choice): array => $choice->toArray(),
+                static fn (Responses\Chat\CreateResponseChoice $choice): array => $choice->toArray(),
                 $this->choices,
             ),
             'model' => $this->model,
