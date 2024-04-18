@@ -56,10 +56,12 @@ final class SolutionSerializer
      */
     public function serialize(ProblemSolving\Solution\Solution $solution): array
     {
+        $now = time();
+
         return [
             'solution' => $solution->toArray(),
-            'createdAt' => time(),
-            'validUntil' => time() + $this->configuration->getCacheLifetime(),
+            'createdAt' => $now,
+            'validUntil' => $now + $this->configuration->getCacheLifetime(),
         ];
     }
 
