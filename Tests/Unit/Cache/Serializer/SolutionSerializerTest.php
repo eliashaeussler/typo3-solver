@@ -54,11 +54,14 @@ final class SolutionSerializerTest extends TestingFramework\Core\Unit\UnitTestCa
     {
         $solution = Src\Tests\Unit\DataProvider\SolutionDataProvider::get();
 
+        $createTime = time();
+        $expiryTime = $createTime + $this->configuration->getCacheLifetime();
+
         $actual = $this->subject->serialize($solution);
 
         self::assertSame($solution->toArray(), $actual['solution']);
-        self::assertLessThanOrEqual(time(), $actual['createdAt']);
-        self::assertGreaterThanOrEqual(time() + $this->configuration->getCacheLifetime(), $actual['validUntil']);
+        self::assertEqualsWithDelta($createTime, $actual['createdAt'], 2.0);
+        self::assertEqualsWithDelta($expiryTime, $actual['validUntil'], 2.0);
     }
 
     #[Framework\Attributes\Test]
