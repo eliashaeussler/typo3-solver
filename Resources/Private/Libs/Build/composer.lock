@@ -58,16 +58,16 @@
         },
         {
             "name": "openai-php/client",
-            "version": "v0.9.0",
+            "version": "v0.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/openai-php/client.git",
-                "reference": "7b5652b5e107b04b67aa5bc6560acf162ef2be97"
+                "reference": "8d15b792d53dfdb51b47a5a0d552f36a9dba5fc3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/openai-php/client/zipball/7b5652b5e107b04b67aa5bc6560acf162ef2be97",
-                "reference": "7b5652b5e107b04b67aa5bc6560acf162ef2be97",
+                "url": "https://api.github.com/repos/openai-php/client/zipball/8d15b792d53dfdb51b47a5a0d552f36a9dba5fc3",
+                "reference": "8d15b792d53dfdb51b47a5a0d552f36a9dba5fc3",
                 "shasum": ""
             },
             "require": {
@@ -130,7 +130,7 @@
             ],
             "support": {
                 "issues": "https://github.com/openai-php/client/issues",
-                "source": "https://github.com/openai-php/client/tree/v0.9.0"
+                "source": "https://github.com/openai-php/client/tree/v0.9.1"
             },
             "funding": [
                 {
@@ -146,7 +146,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-05-21T18:50:46+00:00"
+            "time": "2024-05-24T21:38:07+00:00"
         },
         {
             "name": "php-http/discovery",
