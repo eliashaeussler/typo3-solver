@@ -3,24 +3,24 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$arguments \\(array\\{date\\: DateTimeInterface, readable\\: bool\\}\\) of method EliasHaeussler\\\\Typo3Solver\\\\ViewHelpers\\\\DateViewHelper\\:\\:renderStatic\\(\\) should be contravariant with parameter \\$arguments \\(array\\<string, mixed\\>\\) of method TYPO3Fluid\\\\Fluid\\\\Core\\\\ViewHelper\\\\AbstractViewHelper\\:\\:renderStatic\\(\\)$#"
 			count: 1
-			path: Classes/ViewHelpers/DateViewHelper.php
+			path: ../../Classes/ViewHelpers/DateViewHelper.php
 
 		-
 			message: "#^Parameter \\#1 \\$arguments \\(array\\{date\\: DateTimeInterface, readable\\: bool\\}\\) of method EliasHaeussler\\\\Typo3Solver\\\\ViewHelpers\\\\DateViewHelper\\:\\:renderStatic\\(\\) should be contravariant with parameter \\$arguments \\(array\\<string, mixed\\>\\) of method TYPO3Fluid\\\\Fluid\\\\Core\\\\ViewHelper\\\\ViewHelperInterface\\:\\:renderStatic\\(\\)$#"
 			count: 1
-			path: Classes/ViewHelpers/DateViewHelper.php
+			path: ../../Classes/ViewHelpers/DateViewHelper.php
 
 		-
 			message: "#^Parameter \\#1 \\$arguments \\(array\\{replaceLineNumbersInCodeSnippets\\?\\: bool\\}\\) of method EliasHaeussler\\\\Typo3Solver\\\\ViewHelpers\\\\MarkdownToHtmlViewHelper\\:\\:renderStatic\\(\\) should be contravariant with parameter \\$arguments \\(array\\<string, mixed\\>\\) of method TYPO3Fluid\\\\Fluid\\\\Core\\\\ViewHelper\\\\AbstractViewHelper\\:\\:renderStatic\\(\\)$#"
 			count: 1
-			path: Classes/ViewHelpers/MarkdownToHtmlViewHelper.php
+			path: ../../Classes/ViewHelpers/MarkdownToHtmlViewHelper.php
 
 		-
 			message: "#^Parameter \\#1 \\$arguments \\(array\\{replaceLineNumbersInCodeSnippets\\?\\: bool\\}\\) of method EliasHaeussler\\\\Typo3Solver\\\\ViewHelpers\\\\MarkdownToHtmlViewHelper\\:\\:renderStatic\\(\\) should be contravariant with parameter \\$arguments \\(array\\<string, mixed\\>\\) of method TYPO3Fluid\\\\Fluid\\\\Core\\\\ViewHelper\\\\ViewHelperInterface\\:\\:renderStatic\\(\\)$#"
 			count: 1
-			path: Classes/ViewHelpers/MarkdownToHtmlViewHelper.php
+			path: ../../Classes/ViewHelpers/MarkdownToHtmlViewHelper.php
 
 		-
 			message: "#^Static method OpenAI\\\\Responses\\\\Chat\\\\CreateResponse\\:\\:from\\(\\) invoked with 1 parameter, 2 required\\.$#"
 			count: 1
-			path: Tests/Unit/ProblemSolving/Solution/SolutionTest.php
+			path: ../Unit/ProblemSolving/Solution/SolutionTest.php

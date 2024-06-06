@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -e
+
+## Description: Run CGL script for the package files
+## Usage: cgl [command] [options]
+## Example: ddev cgl lint\nddev cgl fix\nddev cgl migration\nddev cgl sca\nddev cgl lint:composer\nddev cgl fix:composer
+
+composer -d /var/www/html/Tests/CGL "$@"

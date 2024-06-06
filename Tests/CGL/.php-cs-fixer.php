@@ -32,7 +32,7 @@ $config = \TYPO3\CodingStandards\CsFixerConfig::create()
 ;
 
 $finder = $config->getFinder()
-    ->in(__DIR__)
+    ->in(dirname(__DIR__, 2))
     ->ignoreVCSignored(true)
 ;
 
