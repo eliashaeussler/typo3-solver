@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "78efa3b60a41a35d93a296e5941430de",
+    "content-hash": "67c170f45fde5c2df3f791a95369939e",
     "packages": [
         {
             "name": "clue/ndjson-react",
@@ -7955,16 +7955,16 @@
         },
         {
             "name": "typo3/coding-standards",
-            "version": "dev-main",
+            "version": "v0.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3/coding-standards.git",
-                "reference": "0d5c3c58aa773ca28eab93db6f605f8209098bd9"
+                "reference": "d99bdb92e5647bedc3d05e4aef1ab4d1808a17b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3/coding-standards/zipball/0d5c3c58aa773ca28eab93db6f605f8209098bd9",
-                "reference": "0d5c3c58aa773ca28eab93db6f605f8209098bd9",
+                "url": "https://api.github.com/repos/TYPO3/coding-standards/zipball/d99bdb92e5647bedc3d05e4aef1ab4d1808a17b1",
+                "reference": "d99bdb92e5647bedc3d05e4aef1ab4d1808a17b1",
                 "shasum": ""
             },
             "require": {
@@ -7990,7 +7990,6 @@
                 "symfony/finder": "^6.4 || ^7.0",
                 "symfony/process": "^6.4 || ^7.0"
             },
-            "default-branch": true,
             "bin": [
                 "t3-cs",
                 "typo3-coding-standards"
@@ -8035,7 +8034,7 @@
                 "issues": "https://github.com/TYPO3/coding-standards/issues",
                 "source": "https://github.com/TYPO3/coding-standards"
             },
-            "time": "2024-06-06T06:38:31+00:00"
+            "time": "2024-06-03T14:17:54+00:00"
         },
         {
             "name": "typo3/html-sanitizer",
@@ -8199,9 +8198,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "typo3/coding-standards": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

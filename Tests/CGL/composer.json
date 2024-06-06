@@ -10,7 +10,7 @@
 		"phpstan/extension-installer": "^1.2",
 		"phpstan/phpstan-symfony": "^1.2",
 		"saschaegerer/phpstan-typo3": "^1.8",
-		"typo3/coding-standards": "^0.8.0@dev"
+		"typo3/coding-standards": "^0.8.0"
 	},
 	"config": {
 		"allow-plugins": {
