@@ -25,7 +25,7 @@ namespace EliasHaeussler\Typo3Solver;
 
 use Symfony\Component\DependencyInjection;
 
-return static function(
+return static function (
     DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator,
     DependencyInjection\ContainerBuilder $containerBuilder,
 ): void {

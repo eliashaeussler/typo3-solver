@@ -72,7 +72,7 @@ final class WebStreamFormatter implements Formatter
     {
         return array_filter(
             $choices,
-            static fn (Responses\Chat\CreateResponseChoice $choice): bool => $choice->finishReason === null,
+            static fn(Responses\Chat\CreateResponseChoice $choice): bool => $choice->finishReason === null,
         );
     }
 }

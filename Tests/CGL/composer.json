@@ -1,0 +1,52 @@
+{
+	"require-dev": {
+		"armin/editorconfig-cli": "^1.5 || ^2.0",
+		"eliashaeussler/phpstan-config": "^2.0",
+		"eliashaeussler/rector-config": "^3.0",
+		"ergebnis/composer-normalize": "^2.29",
+		"phpstan/extension-installer": "^1.2",
+		"phpstan/phpstan-symfony": "^1.2",
+		"saschaegerer/phpstan-typo3": "^1.8",
+		"typo3/coding-standards": "^0.8.0@dev"
+	},
+	"config": {
+		"allow-plugins": {
+			"ergebnis/composer-normalize": true,
+			"phpstan/extension-installer": true,
+			"typo3/class-alias-loader": false,
+			"typo3/cms-composer-installers": false
+		},
+		"sort-packages": true
+	},
+	"scripts": {
+		"fix": [
+			"@fix:composer",
+			"@fix:editorconfig",
+			"@fix:php"
+		],
+		"fix:composer": [
+			"@composer normalize",
+			"@composer normalize ../../composer.json",
+			"@composer normalize ../../Resources/Private/Libs/Build/composer.json",
+			"@composer normalize ../Functional/Fixtures/Extensions/middleware_bridge/composer.json"
+		],
+		"fix:editorconfig": "@lint:editorconfig --fix",
+		"fix:php": "php-cs-fixer fix",
+		"lint": [
+			"@lint:composer",
+			"@lint:editorconfig",
+			"@lint:php"
+		],
+		"lint:composer": "@fix:composer --dry-run",
+		"lint:editorconfig": "ec --finder-config .editorconfig-lint.php",
+		"lint:php": "@fix:php --dry-run",
+		"migration": [
+			"@migration:rector"
+		],
+		"migration:rector": "rector process",
+		"sca": [
+			"@sca:php"
+		],
+		"sca:php": "phpstan analyse -c phpstan.php"
+	}
+}

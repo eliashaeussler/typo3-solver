@@ -23,6 +23,6 @@ declare(strict_types=1);
 
 use Symfony\Component\DependencyInjection;
 
-return static function(DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator): void {
+return static function (DependencyInjection\Loader\Configurator\ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->import('../../../../../../Configuration/Services.php');
 };

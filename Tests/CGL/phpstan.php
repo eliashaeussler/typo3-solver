@@ -21,19 +21,31 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-use EliasHaeussler\RectorConfig\Config\Config;
-use Rector\Config\RectorConfig;
-use Rector\ValueObject\PhpVersion;
+use EliasHaeussler\PHPStanConfig;
 
-return static function(RectorConfig $rectorConfig): void {
-    Config::create($rectorConfig, PhpVersion::PHP_81)
-        ->in(
-            __DIR__ . '/Classes',
-            __DIR__ . '/Configuration',
-            __DIR__ . '/Tests',
-        )
-        ->withPHPUnit()
-        ->withSymfony()
-        ->apply()
-    ;
-};
+$rootPath = dirname(__DIR__, 2);
+$symfonySet = PHPStanConfig\Set\SymfonySet::create()
+    ->withConsoleApplicationLoader($rootPath . '/Tests/Build/console-application.php')
+;
+
+return PHPStanConfig\Config\Config::create($rootPath)
+    ->in(
+        'Classes',
+        'Configuration',
+        'Tests',
+    )
+    ->not(
+        'Tests/CGL',
+    )
+    ->bootstrapFiles(
+        $rootPath . '/.build/vendor/autoload.php',
+    )
+    ->withBaseline()
+    ->withBleedingEdge([
+        // Avoids errors with $GLOBALS['TYPO3_CONF_VARS'] access
+        'explicitMixedForGlobalVariables' => false,
+    ])
+    ->maxLevel()
+    ->withSets($symfonySet)
+    ->toArray()
+;

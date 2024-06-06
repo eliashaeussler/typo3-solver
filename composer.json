@@ -35,16 +35,8 @@
 	},
 	"require-dev": {
 		"ext-dom": "*",
-		"armin/editorconfig-cli": "^1.5 || ^2.0",
-		"eliashaeussler/phpstan-config": "^2.0",
-		"eliashaeussler/rector-config": "^3.0",
-		"ergebnis/composer-normalize": "^2.29",
-		"phpstan/extension-installer": "^1.2",
-		"phpstan/phpstan-symfony": "^1.2",
 		"phpunit/phpcov": "^9.0 || ^10.0",
-		"saschaegerer/phpstan-typo3": "^1.8",
 		"symfony/dependency-injection": "^5.4 || ^6.0 || ^7.0",
-		"typo3/coding-standards": "^0.8.0@dev",
 		"typo3/testing-framework": "^7.0.2 || ^8.0.9"
 	},
 	"autoload": {
@@ -59,9 +51,7 @@
 	},
 	"config": {
 		"allow-plugins": {
-			"ergebnis/composer-normalize": true,
 			"php-http/discovery": true,
-			"phpstan/extension-installer": true,
 			"typo3/class-alias-loader": true,
 			"typo3/cms-composer-installers": true
 		},
@@ -76,6 +66,13 @@
 		}
 	},
 	"scripts": {
+		"post-install-cmd": [
+			"@composer -d Tests/CGL install"
+		],
+		"post-update-cmd": [
+			"@composer -d Tests/CGL update"
+		],
+		"cgl": "@composer -d Tests/CGL --",
 		"docs": [
 			"@docs:cleanup",
 			"@docs:build",
@@ -84,34 +81,6 @@
 		"docs:build": "docker-compose run --rm docs",
 		"docs:cleanup": "rm -rf .build/docs",
 		"docs:open": "open .build/docs/Result/project/0.0.0/Index.html",
-		"fix": [
-			"@fix:composer",
-			"@fix:editorconfig",
-			"@fix:php"
-		],
-		"fix:composer": [
-			"@composer normalize",
-			"@composer normalize Resources/Private/Libs/Build/composer.json",
-			"@composer normalize Tests/Functional/Fixtures/Extensions/middleware_bridge/composer.json"
-		],
-		"fix:editorconfig": "@lint:editorconfig --fix",
-		"fix:php": "php-cs-fixer fix",
-		"lint": [
-			"@lint:composer",
-			"@lint:editorconfig",
-			"@lint:php"
-		],
-		"lint:composer": "@fix:composer --dry-run",
-		"lint:editorconfig": "ec --finder-config .editorconfig-lint.php",
-		"lint:php": "@fix:php --dry-run",
-		"migration": [
-			"@migration:rector"
-		],
-		"migration:rector": "rector process",
-		"sca": [
-			"@sca:php"
-		],
-		"sca:php": "phpstan analyse -c phpstan.php",
 		"test": [
 			"@test:functional",
 			"@test:unit"

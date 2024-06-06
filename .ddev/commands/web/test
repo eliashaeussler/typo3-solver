@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -e
+
+## Description: Run tests for the package files
+## Usage: test [command] [options]
+## Example: ddev test\nddev test functional\nddev test unit
+
+if [ $# -ge 1 ]; then
+    script="test:${1}"
+    shift
+else
+    script="test"
+fi
+
+composer -d /var/www/html "${script}" "$@"
