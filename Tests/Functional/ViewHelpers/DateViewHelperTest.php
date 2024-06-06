@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -23,14 +23,9 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver\Tests\Functional\ViewHelpers;
 
-use DateTimeImmutable;
-use DateTimeInterface;
 use EliasHaeussler\Typo3Solver\Tests;
-use Generator;
 use PHPUnit\Framework;
 use TYPO3\TestingFramework;
-
-use function trim;
 
 /**
  * DateViewHelperTest
@@ -51,14 +46,14 @@ final class DateViewHelperTest extends TestingFramework\Core\Functional\Function
     #[Framework\Attributes\Test]
     public function renderStaticReturnsNonReadableFormattedDate(): void
     {
-        $date = new DateTimeImmutable();
+        $date = new \DateTimeImmutable();
 
         $view = $this->createView('<s:date date="{date}" />');
         $view->assign('date', $date);
 
         self::assertSame(
             $date->format('d.m.Y H:i:s'),
-            trim($view->render()),
+            \trim($view->render()),
         );
     }
 
@@ -67,21 +62,21 @@ final class DateViewHelperTest extends TestingFramework\Core\Functional\Function
      */
     #[Framework\Attributes\Test]
     #[Framework\Attributes\DataProvider('renderStaticReturnsHumanReadableDateDataProvider')]
-    public function renderStaticReturnsHumanReadableDate(DateTimeInterface $date, string $expected): void
+    public function renderStaticReturnsHumanReadableDate(\DateTimeInterface $date, string $expected): void
     {
         $view = $this->createView('<s:date date="{date}" readable="1" />');
         $view->assign('date', $date);
 
-        self::assertStringEndsWith($expected, trim($view->render()));
+        self::assertStringEndsWith($expected, \trim($view->render()));
     }
 
     /**
-     * @return Generator<string, array{DateTimeInterface, non-empty-string}>
+     * @return \Generator<string, array{\DateTimeInterface, non-empty-string}>
      */
-    public static function renderStaticReturnsHumanReadableDateDataProvider(): Generator
+    public static function renderStaticReturnsHumanReadableDateDataProvider(): \Generator
     {
         $format = static fn(int $interval, string $unit): array => [
-            new DateTimeImmutable($interval . ' ' . $unit . ' ago'),
+            new \DateTimeImmutable($interval . ' ' . $unit . ' ago'),
             $unit . ' ago',
         ];
 
@@ -94,7 +89,7 @@ final class DateViewHelperTest extends TestingFramework\Core\Functional\Function
         yield 'day ago' => [...$format(1, 'day')];
         yield 'days ago' => [...$format(5, 'days')];
 
-        $oldDate = DateTimeImmutable::createFromFormat('!Y-m-d', '2012-12-12');
+        $oldDate = \DateTimeImmutable::createFromFormat('!Y-m-d', '2012-12-12');
 
         self::assertNotFalse($oldDate);
 

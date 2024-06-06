@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -27,7 +27,6 @@ use EliasHaeussler\Typo3Solver\Cache;
 use EliasHaeussler\Typo3Solver\Exception;
 use EliasHaeussler\Typo3Solver\ProblemSolving;
 use OpenAI\Responses;
-use Throwable;
 
 /**
  * DelegatingCacheSolutionProvider
@@ -83,7 +82,7 @@ final class DelegatingCacheSolutionProvider implements SolutionProvider
         return new ProblemSolving\Solution\Solution([$dummyChoice], 'Please wait…', 'Please wait…');
     }
 
-    public function canBeUsed(Throwable $exception): bool
+    public function canBeUsed(\Throwable $exception): bool
     {
         return true;
     }

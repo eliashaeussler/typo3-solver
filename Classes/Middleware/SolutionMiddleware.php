@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -33,10 +33,7 @@ use EliasHaeussler\Typo3Solver\ProblemSolving;
 use EliasHaeussler\Typo3Solver\Utility;
 use Psr\Http\Message;
 use Psr\Http\Server;
-use Throwable;
 use TYPO3\CMS\Core;
-
-use function is_string;
 
 /**
  * SolutionMiddleware
@@ -74,7 +71,7 @@ final class SolutionMiddleware implements Server\MiddlewareInterface
             $id = $request->getQueryParams()['exception'] ?? null;
 
             // Throw exception if stream hash is invalid
-            if (!is_string($hash)) {
+            if (!\is_string($hash)) {
                 throw Exception\AuthenticationFailureException::create();
             }
 
@@ -82,7 +79,7 @@ final class SolutionMiddleware implements Server\MiddlewareInterface
             $this->authentication->authenticate($hash);
 
             // Throw exception if exception identifier is invalid
-            if (!is_string($id)) {
+            if (!\is_string($id)) {
                 throw Exception\UnrecoverableExceptionException::forMissingIdentifier();
             }
 
@@ -101,7 +98,7 @@ final class SolutionMiddleware implements Server\MiddlewareInterface
             foreach ($solver->solveStreamed($exception) as $solution) {
                 $eventStream->sendMessage('solutionDelta', $solution);
             }
-        } catch (Throwable $e) {
+        } catch (\Throwable $e) {
             $eventStream->sendMessage('solutionError', $this->exceptionFormatter->format($e));
         } finally {
             $eventStream->close('solutionFinished');

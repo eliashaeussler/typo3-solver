@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -29,10 +29,6 @@ use EliasHaeussler\Typo3Solver\Http;
 use EliasHaeussler\Typo3Solver\ProblemSolving;
 use OpenAI\Client;
 use OpenAI\Responses;
-use Throwable;
-use Traversable;
-
-use function in_array;
 
 final class OpenAISolutionProvider implements StreamedSolutionProvider
 {
@@ -71,7 +67,7 @@ final class OpenAISolutionProvider implements StreamedSolutionProvider
     /**
      * @throws Exception\ApiKeyMissingException
      */
-    public function getStreamedSolution(ProblemSolving\Problem\Problem $problem): Traversable
+    public function getStreamedSolution(ProblemSolving\Problem\Problem $problem): \Traversable
     {
         if ($this->configuration->getApiKey() === null) {
             throw Exception\ApiKeyMissingException::create();
@@ -113,9 +109,9 @@ final class OpenAISolutionProvider implements StreamedSolutionProvider
         }
     }
 
-    public function canBeUsed(Throwable $exception): bool
+    public function canBeUsed(\Throwable $exception): bool
     {
-        return !in_array($exception->getCode(), $this->configuration->getIgnoredCodes(), true);
+        return !\in_array($exception->getCode(), $this->configuration->getIgnoredCodes(), true);
     }
 
     public function isCacheable(): bool

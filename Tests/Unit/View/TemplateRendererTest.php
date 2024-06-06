@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -24,11 +24,8 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Tests\Unit\View;
 
 use EliasHaeussler\Typo3Solver as Src;
-use Exception;
 use PHPUnit\Framework;
 use TYPO3\TestingFramework;
-
-use function trim;
 
 /**
  * TemplateRendererTest
@@ -52,7 +49,7 @@ final class TemplateRendererTest extends TestingFramework\Core\Unit\UnitTestCase
     {
         $file = __FILE__;
         $lineNumber = __LINE__ + 1;
-        $exception = new Exception('Something went wrong.', 1680791875);
+        $exception = new \Exception('Something went wrong.', 1680791875);
 
         $expected = <<<TEMPLATE
 Hi, I am working with TYPO3 CMS, and I have encountered an exception in my code.
@@ -87,6 +84,6 @@ TEMPLATE;
             'phpVersion' => '8.2.4',
         ]);
 
-        self::assertSame(trim($expected), trim($actual));
+        self::assertSame(\trim($expected), \trim($actual));
     }
 }

@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -27,8 +27,6 @@ use EliasHaeussler\Typo3Solver as Src;
 use PHPUnit\Framework;
 use Symfony\Component\Console;
 use TYPO3\TestingFramework;
-
-use function sprintf;
 
 /**
  * CacheFlushCommandTest
@@ -68,7 +66,7 @@ final class CacheFlushCommandTest extends TestingFramework\Core\Unit\UnitTestCas
 
         self::assertSame(0, $this->commandTester->getStatusCode());
         self::assertStringContainsString(
-            sprintf('Cache entry with identifier "%s" successfully removed.', $identifier),
+            \sprintf('Cache entry with identifier "%s" successfully removed.', $identifier),
             $this->commandTester->getDisplay(),
         );
         self::assertNull($this->cache->get($problem));

@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -25,11 +25,8 @@ namespace EliasHaeussler\Typo3Solver\Tests\Unit\ProblemSolving\Solution\Provider
 
 use EliasHaeussler\Typo3Solver as Src;
 use EliasHaeussler\Typo3Solver\Tests;
-use Exception;
 use PHPUnit\Framework;
 use TYPO3\TestingFramework;
-
-use function iterator_to_array;
 
 /**
  * CacheSolutionProviderTest
@@ -110,7 +107,7 @@ final class CacheSolutionProviderTest extends TestingFramework\Core\Unit\UnitTes
 
         $this->cache->set($problem, $solution);
 
-        $actual = iterator_to_array($this->subject->getStreamedSolution($problem));
+        $actual = \iterator_to_array($this->subject->getStreamedSolution($problem));
 
         self::assertCount(1, $actual);
         self::assertEquals([$this->cache->get($problem)], $actual);
@@ -126,7 +123,7 @@ final class CacheSolutionProviderTest extends TestingFramework\Core\Unit\UnitTes
         $provider->solution = $solution;
         $subject = new Src\ProblemSolving\Solution\Provider\CacheSolutionProvider($this->cache, $provider);
 
-        $actual = iterator_to_array($subject->getStreamedSolution($problem));
+        $actual = \iterator_to_array($subject->getStreamedSolution($problem));
 
         self::assertCount(1, $actual);
         self::assertSame([$solution], $actual);
@@ -136,14 +133,14 @@ final class CacheSolutionProviderTest extends TestingFramework\Core\Unit\UnitTes
     public function getStreamedSolutionYieldsSolutionsFromProvider(): void
     {
         $problem = Tests\Unit\DataProvider\ProblemDataProvider::get(solutionProvider: $this->provider);
-        $solution = iterator_to_array(Tests\Unit\DataProvider\SolutionDataProvider::getStream(2, 2));
+        $solution = \iterator_to_array(Tests\Unit\DataProvider\SolutionDataProvider::getStream(2, 2));
 
         $this->provider->solutionStream = $solution;
 
         $expected1 = Tests\Unit\DataProvider\SolutionDataProvider::get(2);
         $expected2 = Tests\Unit\DataProvider\SolutionDataProvider::get(2, ' ... message {index}');
 
-        $actual = iterator_to_array($this->subject->getStreamedSolution($problem));
+        $actual = \iterator_to_array($this->subject->getStreamedSolution($problem));
 
         self::assertCount(2, $actual);
         self::assertEquals($expected1, $actual[0]);
@@ -153,7 +150,7 @@ final class CacheSolutionProviderTest extends TestingFramework\Core\Unit\UnitTes
     #[Framework\Attributes\Test]
     public function canBeUsedDelegatesRequestToProvider(): void
     {
-        $exception = new Exception();
+        $exception = new \Exception();
 
         $this->provider->shouldBeUsed = true;
 

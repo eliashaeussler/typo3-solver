@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -26,14 +26,6 @@ namespace EliasHaeussler\Typo3Solver\Command;
 use OpenAI\Client;
 use OpenAI\Responses;
 use Symfony\Component\Console;
-
-use function array_filter;
-use function array_map;
-use function date;
-use function sort;
-use function sprintf;
-use function str_starts_with;
-use function strtolower;
 
 /**
  * ListModelsCommand
@@ -73,16 +65,16 @@ final class ListModelsCommand extends Console\Command\Command
             $io->title('Available GPT models');
 
             // Filter by GPT models
-            $modelListResponse = array_filter($modelListResponse, $this->isGPTModel(...));
+            $modelListResponse = \array_filter($modelListResponse, $this->isGPTModel(...));
         }
 
         // Map responses to model IDs
-        $models = array_map(
+        $models = \array_map(
             $this->decorateModel(...),
             $modelListResponse,
         );
 
-        sort($models);
+        \sort($models);
 
         $io->listing($models);
 
@@ -96,11 +88,11 @@ final class ListModelsCommand extends Console\Command\Command
 
     private function isGPTModel(Responses\Models\RetrieveResponse $response): bool
     {
-        return str_starts_with(strtolower($response->id), 'gpt-');
+        return \str_starts_with(\strtolower($response->id), 'gpt-');
     }
 
     private function decorateModel(Responses\Models\RetrieveResponse $response): string
     {
-        return sprintf('%s <fg=gray>(created at %s)</>', $response->id, date('d/m/Y', $response->created));
+        return \sprintf('%s <fg=gray>(created at %s)</>', $response->id, \date('d/m/Y', $response->created));
     }
 }

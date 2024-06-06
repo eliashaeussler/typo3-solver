@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -25,10 +25,7 @@ namespace EliasHaeussler\Typo3Solver\Http;
 
 use EliasHaeussler\Typo3Solver\Configuration;
 use EliasHaeussler\Typo3Solver\Exception;
-use OpenAI;
 use OpenAI\Client;
-
-use function trim;
 
 /**
  * ClientFactory
@@ -49,10 +46,10 @@ final class ClientFactory
     {
         $apiKey = $this->configuration->getApiKey();
 
-        if ($apiKey === null || trim($apiKey) === '') {
+        if ($apiKey === null || \trim($apiKey) === '') {
             throw Exception\ApiKeyMissingException::create();
         }
 
-        return OpenAI::client($apiKey);
+        return \OpenAI::client($apiKey);
     }
 }

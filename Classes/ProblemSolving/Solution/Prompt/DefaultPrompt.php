@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -25,11 +25,7 @@ namespace EliasHaeussler\Typo3Solver\ProblemSolving\Solution\Prompt;
 
 use EliasHaeussler\Typo3Solver\View;
 use Spatie\Backtrace;
-use Throwable;
 use TYPO3\CMS\Core;
-
-use function preg_replace;
-use function trim;
 
 /**
  * DefaultPrompt.
@@ -52,9 +48,9 @@ final class DefaultPrompt implements Prompt
         return new self(new View\TemplateRenderer());
     }
 
-    public function generate(Throwable $exception): string
+    public function generate(\Throwable $exception): string
     {
-        $prompt = trim(
+        $prompt = \trim(
             $this->renderer->render('Prompt/Default', [
                 'exception' => $exception,
                 'exceptionClass' => $exception::class,
@@ -65,10 +61,10 @@ final class DefaultPrompt implements Prompt
             ]),
         );
 
-        return preg_replace('/((?<!\n)\n(?!(\n|\d)))/', ' ', $prompt) ?? $prompt;
+        return \preg_replace('/((?<!\n)\n(?!(\n|\d)))/', ' ', $prompt) ?? $prompt;
     }
 
-    private function createCodeSnippet(Throwable $exception): string
+    private function createCodeSnippet(\Throwable $exception): string
     {
         $backtrace = Backtrace\Backtrace::createForThrowable($exception);
         $frames = $backtrace->frames();
@@ -84,6 +80,6 @@ final class DefaultPrompt implements Prompt
             $snippet .= $number . ' ' . $line . PHP_EOL;
         }
 
-        return trim($snippet);
+        return \trim($snippet);
     }
 }

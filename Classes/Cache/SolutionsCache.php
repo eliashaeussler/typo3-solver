@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -27,12 +27,6 @@ use EliasHaeussler\Typo3Solver\Configuration;
 use EliasHaeussler\Typo3Solver\ProblemSolving;
 use Symfony\Component\Filesystem;
 use TYPO3\CMS\Core;
-
-use function dirname;
-use function implode;
-use function is_array;
-use function sprintf;
-use function var_export;
 
 /**
  * SolutionsCache.
@@ -69,7 +63,7 @@ final class SolutionsCache
         $cacheData = require $this->cachePath;
         $entryIdentifier = $this->calculateCacheIdentifier($problem);
 
-        if (!is_array($cacheData['solutions'][$entryIdentifier] ?? null)) {
+        if (!\is_array($cacheData['solutions'][$entryIdentifier] ?? null)) {
             return null;
         }
 
@@ -123,7 +117,7 @@ final class SolutionsCache
     private function calculateCacheIdentifier(ProblemSolving\Problem\Problem $problem): string
     {
         return sha1(
-            implode('-', [
+            \implode('-', [
                 $problem->getSolutionProvider()::class,
                 $this->configuration->getModel(),
                 $this->configuration->getTemperature(),
@@ -142,7 +136,7 @@ final class SolutionsCache
         );
 
         if (!$this->filesystem->exists($this->cachePath)) {
-            Core\Utility\GeneralUtility::mkdir_deep(dirname($this->cachePath));
+            Core\Utility\GeneralUtility::mkdir_deep(\dirname($this->cachePath));
             $this->write([]);
         }
     }
@@ -154,7 +148,7 @@ final class SolutionsCache
     {
         $this->filesystem->dumpFile(
             $this->cachePath,
-            sprintf('<?php return %s;', var_export($cacheData, true)),
+            \sprintf('<?php return %s;', \var_export($cacheData, true)),
         );
     }
 }

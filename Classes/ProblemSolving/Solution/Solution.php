@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -23,17 +23,8 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver\ProblemSolving\Solution;
 
-use ArrayIterator;
-use Countable;
-use DateTimeInterface;
 use IteratorAggregate;
-use JsonSerializable;
 use OpenAI\Responses;
-use Traversable;
-
-use function array_map;
-use function array_values;
-use function count;
 
 /**
  * Solution.
@@ -45,9 +36,9 @@ use function count;
  *
  * @phpstan-type SolutionArray array{choices: list<array<string, mixed>>, model: string, prompt: string}
  */
-final class Solution implements Countable, IteratorAggregate, JsonSerializable
+final class Solution implements \Countable, \IteratorAggregate, \JsonSerializable
 {
-    private ?DateTimeInterface $createDate = null;
+    private ?\DateTimeInterface $createDate = null;
     private ?string $cacheIdentifier = null;
 
     /**
@@ -61,7 +52,7 @@ final class Solution implements Countable, IteratorAggregate, JsonSerializable
 
     public static function fromResponse(Responses\Chat\CreateResponse $response, string $prompt): self
     {
-        return new self(array_values($response->choices), $response->model, $prompt);
+        return new self(\array_values($response->choices), $response->model, $prompt);
     }
 
     /**
@@ -69,7 +60,7 @@ final class Solution implements Countable, IteratorAggregate, JsonSerializable
      */
     public static function fromArray(array $solution): self
     {
-        $choices = array_map(
+        $choices = \array_map(
             /* @phpstan-ignore-next-line */
             static fn(array $choice): Responses\Chat\CreateResponseChoice => Responses\Chat\CreateResponseChoice::from($choice),
             $solution['choices'],
@@ -80,7 +71,7 @@ final class Solution implements Countable, IteratorAggregate, JsonSerializable
 
     public function count(): int
     {
-        return count($this->choices);
+        return \count($this->choices);
     }
 
     /**
@@ -101,12 +92,12 @@ final class Solution implements Countable, IteratorAggregate, JsonSerializable
         return $this->prompt;
     }
 
-    public function getCreateDate(): ?DateTimeInterface
+    public function getCreateDate(): ?\DateTimeInterface
     {
         return $this->createDate;
     }
 
-    public function setCreateDate(DateTimeInterface $createDate): self
+    public function setCreateDate(\DateTimeInterface $createDate): self
     {
         $this->createDate = $createDate;
 
@@ -125,9 +116,9 @@ final class Solution implements Countable, IteratorAggregate, JsonSerializable
         return $this;
     }
 
-    public function getIterator(): Traversable
+    public function getIterator(): \Traversable
     {
-        return new ArrayIterator($this->choices);
+        return new \ArrayIterator($this->choices);
     }
 
     /**
@@ -136,7 +127,7 @@ final class Solution implements Countable, IteratorAggregate, JsonSerializable
     public function toArray(): array
     {
         return [
-            'choices' => array_map(
+            'choices' => \array_map(
                 static fn(Responses\Chat\CreateResponseChoice $choice): array => $choice->toArray(),
                 $this->choices,
             ),

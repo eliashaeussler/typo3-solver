@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -27,13 +27,9 @@ use EliasHaeussler\Typo3Solver as Src;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler;
 use GuzzleHttp\Psr7;
-use OpenAI;
 use PHPUnit\Framework;
 use Symfony\Component\Console;
 use TYPO3\TestingFramework;
-
-use function implode;
-use function json_encode;
 
 /**
  * ListModelsCommandTest
@@ -58,7 +54,7 @@ final class ListModelsCommandTest extends TestingFramework\Core\Unit\UnitTestCas
         $this->mockHandler = new Handler\MockHandler();
 
         $command = new Src\Command\ListModelsCommand(
-            OpenAI::factory()->withHttpClient(new Client(['handler' => $this->mockHandler]))->make(),
+            \OpenAI::factory()->withHttpClient(new Client(['handler' => $this->mockHandler]))->make(),
         );
 
         $this->commandTester = new Console\Tester\CommandTester($command);
@@ -73,7 +69,7 @@ final class ListModelsCommandTest extends TestingFramework\Core\Unit\UnitTestCas
             'x-request-id' => 'foo',
             'openai-processing-ms' => '0',
         ]);
-        $response->getBody()->write(json_encode($this->listResponse, JSON_THROW_ON_ERROR));
+        $response->getBody()->write(\json_encode($this->listResponse, JSON_THROW_ON_ERROR));
         $response->getBody()->rewind();
 
         $this->mockHandler->append($response);
@@ -85,14 +81,14 @@ final class ListModelsCommandTest extends TestingFramework\Core\Unit\UnitTestCas
             $this->commandTester->getDisplay(),
         );
         self::assertStringNotContainsString(
-            implode(PHP_EOL, [
+            \implode(PHP_EOL, [
                 ' * baz-1 (created at 01/01/2022)',
                 ' * foo-1 (created at 01/01/2023)',
             ]),
             $this->commandTester->getDisplay(),
         );
         self::assertStringContainsString(
-            implode(PHP_EOL, [
+            \implode(PHP_EOL, [
                 ' * gpt-3.5 (created at 28/02/2023)',
                 ' * gpt-3.5-turbo-0301 (created at 01/03/2023)',
             ]),
@@ -108,7 +104,7 @@ final class ListModelsCommandTest extends TestingFramework\Core\Unit\UnitTestCas
             'x-request-id' => 'foo',
             'openai-processing-ms' => '0',
         ]);
-        $response->getBody()->write(json_encode($this->listResponse, JSON_THROW_ON_ERROR));
+        $response->getBody()->write(\json_encode($this->listResponse, JSON_THROW_ON_ERROR));
         $response->getBody()->rewind();
 
         $this->mockHandler->append($response);
@@ -122,7 +118,7 @@ final class ListModelsCommandTest extends TestingFramework\Core\Unit\UnitTestCas
             $this->commandTester->getDisplay(),
         );
         self::assertStringContainsString(
-            implode(PHP_EOL, [
+            \implode(PHP_EOL, [
                 ' * baz-1 (created at 01/01/2022)',
                 ' * foo-1 (created at 01/01/2023)',
                 ' * gpt-3.5 (created at 28/02/2023)',

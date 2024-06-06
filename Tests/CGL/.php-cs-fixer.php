@@ -2,38 +2,44 @@
 
 declare(strict_types=1);
 
-$header = <<<EOM
-This file is part of the TYPO3 CMS extension "solver".
+/*
+ * This file is part of the TYPO3 CMS extension "solver".
+ *
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
 
-Copyright (C) %d Elias Häußler <elias@haeussler.dev>
+use EliasHaeussler\PhpCsFixerConfig;
+use TYPO3\CodingStandards;
 
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 2 of the License, or
-(at your option) any later version.
+$header = PhpCsFixerConfig\Rules\Header::create(
+    'solver',
+    PhpCsFixerConfig\Package\Type::TYPO3Extension,
+    PhpCsFixerConfig\Package\Author::create('Elias Häußler', 'elias@haeussler.dev'),
+    PhpCsFixerConfig\Package\CopyrightRange::from(2023),
+    PhpCsFixerConfig\Package\License::GPL2OrLater,
+);
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program. If not, see <https://www.gnu.org/licenses/>.
-EOM;
-
-$config = \TYPO3\CodingStandards\CsFixerConfig::create()
-    ->setHeader(sprintf($header, date('Y')), true)
-    ->addRules([
-        'global_namespace_import' => ['import_classes' => true, 'import_functions' => true],
-        'no_superfluous_phpdoc_tags' => ['allow_mixed' => true],
-        'ordered_imports' => ['imports_order' => ['const', 'class', 'function']],
-    ])
-    ->setRiskyAllowed(true)
-;
-
+$config = CodingStandards\CsFixerConfig::create();
 $finder = $config->getFinder()
     ->in(dirname(__DIR__, 2))
-    ->ignoreVCSignored(true)
+    ->ignoreVCSIgnored(true)
+    ->ignoreDotFiles(false)
 ;
 
-return $config;
+return PhpCsFixerConfig\Config::create()
+    ->withConfig($config)
+    ->withRule($header)
+;

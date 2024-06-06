@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -23,13 +23,10 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver\Tests\Unit\Formatter;
 
-use DateTimeImmutable;
 use EliasHaeussler\Typo3Solver as Src;
 use PHPUnit\Framework;
 use Symfony\Component\Console;
 use TYPO3\TestingFramework;
-
-use function trim;
 
 /**
  * CliFormatterTest
@@ -51,7 +48,7 @@ final class CliFormatterTest extends TestingFramework\Core\Unit\UnitTestCase
     #[Framework\Attributes\Test]
     public function formatFormatsSolution(): void
     {
-        $now = new DateTimeImmutable();
+        $now = new \DateTimeImmutable();
 
         $problem = Src\Tests\Unit\DataProvider\ProblemDataProvider::get();
         $solution = Src\Tests\Unit\DataProvider\SolutionDataProvider::get(3);
@@ -76,7 +73,7 @@ Cache
 This solution was cached a few moments ago as foo
 TEXT;
 
-        self::assertSame(trim($expected), $this->subject->format($problem, $solution));
+        self::assertSame(\trim($expected), $this->subject->format($problem, $solution));
     }
 
     #[Framework\Attributes\Test]

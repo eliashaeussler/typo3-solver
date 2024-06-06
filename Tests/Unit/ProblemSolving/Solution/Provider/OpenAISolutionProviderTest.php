@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -25,16 +25,12 @@ namespace EliasHaeussler\Typo3Solver\Tests\Unit\ProblemSolving\Solution\Provider
 
 use EliasHaeussler\Typo3Solver as Src;
 use EliasHaeussler\Typo3Solver\Tests;
-use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler;
 use GuzzleHttp\Psr7;
 use OpenAI;
 use PHPUnit\Framework;
 use TYPO3\TestingFramework;
-
-use function iterator_to_array;
-use function json_encode;
 
 /**
  * OpenAISolutionProviderTest
@@ -54,7 +50,7 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
         parent::setUp();
 
         $this->mockHandler = new Handler\MockHandler();
-        $this->client = OpenAI::factory()->withHttpClient(new Client(['handler' => $this->mockHandler]))->make();
+        $this->client = \OpenAI::factory()->withHttpClient(new Client(['handler' => $this->mockHandler]))->make();
         $this->subject = new Src\ProblemSolving\Solution\Provider\OpenAISolutionProvider(
             new Src\Configuration\Configuration(),
             $this->client,
@@ -93,7 +89,7 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
             Src\Exception\UnableToSolveException::create($this->problem),
         );
 
-        $this->mockHandler->append(new Exception());
+        $this->mockHandler->append(new \Exception());
 
         $this->subject->getSolution($this->problem);
     }
@@ -127,7 +123,7 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
             'x-request-id' => 'foo',
             'openai-processing-ms' => '0',
         ]);
-        $response->getBody()->write(json_encode($payload, JSON_THROW_ON_ERROR));
+        $response->getBody()->write(\json_encode($payload, JSON_THROW_ON_ERROR));
         $response->getBody()->rewind();
 
         $this->mockHandler->append($response);
@@ -147,7 +143,7 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
             Src\Exception\ApiKeyMissingException::create(),
         );
 
-        iterator_to_array($this->subject->getStreamedSolution($this->problem));
+        \iterator_to_array($this->subject->getStreamedSolution($this->problem));
     }
 
     #[Framework\Attributes\Test]
@@ -157,9 +153,9 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
             Src\Exception\UnableToSolveException::create($this->problem),
         );
 
-        $this->mockHandler->append(new Exception());
+        $this->mockHandler->append(new \Exception());
 
-        iterator_to_array($this->subject->getStreamedSolution($this->problem));
+        \iterator_to_array($this->subject->getStreamedSolution($this->problem));
     }
 
     #[Framework\Attributes\Test]
@@ -199,8 +195,8 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
         ];
 
         $response = new Psr7\Response();
-        $response->getBody()->write('data: ' . json_encode($streamedResponse1) . PHP_EOL);
-        $response->getBody()->write('data: ' . json_encode($streamedResponse2) . PHP_EOL);
+        $response->getBody()->write('data: ' . \json_encode($streamedResponse1) . PHP_EOL);
+        $response->getBody()->write('data: ' . \json_encode($streamedResponse2) . PHP_EOL);
         $response->getBody()->rewind();
 
         $this->mockHandler->append($response);
@@ -210,7 +206,7 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
             Tests\Unit\DataProvider\SolutionDataProvider::get(message: 'content 1 ... content 2'),
         ];
 
-        self::assertEquals($expected, iterator_to_array($this->subject->getStreamedSolution($this->problem)));
+        self::assertEquals($expected, \iterator_to_array($this->subject->getStreamedSolution($this->problem)));
     }
 
     #[Framework\Attributes\Test]

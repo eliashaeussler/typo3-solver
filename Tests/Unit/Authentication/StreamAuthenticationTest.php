@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -27,9 +27,6 @@ use EliasHaeussler\Typo3Solver as Src;
 use PHPUnit\Framework;
 use Symfony\Component\Filesystem;
 use TYPO3\TestingFramework;
-
-use function file;
-use function file_get_contents;
 
 /**
  * StreamAuthenticationTest
@@ -63,7 +60,7 @@ final class StreamAuthenticationTest extends TestingFramework\Core\Unit\UnitTest
         new Src\Authentication\StreamAuthentication();
 
         self::assertFileExists($this->filename);
-        self::assertSame('', file_get_contents($this->filename));
+        self::assertSame('', \file_get_contents($this->filename));
     }
 
     #[Framework\Attributes\Test]
@@ -92,14 +89,14 @@ final class StreamAuthenticationTest extends TestingFramework\Core\Unit\UnitTest
     public function authenticateRemovesHashFromTransientFileOnSuccessfulAuthentication(): void
     {
         $registeredHash = $this->subject->register();
-        $registeredHashesBeforeAuthentication = file($this->filename);
+        $registeredHashesBeforeAuthentication = \file($this->filename);
 
         self::assertIsArray($registeredHashesBeforeAuthentication);
         self::assertContains($registeredHash, $registeredHashesBeforeAuthentication);
 
         $this->subject->authenticate($registeredHash);
 
-        $registeredHashesAfterAuthentication = file($this->filename);
+        $registeredHashesAfterAuthentication = \file($this->filename);
 
         self::assertIsArray($registeredHashesAfterAuthentication);
         self::assertNotContains($registeredHash, $registeredHashesAfterAuthentication);
@@ -110,7 +107,7 @@ final class StreamAuthenticationTest extends TestingFramework\Core\Unit\UnitTest
     {
         $actual = $this->subject->register();
 
-        $registeredHashesBeforeAuthentication = file($this->filename);
+        $registeredHashesBeforeAuthentication = \file($this->filename);
 
         self::assertIsArray($registeredHashesBeforeAuthentication);
         self::assertContains($actual, $registeredHashesBeforeAuthentication);

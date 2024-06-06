@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -28,10 +28,6 @@ use EliasHaeussler\Typo3Solver\Cache;
 use EliasHaeussler\Typo3Solver\ProblemSolving;
 use EliasHaeussler\Typo3Solver\View;
 use Symfony\Component\Filesystem;
-
-use function dirname;
-use function file_exists;
-use function file_get_contents;
 
 /**
  * WebFormatter.
@@ -73,11 +69,11 @@ final class WebFormatter implements Formatter
 
     private function getFileContents(string $filename): string
     {
-        $rootPath = dirname(__DIR__, 2);
+        $rootPath = \dirname(__DIR__, 2);
         $filePath = Filesystem\Path::join($rootPath, $filename);
 
-        if (file_exists($filePath)) {
-            return (string)@file_get_contents($filePath);
+        if (\file_exists($filePath)) {
+            return (string)@\file_get_contents($filePath);
         }
 
         return ''; // @codeCoverageIgnore

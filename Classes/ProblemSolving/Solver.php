@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -27,8 +27,6 @@ use EliasHaeussler\Typo3Solver\Cache;
 use EliasHaeussler\Typo3Solver\Configuration;
 use EliasHaeussler\Typo3Solver\Exception;
 use EliasHaeussler\Typo3Solver\Formatter;
-use Throwable;
-use Traversable;
 
 /**
  * Solver
@@ -54,7 +52,7 @@ final class Solver
     /**
      * @throws Exception\UnableToSolveException
      */
-    public function solve(Throwable $exception): ?string
+    public function solve(\Throwable $exception): ?string
     {
         $problem = $this->createProblem($exception);
 
@@ -68,9 +66,9 @@ final class Solver
     }
 
     /**
-     * @return Traversable<string>
+     * @return \Traversable<string>
      */
-    public function solveStreamed(Throwable $exception): Traversable
+    public function solveStreamed(\Throwable $exception): \Traversable
     {
         $problem = $this->createProblem($exception);
 
@@ -83,7 +81,7 @@ final class Solver
         }
     }
 
-    private function createProblem(Throwable $exception): Problem\Problem
+    private function createProblem(\Throwable $exception): Problem\Problem
     {
         return new Problem\Problem(
             $exception,

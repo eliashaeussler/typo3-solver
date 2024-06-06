@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -23,12 +23,7 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver\ViewHelpers;
 
-use Closure;
-use DateTimeImmutable;
-use DateTimeInterface;
 use TYPO3Fluid\Fluid;
-
-use function sprintf;
 
 /**
  * DateViewHelper
@@ -42,7 +37,7 @@ final class DateViewHelper extends Fluid\Core\ViewHelper\AbstractViewHelper
     {
         $this->registerArgument(
             'date',
-            DateTimeInterface::class,
+            \DateTimeInterface::class,
             'The date to format',
             true,
         );
@@ -56,11 +51,11 @@ final class DateViewHelper extends Fluid\Core\ViewHelper\AbstractViewHelper
     }
 
     /**
-     * @param array{date: DateTimeInterface, readable: bool} $arguments
+     * @param array{date: \DateTimeInterface, readable: bool} $arguments
      */
     public static function renderStatic(
         array $arguments,
-        Closure $renderChildrenClosure,
+        \Closure $renderChildrenClosure,
         Fluid\Core\Rendering\RenderingContextInterface $renderingContext,
     ): string {
         $date = $arguments['date'];
@@ -71,7 +66,7 @@ final class DateViewHelper extends Fluid\Core\ViewHelper\AbstractViewHelper
             return $date->format('d.m.Y H:i:s');
         }
 
-        $now = new DateTimeImmutable();
+        $now = new \DateTimeImmutable();
         $delta = $now->getTimestamp() - $date->getTimestamp();
         $diff = $date->diff($now);
 
@@ -96,6 +91,6 @@ final class DateViewHelper extends Fluid\Core\ViewHelper\AbstractViewHelper
 
     private static function renderDiff(int $duration, string $unit): string
     {
-        return sprintf('%d %s%s ago', $duration, $unit, $duration === 1 ? '' : 's');
+        return \sprintf('%d %s%s ago', $duration, $unit, $duration === 1 ? '' : 's');
     }
 }

@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -25,7 +25,6 @@ namespace EliasHaeussler\Typo3Solver\Tests\Unit\ProblemSolving\Problem;
 
 use EliasHaeussler\Typo3Solver as Src;
 use EliasHaeussler\Typo3Solver\Tests;
-use Exception;
 use PHPUnit\Framework;
 use TYPO3\TestingFramework;
 
@@ -37,7 +36,7 @@ use TYPO3\TestingFramework;
  */
 final class ProblemTest extends TestingFramework\Core\Unit\UnitTestCase
 {
-    private Exception $exception;
+    private \Exception $exception;
     private Tests\Unit\Fixtures\DummySolutionProvider $provider;
     private Src\ProblemSolving\Problem\Problem $subject;
 
@@ -45,7 +44,7 @@ final class ProblemTest extends TestingFramework\Core\Unit\UnitTestCase
     {
         parent::setUp();
 
-        $this->exception = new Exception();
+        $this->exception = new \Exception();
         $this->provider = new Tests\Unit\Fixtures\DummySolutionProvider();
         $this->subject = new Src\ProblemSolving\Problem\Problem($this->exception, $this->provider, 'foo');
     }
