@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -24,8 +24,6 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Tests\Unit\Fixtures;
 
 use EliasHaeussler\Typo3Solver\ProblemSolving;
-use Throwable;
-use Traversable;
 
 /**
  * DummyStreamedSolutionProvider
@@ -54,12 +52,12 @@ final class DummyStreamedSolutionProvider implements ProblemSolving\Solution\Pro
         return $this->solution ?? new ProblemSolving\Solution\Solution([], 'foo', 'baz');
     }
 
-    public function getStreamedSolution(ProblemSolving\Problem\Problem $problem): Traversable
+    public function getStreamedSolution(ProblemSolving\Problem\Problem $problem): \Traversable
     {
         yield from $this->solutionStream;
     }
 
-    public function canBeUsed(Throwable $exception): bool
+    public function canBeUsed(\Throwable $exception): bool
     {
         return $this->shouldBeUsed;
     }

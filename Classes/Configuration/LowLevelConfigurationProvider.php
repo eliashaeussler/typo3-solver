@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -24,10 +24,7 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Configuration;
 
 use EliasHaeussler\Typo3Solver\Extension;
-use Exception;
 use TYPO3\CMS\Core;
-
-use function is_array;
 
 /**
  * LowLevelConfigurationProvider
@@ -41,13 +38,13 @@ final class LowLevelConfigurationProvider implements ConfigurationProvider
     {
         $extensionConfiguration = $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS'][Extension::KEY] ?? null;
 
-        if (!is_array($extensionConfiguration)) {
+        if (!\is_array($extensionConfiguration)) {
             return $default;
         }
 
         try {
             return Core\Utility\ArrayUtility::getValueByPath($extensionConfiguration, $configPath) ?? $default;
-        } catch (Exception) {
+        } catch (\Exception) {
             return $default;
         }
     }

@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -25,9 +25,6 @@ namespace EliasHaeussler\Typo3Solver\Tests\Unit\DataProvider;
 
 use EliasHaeussler\Typo3Solver\ProblemSolving;
 use OpenAI\Responses;
-use Traversable;
-
-use function str_replace;
 
 /**
  * SolutionDataProvider
@@ -43,16 +40,16 @@ final class SolutionDataProvider
         $choices = [];
 
         for ($i = 0; $i < $numberOfChoices; ++$i) {
-            $choices[] = self::getChoice(str_replace('{index}', (string)($i + 1), $message), $i);
+            $choices[] = self::getChoice(\str_replace('{index}', (string)($i + 1), $message), $i);
         }
 
         return new ProblemSolving\Solution\Solution($choices, 'model', 'prompt');
     }
 
     /**
-     * @return Traversable<ProblemSolving\Solution\Solution>
+     * @return \Traversable<ProblemSolving\Solution\Solution>
      */
-    public static function getStream(int $numberOfDeltas = 2, int $numberOfChoices = 1): Traversable
+    public static function getStream(int $numberOfDeltas = 2, int $numberOfChoices = 1): \Traversable
     {
         for ($i = 0; $i < $numberOfDeltas; ++$i) {
             $message = 'message {index}';

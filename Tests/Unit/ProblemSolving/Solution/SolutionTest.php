@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -23,15 +23,10 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver\Tests\Unit\ProblemSolving\Solution;
 
-use DateTimeImmutable;
 use EliasHaeussler\Typo3Solver as Src;
 use OpenAI\Responses;
 use PHPUnit\Framework;
 use TYPO3\TestingFramework;
-
-use function class_exists;
-use function iterator_to_array;
-use function json_encode;
 
 /**
  * SolutionTest
@@ -88,7 +83,7 @@ final class SolutionTest extends TestingFramework\Core\Unit\UnitTestCase
             ],
         ];
 
-        if (class_exists(Responses\Meta\MetaInformation::class)) {
+        if (\class_exists(Responses\Meta\MetaInformation::class)) {
             $meta = Responses\Meta\MetaInformation::from([
                 'x-request-id' => ['foo'],
                 'openai-model' => ['foo'],
@@ -184,7 +179,7 @@ final class SolutionTest extends TestingFramework\Core\Unit\UnitTestCase
     {
         self::assertNull($this->subject->getCreateDate());
 
-        $createDate = new DateTimeImmutable();
+        $createDate = new \DateTimeImmutable();
 
         self::assertSame($createDate, $this->subject->setCreateDate($createDate)->getCreateDate());
     }
@@ -205,7 +200,7 @@ final class SolutionTest extends TestingFramework\Core\Unit\UnitTestCase
     #[Framework\Attributes\Test]
     public function subjectIsIterable(): void
     {
-        self::assertSame([$this->choice], iterator_to_array($this->subject));
+        self::assertSame([$this->choice], \iterator_to_array($this->subject));
     }
 
     #[Framework\Attributes\Test]
@@ -234,8 +229,8 @@ final class SolutionTest extends TestingFramework\Core\Unit\UnitTestCase
         ];
 
         self::assertJsonStringEqualsJsonString(
-            json_encode($expected, JSON_THROW_ON_ERROR),
-            json_encode($this->subject, JSON_THROW_ON_ERROR),
+            \json_encode($expected, JSON_THROW_ON_ERROR),
+            \json_encode($this->subject, JSON_THROW_ON_ERROR),
         );
     }
 }

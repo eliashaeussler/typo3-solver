@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -24,11 +24,6 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Http;
 
 use EliasHaeussler\Typo3Solver\Exception;
-
-use function header;
-use function headers_sent;
-use function sprintf;
-use function uniqid;
 
 /**
  * EventStream
@@ -47,7 +42,7 @@ final class EventStream
         private readonly string $id,
         private readonly int $retry,
     ) {
-        if (headers_sent()) {
+        if (\headers_sent()) {
             throw Exception\EventStreamException::forActiveResponse();
         }
 
@@ -62,7 +57,7 @@ final class EventStream
      */
     public static function create(string $id = null, int $retry = 50): self
     {
-        return new self($id ?? uniqid(), $retry);
+        return new self($id ?? \uniqid(), $retry);
     }
 
     /**
@@ -104,12 +99,12 @@ final class EventStream
 
     private function sendHeader(string $name, string $value): void
     {
-        header(sprintf('%s: %s', $name, $value));
+        \header(\sprintf('%s: %s', $name, $value));
     }
 
     private function sendStreamData(string $name, bool|float|int|string|null $value): void
     {
-        echo sprintf('%s: %s', $name, $value);
+        echo \sprintf('%s: %s', $name, $value);
 
         $this->sendDelimiter();
     }

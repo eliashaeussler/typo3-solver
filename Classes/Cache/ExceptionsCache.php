@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -24,7 +24,6 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Cache;
 
 use Symfony\Component\Filesystem;
-use Throwable;
 use TYPO3\CMS\Core;
 
 /**
@@ -49,7 +48,7 @@ final class ExceptionsCache
         $this->initializeCache();
     }
 
-    public function get(string $entryIdentifier): ?Throwable
+    public function get(string $entryIdentifier): ?\Throwable
     {
         /** @var array{exceptions: array<string, ExceptionArray>} $cacheData */
         $cacheData = require $this->cachePath;
@@ -61,12 +60,12 @@ final class ExceptionsCache
         return $this->serializer->deserialize($cacheData['exceptions'][$entryIdentifier]);
     }
 
-    public function getIdentifier(Throwable $exception): string
+    public function getIdentifier(\Throwable $exception): string
     {
         return $this->calculateCacheIdentifier($exception);
     }
 
-    public function set(Throwable $exception): string
+    public function set(\Throwable $exception): string
     {
         $cacheData = require $this->cachePath;
         $entryIdentifier = $this->calculateCacheIdentifier($exception);
@@ -85,11 +84,11 @@ final class ExceptionsCache
     /**
      * @internal
      */
-    public function remove(Throwable|string $entry): void
+    public function remove(\Throwable|string $entry): void
     {
         $cacheData = require $this->cachePath;
 
-        if ($entry instanceof Throwable) {
+        if ($entry instanceof \Throwable) {
             $entry = $this->calculateCacheIdentifier($entry);
         }
 
@@ -98,7 +97,7 @@ final class ExceptionsCache
         $this->write($cacheData);
     }
 
-    private function calculateCacheIdentifier(Throwable $exception): string
+    private function calculateCacheIdentifier(\Throwable $exception): string
     {
         return sha1(
             implode('-', [

@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -22,15 +22,6 @@ declare(strict_types=1);
  */
 
 namespace EliasHaeussler\Typo3Solver\Tests;
-
-use DOMDocument;
-use DOMNode;
-use DOMNodeList;
-use DOMXPath;
-
-use function libxml_clear_errors;
-use function libxml_use_internal_errors;
-use function trim;
 
 /**
  * DOMDocumentTrait
@@ -40,26 +31,26 @@ use function trim;
  */
 trait DOMDocumentTrait
 {
-    private static function createDOMXPath(string $html): DOMXPath
+    private static function createDOMXPath(string $html): \DOMXPath
     {
-        $document = new DOMDocument();
-        libxml_use_internal_errors(true);
+        $document = new \DOMDocument();
+        \libxml_use_internal_errors(true);
         $document->loadHTML($html);
-        libxml_clear_errors();
+        \libxml_clear_errors();
 
-        return new DOMXPath($document);
+        return new \DOMXPath($document);
     }
 
-    private static function assertNodeContentEqualsString(string $string, string $query, DOMXPath $xpath): void
+    private static function assertNodeContentEqualsString(string $string, string $query, \DOMXPath $xpath): void
     {
         self::assertNotFalse($nodeList = $xpath->query($query));
-        self::assertInstanceOf(DOMNode::class, $firstNode = $nodeList->item(0));
-        self::assertSame(trim($string), trim($firstNode->textContent));
+        self::assertInstanceOf(\DOMNode::class, $firstNode = $nodeList->item(0));
+        self::assertSame(\trim($string), \trim($firstNode->textContent));
     }
 
-    private static function assertNodeListIsEmpty(string $query, DOMXPath $xpath): void
+    private static function assertNodeListIsEmpty(string $query, \DOMXPath $xpath): void
     {
-        self::assertInstanceOf(DOMNodeList::class, $nodeList = $xpath->query($query));
+        self::assertInstanceOf(\DOMNodeList::class, $nodeList = $xpath->query($query));
         self::assertSame(0, $nodeList->length);
     }
 }

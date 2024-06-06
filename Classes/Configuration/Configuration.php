@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -25,15 +25,6 @@ namespace EliasHaeussler\Typo3Solver\Configuration;
 
 use EliasHaeussler\Typo3Solver\ProblemSolving;
 use TYPO3\CMS\Core;
-
-use function array_filter;
-use function array_map;
-use function array_values;
-use function class_exists;
-use function is_a;
-use function is_numeric;
-use function is_string;
-use function trim;
 
 /**
  * Configuration.
@@ -59,7 +50,7 @@ final class Configuration
     {
         $apiKey = $this->provider->get('api/key');
 
-        if (!is_string($apiKey) || trim($apiKey) === '') {
+        if (!\is_string($apiKey) || \trim($apiKey) === '') {
             return null;
         }
 
@@ -70,7 +61,7 @@ final class Configuration
     {
         $model = $this->provider->get('attributes/model', self::DEFAULT_MODEL);
 
-        if (!is_string($model) || trim($model) === '') {
+        if (!\is_string($model) || \trim($model) === '') {
             $model = self::DEFAULT_MODEL;
         }
 
@@ -81,7 +72,7 @@ final class Configuration
     {
         $maxTokens = $this->provider->get('attributes/maxTokens', self::DEFAULT_TOKENS);
 
-        if (!is_numeric($maxTokens) || $maxTokens <= 0) {
+        if (!\is_numeric($maxTokens) || $maxTokens <= 0) {
             $maxTokens = self::DEFAULT_TOKENS;
         }
 
@@ -92,7 +83,7 @@ final class Configuration
     {
         $temperature = $this->provider->get('attributes/temperature', self::DEFAULT_TEMPERATURE);
 
-        if (!is_numeric($temperature) || $temperature < 0 || $temperature > 1) {
+        if (!\is_numeric($temperature) || $temperature < 0 || $temperature > 1) {
             $temperature = self::DEFAULT_TEMPERATURE;
         }
 
@@ -103,7 +94,7 @@ final class Configuration
     {
         $numberOfCompletions = $this->provider->get('attributes/numberOfCompletions', self::DEFAULT_NUMBER_OF_COMPLETIONS);
 
-        if (!is_numeric($numberOfCompletions) || $numberOfCompletions < 1) {
+        if (!\is_numeric($numberOfCompletions) || $numberOfCompletions < 1) {
             $numberOfCompletions = self::DEFAULT_NUMBER_OF_COMPLETIONS;
         }
 
@@ -114,7 +105,7 @@ final class Configuration
     {
         $cacheLifetime = $this->provider->get('cache/lifetime', self::DEFAULT_CACHE_LIFETIME);
 
-        if (!is_numeric($cacheLifetime) || $cacheLifetime < 0) {
+        if (!\is_numeric($cacheLifetime) || $cacheLifetime < 0) {
             $cacheLifetime = self::DEFAULT_CACHE_LIFETIME;
         }
 
@@ -130,9 +121,9 @@ final class Configuration
     {
         $providerClass = $this->provider->get('provider', self::DEFAULT_PROVIDER);
 
-        if (!is_string($providerClass)
-            || !class_exists($providerClass)
-            || !is_a($providerClass, ProblemSolving\Solution\Provider\SolutionProvider::class, true)
+        if (!\is_string($providerClass)
+            || !\class_exists($providerClass)
+            || !\is_a($providerClass, ProblemSolving\Solution\Provider\SolutionProvider::class, true)
         ) {
             $providerClass = self::DEFAULT_PROVIDER;
         }
@@ -144,9 +135,9 @@ final class Configuration
     {
         $promptClass = $this->provider->get('prompt', self::DEFAULT_PROMPT);
 
-        if (!is_string($promptClass)
-            || !class_exists($promptClass)
-            || !is_a($promptClass, ProblemSolving\Solution\Prompt\Prompt::class, true)
+        if (!\is_string($promptClass)
+            || !\class_exists($promptClass)
+            || !\is_a($promptClass, ProblemSolving\Solution\Prompt\Prompt::class, true)
         ) {
             $promptClass = self::DEFAULT_PROMPT;
         }
@@ -161,14 +152,14 @@ final class Configuration
     {
         $ignoredCodes = $this->provider->get('ignoredCodes', '');
 
-        if (!is_string($ignoredCodes)) {
+        if (!\is_string($ignoredCodes)) {
             return [];
         }
 
-        return array_values(
-            array_map(
+        return \array_values(
+            \array_map(
                 'intval',
-                array_filter(
+                \array_filter(
                     Core\Utility\GeneralUtility::trimExplode(',', $ignoredCodes, true),
                     'is_numeric',
                 ),

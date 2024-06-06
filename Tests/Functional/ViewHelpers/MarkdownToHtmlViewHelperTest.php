@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -24,11 +24,8 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Tests\Functional\ViewHelpers;
 
 use EliasHaeussler\Typo3Solver\Tests;
-use Parsedown;
 use PHPUnit\Framework;
 use TYPO3\TestingFramework;
-
-use function trim;
 
 /**
  * MarkdownToHtmlViewHelperTest
@@ -47,13 +44,13 @@ final class MarkdownToHtmlViewHelperTest extends TestingFramework\Core\Functiona
 
     protected bool $initializeDatabase = false;
 
-    private Parsedown $parsedown;
+    private \Parsedown $parsedown;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->parsedown = new Parsedown();
+        $this->parsedown = new \Parsedown();
     }
 
     #[Framework\Attributes\Test]
@@ -70,7 +67,7 @@ MARKDOWN;
 
         self::assertSame(
             $this->parsedown->text($markdown),
-            trim($view->render()),
+            \trim($view->render()),
         );
     }
 
@@ -88,7 +85,7 @@ MARKDOWN;
 
         self::assertSame(
             $this->parsedown->text($markdown),
-            trim($view->render()),
+            \trim($view->render()),
         );
     }
 

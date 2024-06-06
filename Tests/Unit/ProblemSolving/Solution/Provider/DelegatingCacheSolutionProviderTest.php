@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -25,7 +25,6 @@ namespace EliasHaeussler\Typo3Solver\Tests\Unit\ProblemSolving\Solution\Provider
 
 use EliasHaeussler\Typo3Solver as Src;
 use EliasHaeussler\Typo3Solver\Tests;
-use Exception;
 use OpenAI\Responses;
 use PHPUnit\Framework;
 use TYPO3\TestingFramework;
@@ -114,7 +113,7 @@ final class DelegatingCacheSolutionProviderTest extends TestingFramework\Core\Un
     #[Framework\Attributes\Test]
     public function canBeUsedReturnsTrue(): void
     {
-        self::assertTrue($this->subject->canBeUsed(new Exception()));
+        self::assertTrue($this->subject->canBeUsed(new \Exception()));
     }
 
     #[Framework\Attributes\Test]

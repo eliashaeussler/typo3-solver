@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -29,7 +29,6 @@ use EliasHaeussler\Typo3Solver\Exception;
 use EliasHaeussler\Typo3Solver\Formatter;
 use EliasHaeussler\Typo3Solver\ProblemSolving;
 use Symfony\Component\Console;
-use Throwable;
 
 /**
  * SolveCommand
@@ -155,7 +154,7 @@ final class SolveCommand extends Console\Command\Command
         return self::SUCCESS;
     }
 
-    private function solveProblem(Throwable $exception, Formatter\Formatter $formatter): ?string
+    private function solveProblem(\Throwable $exception, Formatter\Formatter $formatter): ?string
     {
         $solver = new ProblemSolving\Solver($this->configuration, $formatter, $this->solutionProvider);
 
@@ -165,7 +164,7 @@ final class SolveCommand extends Console\Command\Command
     /**
      * @throws Exception\MissingCacheEntryException
      */
-    private function getExceptionFromCache(string $identifier): Throwable
+    private function getExceptionFromCache(string $identifier): \Throwable
     {
         $exception = $this->exceptionsCache->get($identifier);
 
@@ -176,7 +175,7 @@ final class SolveCommand extends Console\Command\Command
         return $exception;
     }
 
-    private function removeCacheEntry(Throwable $exception): void
+    private function removeCacheEntry(\Throwable $exception): void
     {
         $problem = new ProblemSolving\Problem\Problem(
             $exception,

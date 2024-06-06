@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -27,14 +27,7 @@ use EliasHaeussler\Typo3Solver\Exception;
 use Symfony\Component\Filesystem;
 use TYPO3\CMS\Core;
 
-use function array_search;
-use function array_unshift;
 use function file;
-use function file_exists;
-use function file_put_contents;
-use function implode;
-use function sha1;
-use function uniqid;
 
 /**
  * StreamAuthentication
@@ -58,7 +51,7 @@ final class StreamAuthentication
      */
     public function authenticate(string $hash): void
     {
-        $registeredHashes = @file($this->storagePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        $registeredHashes = @\file($this->storagePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
         // Throw exception if file cannot be read
         if ($registeredHashes === false) {
@@ -66,7 +59,7 @@ final class StreamAuthentication
         }
 
         // Throw exception if hash is not registered
-        if (($line = array_search($hash, $registeredHashes, true)) === false) {
+        if (($line = \array_search($hash, $registeredHashes, true)) === false) {
             throw Exception\AuthenticationFailureException::create();
         }
 
@@ -78,7 +71,7 @@ final class StreamAuthentication
 
     public function register(): string
     {
-        $hash = sha1(uniqid('tx_solver_stream_hash_'));
+        $hash = \sha1(\uniqid('tx_solver_stream_hash_'));
 
         $this->write([$hash], true);
 
@@ -92,7 +85,7 @@ final class StreamAuthentication
             'transient/tx_solver/stream_auth.txt',
         );
 
-        if (!file_exists($this->storagePath)) {
+        if (!\file_exists($this->storagePath)) {
             Core\Utility\GeneralUtility::mkdir_deep(dirname($this->storagePath));
             $this->write([]);
         }
@@ -104,11 +97,11 @@ final class StreamAuthentication
     private function write(array $hashes, bool $append = false): void
     {
         if ($append) {
-            array_unshift($hashes, '');
+            \array_unshift($hashes, '');
         }
 
-        $content = implode(PHP_EOL, $hashes);
+        $content = \implode(PHP_EOL, $hashes);
 
-        file_put_contents($this->storagePath, $content, $append ? FILE_APPEND : LOCK_EX);
+        \file_put_contents($this->storagePath, $content, $append ? FILE_APPEND : LOCK_EX);
     }
 }

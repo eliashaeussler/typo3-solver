@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -23,7 +23,6 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver\Cache\Serializer;
 
-use ReflectionClass;
 use Throwable;
 
 /**
@@ -51,7 +50,7 @@ final class ExceptionSerializer
      * @phpstan-param T $exception
      * @phpstan-return ExceptionArray
      */
-    public function serialize(Throwable $exception): array
+    public function serialize(\Throwable $exception): array
     {
         return [
             'className' => $exception::class,
@@ -67,13 +66,13 @@ final class ExceptionSerializer
     /**
      * @phpstan-param ExceptionArray $exceptionArray
      */
-    public function deserialize(array $exceptionArray): Throwable
+    public function deserialize(array $exceptionArray): \Throwable
     {
         $className = $exceptionArray['className'];
         $properties = $exceptionArray['exception'];
 
         // Create exception class
-        $reflectionClass = new ReflectionClass($className);
+        $reflectionClass = new \ReflectionClass($className);
         $exception = $reflectionClass->newInstanceWithoutConstructor();
 
         // Restore exception properties

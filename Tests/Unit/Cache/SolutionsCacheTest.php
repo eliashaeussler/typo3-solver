@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -27,8 +27,6 @@ use EliasHaeussler\Typo3Solver as Src;
 use PHPUnit\Framework;
 use Symfony\Component\Filesystem;
 use TYPO3\TestingFramework;
-
-use function dirname;
 
 /**
  * SolutionsCacheTest
@@ -54,7 +52,7 @@ final class SolutionsCacheTest extends TestingFramework\Core\Unit\UnitTestCase
     #[Framework\Attributes\Test]
     public function constructorCreatesCacheFileIfNotExists(): void
     {
-        $cacheFile = dirname(__DIR__, 3) . '/var/cache/data/tx_solver/solutions.php';
+        $cacheFile = \dirname(__DIR__, 3) . '/var/cache/data/tx_solver/solutions.php';
         $filesystem = new Filesystem\Filesystem();
 
         $filesystem->remove($cacheFile);

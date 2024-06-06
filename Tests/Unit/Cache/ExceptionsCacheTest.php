@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -24,12 +24,9 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Tests\Unit\Cache;
 
 use EliasHaeussler\Typo3Solver as Src;
-use Exception;
 use PHPUnit\Framework;
 use Symfony\Component\Filesystem;
 use TYPO3\TestingFramework;
-
-use function dirname;
 
 /**
  * ExceptionsCacheTest
@@ -40,20 +37,20 @@ use function dirname;
 final class ExceptionsCacheTest extends TestingFramework\Core\Unit\UnitTestCase
 {
     private Src\Cache\ExceptionsCache $subject;
-    private Exception $exception;
+    private \Exception $exception;
 
     protected function setUp(): void
     {
         parent::setUp();
 
         $this->subject = new Src\Cache\ExceptionsCache();
-        $this->exception = new Exception('Something went wrong.', 123);
+        $this->exception = new \Exception('Something went wrong.', 123);
     }
 
     #[Framework\Attributes\Test]
     public function constructorCreatesCacheFileIfNotExists(): void
     {
-        $cacheFile = dirname(__DIR__, 3) . '/var/cache/data/tx_solver/exceptions.php';
+        $cacheFile = \dirname(__DIR__, 3) . '/var/cache/data/tx_solver/exceptions.php';
         $filesystem = new Filesystem\Filesystem();
 
         $filesystem->remove($cacheFile);

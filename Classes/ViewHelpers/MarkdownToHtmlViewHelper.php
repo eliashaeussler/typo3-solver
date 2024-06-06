@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2024 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ declare(strict_types=1);
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -23,12 +23,7 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver\ViewHelpers;
 
-use Closure;
-use Parsedown;
 use TYPO3Fluid\Fluid;
-
-use function preg_replace;
-use function preg_replace_callback;
 
 /**
  * MarkdownToHtmlViewHelper
@@ -64,14 +59,14 @@ final class MarkdownToHtmlViewHelper extends Fluid\Core\ViewHelper\AbstractViewH
      */
     public static function renderStatic(
         array $arguments,
-        Closure $renderChildrenClosure,
+        \Closure $renderChildrenClosure,
         Fluid\Core\Rendering\RenderingContextInterface $renderingContext,
     ): string {
         $markdown = $renderChildrenClosure();
         $replaceLineNumbers = $arguments['replaceLineNumbersInCodeSnippets'] ?? false;
 
         // Convert markdown to HTML
-        $parsedown = new Parsedown();
+        $parsedown = new \Parsedown();
         $parsedown->setSafeMode(true);
         $html = $parsedown->text($markdown);
 
@@ -85,10 +80,10 @@ final class MarkdownToHtmlViewHelper extends Fluid\Core\ViewHelper\AbstractViewH
 
     private static function replaceLineNumbersInCodeSnippets(string $html): string
     {
-        return preg_replace(
+        return \preg_replace(
             '/<\/span>\s*<span/',
             '</span><span',
-            preg_replace_callback(
+            \preg_replace_callback(
                 '/<pre><code>(.*?)<\/code><\/pre>/s',
                 static fn(array $matches): string => self::replaceLineNumbersInCodeSnippet($matches[1]),
                 $html,
@@ -99,7 +94,7 @@ final class MarkdownToHtmlViewHelper extends Fluid\Core\ViewHelper\AbstractViewH
     private static function replaceLineNumbersInCodeSnippet(string $codeSnippet): string
     {
         $replacements = 0;
-        $codeSnippetWithLineNumbers = preg_replace(
+        $codeSnippetWithLineNumbers = \preg_replace(
             '/^(\d+)\s(.*)$/m',
             '<span data-line="$1">$2</span>',
             $codeSnippet,
