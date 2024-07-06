@@ -158,10 +158,10 @@ final class Configuration
 
         return \array_values(
             \array_map(
-                'intval',
+                intval(...),
                 \array_filter(
                     Core\Utility\GeneralUtility::trimExplode(',', $ignoredCodes, true),
-                    'is_numeric',
+                    is_numeric(...),
                 ),
             ),
         );

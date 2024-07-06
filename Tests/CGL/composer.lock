@@ -3556,22 +3556,22 @@
         },
         {
             "name": "eliashaeussler/rector-config",
-            "version": "3.0.1",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eliashaeussler/rector-config.git",
-                "reference": "55bd32b120c9d6b2156d9870c9bb1c6c892a9a0f"
+                "reference": "9f543887723c59e7c88ce52a2a0079b397d5fae4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/rector-config/zipball/55bd32b120c9d6b2156d9870c9bb1c6c892a9a0f",
-                "reference": "55bd32b120c9d6b2156d9870c9bb1c6c892a9a0f",
+                "url": "https://api.github.com/repos/eliashaeussler/rector-config/zipball/9f543887723c59e7c88ce52a2a0079b397d5fae4",
+                "reference": "9f543887723c59e7c88ce52a2a0079b397d5fae4",
                 "shasum": ""
             },
             "require": {
                 "composer-runtime-api": "^2.0",
                 "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
-                "rector/rector": "^1.0"
+                "rector/rector": "^1.2"
             },
             "require-dev": {
                 "armin/editorconfig-cli": "^1.8 || ^2.0",
@@ -3579,9 +3579,9 @@
                 "eliashaeussler/php-cs-fixer-config": "^2.0",
                 "eliashaeussler/phpstan-config": "^2.0",
                 "ergebnis/composer-normalize": "^2.30",
-                "illuminate/container": "^10.39",
+                "illuminate/container": "^10.39 || ^11.0",
                 "phpstan/extension-installer": "^1.2",
-                "phpunit/phpunit": "^10.1",
+                "phpunit/phpunit": "^10.1 || ^11.0",
                 "ssch/typo3-rector": "^2.0",
                 "symfony/config": "^5.4 || ^6.0 || ^7.0",
                 "typo3/cms-core": "^12.4 || ^13.0"
@@ -3610,9 +3610,9 @@
             "description": "My personal configuration for Rector",
             "support": {
                 "issues": "https://github.com/eliashaeussler/rector-config/issues",
-                "source": "https://github.com/eliashaeussler/rector-config/tree/3.0.1"
+                "source": "https://github.com/eliashaeussler/rector-config/tree/3.0.2"
             },
-            "time": "2024-02-14T17:21:32+00:00"
+            "time": "2024-07-06T16:34:34+00:00"
         },
         {
             "name": "enshrined/svg-sanitize",
@@ -5035,16 +5035,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.11.5",
+            "version": "1.11.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "490f0ae1c92b082f154681d7849aee776a7c1443"
+                "reference": "52d2bbfdcae7f895915629e4694e9497d0f8e28d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/490f0ae1c92b082f154681d7849aee776a7c1443",
-                "reference": "490f0ae1c92b082f154681d7849aee776a7c1443",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/52d2bbfdcae7f895915629e4694e9497d0f8e28d",
+                "reference": "52d2bbfdcae7f895915629e4694e9497d0f8e28d",
                 "shasum": ""
             },
             "require": {
@@ -5089,7 +5089,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-06-17T15:10:54+00:00"
+            "time": "2024-07-06T11:17:41+00:00"
         },
         {
             "name": "phpstan/phpstan-deprecation-rules",
@@ -5675,16 +5675,16 @@
         },
         {
             "name": "rector/rector",
-            "version": "1.1.1",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "c930cdb21294f10955ddfc31b720971e8333943d"
+                "reference": "2fa387553db22b6f9bcccf5ff16f2c2c18a52a65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/c930cdb21294f10955ddfc31b720971e8333943d",
-                "reference": "c930cdb21294f10955ddfc31b720971e8333943d",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/2fa387553db22b6f9bcccf5ff16f2c2c18a52a65",
+                "reference": "2fa387553db22b6f9bcccf5ff16f2c2c18a52a65",
                 "shasum": ""
             },
             "require": {
@@ -5722,7 +5722,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rectorphp/rector/issues",
-                "source": "https://github.com/rectorphp/rector/tree/1.1.1"
+                "source": "https://github.com/rectorphp/rector/tree/1.2.0"
             },
             "funding": [
                 {
@@ -5730,7 +5730,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-06-21T07:51:17+00:00"
+            "time": "2024-07-01T14:24:45+00:00"
         },
         {
             "name": "saschaegerer/phpstan-typo3",
