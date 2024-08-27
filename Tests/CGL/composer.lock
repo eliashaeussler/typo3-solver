@@ -458,16 +458,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.62.0",
+            "version": "v3.63.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer.git",
-                "reference": "627692f794d35c43483f34b01d94740df2a73507"
+                "reference": "ee3cc2e1fbfbddf98c17d4615db574a2a311c1ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/627692f794d35c43483f34b01d94740df2a73507",
-                "reference": "627692f794d35c43483f34b01d94740df2a73507",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/ee3cc2e1fbfbddf98c17d4615db574a2a311c1ea",
+                "reference": "ee3cc2e1fbfbddf98c17d4615db574a2a311c1ea",
                 "shasum": ""
             },
             "require": {
@@ -549,7 +549,7 @@
             ],
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues",
-                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.62.0"
+                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.63.1"
             },
             "funding": [
                 {
@@ -557,7 +557,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-08-07T17:03:09+00:00"
+            "time": "2024-08-26T14:03:20+00:00"
         },
         {
             "name": "psr/container",
@@ -5741,16 +5741,16 @@
         },
         {
             "name": "saschaegerer/phpstan-typo3",
-            "version": "1.10.1",
+            "version": "1.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sascha-egerer/phpstan-typo3.git",
-                "reference": "a7549f5d5d6b75ec9dc51122086054604007943c"
+                "reference": "1848c6a2bfcef90cff75e0a8a5c043bcf84765de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sascha-egerer/phpstan-typo3/zipball/a7549f5d5d6b75ec9dc51122086054604007943c",
-                "reference": "a7549f5d5d6b75ec9dc51122086054604007943c",
+                "url": "https://api.github.com/repos/sascha-egerer/phpstan-typo3/zipball/1848c6a2bfcef90cff75e0a8a5c043bcf84765de",
+                "reference": "1848c6a2bfcef90cff75e0a8a5c043bcf84765de",
                 "shasum": ""
             },
             "require": {
@@ -5797,7 +5797,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sascha-egerer/phpstan-typo3/issues",
-                "source": "https://github.com/sascha-egerer/phpstan-typo3/tree/1.10.1"
+                "source": "https://github.com/sascha-egerer/phpstan-typo3/tree/1.10.2"
             },
             "funding": [
                 {
@@ -5809,7 +5809,7 @@
                     "type": "liberapay"
                 }
             ],
-            "time": "2024-05-06T07:37:36+00:00"
+            "time": "2024-08-26T20:37:49+00:00"
         },
         {
             "name": "ssch/typo3-debug-dump-pass",
