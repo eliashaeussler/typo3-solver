@@ -33,8 +33,6 @@ use TYPO3Fluid\Fluid;
  */
 final class MarkdownToHtmlViewHelper extends Fluid\Core\ViewHelper\AbstractViewHelper
 {
-    use Fluid\Core\ViewHelper\Traits\CompileWithContentArgumentAndRenderStatic;
-
     protected $escapeChildren = false;
     protected $escapeOutput = false;
 
@@ -44,6 +42,7 @@ final class MarkdownToHtmlViewHelper extends Fluid\Core\ViewHelper\AbstractViewH
             'markdown',
             'string',
             'The markdown text to convert',
+            true,
         );
         $this->registerArgument(
             'replaceLineNumbersInCodeSnippets',
@@ -52,6 +51,11 @@ final class MarkdownToHtmlViewHelper extends Fluid\Core\ViewHelper\AbstractViewH
             false,
             false,
         );
+    }
+
+    public function getContentArgumentName(): string
+    {
+        return 'markdown';
     }
 
     /**
