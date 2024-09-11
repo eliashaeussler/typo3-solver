@@ -7680,16 +7680,16 @@
         },
         {
             "name": "typo3/cms-core",
-            "version": "v12.4.19",
+            "version": "v12.4.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/core.git",
-                "reference": "8f986151f6c2e19bace6cb51167553b101d735e2"
+                "reference": "b15e032a77fc62c9ade53f6a147caea1fee554b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/core/zipball/8f986151f6c2e19bace6cb51167553b101d735e2",
-                "reference": "8f986151f6c2e19bace6cb51167553b101d735e2",
+                "url": "https://api.github.com/repos/TYPO3-CMS/core/zipball/b15e032a77fc62c9ade53f6a147caea1fee554b0",
+                "reference": "b15e032a77fc62c9ade53f6a147caea1fee554b0",
                 "shasum": ""
             },
             "require": {
@@ -7697,7 +7697,7 @@
                 "christian-riesen/base32": "^1.6",
                 "composer-runtime-api": "^2.1",
                 "doctrine/annotations": "^1.13.3 || ^2.0",
-                "doctrine/dbal": "^3.8.1",
+                "doctrine/dbal": "^3.9",
                 "doctrine/event-manager": "^2.0",
                 "doctrine/lexer": "^2.0 || ^3.0",
                 "egulias/email-validator": "^4.0",
@@ -7816,20 +7816,20 @@
                 "issues": "https://forge.typo3.org",
                 "source": "https://github.com/typo3/typo3"
             },
-            "time": "2024-08-15T13:22:49+00:00"
+            "time": "2024-09-10T07:47:57+00:00"
         },
         {
             "name": "typo3/cms-extbase",
-            "version": "v12.4.19",
+            "version": "v12.4.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/extbase.git",
-                "reference": "a7483cfcfcc5966124436add6e31f9e4aa2d2aac"
+                "reference": "749e81e3afc7375ccb4613bf3f4a6ff3dc61e4d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/extbase/zipball/a7483cfcfcc5966124436add6e31f9e4aa2d2aac",
-                "reference": "a7483cfcfcc5966124436add6e31f9e4aa2d2aac",
+                "url": "https://api.github.com/repos/TYPO3-CMS/extbase/zipball/749e81e3afc7375ccb4613bf3f4a6ff3dc61e4d9",
+                "reference": "749e81e3afc7375ccb4613bf3f4a6ff3dc61e4d9",
                 "shasum": ""
             },
             "require": {
@@ -7839,7 +7839,7 @@
                 "symfony/dependency-injection": "^6.4 || ^7.0",
                 "symfony/property-access": "^6.4 || ^7.0",
                 "symfony/property-info": "^6.4 || ^7.0",
-                "typo3/cms-core": "12.4.19"
+                "typo3/cms-core": "12.4.20"
             },
             "conflict": {
                 "typo3/cms": "*"
@@ -7886,7 +7886,7 @@
                 "issues": "https://forge.typo3.org",
                 "source": "https://github.com/typo3/typo3"
             },
-            "time": "2024-08-15T13:22:49+00:00"
+            "time": "2024-09-10T07:47:57+00:00"
         },
         {
             "name": "typo3/coding-standards",
