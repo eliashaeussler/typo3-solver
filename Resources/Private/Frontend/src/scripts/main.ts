@@ -30,6 +30,6 @@ try {
   } else {
     solution.handleSolutionSelection();
   }
-} catch (e) {
+} catch (e) { // eslint-disable-line sonarjs/no-ignored-exceptions
   // Intended fallthrough.
 }
