@@ -52,6 +52,8 @@ final class DateViewHelper extends Fluid\Core\ViewHelper\AbstractViewHelper
 
     /**
      * @param array{date: \DateTimeInterface, readable: bool} $arguments
+     *
+     * @todo Migrate to render() once support for TYPO3 v12 is dropped
      */
     public static function renderStatic(
         array $arguments,

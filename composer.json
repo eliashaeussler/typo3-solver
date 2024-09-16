@@ -30,8 +30,8 @@
 		"symfony/console": "^5.4 || ^6.0 || ^7.0",
 		"symfony/filesystem": "^5.4 || ^6.0 || ^7.0",
 		"symfony/routing": "^5.4 || ^6.0 || ^7.0",
-		"typo3/cms-core": "^11.5 || ^12.4 || ~13.2.0",
-		"typo3fluid/fluid": "^2.15"
+		"typo3/cms-core": "^11.5 || ^12.4 || ~13.3.0",
+		"typo3fluid/fluid": "^2.15 || ^4.0"
 	},
 	"require-dev": {
 		"ext-dom": "*",
@@ -68,9 +68,6 @@
 	"scripts": {
 		"post-install-cmd": [
 			"@composer -d Tests/CGL install"
-		],
-		"post-update-cmd": [
-			"@composer -d Tests/CGL update"
 		],
 		"cgl": "@composer -d Tests/CGL --",
 		"docs": [

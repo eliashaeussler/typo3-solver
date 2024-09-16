@@ -60,6 +60,8 @@ final class MarkdownToHtmlViewHelper extends Fluid\Core\ViewHelper\AbstractViewH
 
     /**
      * @param array{replaceLineNumbersInCodeSnippets?: bool} $arguments
+     *
+     * @todo Migrate to render() once support for TYPO3 v12 is dropped
      */
     public static function renderStatic(
         array $arguments,
