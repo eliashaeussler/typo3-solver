@@ -1,9 +1,7 @@
 {
-	"require": {
-		"eliashaeussler/php-cs-fixer-config": "^2.2"
-	},
 	"require-dev": {
 		"armin/editorconfig-cli": "^1.5 || ^2.0",
+		"eliashaeussler/php-cs-fixer-config": "^2.2",
 		"eliashaeussler/phpstan-config": "^2.0",
 		"eliashaeussler/rector-config": "^3.0",
 		"ergebnis/composer-normalize": "^2.29",
