@@ -66,6 +66,11 @@ by [Marcel Pociot][10].
 In addition, I'd like to thank [Nuno Maduro][11] and all contributors
 of the [`openai-php/client`][1] library for this beautiful piece of code.
 
+## 🔒 Security Policy
+
+Please read our [security policy](SECURITY.md) if you discover a security
+vulnerability in this extension.
+
 ## ⭐ License
 
 This project is licensed under [GNU General Public License 2.0 (or later)](LICENSE.md).
