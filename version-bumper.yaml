@@ -1,0 +1,21 @@
+filesToModify:
+  - path: Documentation/Settings.cfg
+    patterns:
+      - 'release = {%version%}'
+    reportUnmatched: true
+  - path: Resources/Private/Frontend/package.json
+    patterns:
+      - '"version": "{%version%}"'
+    reportUnmatched: true
+  - path: Resources/Private/Frontend/package-lock.json
+    patterns:
+      - '"name": "@eliashaeussler/typo3-solver",\s+"version": "{%version%}"'
+    reportUnmatched: true
+  - path: ext_emconf.php
+    patterns:
+      - "'version' => '{%version%}'"
+    reportUnmatched: true
+
+releaseOptions:
+  commitMessage: '[RELEASE] Release of EXT:solver {%version%}'
+  signTag: true

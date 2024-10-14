@@ -18,3 +18,4 @@
 /phpunit.functional.xml             export-ignore
 /phpunit.unit.xml                   export-ignore
 /renovate.json                      export-ignore
+/version-bumper.yaml                export-ignore
