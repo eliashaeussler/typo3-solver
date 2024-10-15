@@ -31,7 +31,7 @@ way to solve a given problem.
 
         Provide a solution for the given problem.
 
-        :param EliasHaeussler\\Typo3Solver\\ProblemSolving\\Problem\\Problem $problem: The problem to be solved
+        :param EliasHaeussler\Typo3Solver\ProblemSolving\Problem\Problem $problem: The problem to be solved
         :returntype: EliasHaeussler\\Typo3Solver\\ProblemSolving\\Solution\\Solution
         :throws: EliasHaeussler\\Typo3Solver\\Exception\\UnableToSolveException
 
@@ -67,11 +67,11 @@ way to solve a given problem.
     ..  php:method:: getStreamedSolution($problem)
 
         Provide a solution stream for the given problem. The stream is
-        returned as an instance of :php:interface:`Traversable`, while
+        returned as an instance of :php:`\Traversable`, while
         each traversed item is an instance of
-        :php:class:`EliasHaeussler\\Typo3Solver\\ProblemSolving\\Solution\\Solution`.
+        :php:`\EliasHaeussler\Typo3Solver\ProblemSolving\Solution\Solution`.
 
-        :param EliasHaeussler\\Typo3Solver\\ProblemSolving\\Problem\\Problem $problem: The problem to be solved
+        :param EliasHaeussler\Typo3Solver\ProblemSolving\Problem\Problem $problem: The problem to be solved
         :returntype: :php:`Traversable<EliasHaeussler\Typo3Solver\ProblemSolving\Solution\Solution>`
         :throws: EliasHaeussler\\Typo3Solver\\Exception\\UnableToSolveException
 
@@ -102,7 +102,7 @@ the OpenAI endpoint.
 
     This provider decorates a concrete solution provider with an additional
     cache layer. The concrete solution provider must be provided in the
-    :php:meth:`EliasHaeussler\\Typo3Solver\\ProblemSolving\\Solution\\Provider\\SolutionProvider::create`
+    :php:meth:`\EliasHaeussler\Typo3Solver\ProblemSolving\Solution\Provider\SolutionProvider::create`
     method.
 
     ..  note::

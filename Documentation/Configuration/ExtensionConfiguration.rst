@@ -11,7 +11,6 @@ The extension currently provides the following configuration options:
 ..  _extconf-provider:
 
 ..  confval:: provider
-
     :type: string (FQCN)
     :Default: :php:class:`EliasHaeussler\\Typo3Solver\\ProblemSolving\\Solution\\Provider\\OpenAISolutionProvider`
 
@@ -25,7 +24,7 @@ The extension currently provides the following configuration options:
 ..  _extconf-prompt:
 
 ..  confval:: prompt
-
+    :name: extconf-prompt
     :type: string (FQCN)
     :Default: :php:class:`EliasHaeussler\\Typo3Solver\\ProblemSolving\\Solution\\Prompt\\DefaultPrompt`
 
@@ -39,7 +38,6 @@ The extension currently provides the following configuration options:
 ..  _extconf-ignoredCodes:
 
 ..  confval:: ignoredCodes
-
     :type: string (comma-separated list)
 
     Comma-separated list of exception codes to ignore during problem solving.
@@ -54,7 +52,6 @@ The extension currently provides the following configuration options:
 ..  _extconf-api-key:
 
 ..  confval:: api.key
-
     :type: string
 
     :ref:`API key <api-key>` for OpenAI requests.
@@ -67,7 +64,6 @@ The extension currently provides the following configuration options:
 ..  _extconf-attributes-model:
 
 ..  confval:: attributes.model
-
     :type: string
     :Default: `gpt-3.5-turbo-0301`
 
@@ -78,7 +74,6 @@ The extension currently provides the following configuration options:
 ..  _extconf-attributes-maxTokens:
 
 ..  confval:: attributes.maxTokens
-
     :type: integer
     :Default: `300`
 
@@ -88,7 +83,6 @@ The extension currently provides the following configuration options:
 ..  _extconf-attributes-temperature:
 
 ..  confval:: attributes.temperature
-
     :type: float
     :Default: `0.5`
 
@@ -98,7 +92,6 @@ The extension currently provides the following configuration options:
 ..  _extconf-attributes-numberOfCompletions:
 
 ..  confval:: attributes.numberOfCompletions
-
     :type: integer
     :Default: `1`
 
@@ -108,7 +101,6 @@ The extension currently provides the following configuration options:
 ..  _extconf-cache-lifetime:
 
 ..  confval:: cache.lifetime
-
     :type: integer
     :Default: `86400` *(= 1 day)*
 

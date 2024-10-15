@@ -1,7 +1,7 @@
 filesToModify:
-  - path: Documentation/Settings.cfg
+  - path: Documentation/guides.xml
     patterns:
-      - 'release = {%version%}'
+      - 'release="{%version%}"'
     reportUnmatched: true
   - path: Resources/Private/Frontend/package.json
     patterns:

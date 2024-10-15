@@ -1,5 +1,17 @@
 ..  include:: /Includes.rst.txt
 
+..  image:: https://img.shields.io/coverallsCoverage/github/eliashaeussler/typo3-solver?logo=coveralls
+    :target: https://coveralls.io/github/eliashaeussler/typo3-solver
+
+..  image:: https://img.shields.io/codeclimate/maintainability/eliashaeussler/typo3-solver?logo=codeclimate
+    :target: https://codeclimate.com/github/eliashaeussler/typo3-solver/maintainability
+
+..  image:: https://img.shields.io/github/actions/workflow/status/eliashaeussler/typo3-solver/cgl.yaml?label=cgl&logo=github
+    :target: https://github.com/eliashaeussler/typo3-solver/actions/workflows/cgl.yaml
+
+..  image:: https://img.shields.io/github/actions/workflow/status/eliashaeussler/typo3-solver/tests.yaml?label=tests&logo=github
+    :target: https://github.com/eliashaeussler/typo3-solver/actions/workflows/tests.yaml
+
 ..  _contributing:
 
 ============
@@ -70,9 +82,6 @@ You can access the DDEV site at https://typo3-ext-solver.ddev.site/.
 Check code quality
 ------------------
 
-..  image:: https://github.com/eliashaeussler/typo3-solver/actions/workflows/cgl.yaml/badge.svg
-    :target: https://github.com/eliashaeussler/typo3-solver/actions/workflows/cgl.yaml
-
 ..  _cgl-typo3:
 
 TYPO3
@@ -127,14 +136,6 @@ Frontend
 
 Run tests
 ---------
-
-..  image:: https://github.com/eliashaeussler/typo3-solver/actions/workflows/tests.yaml/badge.svg
-    :target: https://github.com/eliashaeussler/typo3-solver/actions/workflows/tests.yaml
-
-..  rst-class:: d-inline-block mb-3
-
-..  image:: https://img.shields.io/coverallsCoverage/github/eliashaeussler/typo3-solver?logo=coveralls
-    :target: https://coveralls.io/github/eliashaeussler/typo3-solver
 
 ..  code-block:: bash
 

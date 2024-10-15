@@ -8,7 +8,7 @@ Exception handler
 
 The core component of this extension is to modify the default
 :ref:`debug exception handler <t3coreapi:error-handling-debug-exception-handler>`
-from TYPO3 core. For this, the :php:class:`EliasHaeussler\\Typo3Solver\\Error\\AiSolverExceptionHandler`
+from TYPO3 core. For this, the :php:`\EliasHaeussler\Typo3Solver\Error\AiSolverExceptionHandler`
 class is shipped with the extension.
 
 ..  _exception-handler-configuration:

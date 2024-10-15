@@ -56,7 +56,6 @@ The following input parameters are available:
 ..  _solver-solve-problem:
 
 ..  confval:: problem
-
     :Required: false
     :type: string
     :Default: none
@@ -87,7 +86,6 @@ The following input parameters are available:
 ..  _solver-solve-identifier:
 
 ..  confval:: -i|--identifier
-
     :Required: false
     :type: string
     :Default: none
@@ -118,7 +116,6 @@ The following input parameters are available:
 ..  _solver-solve-code:
 
 ..  confval:: -c|--code
-
     :Required: false
     :type: integer
     :Default: none
@@ -149,7 +146,6 @@ The following input parameters are available:
 ..  _solver-solve-file:
 
 ..  confval:: -f|--file
-
     :Required: false
     :type: string
     :Default: none
@@ -180,7 +176,6 @@ The following input parameters are available:
 ..  _solver-solve-line:
 
 ..  confval:: -l|--line
-
     :Required: false
     :type: integer
     :Default: none
@@ -211,7 +206,6 @@ The following input parameters are available:
 ..  _solver-solve-refresh:
 
 ..  confval:: -r|--refresh
-
     :Required: false
     :type: boolean
     :Default: false
@@ -237,7 +231,6 @@ The following input parameters are available:
 ..  _solver-solve-json:
 
 ..  confval:: -j|--json
-
     :Required: false
     :type: boolean
     :Default: false
@@ -302,7 +295,6 @@ The following input parameters are available:
 ..  _solver-list-models-all:
 
 ..  confval:: -a|--all
-
     :Required: false
     :type: boolean
     :Default: false
@@ -355,7 +347,6 @@ cache entries, the command `solver:cache:flush` can be used.
 The following input parameters are available:
 
 ..  confval:: identifier
-
     :Required: false
     :type: string
     :Default: none

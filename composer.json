@@ -77,9 +77,9 @@
 			"@docs:build",
 			"@docs:open"
 		],
-		"docs:build": "docker-compose run --rm docs",
+		"docs:build": "docker compose run --rm docs",
 		"docs:cleanup": "rm -rf .build/docs",
-		"docs:open": "open .build/docs/Result/project/0.0.0/Index.html",
+		"docs:open": "open .build/docs/Index.html",
 		"test": [
 			"@test:functional",
 			"@test:unit"

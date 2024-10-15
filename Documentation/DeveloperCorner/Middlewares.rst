@@ -56,14 +56,13 @@ authentication layer.
 -   :aspect:`Required parameters`:
 
     ..  confval:: exception
-
         :Required: true
         :type: string
 
         Cache identifier of the exception for which a solution is to
         provide. This identifier is returned when calling
-        :php:meth:`EliasHaeussler\\Typo3Solver\\Cache\\ExceptionsCache::set`
-        or :php:meth:`EliasHaeussler\\Typo3Solver\\Cache\\ExceptionsCache::getIdentifier`.
+        :php:meth:`\EliasHaeussler\Typo3Solver\Cache\ExceptionsCache::set`
+        or :php:meth:`\EliasHaeussler\Typo3Solver\Cache\ExceptionsCache::getIdentifier`.
 
         ..  note::
 
@@ -73,7 +72,6 @@ authentication layer.
     ..  _tx-solver-solution-hash:
 
     ..  confval:: hash
-
         :Required: true
         :type: string
 
@@ -100,20 +98,18 @@ the :php:class:`EliasHaeussler\\Typo3Solver\\Formatter\\WebStreamFormatter`.
 It is passed as JSON string and contains the following properties:
 
 ..  confval:: data
-
+    :name: solutionDelta-data
     :type: object
 
     Contains solution metadata.
 
     ..  confval:: model
-
         :type: string
 
         The used OpenAI model. This normally matches the configured
         :ref:`model <extconf-attributes-model>`.
 
     ..  confval:: numberOfChoices
-
         :type: int
 
         The number of choices provided by the current solution. This
@@ -121,20 +117,19 @@ It is passed as JSON string and contains the following properties:
         :ref:`number of completions <extconf-attributes-numberOfCompletions>`.
 
     ..  confval:: numberOfPendingChoices
-
         :type: int
 
         The number of choices whose generation is not finished yet. As
         soon as this value is :php:`0`, the solution stream is finished.
 
     ..  confval:: prompt
-
+        :name: solutionDelta-prompt
         :type: string
 
         The prompt used to generate the solution.
 
 ..  confval:: content
-
+    :name: solutionDelta-content
     :type: string
 
     The current solution delta as formatted string.
@@ -155,25 +150,23 @@ generation. Event data is passed as JSON string and contains the following
 properties:
 
 ..  confval:: data
-
+    :name: solutionError-data
     :type: object
 
     Contains exception metadata.
 
     ..  confval:: message
-
         :type: string
 
         The exception message.
 
     ..  confval:: code
-
         :type: int
 
         The exception code.
 
 ..  confval:: content
-
+    :name: solutionError-content
     :type: string
 
     The formatted exception, ready to replace the solution container
@@ -201,10 +194,10 @@ is given as query parameter and validates it against a list of previously
 registered hashes. If the parameter is omitted, authentication fails.
 
 A stream hash can be registered by calling
-:php:meth:`EliasHaeussler\\Typo3Solver\\Formatter\\Authentication\\StreamAuthentication::register`.
+:php:`\EliasHaeussler\Typo3Solver\Formatter\Authentication\StreamAuthentication::register`.
 It generates a unique hash and writes it to a transient file. This file
 is then looked up on request by calling
-:php:meth:`EliasHaeussler\\Typo3Solver\\Formatter\\Authentication\\StreamAuthentication::authenticate`.
+:php:`\EliasHaeussler\Typo3Solver\Formatter\Authentication\StreamAuthentication::authenticate`.
 If the hash is registered, it is removed from the transient file and
 authentication is passed successfully.
 

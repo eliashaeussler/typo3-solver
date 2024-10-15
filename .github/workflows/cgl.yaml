@@ -81,3 +81,9 @@ jobs:
       # Migration
       - name: Rector migration
         run: composer cgl migration:rector -- --dry-run
+
+      # Documentation
+      - name: Check documentation build
+        run: |
+          mkdir -p .build/docs
+          composer docs:build -- --no-progress --fail-on-log
