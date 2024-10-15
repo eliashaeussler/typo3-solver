@@ -61,4 +61,3 @@ problems from command line.
     :hidden:
 
     Sitemap
-    genindex

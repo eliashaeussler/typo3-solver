@@ -1,9 +1,8 @@
-version: '3.6'
-
 services:
   docs:
-    image: ghcr.io/t3docs/render-documentation:develop
-    command: makehtml
+    image: ghcr.io/typo3-documentation/render-guides
+    entrypoint: ['/opt/guides/entrypoint.sh', '--config', 'Documentation', '--output', '/result']
+    pull_policy: always
     volumes:
-      - .:/PROJECT:ro
-      - .build/docs:/RESULT
+      - .:/project:ro
+      - .build/docs:/result

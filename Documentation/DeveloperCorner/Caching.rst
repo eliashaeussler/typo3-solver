@@ -7,7 +7,7 @@ Caching
 =======
 
 Generated solutions can be cached if the solution provider in
-use is cacheable (see :php:meth:`EliasHaeussler\\Typo3Solver\\ProblemSolving\\Solution\\Provider\\SolutionProvider::isCacheable`).
+use is cacheable (see :php:meth:`\EliasHaeussler\Typo3Solver\ProblemSolving\Solution\Provider\SolutionProvider::isCacheable`).
 For this, a filesystem-based solution cache is implemented. In
 addition, an exception cache is provided which stores exceptions
 when :ref:`solution streaming <streamed-solution>` is active.
@@ -68,7 +68,7 @@ when :ref:`solution streaming <streamed-solution>` is active.
         Get cached solution for the given problem. If no solution
         exists in cache, :php:`null` is returned.
 
-        :param EliasHaeussler\\Typo3Solver\\ProblemSolving\\Problem\\Problem $problem: Problem to get a cached solution for
+        :param EliasHaeussler\Typo3Solver\ProblemSolving\Problem\Problem $problem: Problem to get a cached solution for
         :returntype: EliasHaeussler\\Typo3Solver\\ProblemSolving\\Solution\\Solution|null
 
     ..  php:method:: set($problem, $solution)
@@ -76,8 +76,8 @@ when :ref:`solution streaming <streamed-solution>` is active.
         Add the given solution to the solutions cache and use the
         given problem to generate the cache identifier.
 
-        :param EliasHaeussler\\Typo3Solver\\ProblemSolving\\Problem\\Problem $problem: The problem of the solution to be cached
-        :param EliasHaeussler\\Typo3Solver\\ProblemSolving\\Solution\\Solution $solution: The solution to be cached
+        :param EliasHaeussler\Typo3Solver\ProblemSolving\Problem\Problem $problem: The problem of the solution to be cached
+        :param EliasHaeussler\Typo3Solver\ProblemSolving\Solution\Solution $solution: The solution to be cached
 
     ..  php:method:: flush()
 

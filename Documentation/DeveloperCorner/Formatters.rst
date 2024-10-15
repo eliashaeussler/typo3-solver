@@ -19,8 +19,8 @@ Formatters are used to make a generated solution visible to the user.
 
         Format given problem and solution to string.
 
-        :param EliasHaeussler\\Typo3Solver\\ProblemSolving\\Problem\\Problem $problem: The problem to be formatted
-        :param EliasHaeussler\\Typo3Solver\\ProblemSolving\\Solution\\Solution $solution: The solution to be formatted
+        :param EliasHaeussler\Typo3Solver\ProblemSolving\Problem\Problem $problem: The problem to be formatted
+        :param EliasHaeussler\Typo3Solver\ProblemSolving\Solution\Solution $solution: The solution to be formatted
         :returntype: string
 
 ..  _default-formatters:
