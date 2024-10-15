@@ -30,7 +30,7 @@
 		"symfony/console": "^5.4 || ^6.0 || ^7.0",
 		"symfony/filesystem": "^5.4 || ^6.0 || ^7.0",
 		"symfony/routing": "^5.4 || ^6.0 || ^7.0",
-		"typo3/cms-core": "^11.5 || ^12.4 || ~13.3.0",
+		"typo3/cms-core": "~11.5.0 || ~12.4.0 || ~13.4.0",
 		"typo3fluid/fluid": "^2.15 || ^4.0"
 	},
 	"require-dev": {
@@ -38,7 +38,7 @@
 		"eliashaeussler/version-bumper": "^1.2",
 		"phpunit/phpcov": "^9.0 || ^10.0",
 		"symfony/dependency-injection": "^5.4 || ^6.0 || ^7.0",
-		"typo3/testing-framework": "^7.0.2 || ^8.2.1"
+		"typo3/testing-framework": "^7.0.2 || ^8.2.3"
 	},
 	"autoload": {
 		"psr-4": {
