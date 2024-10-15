@@ -40,8 +40,6 @@
 		"symfony/dependency-injection": "^5.4 || ^6.0 || ^7.0",
 		"typo3/testing-framework": "^7.0.2 || ^8.2.3"
 	},
-	"minimum-stability": "dev",
-	"prefer-stable": true,
 	"autoload": {
 		"psr-4": {
 			"EliasHaeussler\\Typo3Solver\\": "Classes/"
