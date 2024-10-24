@@ -35,7 +35,7 @@ jobs:
 
       # Install dependencies
       - name: Install Composer dependencies
-        uses: ramsey/composer-install@v2
+        uses: ramsey/composer-install@v3
         with:
           composer-options: --no-plugins --no-scripts
 
@@ -45,7 +45,7 @@ jobs:
       - name: Reset composer.json
         run: git checkout composer.json composer.lock
       - name: Re-install Composer dependencies
-        uses: ramsey/composer-install@v2
+        uses: ramsey/composer-install@v3
       - name: Check for unused dependencies
         run: composer-unused
 
