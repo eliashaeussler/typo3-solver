@@ -44,10 +44,57 @@ problems from command line.
 
 ----
 
-**Table of Contents**
+..  card-grid::
+    :columns: 1
+    :columns-md: 2
+    :gap: 4
+    :card-height: 100
+
+    ..  card::  Introduction
+
+        A quick overview about the main features provided by this extension.
+
+        ..  card-footer::   :ref:`Learn more about this extension <introduction>`
+            :button-style: btn btn-secondary stretched-link
+
+    ..  card::  Installation
+
+        Instructions on how to install this extension and which TYPO3 and PHP versions are currently supported.
+
+        ..  card-footer::   :ref:`Getting started <installation>`
+            :button-style: btn btn-secondary stretched-link
+
+    ..  card::  Configuration
+
+        Learn how to configure the extension in order to enable the provided features.
+
+        ..  card-footer::   :ref:`View configuration options <configuration>`
+            :button-style: btn btn-secondary stretched-link
+
+    ..  card::  Usage
+
+        This section describes all possible usages of this extension. Learn how to use the exception handler,
+        the various console commands, and discover the PHP API.
+
+        ..  card-footer::   :ref:`Learn how to use this extension <usage>`
+            :button-style: btn btn-secondary stretched-link
+
+    ..  card::  Developer corner
+
+        A quick overview about all relevant classes provided by this extension.
+
+        ..  card-footer::   :ref:`Deep dive into classes & concepts <developer-corner>`
+            :button-style: btn btn-secondary stretched-link
+
+    ..  card::  Migration
+
+        Required migration steps when upgrading the extension to a new major version.
+
+        ..  card-footer::   :ref:`View upgrade guide <migration>`
+            :button-style: btn btn-secondary stretched-link
 
 ..  toctree::
-    :maxdepth: 3
+    :hidden:
 
     Introduction/Index
     Installation/Index
