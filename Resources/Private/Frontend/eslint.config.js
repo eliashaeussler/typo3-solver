@@ -20,12 +20,10 @@
  */
 
 const eslint = require('@eslint/js');
-const sonarjs = require('eslint-plugin-sonarjs');
 const tseslint = require('typescript-eslint');
 
 module.exports = [
   eslint.configs.recommended,
-  sonarjs.configs.recommended,
   ...tseslint.configs.recommended,
   {
     ignores: [
