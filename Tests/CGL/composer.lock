@@ -121,21 +121,21 @@
         },
         {
             "name": "bnf/phpstan-psr-container",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bnf/phpstan-psr-container.git",
-                "reference": "38242e71616aa677a0fdd08af8edc4a730a24f67"
+                "reference": "2e2fd1973576bdc755ea814b2142fcdbc673fd1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bnf/phpstan-psr-container/zipball/38242e71616aa677a0fdd08af8edc4a730a24f67",
-                "reference": "38242e71616aa677a0fdd08af8edc4a730a24f67",
+                "url": "https://api.github.com/repos/bnf/phpstan-psr-container/zipball/2e2fd1973576bdc755ea814b2142fcdbc673fd1c",
+                "reference": "2e2fd1973576bdc755ea814b2142fcdbc673fd1c",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.0|^8.0",
-                "phpstan/phpstan": "^1.0",
+                "phpstan/phpstan": "^1.0|^2.0",
                 "psr/container": "^1.0|^2.0"
             },
             "type": "phpstan-extension",
@@ -172,9 +172,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bnf/phpstan-psr-container/issues",
-                "source": "https://github.com/bnf/phpstan-psr-container/tree/1.0.1"
+                "source": "https://github.com/bnf/phpstan-psr-container/tree/1.1.0"
             },
-            "time": "2022-04-26T04:03:19+00:00"
+            "time": "2024-11-19T16:16:59+00:00"
         },
         {
             "name": "christian-riesen/base32",
