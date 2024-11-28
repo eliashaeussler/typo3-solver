@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver\Tests;
 
+use TYPO3\CMS\Core;
 use TYPO3\TestingFramework;
 
 /**
@@ -33,9 +34,11 @@ use TYPO3\TestingFramework;
  */
 trait InternalRequestTrait
 {
-    private static function createRequest(string $uri): TestingFramework\Core\Functional\Framework\Frontend\InternalRequest
+    private static function createRequest(string $path): TestingFramework\Core\Functional\Framework\Frontend\InternalRequest
     {
-        $request = new TestingFramework\Core\Functional\Framework\Frontend\InternalRequest($uri);
+        $uri = new Core\Http\Uri('http://typo3-testing.local');
+        $uri = $uri->withPath($path);
+        $request = new TestingFramework\Core\Functional\Framework\Frontend\InternalRequest((string)$uri);
 
         return $request->withHeader('Accept', 'text/event-stream');
     }
