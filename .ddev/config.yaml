@@ -1,7 +1,7 @@
 name: typo3-ext-solver
 type: typo3
 docroot: .build/web
-php_version: "8.2"
+php_version: "8.3"
 webserver_type: nginx-fpm
 router_http_port: "80"
 router_https_port: "443"
@@ -11,7 +11,7 @@ additional_fqdns: []
 database:
     type: mariadb
     version: "10.4"
-webimage_extra_packages: [php8.2-pcov]
+webimage_extra_packages: [php8.3-pcov]
 use_dns_when_possible: true
 composer_version: "2"
 web_environment:
