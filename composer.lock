@@ -8066,16 +8066,16 @@
         },
         {
             "name": "typo3/testing-framework",
-            "version": "8.2.3",
+            "version": "8.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3/testing-framework.git",
-                "reference": "480edc81d4b823c4f93a0b2dfc73457ae393f8ec"
+                "reference": "dd7505bccd20257c4ba5d74747cfbd88e3e52139"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3/testing-framework/zipball/480edc81d4b823c4f93a0b2dfc73457ae393f8ec",
-                "reference": "480edc81d4b823c4f93a0b2dfc73457ae393f8ec",
+                "url": "https://api.github.com/repos/TYPO3/testing-framework/zipball/dd7505bccd20257c4ba5d74747cfbd88e3e52139",
+                "reference": "dd7505bccd20257c4ba5d74747cfbd88e3e52139",
                 "shasum": ""
             },
             "require": {
@@ -8094,9 +8094,9 @@
                 "sbuerk/typo3-cmscomposerinstallers-testingframework-bridge": "*"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.37.1",
-                "phpstan/phpstan": "^1.9.2",
-                "phpstan/phpstan-phpunit": "^1.1.1",
+                "friendsofphp/php-cs-fixer": "^3.65.0",
+                "phpstan/phpstan": "^2.0.2",
+                "phpstan/phpstan-phpunit": "^2.0.1",
                 "typo3/cms-workspaces": "12.*.*@dev || 13.*.*@dev"
             },
             "type": "library",
@@ -8133,9 +8133,9 @@
             "support": {
                 "general": "https://typo3.org/support/",
                 "issues": "https://github.com/TYPO3/testing-framework/issues",
-                "source": "https://github.com/TYPO3/testing-framework/tree/8.2.3"
+                "source": "https://github.com/TYPO3/testing-framework/tree/8.2.5"
             },
-            "time": "2024-10-10T14:25:19+00:00"
+            "time": "2024-11-29T15:04:21+00:00"
         },
         {
             "name": "webmozart/assert",
