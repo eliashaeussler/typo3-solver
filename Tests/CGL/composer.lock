@@ -4785,12 +4785,12 @@
             },
             "type": "typo3-cms-extension",
             "extra": {
+                "typo3/cms": {
+                    "web-dir": ".Build/Web",
+                    "extension-key": "typo3_debug_dump_pass"
+                },
                 "branch-alias": {
                     "dev-main": "1.0.x-dev"
-                },
-                "typo3/cms": {
-                    "extension-key": "typo3_debug_dump_pass",
-                    "web-dir": ".Build/Web"
                 }
             },
             "autoload": {
