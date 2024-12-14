@@ -1321,39 +1321,39 @@
         },
         {
             "name": "eliashaeussler/rector-config",
-            "version": "3.0.4",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eliashaeussler/rector-config.git",
-                "reference": "65e90e19b6a541f612df793fc5a07e6222ea9832"
+                "reference": "ea42e44c6f729d763a1362f163448d6146d28415"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/rector-config/zipball/65e90e19b6a541f612df793fc5a07e6222ea9832",
-                "reference": "65e90e19b6a541f612df793fc5a07e6222ea9832",
+                "url": "https://api.github.com/repos/eliashaeussler/rector-config/zipball/ea42e44c6f729d763a1362f163448d6146d28415",
+                "reference": "ea42e44c6f729d763a1362f163448d6146d28415",
                 "shasum": ""
             },
             "require": {
                 "composer-runtime-api": "^2.0",
                 "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
-                "rector/rector": "^1.2.9"
+                "rector/rector": "^1.2.9 || ^2.0"
             },
             "require-dev": {
                 "armin/editorconfig-cli": "^1.8 || ^2.0",
                 "composer/composer": "^2.0",
                 "eliashaeussler/php-cs-fixer-config": "^2.0",
-                "eliashaeussler/phpstan-config": "^2.0",
+                "eliashaeussler/phpstan-config": "^2.6",
                 "eliashaeussler/phpunit-attributes": "^1.0",
                 "ergebnis/composer-normalize": "^2.30",
                 "illuminate/container": "^10.39 || ^11.0",
                 "phpstan/extension-installer": "^1.2",
-                "phpunit/phpunit": "^10.4 || ^11.0",
-                "ssch/typo3-rector": "^2.0",
+                "phpunit/phpunit": "^10.5.10 || ^11.0",
+                "ssch/typo3-rector": "^2.0 || ^3.0",
                 "symfony/config": "^5.4 || ^6.0 || ^7.0",
                 "typo3/cms-core": "^12.4 || ^13.0"
             },
             "suggest": {
-                "ssch/typo3-rector": "Configures additional Rector rules for TYPO3 CMS projects (^2.0)"
+                "ssch/typo3-rector": "Configures additional Rector rules for TYPO3 CMS projects (^2.0 || ^3.0)"
             },
             "type": "library",
             "autoload": {
@@ -1376,9 +1376,9 @@
             "description": "My personal configuration for Rector",
             "support": {
                 "issues": "https://github.com/eliashaeussler/rector-config/issues",
-                "source": "https://github.com/eliashaeussler/rector-config/tree/3.0.4"
+                "source": "https://github.com/eliashaeussler/rector-config/tree/3.1.0"
             },
-            "time": "2024-11-25T19:24:19+00:00"
+            "time": "2024-12-14T14:04:43+00:00"
         },
         {
             "name": "enshrined/svg-sanitize",
