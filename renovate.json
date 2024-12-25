@@ -12,7 +12,7 @@
 			"enabled": false,
 			"matchCurrentVersion": "8.1",
 			"matchDatasources": [
-				"docker"
+				"github-tags"
 			],
 			"matchDepNames": [
 				"php"
