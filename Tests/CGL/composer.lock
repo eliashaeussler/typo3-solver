@@ -2048,16 +2048,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.67.0",
+            "version": "v3.68.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer.git",
-                "reference": "0ad34c75d1172f7d30320460e803887981830cbf"
+                "reference": "73f78d8b2b34a0dd65fedb434a602ee4c2c8ad4c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/0ad34c75d1172f7d30320460e803887981830cbf",
-                "reference": "0ad34c75d1172f7d30320460e803887981830cbf",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/73f78d8b2b34a0dd65fedb434a602ee4c2c8ad4c",
+                "reference": "73f78d8b2b34a0dd65fedb434a602ee4c2c8ad4c",
                 "shasum": ""
             },
             "require": {
@@ -2139,7 +2139,7 @@
             ],
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues",
-                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.67.0"
+                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.68.0"
             },
             "funding": [
                 {
@@ -2147,7 +2147,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-01-08T10:17:40+00:00"
+            "time": "2025-01-13T17:01:01+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -7910,16 +7910,16 @@
         },
         {
             "name": "typo3/cms-core",
-            "version": "v12.4.24",
+            "version": "v12.4.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/core.git",
-                "reference": "7b1a445c157ccefdd56f4195a037895067dfaf94"
+                "reference": "bfc8a5939a1e14d07c3b9ba450e0420fcd157b4b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/core/zipball/7b1a445c157ccefdd56f4195a037895067dfaf94",
-                "reference": "7b1a445c157ccefdd56f4195a037895067dfaf94",
+                "url": "https://api.github.com/repos/TYPO3-CMS/core/zipball/bfc8a5939a1e14d07c3b9ba450e0420fcd157b4b",
+                "reference": "bfc8a5939a1e14d07c3b9ba450e0420fcd157b4b",
                 "shasum": ""
             },
             "require": {
@@ -8047,20 +8047,20 @@
                 "issues": "https://forge.typo3.org",
                 "source": "https://github.com/typo3/typo3"
             },
-            "time": "2024-12-10T11:02:25+00:00"
+            "time": "2025-01-14T10:04:19+00:00"
         },
         {
             "name": "typo3/cms-extbase",
-            "version": "v12.4.24",
+            "version": "v12.4.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/extbase.git",
-                "reference": "61baaebcd6f22874a7ceb4b46244bb4d0073ade9"
+                "reference": "7262f48dfa0a4db58ca01a7796daa3014f00ef19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/extbase/zipball/61baaebcd6f22874a7ceb4b46244bb4d0073ade9",
-                "reference": "61baaebcd6f22874a7ceb4b46244bb4d0073ade9",
+                "url": "https://api.github.com/repos/TYPO3-CMS/extbase/zipball/7262f48dfa0a4db58ca01a7796daa3014f00ef19",
+                "reference": "7262f48dfa0a4db58ca01a7796daa3014f00ef19",
                 "shasum": ""
             },
             "require": {
@@ -8070,7 +8070,7 @@
                 "symfony/dependency-injection": "^6.4 || ^7.0",
                 "symfony/property-access": "^6.4 || ^7.0",
                 "symfony/property-info": "^6.4 || ^7.0",
-                "typo3/cms-core": "12.4.24"
+                "typo3/cms-core": "12.4.25"
             },
             "conflict": {
                 "typo3/cms": "*"
@@ -8117,7 +8117,7 @@
                 "issues": "https://forge.typo3.org",
                 "source": "https://github.com/typo3/typo3"
             },
-            "time": "2024-12-10T11:02:25+00:00"
+            "time": "2025-01-14T10:04:19+00:00"
         },
         {
             "name": "typo3/coding-standards",
