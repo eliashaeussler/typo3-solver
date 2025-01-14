@@ -35,7 +35,7 @@
 	},
 	"require-dev": {
 		"ext-dom": "*",
-		"eliashaeussler/version-bumper": "^1.2 || ^2.0",
+		"eliashaeussler/version-bumper": "^2.1.1",
 		"phpunit/phpcov": "^9.0 || ^10.0",
 		"symfony/dependency-injection": "^5.4 || ^6.0 || ^7.0",
 		"typo3/testing-framework": "^7.0.2 || ^8.2.3 || ^9.0.1"
