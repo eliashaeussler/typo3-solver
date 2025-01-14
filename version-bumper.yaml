@@ -1,4 +1,5 @@
 presets:
+  - name: typo3-commit-guidelines
   - name: typo3-extension
   - name: npm-package
     options:
