@@ -87,7 +87,7 @@ final class CacheSolutionProvider implements StreamedSolutionProvider
         $solution = null;
 
         // Yield streamed solutions
-        /* @phpstan-ignore-next-line */
+        /* @phpstan-ignore foreach.valueOverwrite */
         foreach ($this->provider->getStreamedSolution($problem) as $solution) {
             yield $solution;
         }
