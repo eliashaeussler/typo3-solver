@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "050aed86bb5bb44587670085d8d6c956",
+    "content-hash": "c951a4c02459ab73f9bef252d9fb2d75",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -728,6 +728,63 @@
                 }
             ],
             "time": "2024-12-27T00:36:43+00:00"
+        },
+        {
+            "name": "eliashaeussler/sse",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/eliashaeussler/sse.git",
+                "reference": "01ed3c130c952af84bdf6bf2d3e5977538280f0b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/eliashaeussler/sse/zipball/01ed3c130c952af84bdf6bf2d3e5977538280f0b",
+                "reference": "01ed3c130c952af84bdf6bf2d3e5977538280f0b",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
+                "php-http/discovery": "^1.18",
+                "psr/http-factory": "^1.0",
+                "psr/http-message": "^1.0 || ^2.0"
+            },
+            "require-dev": {
+                "armin/editorconfig-cli": "^1.8 || ^2.0",
+                "eliashaeussler/php-cs-fixer-config": "^2.0",
+                "eliashaeussler/phpstan-config": "^2.1",
+                "eliashaeussler/rector-config": "^3.0",
+                "ergebnis/composer-normalize": "^2.31",
+                "nyholm/psr7": "^1.8",
+                "phpstan/extension-installer": "^1.3",
+                "phpstan/phpstan-phpunit": "^1.3",
+                "phpstan/phpstan-symfony": "^1.3",
+                "phpunit/phpunit": "^10.2 || ^11.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "EliasHaeussler\\SSE\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Elias Häußler",
+                    "email": "elias@haeussler.dev",
+                    "homepage": "https://haeussler.dev",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "PHP implementation of server-sent events using event streams",
+            "support": {
+                "issues": "https://github.com/eliashaeussler/sse/issues",
+                "source": "https://github.com/eliashaeussler/sse/tree/1.1.1"
+            },
+            "time": "2024-11-26T20:27:21+00:00"
         },
         {
             "name": "enshrined/svg-sanitize",

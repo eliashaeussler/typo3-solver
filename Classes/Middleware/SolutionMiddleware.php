@@ -23,12 +23,12 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver\Middleware;
 
+use EliasHaeussler\SSE;
 use EliasHaeussler\Typo3Solver\Authentication;
 use EliasHaeussler\Typo3Solver\Cache;
 use EliasHaeussler\Typo3Solver\Configuration;
 use EliasHaeussler\Typo3Solver\Exception;
 use EliasHaeussler\Typo3Solver\Formatter;
-use EliasHaeussler\Typo3Solver\Http;
 use EliasHaeussler\Typo3Solver\ProblemSolving;
 use EliasHaeussler\Typo3Solver\Utility;
 use Psr\Http\Message;
@@ -53,6 +53,12 @@ final class SolutionMiddleware implements Server\MiddlewareInterface
         private readonly Authentication\StreamAuthentication $authentication,
     ) {}
 
+    /**
+     * @throws SSE\Exception\StreamIsActive
+     * @throws SSE\Exception\StreamIsClosed
+     * @throws SSE\Exception\StreamIsInactive
+     * @throws \JsonException
+     */
     public function process(
         Message\ServerRequestInterface $request,
         Server\RequestHandlerInterface $handler,
@@ -63,7 +69,8 @@ final class SolutionMiddleware implements Server\MiddlewareInterface
         }
 
         // Create event stream
-        $eventStream = Http\EventStream::create();
+        $eventStream = SSE\Stream\SelfEmittingEventStream::create();
+        $eventStream->open();
 
         try {
             // Get exception identifier and stream hash
@@ -109,7 +116,7 @@ final class SolutionMiddleware implements Server\MiddlewareInterface
 
     private function isRequestSupported(Message\ServerRequestInterface $request): bool
     {
-        if ($request->getHeader('Accept') !== ['text/event-stream']) {
+        if (!SSE\Stream\SelfEmittingEventStream::canHandle($request)) {
             return false;
         }
 

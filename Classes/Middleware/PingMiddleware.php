@@ -23,8 +23,7 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver\Middleware;
 
-use EliasHaeussler\Typo3Solver\Exception;
-use EliasHaeussler\Typo3Solver\Http;
+use EliasHaeussler\SSE;
 use EliasHaeussler\Typo3Solver\Utility;
 use Psr\Http\Message;
 use Psr\Http\Server;
@@ -41,7 +40,9 @@ final class PingMiddleware implements Server\MiddlewareInterface
     public const ROUTE_PATH = '/tx_solver/ping';
 
     /**
-     * @throws Exception\EventStreamException
+     * @throws SSE\Exception\StreamIsActive
+     * @throws SSE\Exception\StreamIsClosed
+     * @throws SSE\Exception\StreamIsInactive
      */
     public function process(
         Message\ServerRequestInterface $request,
@@ -52,7 +53,8 @@ final class PingMiddleware implements Server\MiddlewareInterface
             return $handler->handle($request);
         }
 
-        $eventStream = Http\EventStream::create();
+        $eventStream = SSE\Stream\SelfEmittingEventStream::create();
+        $eventStream->open();
         $eventStream->close();
 
         return new Core\Http\Response();
@@ -60,7 +62,7 @@ final class PingMiddleware implements Server\MiddlewareInterface
 
     private function isRequestSupported(Message\ServerRequestInterface $request): bool
     {
-        if ($request->getHeader('Accept') !== ['text/event-stream']) {
+        if (!SSE\Stream\SelfEmittingEventStream::canHandle($request)) {
             return false;
         }
 
