@@ -63,7 +63,7 @@ final class ListModelsCommandTest extends TestingFramework\Core\Unit\UnitTestCas
     }
 
     #[Framework\Attributes\Test]
-    public function executeListsAllGPTModels(): void
+    public function executeListsAllSupportedModels(): void
     {
         $response = new Psr7\Response(headers: [
             'Content-Type' => 'application/json',
@@ -85,6 +85,13 @@ final class ListModelsCommandTest extends TestingFramework\Core\Unit\UnitTestCas
             \implode(PHP_EOL, [
                 ' * baz-1 (created at 01/01/2022)',
                 ' * foo-1 (created at 01/01/2023)',
+            ]),
+            $this->commandTester->getDisplay(),
+        );
+        self::assertStringNotContainsString(
+            \implode(PHP_EOL, [
+                ' * gpt-4o-mini-audio-preview (created at 16/12/2024)',
+                ' * gpt-4o-realtime-preview (created at 30/09/2024)',
             ]),
             $this->commandTester->getDisplay(),
         );
@@ -124,6 +131,8 @@ final class ListModelsCommandTest extends TestingFramework\Core\Unit\UnitTestCas
                 ' * foo-1 (created at 01/01/2023)',
                 ' * gpt-3.5 (created at 28/02/2023)',
                 ' * gpt-3.5-turbo-0301 (created at 01/03/2023)',
+                ' * gpt-4o-mini-audio-preview (created at 16/12/2024)',
+                ' * gpt-4o-realtime-preview (created at 30/09/2024)',
             ]),
             $this->commandTester->getDisplay(),
         );
@@ -186,6 +195,18 @@ final class ListModelsCommandTest extends TestingFramework\Core\Unit\UnitTestCas
                     'id' => 'baz-1',
                     // 01/01/2022
                     'created' => 1641038400,
+                    ...$defaults,
+                ],
+                [
+                    'id' => 'gpt-4o-realtime-preview',
+                    // 30/09/2024
+                    'created' => 1727654400,
+                    ...$defaults,
+                ],
+                [
+                    'id' => 'gpt-4o-mini-audio-preview',
+                    // 16/12/2024
+                    'created' => 1734307200,
                     ...$defaults,
                 ],
             ],

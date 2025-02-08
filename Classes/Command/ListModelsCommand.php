@@ -65,7 +65,7 @@ final class ListModelsCommand extends Console\Command\Command
             $io->title('Available GPT models');
 
             // Filter by GPT models
-            $modelListResponse = \array_filter($modelListResponse, $this->isGPTModel(...));
+            $modelListResponse = \array_filter($modelListResponse, $this->isSupportedModel(...));
         }
 
         // Map responses to model IDs
@@ -86,9 +86,18 @@ final class ListModelsCommand extends Console\Command\Command
         return self::SUCCESS;
     }
 
-    private function isGPTModel(Responses\Models\RetrieveResponse $response): bool
+    /**
+     * @see https://platform.openai.com/docs/models#model-endpoint-compatibility
+     */
+    private function isSupportedModel(Responses\Models\RetrieveResponse $response): bool
     {
-        return \str_starts_with(\strtolower($response->id), 'gpt-');
+        $identifier = \strtolower($response->id);
+
+        if (!\str_starts_with($identifier, 'gpt-') && !\str_starts_with($identifier, 'chatgpt-')) {
+            return false;
+        }
+
+        return !\str_contains($identifier, '-realtime') && !\str_contains($identifier, '-audio');
     }
 
     private function decorateModel(Responses\Models\RetrieveResponse $response): string
