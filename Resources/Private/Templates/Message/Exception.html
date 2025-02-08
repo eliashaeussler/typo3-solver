@@ -26,10 +26,19 @@
         <li class="solution-list-item">
             <div class="solution-body">
                 <f:if condition="{exception.code}">
-                    <span class="text-muted">#{exception.code}</span>
+                    <span class="text-muted text-body-secondary">#{exception.code}</span>
                 </f:if>
                 {exception.message}
             </div>
+
+            <f:if condition="{exception.previous}">
+                <div class="solution-body">
+                    <f:if condition="{exception.previous.code}">
+                        <span class="text-muted text-body-secondary">#{exception.previous.code}</span>
+                    </f:if>
+                    <s:markdownToHtml markdown="{exception.previous.message}" />
+                </div>
+            </f:if>
         </li>
     </ul>
 </div>

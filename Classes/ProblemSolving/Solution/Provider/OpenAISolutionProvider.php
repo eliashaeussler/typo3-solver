@@ -57,8 +57,8 @@ final class OpenAISolutionProvider implements StreamedSolutionProvider
 
         try {
             $response = $this->client->chat()->create($this->buildParameters($problem));
-        } catch (\Exception) {
-            throw Exception\UnableToSolveException::create($problem);
+        } catch (\Exception $exception) {
+            throw Exception\UnableToSolveException::create($problem, $exception);
         }
 
         return ProblemSolving\Solution\Solution::fromResponse($response, $problem->getPrompt());
@@ -66,6 +66,7 @@ final class OpenAISolutionProvider implements StreamedSolutionProvider
 
     /**
      * @throws Exception\ApiKeyMissingException
+     * @throws Exception\UnableToSolveException
      */
     public function getStreamedSolution(ProblemSolving\Problem\Problem $problem): \Traversable
     {
@@ -76,8 +77,8 @@ final class OpenAISolutionProvider implements StreamedSolutionProvider
         // Create solution stream
         try {
             $stream = $this->client->chat()->createStreamed($this->buildParameters($problem));
-        } catch (\Exception) {
-            throw Exception\UnableToSolveException::create($problem);
+        } catch (\Exception $exception) {
+            throw Exception\UnableToSolveException::create($problem, $exception);
         }
 
         // Store all choices in array to merge them during streaming

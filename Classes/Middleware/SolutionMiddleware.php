@@ -105,8 +105,8 @@ final class SolutionMiddleware implements Server\MiddlewareInterface
             foreach ($solver->solveStreamed($exception) as $solution) {
                 $eventStream->sendMessage('solutionDelta', $solution);
             }
-        } catch (\Throwable $e) {
-            $eventStream->sendMessage('solutionError', $this->exceptionFormatter->format($e));
+        } catch (\Throwable $exception) {
+            $eventStream->sendMessage('solutionError', $this->exceptionFormatter->format($exception));
         } finally {
             $eventStream->close('solutionFinished');
         }
