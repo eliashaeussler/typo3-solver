@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver\Tests\Functional\Middleware;
 
+use EliasHaeussler\Typo3Solver as Src;
 use EliasHaeussler\Typo3Solver\Tests;
 use PHPUnit\Framework;
 use TYPO3\TestingFramework;
@@ -33,6 +34,7 @@ use TYPO3\TestingFramework;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
+#[Framework\Attributes\CoversClass(Src\Middleware\SolutionMiddleware::class)]
 final class SolutionMiddlewareTest extends TestingFramework\Core\Functional\FunctionalTestCase
 {
     use Tests\InternalRequestTrait;

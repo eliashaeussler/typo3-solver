@@ -33,6 +33,7 @@ use TYPO3\TestingFramework;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
+#[Framework\Attributes\CoversClass(Src\View\TemplateRenderer::class)]
 final class TemplateRendererTest extends TestingFramework\Core\Unit\UnitTestCase
 {
     private Src\View\TemplateRenderer $subject;

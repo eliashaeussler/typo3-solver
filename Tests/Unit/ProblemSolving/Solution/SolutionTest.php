@@ -34,6 +34,7 @@ use TYPO3\TestingFramework;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
+#[Framework\Attributes\CoversClass(Src\ProblemSolving\Solution\Solution::class)]
 final class SolutionTest extends TestingFramework\Core\Unit\UnitTestCase
 {
     private Responses\Chat\CreateResponseChoice $choice;

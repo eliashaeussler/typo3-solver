@@ -34,6 +34,7 @@ use TYPO3\TestingFramework;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
+#[Framework\Attributes\CoversClass(Src\ProblemSolving\Problem\Problem::class)]
 final class ProblemTest extends TestingFramework\Core\Unit\UnitTestCase
 {
     private \Exception $exception;
