@@ -53,7 +53,7 @@ final class ExtensionConfigurationExtension implements Runner\Extension\Extensio
             ],
             'attributes' => [
                 'maxTokens' => '300',
-                'model' => 'gpt-3.5-turbo-0301',
+                'model' => 'gpt-4o-mini',
                 'numberOfCompletions' => '1',
                 'temperature' => '0.5',
             ],

@@ -11,7 +11,7 @@ ignoredCodes =
 api.key =
 
 # cat=attributes//10; type=string; label=OpenAI model:You can list all available models by running the `solver:list-models` command
-attributes.model = gpt-3.5-turbo-0301
+attributes.model = gpt-4o-mini
 
 # cat=attributes//20; type=int+; label=Maximum number of tokens to use per request
 attributes.maxTokens = 300
