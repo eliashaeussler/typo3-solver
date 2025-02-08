@@ -33,7 +33,7 @@ use EliasHaeussler\Typo3Solver\ProblemSolving;
  */
 final class UnableToSolveException extends Exception
 {
-    public static function create(ProblemSolving\Problem\Problem $problem): self
+    public static function create(ProblemSolving\Problem\Problem $problem, ?\Throwable $previous = null): self
     {
         return new self(
             \sprintf(
@@ -42,6 +42,7 @@ final class UnableToSolveException extends Exception
                 $problem->getSolutionProvider()::class,
             ),
             1675767101,
+            $previous,
         );
     }
 }
