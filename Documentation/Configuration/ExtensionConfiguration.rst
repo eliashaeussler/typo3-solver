@@ -65,7 +65,7 @@ The extension currently provides the following configuration options:
 
 ..  confval:: attributes.model
     :type: string
-    :Default: `gpt-3.5-turbo-0301`
+    :Default: `gpt-4o-mini`
 
     `OpenAI model <https://platform.openai.com/docs/models>`__ to use (see
     :ref:`List available models <solver-list-models>` to show a list of available

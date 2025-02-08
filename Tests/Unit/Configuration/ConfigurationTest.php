@@ -77,7 +77,7 @@ final class ConfigurationTest extends TestingFramework\Core\Unit\UnitTestCase
     #[Framework\Attributes\Test]
     public function getModelReturnsDefaultModelIfNoModelIsConfigured(): void
     {
-        self::assertSame('gpt-3.5-turbo-0301', $this->subject->getModel());
+        self::assertSame('gpt-4o-mini', $this->subject->getModel());
     }
 
     #[Framework\Attributes\Test]
@@ -87,7 +87,7 @@ final class ConfigurationTest extends TestingFramework\Core\Unit\UnitTestCase
             'attributes/model' => '',
         ];
 
-        self::assertSame('gpt-3.5-turbo-0301', $this->subject->getModel());
+        self::assertSame('gpt-4o-mini', $this->subject->getModel());
     }
 
     #[Framework\Attributes\Test]
