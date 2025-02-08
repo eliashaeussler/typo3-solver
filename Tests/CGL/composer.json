@@ -1,14 +1,19 @@
 {
 	"require-dev": {
-		"armin/editorconfig-cli": "^1.5 || ^2.0",
+		"armin/editorconfig-cli": "^2.0",
 		"eliashaeussler/php-cs-fixer-config": "^2.2",
 		"eliashaeussler/phpstan-config": "^2.0",
 		"eliashaeussler/rector-config": "^3.0",
 		"ergebnis/composer-normalize": "^2.29",
 		"phpstan/extension-installer": "^1.2",
-		"phpstan/phpstan-symfony": "^1.2",
-		"saschaegerer/phpstan-typo3": "^1.8",
+		"phpstan/phpstan-symfony": "^2.0",
+		"saschaegerer/phpstan-typo3": "^2.0",
+		"ssch/typo3-rector": "^3.0",
 		"typo3/coding-standards": "^0.8.0"
+	},
+	"replace": {
+		"typo3/cms-core": "*",
+		"typo3/cms-extbase": "*"
 	},
 	"config": {
 		"allow-plugins": {

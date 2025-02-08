@@ -74,6 +74,7 @@ final class MarkdownToHtmlViewHelper extends Fluid\Core\ViewHelper\AbstractViewH
         // Convert markdown to HTML
         $parsedown = new \Parsedown();
         $parsedown->setSafeMode(true);
+        /** @var string $html */
         $html = $parsedown->text($markdown);
 
         // Replace line numbers

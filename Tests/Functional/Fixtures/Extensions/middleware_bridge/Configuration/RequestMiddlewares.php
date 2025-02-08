@@ -22,11 +22,12 @@ declare(strict_types=1);
  */
 
 return (static function () {
+    /** @var array<string, array<string, array<string, mixed>>> $middlewares */
     $middlewares = require dirname(__DIR__, 6) . '/Configuration/RequestMiddlewares.php';
 
     foreach ($middlewares as &$contextMiddlewares) {
         foreach ($contextMiddlewares as &$middleware) {
-            if (!isset($middleware['after'])) {
+            if (!is_array($middleware['after'] ?? null)) {
                 $middleware['after'] = [];
             }
 
