@@ -1,7 +1,7 @@
 {
 	"name": "@eliashaeussler/typo3-solver",
 	"description": "Frontend for EXT:solver, an extension for TYPO3 CMS to extend TYPO3's exception handling with AI generated solutions",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"license": "GPL-2.0-or-later",
 	"scripts": {
 		"build": "cross-env NODE_ENV=production webpack",
