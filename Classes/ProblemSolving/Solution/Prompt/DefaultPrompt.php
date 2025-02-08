@@ -76,6 +76,10 @@ final class DefaultPrompt implements Prompt
             return $snippet;
         }
 
+        /**
+         * @var int $number
+         * @var string $line
+         */
         foreach ($applicationFrame->getSnippet(9) as $number => $line) {
             $snippet .= $number . ' ' . $line . PHP_EOL;
         }

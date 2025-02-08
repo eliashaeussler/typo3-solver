@@ -41,6 +41,7 @@ return static function (RectorConfig $rectorConfig): void {
         )
         ->withPHPUnit()
         ->withSymfony()
+        ->withTYPO3()
         ->apply()
     ;
 };

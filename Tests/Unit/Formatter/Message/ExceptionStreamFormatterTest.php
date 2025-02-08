@@ -56,17 +56,9 @@ final class ExceptionStreamFormatterTest extends TestingFramework\Core\Unit\Unit
 
         self::assertJson($actual);
 
+        /** @var array{data: array<string, mixed>, content: string} $json */
         $json = json_decode($actual, true, flags: JSON_THROW_ON_ERROR);
-
-        self::assertIsArray($json);
-
-        $data = $json['data'] ?? null;
-        $content = $json['content'] ?? null;
-
-        self::assertIsArray($data);
-        self::assertIsString($content);
-
-        $xpath = self::createDOMXPath($content);
+        $xpath = self::createDOMXPath($json['content']);
 
         self::assertSame('Something went wrong.', $json['data']['message'] ?? null);
         self::assertSame(123, $json['data']['code'] ?? null);

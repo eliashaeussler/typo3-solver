@@ -67,8 +67,10 @@ final class ExceptionsCache
 
     public function set(\Throwable $exception): string
     {
-        $cacheData = require $this->cachePath;
         $entryIdentifier = $this->calculateCacheIdentifier($exception);
+
+        /** @var array{exceptions: array<string, ExceptionArray>} $cacheData */
+        $cacheData = require $this->cachePath;
         $cacheData['exceptions'][$entryIdentifier] = $this->serializer->serialize($exception);
 
         $this->write($cacheData);
@@ -86,6 +88,7 @@ final class ExceptionsCache
      */
     public function remove(\Throwable|string $entry): void
     {
+        /** @var array{exceptions: array<string, ExceptionArray>} $cacheData */
         $cacheData = require $this->cachePath;
 
         if ($entry instanceof \Throwable) {

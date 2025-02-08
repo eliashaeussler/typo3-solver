@@ -41,10 +41,7 @@ return PHPStanConfig\Config\Config::create($rootPath)
         $rootPath . '/.build/vendor/autoload.php',
     )
     ->withBaseline()
-    ->withBleedingEdge([
-        // Avoids errors with $GLOBALS['TYPO3_CONF_VARS'] access
-        'explicitMixedForGlobalVariables' => false,
-    ])
+    ->withBleedingEdge()
     ->maxLevel()
     ->withSets($symfonySet)
     ->toArray()

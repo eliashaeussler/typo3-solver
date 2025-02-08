@@ -59,7 +59,7 @@ final class SolutionsCache
             return null;
         }
 
-        /** @phpstan-var array{solutions: array<string, SolutionArray>} $cacheData */
+        /** @var array{solutions: array<string, SolutionArray>} $cacheData */
         $cacheData = require $this->cachePath;
         $entryIdentifier = $this->calculateCacheIdentifier($problem);
 
@@ -86,8 +86,10 @@ final class SolutionsCache
             return;
         }
 
-        $cacheData = require $this->cachePath;
         $entryIdentifier = $this->calculateCacheIdentifier($problem);
+
+        /** @var array{solutions: array<string, SolutionArray>} $cacheData */
+        $cacheData = require $this->cachePath;
         $cacheData['solutions'][$entryIdentifier] = $this->serializer->serialize($solution);
 
         $this->write($cacheData);
@@ -103,6 +105,7 @@ final class SolutionsCache
      */
     public function remove(ProblemSolving\Problem\Problem|string $entry): void
     {
+        /** @var array{solutions: array<string, SolutionArray>} $cacheData */
         $cacheData = require $this->cachePath;
 
         if ($entry instanceof ProblemSolving\Problem\Problem) {
