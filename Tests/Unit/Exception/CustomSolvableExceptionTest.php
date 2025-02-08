@@ -33,6 +33,7 @@ use TYPO3\TestingFramework;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
+#[Framework\Attributes\CoversClass(Src\Exception\CustomSolvableException::class)]
 final class CustomSolvableExceptionTest extends TestingFramework\Core\Unit\UnitTestCase
 {
     #[Framework\Attributes\Test]

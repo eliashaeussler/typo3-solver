@@ -33,6 +33,7 @@ use TYPO3\TestingFramework;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
+#[Framework\Attributes\CoversClass(Src\Cache\Serializer\SolutionSerializer::class)]
 final class SolutionSerializerTest extends TestingFramework\Core\Unit\UnitTestCase
 {
     private Src\Cache\Serializer\SolutionSerializer $subject;

@@ -38,6 +38,7 @@ use TYPO3\TestingFramework;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
+#[Framework\Attributes\CoversClass(Src\ProblemSolving\Solution\Provider\OpenAISolutionProvider::class)]
 final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTestCase
 {
     private Handler\MockHandler $mockHandler;

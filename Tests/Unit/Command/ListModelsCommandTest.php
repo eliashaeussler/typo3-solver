@@ -37,6 +37,7 @@ use TYPO3\TestingFramework;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
+#[Framework\Attributes\CoversClass(Src\Command\ListModelsCommand::class)]
 final class ListModelsCommandTest extends TestingFramework\Core\Unit\UnitTestCase
 {
     private Handler\MockHandler $mockHandler;

@@ -34,6 +34,7 @@ use TYPO3\TestingFramework;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
+#[Framework\Attributes\CoversClass(Src\Authentication\StreamAuthentication::class)]
 final class StreamAuthenticationTest extends TestingFramework\Core\Unit\UnitTestCase
 {
     private Filesystem\Filesystem $filesystem;
