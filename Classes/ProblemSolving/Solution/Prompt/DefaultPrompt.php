@@ -39,29 +39,29 @@ final class DefaultPrompt implements Prompt
 
     public function __construct(
         private readonly View\TemplateRenderer $renderer,
+        private readonly Core\Database\ConnectionPool $connectionPool,
     ) {
         $this->typo3Version = new Core\Information\Typo3Version();
     }
 
     public static function create(): static
     {
-        return new self(new View\TemplateRenderer());
+        return new self(new View\TemplateRenderer(), new Core\Database\ConnectionPool());
     }
 
     public function generate(\Throwable $exception): string
     {
-        $prompt = \trim(
+        return \trim(
             $this->renderer->render('Prompt/Default', [
                 'exception' => $exception,
                 'exceptionClass' => $exception::class,
                 'snippet' => $this->createCodeSnippet($exception),
-                'mode' => Core\Core\Environment::isComposerMode() ? 'composer' : 'classic (symlink)',
+                'mode' => Core\Core\Environment::isComposerMode() ? 'composer-managed' : 'classic mode',
                 'typo3Version' => $this->typo3Version->getVersion(),
                 'phpVersion' => PHP_VERSION,
+                'dbVersion' => $this->getDatabasePlatformAndVersion(),
             ]),
         );
-
-        return \preg_replace('/((?<!\n)\n(?!(\n|\d)))/', ' ', $prompt) ?? $prompt;
     }
 
     private function createCodeSnippet(\Throwable $exception): string
@@ -85,5 +85,18 @@ final class DefaultPrompt implements Prompt
         }
 
         return \trim($snippet);
+    }
+
+    private function getDatabasePlatformAndVersion(): ?string
+    {
+        try {
+            $connection = $this->connectionPool->getConnectionByName(
+                Core\Database\ConnectionPool::DEFAULT_CONNECTION_NAME,
+            );
+        } catch (\Exception) {
+            return null;
+        }
+
+        return $connection->getServerVersion();
     }
 }
