@@ -53,36 +53,49 @@ final class TemplateRendererTest extends TestingFramework\Core\Unit\UnitTestCase
         $exception = new \Exception('Something went wrong.', 1680791875);
 
         $expected = <<<TEMPLATE
-Hi, I am working with TYPO3 CMS, and I have encountered an exception in my code.
-The exception message reads as follows:
+Hi, I am working with TYPO3 CMS and encountered an exception in my code.
+The error message is:
 
 Exception: "Something went wrong."
 in {$file}
 on line {$lineNumber}
 
-Here's the code snippet with line numbers where the exception occurred:
+Here is the relevant code snippet:
 
+```php
 Hello world!
+```
 
-Please note that this TYPO3 CMS installation is in composer mode and using
-version 12.4.0. The PHP version being used is 8.2.4.
+**Environment details:**
 
-Please provide a solution that is efficient, effective, and robust, enabling the
-TYPO3 CMS installation to function smoothly and without errors. Your response
-should be written in Markdown format and include a detailed explanation of how
-the solution works and why it is the most optimal solution to the problem. Please
-ensure that the solution is clear and concise, and highlight relevant aspects of
-the solution. Please ensure that any code snippets provided are correct, readable,
-and maintainable.
+* TYPO3 CMS 12.4.0 (composer-managed)
+* PHP 8.2.4
+* MySQL 8.4.0
+
+**Task:**
+
+Analyze the issue, identify the root cause, and provide a structured solution.
+If multiple solutions exist, compare their trade-offs.
+
+**Expected Response Format (Markdown):**
+
+1. Issue Analysis – Explain the root cause.
+2. Solution Steps – Provide step-by-step instructions.
+3. Code Example – Ensure correctness and maintainability.
+4. Additional Considerations – Mention alternative solutions if applicable
+
+The solution should be efficient, maintainable, and production-ready.
+Code snippets must be correct, readable, and well-commented.
 TEMPLATE;
 
         $actual = $this->subject->render('Prompt/Default', [
             'exception' => $exception,
             'exceptionClass' => $exception::class,
             'snippet' => 'Hello world!',
-            'mode' => 'composer',
+            'mode' => 'composer-managed',
             'typo3Version' => '12.4.0',
             'phpVersion' => '8.2.4',
+            'dbVersion' => 'MySQL 8.4.0',
         ]);
 
         self::assertSame(\trim($expected), \trim($actual));

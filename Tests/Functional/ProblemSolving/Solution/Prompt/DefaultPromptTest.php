@@ -21,7 +21,7 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace EliasHaeussler\Typo3Solver\Tests\Unit\ProblemSolving\Solution\Prompt;
+namespace EliasHaeussler\Typo3Solver\Tests\Functional\ProblemSolving\Solution\Prompt;
 
 use EliasHaeussler\Typo3Solver as Src;
 use PHPUnit\Framework;
@@ -35,15 +35,20 @@ use TYPO3\TestingFramework;
  * @license GPL-2.0-or-later
  */
 #[Framework\Attributes\CoversClass(Src\ProblemSolving\Solution\Prompt\DefaultPrompt::class)]
-final class DefaultPromptTest extends TestingFramework\Core\Unit\UnitTestCase
+final class DefaultPromptTest extends TestingFramework\Core\Functional\FunctionalTestCase
 {
     private Src\ProblemSolving\Solution\Prompt\DefaultPrompt $subject;
+    private Core\Database\ConnectionPool $connectionPool;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->subject = new Src\ProblemSolving\Solution\Prompt\DefaultPrompt(new Src\View\TemplateRenderer());
+        $this->connectionPool = $this->get(Core\Database\ConnectionPool::class);
+        $this->subject = new Src\ProblemSolving\Solution\Prompt\DefaultPrompt(
+            new Src\View\TemplateRenderer(),
+            $this->connectionPool,
+        );
     }
 
     #[Framework\Attributes\Test]
@@ -51,14 +56,15 @@ final class DefaultPromptTest extends TestingFramework\Core\Unit\UnitTestCase
     {
         $exception = new \Exception('Something went wrong.', 1680791875);
         $typo3Version = (new Core\Information\Typo3Version())->getVersion();
+        $dbVersion = $this->connectionPool->getConnectionByName(
+            Core\Database\ConnectionPool::DEFAULT_CONNECTION_NAME,
+        )->getServerVersion();
 
         $actual = $this->subject->generate($exception);
 
         self::assertStringContainsString('Exception: "Something went wrong."', $actual);
-        self::assertStringContainsString(
-            'Please note that this TYPO3 CMS installation is in composer mode and using version ' . $typo3Version,
-            $actual,
-        );
-        self::assertStringContainsString('The PHP version being used is ' . PHP_VERSION, $actual);
+        self::assertStringContainsString('* TYPO3 CMS ' . $typo3Version . ' (classic mode)', $actual);
+        self::assertStringContainsString('* PHP ' . PHP_VERSION, $actual);
+        self::assertStringContainsString('* ' . $dbVersion, $actual);
     }
 }
