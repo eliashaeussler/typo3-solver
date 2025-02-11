@@ -109,17 +109,17 @@ It is passed as JSON string and contains the following properties:
         The used OpenAI model. This normally matches the configured
         :ref:`model <extconf-attributes-model>`.
 
-    ..  confval:: numberOfChoices
+    ..  confval:: numberOfResponses
         :type: int
 
-        The number of choices provided by the current solution. This
+        The number of responses provided by the current solution. This
         normally matches the configured
         :ref:`number of completions <extconf-attributes-numberOfCompletions>`.
 
-    ..  confval:: numberOfPendingChoices
+    ..  confval:: numberOfPendingResponses
         :type: int
 
-        The number of choices whose generation is not finished yet. As
+        The number of responses whose generation is not finished yet. As
         soon as this value is :php:`0`, the solution stream is finished.
 
     ..  confval:: prompt

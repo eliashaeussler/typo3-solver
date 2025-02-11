@@ -26,7 +26,6 @@ namespace EliasHaeussler\Typo3Solver\ProblemSolving\Solution\Provider;
 use EliasHaeussler\Typo3Solver\Cache;
 use EliasHaeussler\Typo3Solver\Exception;
 use EliasHaeussler\Typo3Solver\ProblemSolving;
-use OpenAI\Responses;
 
 /**
  * DelegatingCacheSolutionProvider
@@ -68,18 +67,12 @@ final class DelegatingCacheSolutionProvider implements SolutionProvider
             return $cachedSolution;
         }
 
-        $dummyChoice = Responses\Chat\CreateResponseChoice::from([
-            'index' => 0,
-            'message' => [
-                'role' => '',
-                'content' => 'Please wait…',
-                'function_call' => null,
-                'tool_calls' => null,
-            ],
-            'finish_reason' => null,
-        ]);
+        $dummyResponse = new ProblemSolving\Solution\Model\CompletionResponse(
+            0,
+            new ProblemSolving\Solution\Model\Message('', 'Please wait…'),
+        );
 
-        return new ProblemSolving\Solution\Solution([$dummyChoice], 'Please wait…', 'Please wait…');
+        return new ProblemSolving\Solution\Solution([$dummyResponse], 'Please wait…', 'Please wait…');
     }
 
     public function canBeUsed(\Throwable $exception): bool

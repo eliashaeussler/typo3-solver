@@ -25,7 +25,6 @@ namespace EliasHaeussler\Typo3Solver\Formatter;
 
 use EliasHaeussler\Typo3Solver\ProblemSolving;
 use EliasHaeussler\Typo3Solver\View;
-use OpenAI\Responses;
 
 /**
  * WebStreamFormatter.
@@ -47,10 +46,10 @@ final class WebStreamFormatter implements Formatter
     ): string {
         $json = [
             'data' => [
-                'model' => $solution->getModel(),
-                'numberOfChoices' => \count($solution->getChoices()),
-                'numberOfPendingChoices' => \count($this->filterPendingChoices($solution->getChoices())),
-                'prompt' => $solution->getPrompt(),
+                'model' => $solution->model,
+                'numberOfResponses' => \count($solution->responses),
+                'numberOfPendingResponses' => $this->countPendingResponses($solution->responses),
+                'prompt' => $solution->prompt,
             ],
             'content' => $this->renderer->render('Solution/WebStream', [
                 'solution' => $solution,
@@ -61,14 +60,15 @@ final class WebStreamFormatter implements Formatter
     }
 
     /**
-     * @param list<Responses\Chat\CreateResponseChoice> $choices
-     * @return array<Responses\Chat\CreateResponseChoice>
+     * @param array<int, ProblemSolving\Solution\Model\CompletionResponse> $responses
      */
-    private function filterPendingChoices(array $choices): array
+    private function countPendingResponses(array $responses): int
     {
-        return \array_filter(
-            $choices,
-            static fn(Responses\Chat\CreateResponseChoice $choice): bool => $choice->finishReason === null,
+        $pendingResponses = \array_filter(
+            $responses,
+            static fn(ProblemSolving\Solution\Model\CompletionResponse $response): bool => !$response->isFinished(),
         );
+
+        return \count($pendingResponses);
     }
 }

@@ -1,7 +1,7 @@
 <html xmlns:s="http://typo3.org/ns/EliasHaeussler/Typo3Solver/ViewHelpers"
       data-namespace-typo3-fluid="true">
 
-<form class="solution {f:if(condition: solution.choices.0.finishReason, then: 'solution-provided')}"
+<form class="solution {f:if(condition: solution.responses.0.finishReason, then: 'solution-provided')}"
       data-exception-id="{exceptionCacheIdentifier}"
       data-stream-hash="{streamHash}"
 >

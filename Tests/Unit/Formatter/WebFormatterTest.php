@@ -73,34 +73,34 @@ final class WebFormatterTest extends TestingFramework\Core\Unit\UnitTestCase
         // Stream hash
         self::assertNodeContentEqualsString($streamHash, '//form/@data-stream-hash', $xpath);
 
-        // Number of choices
+        // Number of responses
         self::assertNodeContentEqualsString('3', '//form/div[1]/div[1]/div[1]/h3[1]/span[1]/span[2]/text()', $xpath);
 
         // Model
         self::assertNodeContentEqualsString('model', '//form/div[1]/div[1]/div[1]/ul[1]/li[1]/span[2]/text()', $xpath);
 
-        // First choice
-        self::assertNodeContentEqualsString('0', '//form/div[2]/ul[1]/li[1]/@data-solution-choice-index', $xpath);
+        // First response
+        self::assertNodeContentEqualsString('0', '//form/div[2]/ul[1]/li[1]/@data-solution-response-index', $xpath);
         self::assertNodeContentEqualsString('solution-0', '//form/div[2]/ul[1]/li[1]/input[1]/@id', $xpath);
         self::assertNodeContentEqualsString('solution-2', '//form/div[2]/ul[1]/li[1]/label[1]/@for', $xpath);
         self::assertNodeContentEqualsString('solution-1', '//form/div[2]/ul[1]/li[1]/label[2]/@for', $xpath);
         self::assertNodeContentEqualsString('message 1', '//form/div[2]/ul[1]/li[1]/div[1]/p[1]/text()', $xpath);
 
-        // Second choice
-        self::assertNodeContentEqualsString('1', '//form/div[2]/ul[1]/li[2]/@data-solution-choice-index', $xpath);
+        // Second response
+        self::assertNodeContentEqualsString('1', '//form/div[2]/ul[1]/li[2]/@data-solution-response-index', $xpath);
         self::assertNodeContentEqualsString('solution-1', '//form/div[2]/ul[1]/li[2]/input[1]/@id', $xpath);
         self::assertNodeContentEqualsString('solution-0', '//form/div[2]/ul[1]/li[2]/label[1]/@for', $xpath);
         self::assertNodeContentEqualsString('solution-2', '//form/div[2]/ul[1]/li[2]/label[2]/@for', $xpath);
         self::assertNodeContentEqualsString('message 2', '//form/div[2]/ul[1]/li[2]/div[1]/p[1]/text()', $xpath);
 
-        // Third choice
-        self::assertNodeContentEqualsString('2', '//form/div[2]/ul[1]/li[3]/@data-solution-choice-index', $xpath);
+        // Third response
+        self::assertNodeContentEqualsString('2', '//form/div[2]/ul[1]/li[3]/@data-solution-response-index', $xpath);
         self::assertNodeContentEqualsString('solution-2', '//form/div[2]/ul[1]/li[3]/input[1]/@id', $xpath);
         self::assertNodeContentEqualsString('solution-1', '//form/div[2]/ul[1]/li[3]/label[1]/@for', $xpath);
         self::assertNodeContentEqualsString('solution-0', '//form/div[2]/ul[1]/li[3]/label[2]/@for', $xpath);
         self::assertNodeContentEqualsString('message 3', '//form/div[2]/ul[1]/li[3]/div[1]/p[1]/text()', $xpath);
 
-        // Fourth choice (should not exist)
+        // Fourth response (should not exist)
         self::assertNodeListIsEmpty('//form/div[2]/ul[1]/li[4]', $xpath);
 
         // Prompt

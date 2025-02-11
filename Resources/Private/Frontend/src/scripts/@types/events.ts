@@ -32,8 +32,8 @@ type SolutionDeltaResponse = {
  */
 type SolutionDeltaResponseData = {
   model: string;
-  numberOfChoices: number;
-  numberOfPendingChoices: number;
+  numberOfResponses: number;
+  numberOfPendingResponses: number;
   prompt: string;
 }
 

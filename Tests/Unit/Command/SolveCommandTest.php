@@ -104,9 +104,9 @@ final class SolveCommandTest extends TestingFramework\Core\Unit\UnitTestCase
         $this->commandTester->execute(['--identifier' => $identifier]);
 
         self::assertSame(0, $this->commandTester->getStatusCode());
-        self::assertIsString($solution->getChoices()[0]->message->content);
+        self::assertIsString($solution->responses[0]->message->content);
         self::assertStringContainsString(
-            $solution->getChoices()[0]->message->content,
+            $solution->responses[0]->message->content,
             $this->commandTester->getDisplay(),
         );
     }
@@ -132,9 +132,9 @@ final class SolveCommandTest extends TestingFramework\Core\Unit\UnitTestCase
         ]);
 
         self::assertSame(0, $this->commandTester->getStatusCode());
-        self::assertIsString($solution->getChoices()[0]->message->content);
+        self::assertIsString($solution->responses[0]->message->content);
         self::assertStringContainsString(
-            $solution->getChoices()[0]->message->content,
+            $solution->responses[0]->message->content,
             $this->commandTester->getDisplay(),
         );
     }
@@ -170,7 +170,7 @@ final class SolveCommandTest extends TestingFramework\Core\Unit\UnitTestCase
         $this->commandTester->execute(['--identifier' => $identifier, '--refresh' => true]);
 
         self::assertSame(0, $this->commandTester->getStatusCode());
-        self::assertNotEquals($solution->getChoices(), $this->solutionsCache->get($problem)->getChoices());
+        self::assertNotEquals($solution->responses, $this->solutionsCache->get($problem)->responses);
     }
 
     #[Framework\Attributes\Test]

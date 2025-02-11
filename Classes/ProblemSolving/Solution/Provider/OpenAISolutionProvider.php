@@ -61,7 +61,7 @@ final class OpenAISolutionProvider implements StreamedSolutionProvider
             throw Exception\UnableToSolveException::create($problem, $exception);
         }
 
-        return ProblemSolving\Solution\Solution::fromResponse($response, $problem->getPrompt());
+        return ProblemSolving\Solution\Solution::fromOpenAIResponse($response, $problem->getPrompt());
     }
 
     /**
@@ -81,29 +81,25 @@ final class OpenAISolutionProvider implements StreamedSolutionProvider
             throw Exception\UnableToSolveException::create($problem, $exception);
         }
 
-        // Store all choices in array to merge them during streaming
-        $choices = [];
+        // Store all responses in array to merge them during streaming
+        $responses = [];
 
         /** @var Responses\Chat\CreateStreamedResponse $response */
         foreach ($stream as $response) {
             foreach ($response->choices as $choice) {
-                // Merge previous choices with currently streamed solution choices
-                $previousMessages = ($choices[$choice->index] ?? null)?->message->content;
-                $choices[$choice->index] = Responses\Chat\CreateResponseChoice::from([
-                    'index' => $choice->index,
-                    'message' => [
-                        'role' => (string)$choice->delta->role,
-                        'content' => $previousMessages . $choice->delta->content,
-                        'function_call' => null,
-                        'tool_calls' => null,
-                    ],
-                    'finish_reason' => $choice->finishReason,
-                ]);
+                $completionResponse = ProblemSolving\Solution\Model\CompletionResponse::fromOpenAIChoice($choice);
+
+                // Merge previous responses with currently streamed solution choices
+                if (isset($responses[$choice->index])) {
+                    $completionResponse = $responses[$choice->index]->merge($completionResponse);
+                }
+
+                $responses[$choice->index] = $completionResponse;
             }
 
-            // Yield solution with merged choices
+            // Yield solution with merged responses
             yield new ProblemSolving\Solution\Solution(
-                array_values($choices),
+                $responses,
                 $response->model,
                 $problem->getPrompt(),
             );

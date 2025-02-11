@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver\ProblemSolving\Solution;
 
+use EliasHaeussler\Typo3Solver\ProblemSolving;
 use IteratorAggregate;
 use OpenAI\Responses;
 
@@ -32,9 +33,10 @@ use OpenAI\Responses;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  *
- * @implements IteratorAggregate<int, Responses\Chat\CreateResponseChoice>
+ * @implements IteratorAggregate<int, Model\CompletionResponse>
  *
- * @phpstan-type SolutionArray array{choices: list<array<string, mixed>>, model: string, prompt: string}
+ * @phpstan-import-type CompletionResponseArray from ProblemSolving\Solution\Model\CompletionResponse
+ * @phpstan-type SolutionArray array{responses: array<int, CompletionResponseArray>, model: string, prompt: string}
  */
 final class Solution implements \Countable, \IteratorAggregate, \JsonSerializable
 {
@@ -42,17 +44,24 @@ final class Solution implements \Countable, \IteratorAggregate, \JsonSerializabl
     private ?string $cacheIdentifier = null;
 
     /**
-     * @param list<Responses\Chat\CreateResponseChoice> $choices
+     * @param array<int, Model\CompletionResponse> $responses
      */
     public function __construct(
-        private readonly array $choices,
-        private readonly string $model,
-        private readonly string $prompt,
+        public readonly array $responses,
+        public readonly string $model,
+        public readonly string $prompt,
     ) {}
 
-    public static function fromResponse(Responses\Chat\CreateResponse $response, string $prompt): self
+    public static function fromOpenAIResponse(Responses\Chat\CreateResponse $response, string $prompt): self
     {
-        return new self(\array_values($response->choices), $response->model, $prompt);
+        return new self(
+            \array_map(
+                Model\CompletionResponse::fromOpenAIChoice(...),
+                $response->choices,
+            ),
+            $response->model,
+            $prompt,
+        );
     }
 
     /**
@@ -60,36 +69,17 @@ final class Solution implements \Countable, \IteratorAggregate, \JsonSerializabl
      */
     public static function fromArray(array $solution): self
     {
-        $choices = \array_map(
-            /* @phpstan-ignore-next-line */
-            static fn(array $choice): Responses\Chat\CreateResponseChoice => Responses\Chat\CreateResponseChoice::from($choice),
-            $solution['choices'],
+        $responses = \array_map(
+            Model\CompletionResponse::fromArray(...),
+            $solution['responses'],
         );
 
-        return new self($choices, $solution['model'], $solution['prompt']);
+        return new self($responses, $solution['model'], $solution['prompt']);
     }
 
     public function count(): int
     {
-        return \count($this->choices);
-    }
-
-    /**
-     * @return list<Responses\Chat\CreateResponseChoice>
-     */
-    public function getChoices(): array
-    {
-        return $this->choices;
-    }
-
-    public function getModel(): string
-    {
-        return $this->model;
-    }
-
-    public function getPrompt(): string
-    {
-        return $this->prompt;
+        return \count($this->responses);
     }
 
     public function getCreateDate(): ?\DateTimeInterface
@@ -118,7 +108,7 @@ final class Solution implements \Countable, \IteratorAggregate, \JsonSerializabl
 
     public function getIterator(): \Traversable
     {
-        return new \ArrayIterator($this->choices);
+        return new \ArrayIterator($this->responses);
     }
 
     /**
@@ -127,9 +117,9 @@ final class Solution implements \Countable, \IteratorAggregate, \JsonSerializabl
     public function toArray(): array
     {
         return [
-            'choices' => \array_map(
-                static fn(Responses\Chat\CreateResponseChoice $choice): array => $choice->toArray(),
-                $this->choices,
+            'responses' => \array_map(
+                static fn(ProblemSolving\Solution\Model\CompletionResponse $response): array => $response->toArray(),
+                $this->responses,
             ),
             'model' => $this->model,
             'prompt' => $this->prompt,

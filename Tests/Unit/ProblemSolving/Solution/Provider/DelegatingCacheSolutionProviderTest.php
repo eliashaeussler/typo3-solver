@@ -25,7 +25,6 @@ namespace EliasHaeussler\Typo3Solver\Tests\Unit\ProblemSolving\Solution\Provider
 
 use EliasHaeussler\Typo3Solver as Src;
 use EliasHaeussler\Typo3Solver\Tests;
-use OpenAI\Responses;
 use PHPUnit\Framework;
 use TYPO3\TestingFramework;
 
@@ -78,16 +77,10 @@ final class DelegatingCacheSolutionProviderTest extends TestingFramework\Core\Un
         $problem = Tests\Unit\DataProvider\ProblemDataProvider::get(solutionProvider: $this->provider);
         $solution = new Src\ProblemSolving\Solution\Solution(
             [
-                Responses\Chat\CreateResponseChoice::from([
-                    'index' => 0,
-                    'message' => [
-                        'role' => '',
-                        'content' => 'Please wait…',
-                        'function_call' => null,
-                        'tool_calls' => null,
-                    ],
-                    'finish_reason' => null,
-                ]),
+                new Src\ProblemSolving\Solution\Model\CompletionResponse(
+                    0,
+                    new Src\ProblemSolving\Solution\Model\Message('', 'Please wait…'),
+                ),
             ],
             'Please wait…',
             'Please wait…',

@@ -24,7 +24,6 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Tests\Unit\DataProvider;
 
 use EliasHaeussler\Typo3Solver\ProblemSolving;
-use OpenAI\Responses;
 
 /**
  * SolutionDataProvider
@@ -35,21 +34,21 @@ use OpenAI\Responses;
  */
 final class SolutionDataProvider
 {
-    public static function get(int $numberOfChoices = 1, string $message = 'message {index}'): ProblemSolving\Solution\Solution
+    public static function get(int $numberOfResponses = 1, string $message = 'message {index}'): ProblemSolving\Solution\Solution
     {
-        $choices = [];
+        $responses = [];
 
-        for ($i = 0; $i < $numberOfChoices; ++$i) {
-            $choices[] = self::getChoice(\str_replace('{index}', (string)($i + 1), $message), $i);
+        for ($i = 0; $i < $numberOfResponses; ++$i) {
+            $responses[] = self::getResponse(\str_replace('{index}', (string)($i + 1), $message), $i);
         }
 
-        return new ProblemSolving\Solution\Solution($choices, 'model', 'prompt');
+        return new ProblemSolving\Solution\Solution($responses, 'model', 'prompt');
     }
 
     /**
      * @return \Traversable<ProblemSolving\Solution\Solution>
      */
-    public static function getStream(int $numberOfDeltas = 2, int $numberOfChoices = 1): \Traversable
+    public static function getStream(int $numberOfDeltas = 2, int $numberOfResponses = 1): \Traversable
     {
         for ($i = 0; $i < $numberOfDeltas; ++$i) {
             $message = 'message {index}';
@@ -58,21 +57,15 @@ final class SolutionDataProvider
                 $message = ' ... ' . $message;
             }
 
-            yield self::get($numberOfChoices, $message);
+            yield self::get($numberOfResponses, $message);
         }
     }
 
-    public static function getChoice(string $message, int $index = 0): Responses\Chat\CreateResponseChoice
+    public static function getResponse(string $message, int $index = 0): ProblemSolving\Solution\Model\CompletionResponse
     {
-        return Responses\Chat\CreateResponseChoice::from([
-            'index' => $index,
-            'message' => [
-                'role' => 'role',
-                'content' => $message,
-                'function_call' => null,
-                'tool_calls' => null,
-            ],
-            'finish_reason' => null,
-        ]);
+        return new ProblemSolving\Solution\Model\CompletionResponse(
+            $index,
+            new ProblemSolving\Solution\Model\Message('role', $message),
+        );
     }
 }

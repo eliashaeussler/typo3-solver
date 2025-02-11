@@ -37,28 +37,22 @@ use TYPO3\TestingFramework;
 #[Framework\Attributes\CoversClass(Src\ProblemSolving\Solution\Solution::class)]
 final class SolutionTest extends TestingFramework\Core\Unit\UnitTestCase
 {
-    private Responses\Chat\CreateResponseChoice $choice;
+    private Src\ProblemSolving\Solution\Model\CompletionResponse $completionResponse;
     private Src\ProblemSolving\Solution\Solution $subject;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->choice = Responses\Chat\CreateResponseChoice::from([
-            'index' => 0,
-            'message' => [
-                'role' => '',
-                'content' => 'hello world',
-                'function_call' => null,
-                'tool_calls' => null,
-            ],
-            'finish_reason' => null,
-        ]);
-        $this->subject = new Src\ProblemSolving\Solution\Solution([$this->choice], 'foo', 'baz');
+        $this->completionResponse = new Src\ProblemSolving\Solution\Model\CompletionResponse(
+            0,
+            new Src\ProblemSolving\Solution\Model\Message('', 'hello world'),
+        );
+        $this->subject = new Src\ProblemSolving\Solution\Solution([$this->completionResponse], 'foo', 'baz');
     }
 
     #[Framework\Attributes\Test]
-    public function fromResponseReturnsSolution(): void
+    public function fromOpenAIResponseReturnsSolution(): void
     {
         $attributes = [
             'id' => 'id',
@@ -103,36 +97,30 @@ final class SolutionTest extends TestingFramework\Core\Unit\UnitTestCase
             $response = Responses\Chat\CreateResponse::from($attributes);
         }
 
-        $choice = Responses\Chat\CreateResponseChoice::from([
-            'index' => 0,
-            'message' => [
-                'role' => 'role',
-                'content' => 'content',
-                'function_call' => null,
-                'tool_calls' => null,
-            ],
-            'finish_reason' => null,
-        ]);
+        $completionResponse = new Src\ProblemSolving\Solution\Model\CompletionResponse(
+            0,
+            new Src\ProblemSolving\Solution\Model\Message('role', 'content'),
+        );
 
-        $actual = Src\ProblemSolving\Solution\Solution::fromResponse($response, 'prompt');
+        $actual = Src\ProblemSolving\Solution\Solution::fromOpenAIResponse($response, 'prompt');
 
-        self::assertSame('prompt', $actual->getPrompt());
-        self::assertSame('model', $actual->getModel());
-        self::assertEquals([$choice], $actual->getChoices());
+        self::assertSame('prompt', $actual->prompt);
+        self::assertSame('model', $actual->model);
+        self::assertEquals([$completionResponse], $actual->responses);
     }
 
     #[Framework\Attributes\Test]
     public function fromArrayReturnsSolution(): void
     {
         $solution = [
-            'choices' => [
+            'responses' => [
                 [
                     'index' => 0,
                     'message' => [
                         'role' => 'role 1',
                         'content' => 'content 1',
                     ],
-                    'finish_reason' => null,
+                    'finishReason' => null,
                 ],
                 [
                     'index' => 1,
@@ -140,39 +128,27 @@ final class SolutionTest extends TestingFramework\Core\Unit\UnitTestCase
                         'role' => 'role 2',
                         'content' => 'content 2',
                     ],
-                    'finish_reason' => null,
+                    'finishReason' => null,
                 ],
             ],
             'model' => 'model',
             'prompt' => 'prompt',
         ];
 
-        $choice1 = Responses\Chat\CreateResponseChoice::from([
-            'index' => 0,
-            'message' => [
-                'role' => 'role 1',
-                'content' => 'content 1',
-                'function_call' => null,
-                'tool_calls' => null,
-            ],
-            'finish_reason' => null,
-        ]);
-        $choice2 = Responses\Chat\CreateResponseChoice::from([
-            'index' => 1,
-            'message' => [
-                'role' => 'role 2',
-                'content' => 'content 2',
-                'function_call' => null,
-                'tool_calls' => null,
-            ],
-            'finish_reason' => null,
-        ]);
+        $response1 = new Src\ProblemSolving\Solution\Model\CompletionResponse(
+            0,
+            new Src\ProblemSolving\Solution\Model\Message('role 1', 'content 1'),
+        );
+        $response2 = new Src\ProblemSolving\Solution\Model\CompletionResponse(
+            1,
+            new Src\ProblemSolving\Solution\Model\Message('role 2', 'content 2'),
+        );
 
         $actual = Src\ProblemSolving\Solution\Solution::fromArray($solution);
 
-        self::assertSame('prompt', $actual->getPrompt());
-        self::assertSame('model', $actual->getModel());
-        self::assertEquals([$choice1, $choice2], $actual->getChoices());
+        self::assertSame('prompt', $actual->prompt);
+        self::assertSame('model', $actual->model);
+        self::assertEquals([$response1, $response2], $actual->responses);
     }
 
     #[Framework\Attributes\Test]
@@ -201,15 +177,15 @@ final class SolutionTest extends TestingFramework\Core\Unit\UnitTestCase
     #[Framework\Attributes\Test]
     public function subjectIsIterable(): void
     {
-        self::assertSame([$this->choice], \iterator_to_array($this->subject));
+        self::assertSame([$this->completionResponse], \iterator_to_array($this->subject));
     }
 
     #[Framework\Attributes\Test]
     public function toArrayReturnsArrayRepresentation(): void
     {
         $expected = [
-            'choices' => [
-                $this->choice->toArray(),
+            'responses' => [
+                $this->completionResponse->toArray(),
             ],
             'model' => 'foo',
             'prompt' => 'baz',
@@ -222,8 +198,8 @@ final class SolutionTest extends TestingFramework\Core\Unit\UnitTestCase
     public function subjectIsJsonSerializable(): void
     {
         $expected = [
-            'choices' => [
-                $this->choice->toArray(),
+            'responses' => [
+                $this->completionResponse->toArray(),
             ],
             'model' => 'foo',
             'prompt' => 'baz',
