@@ -77,7 +77,7 @@ The extension currently provides the following configuration options:
     :type: integer
     :Default: `300`
 
-    `Maximum number of tokens <https://platform.openai.com/docs/api-reference/chat/create#chat/create-max_tokens>`__
+    `Maximum number of tokens <https://platform.openai.com/docs/api-reference/chat/create#chat-create-max_completion_tokens>`__
     to use per request to OpenAI.
 
 ..  _extconf-attributes-temperature:

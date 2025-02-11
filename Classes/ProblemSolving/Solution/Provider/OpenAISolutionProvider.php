@@ -120,7 +120,7 @@ final class OpenAISolutionProvider implements StreamedSolutionProvider
      * @return array{
      *     model: string,
      *     messages: list<array{role: string, content: string}>,
-     *     max_tokens: int,
+     *     max_completion_tokens: int,
      *     temperature: float,
      *     n: int,
      * }
@@ -135,7 +135,7 @@ final class OpenAISolutionProvider implements StreamedSolutionProvider
                     'content' => $problem->getPrompt(),
                 ],
             ],
-            'max_tokens' => $this->configuration->getMaxTokens(),
+            'max_completion_tokens' => $this->configuration->getMaxTokens(),
             'temperature' => $this->configuration->getTemperature(),
             'n' => $this->configuration->getNumberOfCompletions(),
         ];
