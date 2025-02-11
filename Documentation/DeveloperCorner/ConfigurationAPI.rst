@@ -18,13 +18,13 @@ an appropriate class method.
 
     ..  php:method:: getAPIKey()
 
-        Get the configured :ref:`OpenAI API key <extconf-api-key>`.
+        Get the configured :ref:`API key <extconf-api-key>`.
 
         :returntype: string|null
 
     ..  php:method:: getModel()
 
-        Get the configured :ref:`OpenAI model <extconf-attributes-model>`.
+        Get the configured :ref:`AI model <extconf-attributes-model>`.
 
         :returntype: string
 

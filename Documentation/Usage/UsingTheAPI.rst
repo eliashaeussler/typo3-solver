@@ -32,8 +32,7 @@ It can be used to solve problems directly in PHP code.
     ..  php:method:: solveStreamed($exception)
 
         Provide formatted solution for given exception, but use a solution stream for
-        each solution delta. This basically mimics the behavior of ChatGPT, where the
-        solution is provided asynchronous.
+        each solution delta.
 
         ..  note::
 

@@ -23,6 +23,8 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver\ProblemSolving\Solution\Model;
 
+use GeminiAPI\Enums;
+use GeminiAPI\Resources;
 use OpenAI\Responses;
 
 /**
@@ -54,6 +56,23 @@ final class CompletionResponse implements \JsonSerializable
         }
 
         return new self($choice->index, new Message($role, $content), $choice->finishReason);
+    }
+
+    public static function fromGeminiCandidate(Resources\Candidate $candidate): self
+    {
+        $contentPart = \reset($candidate->content->parts);
+
+        if ($contentPart instanceof Resources\Parts\TextPart) {
+            $content = $contentPart->text;
+        } else {
+            $content = null;
+        }
+
+        return new self(
+            $candidate->index,
+            new Message(Enums\Role::Model->value, $content),
+            $candidate->finishReason->value,
+        );
     }
 
     /**

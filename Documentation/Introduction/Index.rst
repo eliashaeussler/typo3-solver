@@ -20,9 +20,17 @@ various ways:
 -   Directly with the :ref:`PHP API <using-the-api>`
 
 Problems are solved by so called *solution providers*. The extension
-already ships a default :php:class:`EliasHaeussler\\Typo3Solver\\ProblemSolving\\Solution\\Provider\\OpenAISolutionProvider`,
-but can also be extended by custom solution providers. Already solved
-problems can be cached to avoid cost-intensive requests to OpenAI.
+already ships two solution providers, but can also be extended by
+custom ones. Already solved problems can be cached to avoid cost-intensive
+requests to an AI provider.
+
+..  _shipped-providers:
+
+Shipped providers
+=================
+
+-   OpenAI (default): :php:class:`EliasHaeussler\\Typo3Solver\\ProblemSolving\\Solution\\Provider\\OpenAISolutionProvider`
+-   Google Gemini: :php:class:`EliasHaeussler\\Typo3Solver\\ProblemSolving\\Solution\\Provider\\GeminiSolutionProvider`
 
 ..  _features:
 

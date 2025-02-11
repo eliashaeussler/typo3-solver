@@ -46,20 +46,19 @@ The extension currently provides the following configuration options:
 
     ..  note::
 
-        This setting only applies to the default
-        :php:class:`EliasHaeussler\\Typo3Solver\\ProblemSolving\\Solution\\Provider\\OpenAISolutionProvider`.
+        This setting only applies to the default solution providers.
 
 ..  _extconf-api-key:
 
 ..  confval:: api.key
     :type: string
 
-    :ref:`API key <api-key>` for OpenAI requests.
+    :ref:`API key <api-key>` for the configured AI provider.
 
     ..  attention::
 
-        It is essential to configure the API key. Otherwise, requests to OpenAI
-        won't be possible.
+        It is essential to configure the API key. Otherwise, requests to
+        the AI provider won't be possible.
 
 ..  _extconf-attributes-model:
 
@@ -67,9 +66,13 @@ The extension currently provides the following configuration options:
     :type: string
     :Default: `gpt-4o-mini`
 
-    `OpenAI model <https://platform.openai.com/docs/models>`__ to use (see
-    :ref:`List available models <solver-list-models>` to show a list of available
-    models).
+    AI model to use (see :ref:`List available models <solver-list-models>`
+    to show a list of available models).
+
+    ..  seealso::
+
+        -   `List of OpenAI models <https://platform.openai.com/docs/models>`__
+        -   `List of Gemini models <https://ai.google.dev/gemini-api/docs/models/gemini>`__
 
 ..  _extconf-attributes-maxTokens:
 
@@ -77,8 +80,12 @@ The extension currently provides the following configuration options:
     :type: integer
     :Default: `300`
 
-    `Maximum number of tokens <https://platform.openai.com/docs/api-reference/chat/create#chat-create-max_completion_tokens>`__
-    to use per request to OpenAI.
+    Maximum number of tokens to use per request to the configured AI provider.
+
+    *Supported providers:*
+
+    -   `OpenAI <https://platform.openai.com/docs/api-reference/chat/create#chat-create-max_completion_tokens>`__
+    -   `Gemini <https://ai.google.dev/api/generate-content#FIELDS.max_output_tokens>`__
 
 ..  _extconf-attributes-temperature:
 
@@ -86,8 +93,14 @@ The extension currently provides the following configuration options:
     :type: float
     :Default: `0.5`
 
-    `Temperature <https://platform.openai.com/docs/api-reference/chat/create#chat/create-temperature>`__
-    to use for OpenAI completion requests (must be a value between `0` and `1`).
+    Temperature to use for completion requests.
+
+    *Supported providers:*
+
+    -   `OpenAI <https://platform.openai.com/docs/api-reference/chat/create#chat-create-temperature>`__
+        (value must be between `0` and `1`)
+    -   `Gemini <https://ai.google.dev/api/generate-content#FIELDS.temperature>`__
+        (value must be between `0` and `2`)
 
 ..  _extconf-attributes-numberOfCompletions:
 
@@ -95,8 +108,13 @@ The extension currently provides the following configuration options:
     :type: integer
     :Default: `1`
 
-    `Number of completions <https://platform.openai.com/docs/api-reference/chat/create#chat/create-n>`__
-    to generate for each problem.
+    Number of completions to generate for each problem.
+
+    *Supported providers:*
+
+    -   `OpenAI <https://platform.openai.com/docs/api-reference/chat/create#chat-create-n>`__
+    -   `Gemini <https://ai.google.dev/api/generate-content#FIELDS.candidateCount>`__
+        (only `1` is supported at the moment)
 
 ..  _extconf-cache-lifetime:
 

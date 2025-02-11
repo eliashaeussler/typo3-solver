@@ -25,7 +25,8 @@ namespace EliasHaeussler\Typo3Solver\Http;
 
 use EliasHaeussler\Typo3Solver\Configuration;
 use EliasHaeussler\Typo3Solver\Exception;
-use OpenAI\Client;
+use GeminiAPI\Client as GeminiClient;
+use OpenAI\Client as OpenAIClient;
 
 /**
  * ClientFactory
@@ -42,7 +43,7 @@ final class ClientFactory
     /**
      * @throws Exception\ApiKeyMissingException
      */
-    public function get(): Client
+    public function getOpenAIClient(): OpenAIClient
     {
         $apiKey = $this->configuration->getApiKey();
 
@@ -51,5 +52,19 @@ final class ClientFactory
         }
 
         return \OpenAI::client($apiKey);
+    }
+
+    /**
+     * @throws Exception\ApiKeyMissingException
+     */
+    public function getGeminiClient(): GeminiClient
+    {
+        $apiKey = $this->configuration->getApiKey();
+
+        if ($apiKey === null || \trim($apiKey) === '') {
+            throw Exception\ApiKeyMissingException::create();
+        }
+
+        return new GeminiClient($apiKey);
     }
 }
