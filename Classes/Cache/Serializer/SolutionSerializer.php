@@ -79,6 +79,13 @@ final class SolutionSerializer
             return null;
         }
 
+        // BC layer: We cannot handle legacy cache entries, therefore return early
+        // @todo Remove with next major release
+        /* @phpstan-ignore function.alreadyNarrowedType, nullCoalesce.offset */
+        if (!\is_array($solution['responses'] ?? null)) {
+            return null;
+        }
+
         return ProblemSolving\Solution\Solution::fromArray($solution)
             ->setCreateDate(new \DateTimeImmutable('@' . $createdAt))
         ;

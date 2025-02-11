@@ -79,18 +79,18 @@ export class Solution
   public handleSolutionSelection(): void
   {
     const solutionListItems: NodeListOf<Element> = this.element.querySelectorAll(Selectors.solutionListItem);
-    const solutionCurrentChoice: Element|null = this.element.querySelector(Selectors.solutionCurrentChoice);
+    const solutionCurrentResponse: Element|null = this.element.querySelector(Selectors.solutionCurrentResponse);
 
     solutionListItems.forEach((solutionListItem: Element): void => {
-      const index: number = parseInt((solutionListItem as HTMLElement).dataset.solutionChoiceIndex as string);
+      const index: number = parseInt((solutionListItem as HTMLElement).dataset.solutionResponseIndex as string);
       const selector: Element|null = solutionListItem.querySelector(Selectors.solutionSelector);
 
       selector?.addEventListener('input', (): void => {
-        if (solutionCurrentChoice === null) {
+        if (solutionCurrentResponse === null) {
           return;
         }
 
-        solutionCurrentChoice.innerHTML = (index + 1).toString();
+        solutionCurrentResponse.innerHTML = (index + 1).toString();
         solutionListItem.setAttribute('aria-hidden', 'false');
 
         solutionListItems.forEach((otherSolutionListItem: Element): void => {

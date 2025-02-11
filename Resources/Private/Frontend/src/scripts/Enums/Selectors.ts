@@ -29,10 +29,10 @@ export enum Selectors
 {
   solution = '.solution',
   solutionContainer = '.solution-container',
-  solutionCurrentChoice = '.solution-current-choice',
+  solutionCurrentResponse = '.solution-current-response',
   solutionListItem = '.solution-list-item',
   solutionLoaderCount = '.solution-loader-count',
-  solutionMaxChoices = '.solution-max-choices',
+  solutionMaxResponses = '.solution-max-responses',
   solutionModel = '.solution-model',
   solutionPrompt = '.solution-prompt > pre',
   solutionSelector = '.solution-selector',

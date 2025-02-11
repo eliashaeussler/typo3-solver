@@ -34,7 +34,7 @@ export class SolutionStream
 {
   private readonly solutionContainer: HTMLElement;
   private readonly solutionModel: HTMLElement;
-  private readonly solutionMaxChoices: HTMLElement;
+  private readonly solutionMaxResponses: HTMLElement;
   private readonly solutionPrompt: HTMLElement;
   private readonly solutionLoaderCount: HTMLElement;
   private eventSource: EventSource|null = null;
@@ -47,7 +47,7 @@ export class SolutionStream
   ) {
     this.solutionContainer = this.solution.element.querySelector(Selectors.solutionContainer) as HTMLElement;
     this.solutionModel = this.solution.element.querySelector(Selectors.solutionModel) as HTMLElement;
-    this.solutionMaxChoices = this.solution.element.querySelector(Selectors.solutionMaxChoices) as HTMLElement;
+    this.solutionMaxResponses = this.solution.element.querySelector(Selectors.solutionMaxResponses) as HTMLElement;
     this.solutionPrompt = this.solution.element.querySelector(Selectors.solutionPrompt) as HTMLElement;
     this.solutionLoaderCount = this.solution.element.querySelector(Selectors.solutionLoaderCount) as HTMLElement;
   }
@@ -90,19 +90,19 @@ export class SolutionStream
   private handleSolutionDelta(event: MessageEvent<string>): void
   {
     const data: SolutionDeltaResponse = JSON.parse(event.data);
-    const {model, numberOfChoices, numberOfPendingChoices, prompt} = data.data;
+    const {model, numberOfResponses, numberOfPendingResponses, prompt} = data.data;
 
     // Replace solution list
     this.solutionContainer.innerHTML = data.content;
 
     // Replace solution data
     this.solutionModel.innerHTML = model;
-    this.solutionMaxChoices.innerHTML = numberOfChoices.toString();
+    this.solutionMaxResponses.innerHTML = numberOfResponses.toString();
     this.solutionPrompt.innerHTML = prompt;
 
-    // Replace number of choices
-    if (numberOfPendingChoices > 1) {
-      this.solutionLoaderCount.innerHTML = numberOfPendingChoices.toString();
+    // Replace number of responses
+    if (numberOfPendingResponses > 1) {
+      this.solutionLoaderCount.innerHTML = numberOfPendingResponses.toString();
     }
   }
 
