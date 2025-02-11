@@ -42,7 +42,7 @@ final class ClientFactory
     /**
      * @throws Exception\ApiKeyMissingException
      */
-    public function get(): Client
+    public function getOpenAIClient(): Client
     {
         $apiKey = $this->configuration->getApiKey();
 
@@ -51,5 +51,19 @@ final class ClientFactory
         }
 
         return \OpenAI::client($apiKey);
+    }
+
+    /**
+     * @throws Exception\ApiKeyMissingException
+     */
+    public function getGeminiClient(): \GeminiAPI\Client
+    {
+        $apiKey = $this->configuration->getApiKey();
+
+        if ($apiKey === null || \trim($apiKey) === '') {
+            throw Exception\ApiKeyMissingException::create();
+        }
+
+        return new \GeminiAPI\Client($apiKey);
     }
 }

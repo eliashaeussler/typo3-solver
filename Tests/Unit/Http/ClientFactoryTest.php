@@ -48,17 +48,17 @@ final class ClientFactoryTest extends TestingFramework\Core\Unit\UnitTestCase
     }
 
     #[Framework\Attributes\Test]
-    public function getThrowsExceptionIfApiKeyIsNotConfigured(): void
+    public function getOpenAIClientThrowsExceptionIfApiKeyIsNotConfigured(): void
     {
         $this->expectExceptionObject(
             Src\Exception\ApiKeyMissingException::create(),
         );
 
-        $this->subject->get();
+        $this->subject->getOpenAIClient();
     }
 
     #[Framework\Attributes\Test]
-    public function getReturnsOpenAIClient(): void
+    public function getOpenAIClientReturnsOpenAIClient(): void
     {
         $exception = null;
 
@@ -67,7 +67,7 @@ final class ClientFactoryTest extends TestingFramework\Core\Unit\UnitTestCase
         ];
 
         try {
-            $this->subject->get();
+            $this->subject->getOpenAIClient();
         } catch (Src\Exception\ApiKeyMissingException $exception) {
             // Intended fallthrough.
         }

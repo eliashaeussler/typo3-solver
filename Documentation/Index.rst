@@ -35,9 +35,8 @@ Exception handling with AI generated solutions
 ----
 
 An extension for TYPO3 CMS to solve exceptions with
-:abbr:`AI (Artificial Intelligence)` generated solutions. It uses the
-`OpenAI PHP client <https://github.com/openai-php/client>`__ to send a
-prompt to a configured model and uses the responded completion as solution.
+:abbr:`AI (Artificial Intelligence)` generated solutions. It sends a
+prompt to a configured AI model and uses the responded completion as solution.
 Several completion attributes (model, tokens, temperature, number of
 completions) are configurable. It also provides a console command to solve
 problems from command line.

@@ -88,13 +88,25 @@ way to solve a given problem.
 Default providers
 =================
 
-The extension ships with a default provider:
+The extension ships with two default providers:
 
 ..  php:class:: OpenAISolutionProvider
 
     Default provider used to generate solutions using the configured
     OpenAI :ref:`model <extconf-attributes-model>`. It uses the
     `chat completion <https://platform.openai.com/docs/guides/chat>`__
+    endpoint and is therefore streamable.
+
+    ..  note::
+
+        Streamed solutions always provide the complete solution delivered
+        until the current solution delta for each iteration.
+
+..  php:class:: GeminiSolutionProvider
+
+    Solution provider used to generate solutions using the configured
+    Google Gemini :ref:`model <extconf-attributes-model>`. It uses the
+    `Text <https://ai.google.dev/api/rest/v1/models/streamGenerateContent>`__
     endpoint and is therefore streamable.
 
     ..  note::
@@ -123,4 +135,5 @@ the OpenAI endpoint.
     -   `SolutionProvider <https://github.com/eliashaeussler/typo3-solver/blob/main/Classes/ProblemSolving/Solution/Provider/SolutionProvider.php>`__
     -   `StreamedSolutionProvider <https://github.com/eliashaeussler/typo3-solver/blob/main/Classes/ProblemSolving/Solution/Provider/StreamedSolutionProvider.php>`__
     -   `OpenAISolutionProvider <https://github.com/eliashaeussler/typo3-solver/blob/main/Classes/ProblemSolving/Solution/Provider/OpenAISolutionProvider.php>`__
+    -   `GeminiSolutionProvider <https://github.com/eliashaeussler/typo3-solver/blob/main/Classes/ProblemSolving/Solution/Provider/GeminiSolutionProvider.php>`__
     -   `CacheSolutionProvider <https://github.com/eliashaeussler/typo3-solver/blob/main/Classes/ProblemSolving/Solution/Provider/CacheSolutionProvider.php>`__
