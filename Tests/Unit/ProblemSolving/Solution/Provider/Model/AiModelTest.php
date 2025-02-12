@@ -21,32 +21,33 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace EliasHaeussler\Typo3Solver\ProblemSolving\Solution\Provider;
+namespace EliasHaeussler\Typo3Solver\Tests\Unit\ProblemSolving\Solution\Provider\Model;
 
-use EliasHaeussler\Typo3Solver\Exception;
-use EliasHaeussler\Typo3Solver\ProblemSolving;
+use EliasHaeussler\Typo3Solver as Src;
+use OpenAI\Responses;
+use PHPUnit\Framework;
+use TYPO3\TestingFramework;
 
 /**
- * SolutionProvider.
+ * AiModelTest
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
-interface SolutionProvider
+#[Framework\Attributes\CoversClass(Src\ProblemSolving\Solution\Provider\Model\AiModel::class)]
+final class AiModelTest extends TestingFramework\Core\Unit\UnitTestCase
 {
-    public static function create(): static;
+    #[Framework\Attributes\Test]
+    public function fromOpenAIRetrieveResponseReturnsAiModelFromGivenResponse(): void
+    {
+        $response = Responses\Models\RetrieveResponse::fake([
+            'id' => 'foo',
+            'created' => 1739347287,
+        ]);
 
-    /**
-     * @throws Exception\UnableToSolveException
-     */
-    public function getSolution(ProblemSolving\Problem\Problem $problem): ProblemSolving\Solution\Solution;
+        $actual = Src\ProblemSolving\Solution\Provider\Model\AiModel::fromOpenAIRetrieveResponse($response);
 
-    public function canBeUsed(\Throwable $exception): bool;
-
-    public function isCacheable(): bool;
-
-    /**
-     * @return list<Model\AiModel>
-     */
-    public function listModels(bool $includeUnsupported = false): array;
+        self::assertSame('foo', $actual->name);
+        self::assertSame(1739347287, $actual->createdAt?->getTimestamp());
+    }
 }

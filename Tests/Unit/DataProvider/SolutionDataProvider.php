@@ -66,6 +66,7 @@ final class SolutionDataProvider
         return new ProblemSolving\Solution\Model\CompletionResponse(
             $index,
             new ProblemSolving\Solution\Model\Message('role', $message),
+            'stop',
         );
     }
 }

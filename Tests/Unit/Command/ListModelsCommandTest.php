@@ -24,9 +24,7 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Tests\Unit\Command;
 
 use EliasHaeussler\Typo3Solver as Src;
-use GuzzleHttp\Client;
-use GuzzleHttp\Handler;
-use GuzzleHttp\Psr7;
+use EliasHaeussler\Typo3Solver\Tests;
 use PHPUnit\Framework;
 use Symfony\Component\Console;
 use TYPO3\TestingFramework;
@@ -40,45 +38,42 @@ use TYPO3\TestingFramework;
 #[Framework\Attributes\CoversClass(Src\Command\ListModelsCommand::class)]
 final class ListModelsCommandTest extends TestingFramework\Core\Unit\UnitTestCase
 {
-    private Handler\MockHandler $mockHandler;
+    private Tests\Unit\Fixtures\DummySolutionProvider $solutionProvider;
     private Console\Tester\CommandTester $commandTester;
-
-    /**
-     * @var array<string, mixed>
-     */
-    private array $listResponse;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->mockHandler = new Handler\MockHandler();
-
-        $command = new Src\Command\ListModelsCommand(
-            \OpenAI::factory()->withHttpClient(new Client(['handler' => $this->mockHandler]))->make(),
+        $this->solutionProvider = Tests\Unit\Fixtures\DummySolutionProvider::create();
+        $this->commandTester = new Console\Tester\CommandTester(
+            new Src\Command\ListModelsCommand(
+                new Src\Configuration\Configuration(),
+                $this->solutionProvider,
+            ),
         );
-
-        $this->commandTester = new Console\Tester\CommandTester($command);
-        $this->listResponse = $this->createListResponse();
     }
 
     #[Framework\Attributes\Test]
     public function executeListsAllSupportedModels(): void
     {
-        $response = new Psr7\Response(headers: [
-            'Content-Type' => 'application/json',
-            'x-request-id' => 'foo',
-            'openai-processing-ms' => '0',
-        ]);
-        $response->getBody()->write(\json_encode($this->listResponse, JSON_THROW_ON_ERROR));
-        $response->getBody()->rewind();
-
-        $this->mockHandler->append($response);
+        $this->solutionProvider->models = [
+            new Src\ProblemSolving\Solution\Provider\Model\AiModel(
+                'gpt-3.5',
+                // 28/02/2023
+                $this->createDate(1677585600),
+            ),
+            new Src\ProblemSolving\Solution\Provider\Model\AiModel(
+                'gpt-3.5-turbo-0301',
+                // 01/03/2023
+                $this->createDate(1677672000),
+            ),
+        ];
 
         $this->commandTester->execute([]);
 
         self::assertStringContainsString(
-            'Available GPT models',
+            'Supported AI models',
             $this->commandTester->getDisplay(),
         );
         self::assertStringNotContainsString(
@@ -107,22 +102,45 @@ final class ListModelsCommandTest extends TestingFramework\Core\Unit\UnitTestCas
     #[Framework\Attributes\Test]
     public function executeListsAllAvailableModels(): void
     {
-        $response = new Psr7\Response(headers: [
-            'Content-Type' => 'application/json',
-            'x-request-id' => 'foo',
-            'openai-processing-ms' => '0',
-        ]);
-        $response->getBody()->write(\json_encode($this->listResponse, JSON_THROW_ON_ERROR));
-        $response->getBody()->rewind();
-
-        $this->mockHandler->append($response);
+        $this->solutionProvider->models = [
+            new Src\ProblemSolving\Solution\Provider\Model\AiModel(
+                'foo-1',
+                // 01/01/2023
+                $this->createDate(1672574400),
+            ),
+            new Src\ProblemSolving\Solution\Provider\Model\AiModel(
+                'gpt-3.5',
+                // 28/02/2023
+                $this->createDate(1677585600),
+            ),
+            new Src\ProblemSolving\Solution\Provider\Model\AiModel(
+                'gpt-3.5-turbo-0301',
+                // 01/03/2023
+                $this->createDate(1677672000),
+            ),
+            new Src\ProblemSolving\Solution\Provider\Model\AiModel(
+                'baz-1',
+                // 01/01/2022
+                $this->createDate(1641038400),
+            ),
+            new Src\ProblemSolving\Solution\Provider\Model\AiModel(
+                'gpt-4o-realtime-preview',
+                // 30/09/2024
+                $this->createDate(1727654400),
+            ),
+            new Src\ProblemSolving\Solution\Provider\Model\AiModel(
+                'gpt-4o-mini-audio-preview',
+                // 16/12/2024
+                $this->createDate(1734307200),
+            ),
+        ];
 
         $this->commandTester->execute([
             '--all' => true,
         ]);
 
         self::assertStringContainsString(
-            'Available OpenAI models',
+            'Available AI models',
             $this->commandTester->getDisplay(),
         );
         self::assertStringContainsString(
@@ -137,79 +155,13 @@ final class ListModelsCommandTest extends TestingFramework\Core\Unit\UnitTestCas
             $this->commandTester->getDisplay(),
         );
         self::assertStringContainsString(
-            'Only GPT models can be used with this extension.',
+            'Only a limited set of models can be used with this extension.',
             $this->commandTester->getDisplay(),
         );
     }
 
-    /**
-     * @return array<string, mixed>
-     */
-    private function createListResponse(): array
+    private function createDate(int $timestamp): \DateTimeImmutable
     {
-        $defaults = [
-            'object' => 'object',
-            'owned_by' => 'owned_by',
-            'permission' => [
-                [
-                    'id' => 'id',
-                    'object' => 'object',
-                    'created' => 123,
-                    'allow_create_engine' => true,
-                    'allow_sampling' => true,
-                    'allow_logprobs' => true,
-                    'allow_search_indices' => true,
-                    'allow_view' => true,
-                    'allow_fine_tuning' => true,
-                    'organization' => 'organization',
-                    'group' => 'group',
-                    'is_blocking' => true,
-                ],
-            ],
-            'root' => 'root',
-            'parent' => 'parent',
-        ];
-
-        return [
-            'object' => 'object',
-            'data' => [
-                [
-                    'id' => 'foo-1',
-                    // 01/01/2023
-                    'created' => 1672574400,
-                    ...$defaults,
-                ],
-                [
-                    'id' => 'gpt-3.5',
-                    // 28/02/2023
-                    'created' => 1677585600,
-                    ...$defaults,
-                ],
-                [
-                    'id' => 'gpt-3.5-turbo-0301',
-                    // 01/03/2023
-                    'created' => 1677672000,
-                    ...$defaults,
-                ],
-                [
-                    'id' => 'baz-1',
-                    // 01/01/2022
-                    'created' => 1641038400,
-                    ...$defaults,
-                ],
-                [
-                    'id' => 'gpt-4o-realtime-preview',
-                    // 30/09/2024
-                    'created' => 1727654400,
-                    ...$defaults,
-                ],
-                [
-                    'id' => 'gpt-4o-mini-audio-preview',
-                    // 16/12/2024
-                    'created' => 1734307200,
-                    ...$defaults,
-                ],
-            ],
-        ];
+        return new \DateTimeImmutable('@' . $timestamp);
     }
 }

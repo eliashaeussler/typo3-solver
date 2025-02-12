@@ -54,52 +54,22 @@ final class SolutionTest extends TestingFramework\Core\Unit\UnitTestCase
     #[Framework\Attributes\Test]
     public function fromOpenAIResponseReturnsSolution(): void
     {
-        $attributes = [
-            'id' => 'id',
-            'object' => 'object',
-            'created' => 123,
+        $response = Responses\Chat\CreateResponse::fake([
             'model' => 'model',
             'choices' => [
                 [
-                    'index' => 0,
                     'message' => [
                         'role' => 'role',
                         'content' => 'content',
-                        'function_call' => null,
-                        'tool_calls' => null,
                     ],
-                    'finish_reason' => null,
                 ],
             ],
-            'usage' => [
-                'prompt_tokens' => 123,
-                'completion_tokens' => 123,
-                'total_tokens' => 123,
-            ],
-        ];
-
-        if (\class_exists(Responses\Meta\MetaInformation::class)) {
-            $meta = Responses\Meta\MetaInformation::from([
-                'x-request-id' => ['foo'],
-                'openai-model' => ['foo'],
-                'openai-organization' => ['foo'],
-                'openai-version' => ['foo'],
-                'openai-processing-ms' => ['foo'],
-                'x-ratelimit-limit-requests' => ['foo'],
-                'x-ratelimit-remaining-requests' => ['foo'],
-                'x-ratelimit-reset-requests' => ['foo'],
-                'x-ratelimit-limit-tokens' => ['foo'],
-                'x-ratelimit-remaining-tokens' => ['foo'],
-                'x-ratelimit-reset-tokens' => ['foo'],
-            ]);
-            $response = Responses\Chat\CreateResponse::from($attributes, $meta);
-        } else {
-            $response = Responses\Chat\CreateResponse::from($attributes);
-        }
+        ]);
 
         $completionResponse = new Src\ProblemSolving\Solution\Model\CompletionResponse(
             0,
             new Src\ProblemSolving\Solution\Model\Message('role', 'content'),
+            'stop',
         );
 
         $actual = Src\ProblemSolving\Solution\Solution::fromOpenAIResponse($response, 'prompt');

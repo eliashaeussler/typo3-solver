@@ -101,9 +101,3 @@ parameters:
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 5
 			path: ../Unit/ProblemSolving/Solution/Provider/OpenAISolutionProviderTest.php
-
-		-
-			message: '#^Static method OpenAI\\Responses\\Chat\\CreateResponse\:\:from\(\) invoked with 1 parameter, 2 required\.$#'
-			identifier: arguments.count
-			count: 1
-			path: ../Unit/ProblemSolving/Solution/SolutionTest.php

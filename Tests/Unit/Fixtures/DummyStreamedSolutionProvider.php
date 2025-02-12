@@ -42,6 +42,11 @@ final class DummyStreamedSolutionProvider implements ProblemSolving\Solution\Pro
      */
     public array $solutionStream = [];
 
+    /**
+     * @var list<ProblemSolving\Solution\Provider\Model\AiModel>
+     */
+    public array $models = [];
+
     public static function create(): static
     {
         return new self();
@@ -65,5 +70,10 @@ final class DummyStreamedSolutionProvider implements ProblemSolving\Solution\Pro
     public function isCacheable(): bool
     {
         return true;
+    }
+
+    public function listModels(bool $includeUnsupported = false): array
+    {
+        return $this->models;
     }
 }

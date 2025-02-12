@@ -38,7 +38,7 @@ use TYPO3\TestingFramework;
 final class DelegatingCacheSolutionProviderTest extends TestingFramework\Core\Unit\UnitTestCase
 {
     private Src\Cache\SolutionsCache $cache;
-    private Tests\Unit\Fixtures\DummySolutionProvider $provider;
+    private Tests\Unit\Fixtures\DummySolutionProvider $delegate;
     private Src\ProblemSolving\Solution\Provider\DelegatingCacheSolutionProvider $subject;
 
     protected function setUp(): void
@@ -46,8 +46,8 @@ final class DelegatingCacheSolutionProviderTest extends TestingFramework\Core\Un
         parent::setUp();
 
         $this->cache = new Src\Cache\SolutionsCache();
-        $this->provider = new Tests\Unit\Fixtures\DummySolutionProvider();
-        $this->subject = new Src\ProblemSolving\Solution\Provider\DelegatingCacheSolutionProvider($this->cache, $this->provider);
+        $this->delegate = new Tests\Unit\Fixtures\DummySolutionProvider();
+        $this->subject = new Src\ProblemSolving\Solution\Provider\DelegatingCacheSolutionProvider($this->cache, $this->delegate);
 
         $this->cache->flush();
     }
@@ -67,14 +67,14 @@ final class DelegatingCacheSolutionProviderTest extends TestingFramework\Core\Un
     {
         self::assertEquals(
             $this->subject,
-            Src\ProblemSolving\Solution\Provider\DelegatingCacheSolutionProvider::create($this->provider),
+            Src\ProblemSolving\Solution\Provider\DelegatingCacheSolutionProvider::create($this->delegate),
         );
     }
 
     #[Framework\Attributes\Test]
     public function getSolutionReturnsSolutionFromCache(): void
     {
-        $problem = Tests\Unit\DataProvider\ProblemDataProvider::get(solutionProvider: $this->provider);
+        $problem = Tests\Unit\DataProvider\ProblemDataProvider::get(solutionProvider: $this->delegate);
         $solution = new Src\ProblemSolving\Solution\Solution(
             [
                 new Src\ProblemSolving\Solution\Model\CompletionResponse(
@@ -94,7 +94,7 @@ final class DelegatingCacheSolutionProviderTest extends TestingFramework\Core\Un
     #[Framework\Attributes\Test]
     public function getSolutionReturnsDummySolution(): void
     {
-        $problem = Tests\Unit\DataProvider\ProblemDataProvider::get(solutionProvider: $this->provider);
+        $problem = Tests\Unit\DataProvider\ProblemDataProvider::get(solutionProvider: $this->delegate);
         $solution = Tests\Unit\DataProvider\SolutionDataProvider::get();
 
         $this->cache->set($problem, $solution);
@@ -114,5 +114,22 @@ final class DelegatingCacheSolutionProviderTest extends TestingFramework\Core\Un
     public function isCacheableReturnsFalse(): void
     {
         self::assertFalse($this->subject->isCacheable());
+    }
+
+    #[Framework\Attributes\Test]
+    public function listModelsReturnsModelsFromDelegate(): void
+    {
+        $this->delegate->models = [
+            new Src\ProblemSolving\Solution\Provider\Model\AiModel(
+                'gpt-3.5',
+                new \DateTimeImmutable('now'),
+            ),
+            new Src\ProblemSolving\Solution\Provider\Model\AiModel(
+                'gpt-3.5-turbo-0301',
+                new \DateTimeImmutable('yesterday'),
+            ),
+        ];
+
+        self::assertSame($this->delegate->models, $this->subject->listModels());
     }
 }

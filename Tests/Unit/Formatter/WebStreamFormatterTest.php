@@ -64,7 +64,7 @@ final class WebStreamFormatterTest extends TestingFramework\Core\Unit\UnitTestCa
 
         self::assertSame('model', $json['data']['model'] ?? null);
         self::assertSame(3, $json['data']['numberOfResponses'] ?? null);
-        self::assertSame(3, $json['data']['numberOfPendingResponses'] ?? null);
+        self::assertSame(0, $json['data']['numberOfPendingResponses'] ?? null);
         self::assertSame('prompt', $json['data']['prompt'] ?? null);
 
         // First response
