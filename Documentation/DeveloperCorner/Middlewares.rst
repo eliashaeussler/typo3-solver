@@ -48,7 +48,7 @@ Solution middleware
 
 If :ref:`solution streaming <streamed-solution>` is possible, this
 middlewares provides the solution stream. As this can trigger expensive
-requests to OpenAI, the middleware is protected by a basic
+requests to the AI provider, the middleware is protected by a basic
 authentication layer.
 
 -   :aspect:`Route path:` :samp:`/tx_solver/solution`
@@ -106,7 +106,7 @@ It is passed as JSON string and contains the following properties:
     ..  confval:: model
         :type: string
 
-        The used OpenAI model. This normally matches the configured
+        The used AI model. This normally matches the configured
         :ref:`model <extconf-attributes-model>`.
 
     ..  confval:: numberOfResponses
@@ -186,8 +186,8 @@ Stream authentication
 =====================
 
 When using the :ref:`solution middleware <tx-solver-solution>`, a basic
-authentication layer is processed. This is to avoid that requests to
-OpenAI are triggered deliberately.
+authentication layer is processed. This is to avoid that requests to the
+AI provider are triggered deliberately.
 
 The authentication layer basically checks if a :ref:`stream hash <tx-solver-solution-hash>`
 is given as query parameter and validates it against a list of previously

@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver\ProblemSolving\Solution\Provider\Model;
 
+use GeminiAPI\Resources;
 use OpenAI\Responses;
 
 /**
@@ -41,5 +42,10 @@ final class AiModel
     public static function fromOpenAIRetrieveResponse(Responses\Models\RetrieveResponse $response): self
     {
         return new self($response->id, new \DateTimeImmutable('@' . $response->created));
+    }
+
+    public static function fromGeminiModel(Resources\Model $model): self
+    {
+        return new self(\str_replace('models/', '', $model->name));
     }
 }

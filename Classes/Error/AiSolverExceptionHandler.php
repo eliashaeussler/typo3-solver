@@ -98,19 +98,19 @@ final class AiSolverExceptionHandler extends Core\Error\DebugExceptionHandler
             return $content;
         }
 
-        $solutionProvider = $this->configuration->getProvider();
-
-        // Use solution stream if possible
-        if ($solutionProvider->canBeUsed($throwable) && $this->isStreamedResponseSupported()) {
-            $this->exceptionsCache->set($throwable);
-
-            $solutionProvider = new ProblemSolving\Solution\Provider\DelegatingCacheSolutionProvider(
-                $this->solutionsCache,
-                $solutionProvider,
-            );
-        }
-
         try {
+            $solutionProvider = $this->configuration->getProvider();
+
+            // Use solution stream if possible
+            if ($solutionProvider->canBeUsed($throwable) && $this->isStreamedResponseSupported()) {
+                $this->exceptionsCache->set($throwable);
+
+                $solutionProvider = new ProblemSolving\Solution\Provider\DelegatingCacheSolutionProvider(
+                    $this->solutionsCache,
+                    $solutionProvider,
+                );
+            }
+
             $solver = new ProblemSolving\Solver($this->configuration, $this->webFormatter, $solutionProvider);
             $solution = $solver->solve($throwable);
 
