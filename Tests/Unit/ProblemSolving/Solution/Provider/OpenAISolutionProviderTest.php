@@ -98,31 +98,22 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
     #[Framework\Attributes\Test]
     public function getSolutionReturnsSolutionFromClientResponse(): void
     {
-        $payload = [
-            'id' => 'id',
-            'object' => 'object',
-            'created' => 123,
+        $payload = OpenAI\Responses\Chat\CreateResponse::fake([
             'model' => 'model',
             'choices' => [
                 [
-                    'index' => 0,
                     'message' => [
                         'role' => 'role',
                         'content' => 'content',
                     ],
-                    'finish_reason' => null,
                 ],
             ],
-            'usage' => [
-                'prompt_tokens' => 123,
-                'completion_tokens' => 123,
-                'total_tokens' => 123,
-            ],
-        ];
+        ])->toArray();
         $response = new Psr7\Response(headers: [
             'Content-Type' => 'application/json',
             'x-request-id' => 'foo',
             'openai-processing-ms' => '0',
+            'openai-version' => '1',
         ]);
         $response->getBody()->write(\json_encode($payload, JSON_THROW_ON_ERROR));
         $response->getBody()->rewind();
@@ -174,7 +165,7 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
                         'role' => 'role',
                         'content' => 'content 1',
                     ],
-                    'finish_reason' => null,
+                    'finish_reason' => 'stop',
                 ],
             ],
         ];
@@ -190,7 +181,7 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
                         'role' => 'role',
                         'content' => ' ... content 2',
                     ],
-                    'finish_reason' => null,
+                    'finish_reason' => 'stop',
                 ],
             ],
         ];
@@ -226,5 +217,161 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
     public function isCacheableReturnsTrue(): void
     {
         self::assertTrue($this->subject->isCacheable());
+    }
+
+    #[Framework\Attributes\Test]
+    public function listModelsReturnsListOfSupportedModels(): void
+    {
+        $response = new Psr7\Response(headers: [
+            'Content-Type' => 'application/json',
+            'x-request-id' => 'foo',
+            'openai-processing-ms' => '0',
+            'openai-version' => '1',
+        ]);
+        $response->getBody()->write(\json_encode($this->createListResponse(), JSON_THROW_ON_ERROR));
+        $response->getBody()->rewind();
+
+        $this->mockHandler->append($response);
+
+        $expected = [
+            new Src\ProblemSolving\Solution\Provider\Model\AiModel(
+                'gpt-3.5',
+                // 28/02/2023
+                $this->createDate(1677585600),
+            ),
+            new Src\ProblemSolving\Solution\Provider\Model\AiModel(
+                'gpt-3.5-turbo-0301',
+                // 01/03/2023
+                $this->createDate(1677672000),
+            ),
+        ];
+
+        self::assertEquals($expected, $this->subject->listModels());
+    }
+
+    #[Framework\Attributes\Test]
+    public function listModelsReturnsListOfAllAvailableModels(): void
+    {
+        $response = new Psr7\Response(headers: [
+            'Content-Type' => 'application/json',
+            'x-request-id' => 'foo',
+            'openai-processing-ms' => '0',
+            'openai-version' => '1',
+        ]);
+        $response->getBody()->write(\json_encode($this->createListResponse(), JSON_THROW_ON_ERROR));
+        $response->getBody()->rewind();
+
+        $this->mockHandler->append($response);
+
+        $expected = [
+            new Src\ProblemSolving\Solution\Provider\Model\AiModel(
+                'foo-1',
+                // 01/01/2023
+                $this->createDate(1672574400),
+            ),
+            new Src\ProblemSolving\Solution\Provider\Model\AiModel(
+                'gpt-3.5',
+                // 28/02/2023
+                $this->createDate(1677585600),
+            ),
+            new Src\ProblemSolving\Solution\Provider\Model\AiModel(
+                'gpt-3.5-turbo-0301',
+                // 01/03/2023
+                $this->createDate(1677672000),
+            ),
+            new Src\ProblemSolving\Solution\Provider\Model\AiModel(
+                'baz-1',
+                // 01/01/2022
+                $this->createDate(1641038400),
+            ),
+            new Src\ProblemSolving\Solution\Provider\Model\AiModel(
+                'gpt-4o-realtime-preview',
+                // 30/09/2024
+                $this->createDate(1727654400),
+            ),
+            new Src\ProblemSolving\Solution\Provider\Model\AiModel(
+                'gpt-4o-mini-audio-preview',
+                // 16/12/2024
+                $this->createDate(1734307200),
+            ),
+        ];
+
+        self::assertEquals($expected, $this->subject->listModels(true));
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function createListResponse(): array
+    {
+        $defaults = [
+            'object' => 'object',
+            'owned_by' => 'owned_by',
+            'permission' => [
+                [
+                    'id' => 'id',
+                    'object' => 'object',
+                    'created' => 123,
+                    'allow_create_engine' => true,
+                    'allow_sampling' => true,
+                    'allow_logprobs' => true,
+                    'allow_search_indices' => true,
+                    'allow_view' => true,
+                    'allow_fine_tuning' => true,
+                    'organization' => 'organization',
+                    'group' => 'group',
+                    'is_blocking' => true,
+                ],
+            ],
+            'root' => 'root',
+            'parent' => 'parent',
+        ];
+
+        return [
+            'object' => 'object',
+            'data' => [
+                [
+                    'id' => 'foo-1',
+                    // 01/01/2023
+                    'created' => 1672574400,
+                    ...$defaults,
+                ],
+                [
+                    'id' => 'gpt-3.5',
+                    // 28/02/2023
+                    'created' => 1677585600,
+                    ...$defaults,
+                ],
+                [
+                    'id' => 'gpt-3.5-turbo-0301',
+                    // 01/03/2023
+                    'created' => 1677672000,
+                    ...$defaults,
+                ],
+                [
+                    'id' => 'baz-1',
+                    // 01/01/2022
+                    'created' => 1641038400,
+                    ...$defaults,
+                ],
+                [
+                    'id' => 'gpt-4o-realtime-preview',
+                    // 30/09/2024
+                    'created' => 1727654400,
+                    ...$defaults,
+                ],
+                [
+                    'id' => 'gpt-4o-mini-audio-preview',
+                    // 16/12/2024
+                    'created' => 1734307200,
+                    ...$defaults,
+                ],
+            ],
+        ];
+    }
+
+    private function createDate(int $timestamp): \DateTimeImmutable
+    {
+        return new \DateTimeImmutable('@' . $timestamp);
     }
 }

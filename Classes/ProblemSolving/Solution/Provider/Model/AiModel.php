@@ -21,32 +21,25 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace EliasHaeussler\Typo3Solver\ProblemSolving\Solution\Provider;
+namespace EliasHaeussler\Typo3Solver\ProblemSolving\Solution\Provider\Model;
 
-use EliasHaeussler\Typo3Solver\Exception;
-use EliasHaeussler\Typo3Solver\ProblemSolving;
+use OpenAI\Responses;
 
 /**
- * SolutionProvider.
+ * AiModel
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
-interface SolutionProvider
+final class AiModel
 {
-    public static function create(): static;
+    public function __construct(
+        public readonly string $name,
+        public readonly ?\DateTimeImmutable $createdAt = null,
+    ) {}
 
-    /**
-     * @throws Exception\UnableToSolveException
-     */
-    public function getSolution(ProblemSolving\Problem\Problem $problem): ProblemSolving\Solution\Solution;
-
-    public function canBeUsed(\Throwable $exception): bool;
-
-    public function isCacheable(): bool;
-
-    /**
-     * @return list<Model\AiModel>
-     */
-    public function listModels(bool $includeUnsupported = false): array;
+    public static function fromOpenAIRetrieveResponse(Responses\Models\RetrieveResponse $response): self
+    {
+        return new self($response->id, new \DateTimeImmutable('@' . $response->created));
+    }
 }

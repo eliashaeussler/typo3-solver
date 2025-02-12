@@ -53,6 +53,14 @@ way to solve a given problem.
 
         :returntype: bool
 
+    ..  php:method:: listModels($includeUnsupported = false)
+
+        List all AI models by the underlying AI provider. By default,
+        only supported models are returned.
+
+        :param bool $includeUnsupported: Define whether to return unsupported models as well
+        :returntype: :php:`list<EliasHaeussler\Typo3Solver\ProblemSolving\Solution\Provider\Model\AiModel>`
+
 ..  php:interface:: StreamedSolutionProvider
 
     Extended interface for solution providers that are able to stream

@@ -116,6 +116,38 @@ final class OpenAISolutionProvider implements StreamedSolutionProvider
         return true;
     }
 
+    public function listModels(bool $includeUnsupported = false): array
+    {
+        // Retrieve all available models
+        $modelListResponse = $this->client->models()->list()->data;
+
+        // Filter by supported models
+        if (!$includeUnsupported) {
+            $modelListResponse = \array_filter($modelListResponse, $this->isSupportedModel(...));
+        }
+
+        return \array_values(
+            \array_map(
+                static fn(Responses\Models\RetrieveResponse $response) => Model\AiModel::fromOpenAIRetrieveResponse($response),
+                $modelListResponse,
+            ),
+        );
+    }
+
+    /**
+     * @see https://platform.openai.com/docs/models#model-endpoint-compatibility
+     */
+    private function isSupportedModel(Responses\Models\RetrieveResponse $response): bool
+    {
+        $identifier = \strtolower($response->id);
+
+        if (!\str_starts_with($identifier, 'gpt-') && !\str_starts_with($identifier, 'chatgpt-')) {
+            return false;
+        }
+
+        return !\str_contains($identifier, '-realtime') && !\str_contains($identifier, '-audio');
+    }
+
     /**
      * @return array{
      *     model: string,

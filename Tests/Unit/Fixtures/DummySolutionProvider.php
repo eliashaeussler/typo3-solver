@@ -38,6 +38,11 @@ final class DummySolutionProvider implements ProblemSolving\Solution\Provider\So
     public bool $shouldBeUsed = true;
     public bool $isCacheable = true;
 
+    /**
+     * @var list<ProblemSolving\Solution\Provider\Model\AiModel>
+     */
+    public array $models = [];
+
     public static function create(): static
     {
         return new self();
@@ -56,5 +61,10 @@ final class DummySolutionProvider implements ProblemSolving\Solution\Provider\So
     public function isCacheable(): bool
     {
         return $this->isCacheable;
+    }
+
+    public function listModels(bool $includeUnsupported = false): array
+    {
+        return $this->models;
     }
 }

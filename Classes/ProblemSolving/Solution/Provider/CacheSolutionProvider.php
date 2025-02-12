@@ -108,6 +108,11 @@ final class CacheSolutionProvider implements StreamedSolutionProvider
         return true;
     }
 
+    public function listModels(bool $includeUnsupported = false): array
+    {
+        return $this->provider->listModels($includeUnsupported);
+    }
+
     public function getProvider(): SolutionProvider
     {
         return $this->provider;

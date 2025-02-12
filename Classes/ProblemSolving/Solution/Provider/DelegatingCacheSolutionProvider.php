@@ -84,4 +84,9 @@ final class DelegatingCacheSolutionProvider implements SolutionProvider
     {
         return false;
     }
+
+    public function listModels(bool $includeUnsupported = false): array
+    {
+        return $this->delegate->listModels($includeUnsupported);
+    }
 }

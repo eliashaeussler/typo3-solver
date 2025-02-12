@@ -169,6 +169,23 @@ final class CacheSolutionProviderTest extends TestingFramework\Core\Unit\UnitTes
     }
 
     #[Framework\Attributes\Test]
+    public function listModelsReturnsModelsFromDelegatedProvider(): void
+    {
+        $this->provider->models = [
+            new Src\ProblemSolving\Solution\Provider\Model\AiModel(
+                'gpt-3.5',
+                new \DateTimeImmutable('now'),
+            ),
+            new Src\ProblemSolving\Solution\Provider\Model\AiModel(
+                'gpt-3.5-turbo-0301',
+                new \DateTimeImmutable('yesterday'),
+            ),
+        ];
+
+        self::assertSame($this->provider->models, $this->subject->listModels());
+    }
+
+    #[Framework\Attributes\Test]
     public function getProviderReturnsProvider(): void
     {
         self::assertSame($this->provider, $this->subject->getProvider());

@@ -23,8 +23,8 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver\Command;
 
-use OpenAI\Client;
-use OpenAI\Responses;
+use EliasHaeussler\Typo3Solver\Configuration;
+use EliasHaeussler\Typo3Solver\ProblemSolving;
 use Symfony\Component\Console;
 
 /**
@@ -35,10 +35,15 @@ use Symfony\Component\Console;
  */
 final class ListModelsCommand extends Console\Command\Command
 {
+    private readonly ProblemSolving\Solution\Provider\SolutionProvider $solutionProvider;
+
     public function __construct(
-        private readonly Client $client,
+        private readonly Configuration\Configuration $configuration,
+        ProblemSolving\Solution\Provider\SolutionProvider $solutionProvider = null,
     ) {
         parent::__construct('solver:list-models');
+
+        $this->solutionProvider = $solutionProvider ?? $this->configuration->getProvider();
     }
 
     protected function configure(): void
@@ -56,16 +61,13 @@ final class ListModelsCommand extends Console\Command\Command
         $io = new Console\Style\SymfonyStyle($input, $output);
         $listAll = $input->getOption('all');
 
-        // Retrieve all available models
-        $modelListResponse = $this->client->models()->list()->data;
+        // Retrieve models via solution provider
+        $modelListResponse = $this->solutionProvider->listModels($listAll);
 
         if ($listAll) {
-            $io->title('Available OpenAI models');
+            $io->title('Available AI models');
         } else {
-            $io->title('Available GPT models');
-
-            // Filter by GPT models
-            $modelListResponse = \array_filter($modelListResponse, $this->isSupportedModel(...));
+            $io->title('Supported AI models');
         }
 
         // Map responses to model IDs
@@ -79,29 +81,19 @@ final class ListModelsCommand extends Console\Command\Command
         $io->listing($models);
 
         if ($listAll) {
-            $io->writeln('💡 <comment>Only GPT models can be used with this extension.</comment>');
+            $io->writeln('💡 <comment>Only a limited set of models can be used with this extension.</comment>');
             $io->newLine();
         }
 
         return self::SUCCESS;
     }
 
-    /**
-     * @see https://platform.openai.com/docs/models#model-endpoint-compatibility
-     */
-    private function isSupportedModel(Responses\Models\RetrieveResponse $response): bool
+    private function decorateModel(ProblemSolving\Solution\Provider\Model\AiModel $model): string
     {
-        $identifier = \strtolower($response->id);
-
-        if (!\str_starts_with($identifier, 'gpt-') && !\str_starts_with($identifier, 'chatgpt-')) {
-            return false;
+        if ($model->createdAt === null) {
+            return $model->name;
         }
 
-        return !\str_contains($identifier, '-realtime') && !\str_contains($identifier, '-audio');
-    }
-
-    private function decorateModel(Responses\Models\RetrieveResponse $response): string
-    {
-        return \sprintf('%s <fg=gray>(created at %s)</>', $response->id, \date('d/m/Y', $response->created));
+        return \sprintf('%s <fg=gray>(created at %s)</>', $model->name, $model->createdAt->format('d/m/Y'));
     }
 }

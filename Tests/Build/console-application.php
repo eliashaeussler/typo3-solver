@@ -36,7 +36,12 @@ $application = new Console\Application();
 
 // Add console commands
 $application->add(new Src\Command\CacheFlushCommand(new Src\Cache\SolutionsCache()));
-$application->add(new Src\Command\ListModelsCommand(OpenAI::factory()->make()));
+$application->add(
+    new Src\Command\ListModelsCommand(
+        new Src\Configuration\Configuration(),
+        Tests\Unit\Fixtures\DummySolutionProvider::create(),
+    ),
+);
 $application->add(
     new Src\Command\SolveCommand(
         new Src\Configuration\Configuration(),
