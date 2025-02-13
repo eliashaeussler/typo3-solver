@@ -4,12 +4,15 @@
 		"local>eliashaeussler/renovate-config",
 		"local>eliashaeussler/renovate-config:typo3-extension"
 	],
+	"constraints": {
+		"php": "8.1.*"
+	},
 	"packageRules": [
 		{
 			"enabled": false,
 			"matchCurrentVersion": "8.1",
 			"matchDatasources": [
-				"github-tags"
+				"docker"
 			],
 			"matchDepNames": [
 				"php"
@@ -20,15 +23,7 @@
 		},
 		{
 			"matchFileNames": [
-				"composer.json"
-			],
-			"constraints": {
-				"php": "8.1.*"
-			}
-		},
-		{
-			"matchFileNames": [
-				"Tests/CGL/composer.json"
+				"Tests/CGL/composer.*"
 			],
 			"constraints": {
 				"php": "8.3.*"
