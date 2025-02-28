@@ -27,6 +27,20 @@
 			}
 		},
 		{
+			"extends": [
+				":pinVersions"
+			],
+			"matchFileNames": [
+				"Resources/Private/Libs/Build/composer.*"
+			],
+			"constraints": {
+				"php": "8.1.*"
+			}
+		},
+		{
+			"extends": [
+				":pinVersions"
+			],
 			"matchFileNames": [
 				"Tests/CGL/composer.*"
 			],
