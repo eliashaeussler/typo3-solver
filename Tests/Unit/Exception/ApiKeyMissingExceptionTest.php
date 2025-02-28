@@ -41,7 +41,7 @@ final class ApiKeyMissingExceptionTest extends TestingFramework\Core\Unit\UnitTe
     {
         $actual = Src\Exception\ApiKeyMissingException::create();
 
-        self::assertSame('Please configure an OpenAI API key in the extension settings.', $actual->getMessage());
+        self::assertSame('Please configure an API key in the extension settings.', $actual->getMessage());
         self::assertSame(1676618324, $actual->getCode());
     }
 }

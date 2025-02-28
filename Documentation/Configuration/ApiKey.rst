@@ -6,11 +6,22 @@
 API key
 =======
 
-You need an `API key <https://platform.openai.com/account/api-keys>`__ to
-perform requests at OpenAI. Once generated, the key must be configured in
-the :ref:`extension configuration <extconf-api-key>`.
+Please follow the instructions below to retrieve an API key for the
+specific AI provider in use. Once generated, the key must be configured
+in the :ref:`extension configuration <extconf-api-key>`:
 
-Follow these steps to create and use an OpenAI API key:
+Paste the generated API key in the extension configuration
+:ref:`extconf-api-key`. This can either be done in the TYPO3 backend or
+directly in your :file:`config/system/settings.php` (formerly
+:file:`typo3conf/ext/LocalConfiguration.php`) file.
+
+..  _api-key-open-ai:
+
+OpenAI
+======
+
+Follow these steps to create and use an OpenAI
+`API key <https://platform.openai.com/account/api-keys>`__:
 
 ..  rst-class:: bignums-xxl
 
@@ -35,13 +46,35 @@ Follow these steps to create and use an OpenAI API key:
 
 3.  Add extension configuration
 
-    Paste the generated API key in the extension configuration
-    :ref:`extconf-api-key`. This can either be done in the TYPO3 backend or
-    directly in your :file:`config/system/settings.php` (formerly
-    :file:`typo3conf/ext/LocalConfiguration.php`) file.
+    See instructions above to learn how to configure the API key.
 
-4.  Keep the key secret!
+..  _api-key-google-gemini:
 
-    **Don't share this key with anyone else!** Keep in mind that everyone
-    with access to this key will be able to perform requests with your
-    OpenAI account. This can be very cost intensive as request are not free.
+Google Gemini
+=============
+
+Follow these steps to create and use a Google Gemini
+`API key <https://aistudio.google.com/apikey>`__:
+
+..  rst-class:: bignums-xxl
+
+1.  Log in with your Google account
+
+    Head over to https://aistudio.google.com/apikey and log in with your
+    Google account. If you don't have an account yet, you can sign up on
+    this page as well.
+
+2.  Create API key
+
+    Click on the :guilabel:`Create API key` button and select a Google Cloud
+    project where to assign the new API key. Copy the key to your clipboard
+    or safe it elsewhere.
+
+    ..  attention::
+
+        You won't be able to display the key again once you closed the
+        page.
+
+3.  Add extension configuration
+
+    See instructions above to learn how to configure the API key.

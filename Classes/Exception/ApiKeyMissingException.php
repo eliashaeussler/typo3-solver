@@ -34,7 +34,7 @@ final class ApiKeyMissingException extends Exception
     public static function create(): self
     {
         return new self(
-            'Please configure an OpenAI API key in the extension settings.',
+            'Please configure an API key in the extension settings.',
             1676618324,
         );
     }
