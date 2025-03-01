@@ -1,6 +1,6 @@
 name: Frontend assets
 on:
-  pull_request:
+  push:
     paths:
       - 'Resources/Private/Frontend/**'
 
