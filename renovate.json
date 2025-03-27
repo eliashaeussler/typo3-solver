@@ -4,6 +4,9 @@
 		"local>eliashaeussler/renovate-config",
 		"local>eliashaeussler/renovate-config:typo3-extension"
 	],
+	"constraints": {
+		"php": "8.1.*"
+	},
 	"packageRules": [
 		{
 			"enabled": false,
@@ -19,34 +22,13 @@
 			]
 		},
 		{
-			"matchFileNames": [
-				"composer.*"
-			],
-			"constraints": {
-				"php": "8.1.*"
-			}
-		},
-		{
 			"extends": [
 				":pinVersions"
 			],
 			"matchFileNames": [
-				"Resources/Private/Libs/Build/composer.*"
-			],
-			"constraints": {
-				"php": "8.1.*"
-			}
-		},
-		{
-			"extends": [
-				":pinVersions"
-			],
-			"matchFileNames": [
+				"Resources/Private/Libs/Build/composer.*",
 				"Tests/CGL/composer.*"
-			],
-			"constraints": {
-				"php": "8.3.*"
-			}
+			]
 		}
 	]
 }
