@@ -23,7 +23,8 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver\ProblemSolving\Solution\Model;
 
-use OpenAI\Responses;
+use Anthropic\Responses as AnthropicResponses;
+use OpenAI\Responses as OpenAIResponses;
 
 /**
  * CompletionResponse
@@ -43,9 +44,9 @@ final class CompletionResponse implements \JsonSerializable
     ) {}
 
     public static function fromOpenAIChoice(
-        Responses\Chat\CreateResponseChoice|Responses\Chat\CreateStreamedResponseChoice $choice,
+        OpenAIResponses\Chat\CreateResponseChoice|OpenAIResponses\Chat\CreateStreamedResponseChoice $choice,
     ): self {
-        if ($choice instanceof Responses\Chat\CreateStreamedResponseChoice) {
+        if ($choice instanceof OpenAIResponses\Chat\CreateStreamedResponseChoice) {
             $role = (string)$choice->delta->role;
             $content = $choice->delta->content;
         } else {
@@ -54,6 +55,14 @@ final class CompletionResponse implements \JsonSerializable
         }
 
         return new self($choice->index, new Message($role, $content), $choice->finishReason);
+    }
+
+    public static function fromAnthropicContent(
+        int $index,
+        AnthropicResponses\Messages\CreateResponseContent $content,
+        ?string $stopReason,
+    ): self {
+        return new self($index, new Message($content->type, $content->text), $stopReason);
     }
 
     /**

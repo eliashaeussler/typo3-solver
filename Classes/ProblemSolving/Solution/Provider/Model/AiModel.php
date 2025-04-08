@@ -42,4 +42,18 @@ final class AiModel
     {
         return new self($response->id, new \DateTimeImmutable('@' . $response->created));
     }
+
+    /**
+     * @param array{created_at: string, display_name: string, id: string, type: string} $model
+     */
+    public static function fromAnthropicModel(array $model): self
+    {
+        $createdAt = \DateTimeImmutable::createFromFormat(\DateTimeInterface::RFC3339, $model['created_at']);
+
+        if ($createdAt === false) {
+            $createdAt = null;
+        }
+
+        return new self($model['id'], $createdAt);
+    }
 }
