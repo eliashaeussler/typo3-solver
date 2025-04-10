@@ -258,10 +258,9 @@ The following input parameters are available:
 `solver:list-models`
 ====================
 
-The command `solver:list-models` can be used to list available OpenAI
-models for the configured OpenAI :ref:`API key <api-key>`. By default,
-the command lists only GPT models since all other models cannot be
-used with the extension.
+The command `solver:list-models` can be used to list available
+models for the configured :ref:`API key <api-key>`. By default,
+the command lists only models that can be used with the extension.
 
 ..  tabs::
 
@@ -279,12 +278,9 @@ used with the extension.
 
 ..  note::
 
-    EXT:solver uses the `chat completion <https://platform.openai.com/docs/guides/chat>`__
-    component to generate solutions. You must select a model being available
-    with the chat completion component only.
-
-    All available models are also listed in the
-    `OpenAI documentation <https://platform.openai.com/docs/models>`__.
+    EXT:solver uses the chat completion component to generate solutions.
+    You must select a model being available with the chat completion component
+    only.
 
 ..  note::
 
@@ -299,11 +295,7 @@ The following input parameters are available:
     :type: boolean
     :Default: false
 
-    List all available models rather than only GPT models.
-
-    ..  note::
-
-        Only GPT models can be used with the extension.
+    List all available models rather than only supported models.
 
     Example:
 
@@ -327,7 +319,7 @@ The following input parameters are available:
 ====================
 
 Every solution is cached to reduce the amount of requests sent by the
-OpenAI client. In order to flush the solution cache or remove single
+AI client. In order to flush the solution cache or remove single
 cache entries, the command `solver:cache:flush` can be used.
 
 ..  tabs::
@@ -358,7 +350,7 @@ The following input parameters are available:
     ..  tip::
 
         The cache identifier can be found on the error page next to the
-        used OpenAI model. Hover over the cache date to make it visible.
+        used AI model. Hover over the cache date to make it visible.
 
     Example:
 
