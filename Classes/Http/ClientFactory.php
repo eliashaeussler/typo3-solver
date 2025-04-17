@@ -23,9 +23,10 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver\Http;
 
+use Anthropic\Client as AnthropicClient;
 use EliasHaeussler\Typo3Solver\Configuration;
 use EliasHaeussler\Typo3Solver\Exception;
-use OpenAI\Client;
+use OpenAI\Client as OpenAIClient;
 
 /**
  * ClientFactory
@@ -42,7 +43,7 @@ final class ClientFactory
     /**
      * @throws Exception\ApiKeyMissingException
      */
-    public function get(): Client
+    public function get(): OpenAIClient
     {
         $apiKey = $this->configuration->getApiKey();
 
@@ -51,5 +52,19 @@ final class ClientFactory
         }
 
         return \OpenAI::client($apiKey);
+    }
+
+    /**
+     * @throws Exception\ApiKeyMissingException
+     */
+    public function getAnthropicClient(): AnthropicClient
+    {
+        $apiKey = $this->configuration->getApiKey();
+
+        if ($apiKey === null || \trim($apiKey) === '') {
+            throw Exception\ApiKeyMissingException::create();
+        }
+
+        return \Anthropic::client($apiKey);
     }
 }

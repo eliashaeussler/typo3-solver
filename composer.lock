@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "95accf46dc0cd4ee22ce9a237b7d6825",
+    "content-hash": "28756ff5164c211db337f7b283071591",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1403,6 +1403,91 @@
                 "source": "https://github.com/Masterminds/html5-php/tree/2.9.0"
             },
             "time": "2024-03-31T07:05:07+00:00"
+        },
+        {
+            "name": "mozex/anthropic-php",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mozex/anthropic-php.git",
+                "reference": "5f9c9c74f2d3d97aab36a2604bf93f1b7aa4c84c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mozex/anthropic-php/zipball/5f9c9c74f2d3d97aab36a2604bf93f1b7aa4c84c",
+                "reference": "5f9c9c74f2d3d97aab36a2604bf93f1b7aa4c84c",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1.0",
+                "php-http/discovery": "^1.20.0",
+                "php-http/multipart-stream-builder": "^1.4.2",
+                "psr/http-client": "^1.0.3",
+                "psr/http-client-implementation": "^1.0.1",
+                "psr/http-factory-implementation": "*",
+                "psr/http-message": "^1.1.0|^2.0.0"
+            },
+            "require-dev": {
+                "guzzlehttp/guzzle": "^7.9.2",
+                "guzzlehttp/psr7": "^2.7.0",
+                "laravel/pint": "^1.18.1",
+                "mockery/mockery": "^1.6.12",
+                "nunomaduro/collision": "^7.11.0|^8.5.0",
+                "pestphp/pest": "^2.36.0|^3.5.0",
+                "pestphp/pest-plugin-arch": "^2.7|^3.0",
+                "pestphp/pest-plugin-type-coverage": "^2.8.7|^3.1.0",
+                "phpstan/phpstan": "^1.12.7",
+                "spatie/ray": "^1.41",
+                "symfony/var-dumper": "^6.4.11|^7.1.5"
+            },
+            "type": "library",
+            "extra": {
+                "COV": "0.10.3"
+            },
+            "autoload": {
+                "files": [
+                    "src/Anthropic.php"
+                ],
+                "psr-4": {
+                    "Anthropic\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mozex",
+                    "email": "mozex@alphorld.com"
+                }
+            ],
+            "description": "Anthropic PHP is a supercharged community-maintained PHP API client that allows you to interact with Anthropic API.",
+            "keywords": [
+                "Claude-3-Haiku",
+                "Claude-3-Opus",
+                "Claude-3-Sonnet",
+                "anthropic",
+                "api",
+                "claude",
+                "client",
+                "language",
+                "natural",
+                "php",
+                "processing",
+                "sdk"
+            ],
+            "support": {
+                "issues": "https://github.com/mozex/anthropic-php/issues",
+                "source": "https://github.com/mozex/anthropic-php/tree/1.1.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/mozex",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-12-21T11:04:52+00:00"
         },
         {
             "name": "openai-php/client",
