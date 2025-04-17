@@ -24,7 +24,12 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Tests\Unit\ProblemSolving\Solution;
 
 use EliasHaeussler\Typo3Solver as Src;
-use OpenAI\Responses;
+use EliasHaeussler\Typo3Solver\Tests;
+use GeminiAPI\Enums\FinishReason;
+use GeminiAPI\Enums\Role;
+use GeminiAPI\Resources;
+use GeminiAPI\Responses as GeminiResponses;
+use OpenAI\Responses as OpenAIResponses;
 use PHPUnit\Framework;
 use TYPO3\TestingFramework;
 
@@ -54,7 +59,7 @@ final class SolutionTest extends TestingFramework\Core\Unit\UnitTestCase
     #[Framework\Attributes\Test]
     public function fromOpenAIResponseReturnsSolution(): void
     {
-        $response = Responses\Chat\CreateResponse::fake([
+        $response = OpenAIResponses\Chat\CreateResponse::fake([
             'model' => 'model',
             'choices' => [
                 [
@@ -73,6 +78,27 @@ final class SolutionTest extends TestingFramework\Core\Unit\UnitTestCase
         );
 
         $actual = Src\ProblemSolving\Solution\Solution::fromOpenAIResponse($response, 'prompt');
+
+        self::assertSame('prompt', $actual->prompt);
+        self::assertSame('model', $actual->model);
+        self::assertEquals([$completionResponse], $actual->responses);
+    }
+
+    #[Framework\Attributes\Test]
+    public function fromGeminiResponseReturnsSolution(): void
+    {
+        $candidate = $this->createMock(Resources\Candidate::class);
+        $response = new GeminiResponses\GenerateContentResponse([$candidate]);
+
+        Tests\Unit\DataProvider\GeminiDataProvider::fillCandidateProperties($candidate);
+
+        $completionResponse = new Src\ProblemSolving\Solution\Model\CompletionResponse(
+            0,
+            new Src\ProblemSolving\Solution\Model\Message(Role::Model->value, 'foo'),
+            FinishReason::MAX_TOKENS->value,
+        );
+
+        $actual = Src\ProblemSolving\Solution\Solution::fromGeminiResponse($response, 'model', 'prompt');
 
         self::assertSame('prompt', $actual->prompt);
         self::assertSame('model', $actual->model);
