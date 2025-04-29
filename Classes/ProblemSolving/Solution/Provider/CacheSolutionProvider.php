@@ -43,7 +43,7 @@ final class CacheSolutionProvider implements StreamedSolutionProvider
     /**
      * @throws Exception\MissingSolutionProviderException
      */
-    public static function create(SolutionProvider $delegate = null): static
+    public static function create(?SolutionProvider $delegate = null): static
     {
         if ($delegate === null) {
             throw Exception\MissingSolutionProviderException::forDelegate();

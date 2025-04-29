@@ -41,7 +41,7 @@ final class Solver
     public function __construct(
         private readonly Configuration\Configuration $configuration,
         private readonly Formatter\Formatter $formatter,
-        Solution\Provider\SolutionProvider $solutionProvider = null,
+        ?Solution\Provider\SolutionProvider $solutionProvider = null,
     ) {
         $this->provider = new Solution\Provider\CacheSolutionProvider(
             new Cache\SolutionsCache(),

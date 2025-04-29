@@ -37,7 +37,7 @@ final class OpenAISolutionProvider implements StreamedSolutionProvider
         private readonly Client $client,
     ) {}
 
-    public static function create(Client $client = null): static
+    public static function create(?Client $client = null): static
     {
         $configuration = new Configuration\Configuration();
         $client ??= (new Http\ClientFactory($configuration))->get();

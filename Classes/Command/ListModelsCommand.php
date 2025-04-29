@@ -39,7 +39,7 @@ final class ListModelsCommand extends Console\Command\Command
 
     public function __construct(
         private readonly Configuration\Configuration $configuration,
-        ProblemSolving\Solution\Provider\SolutionProvider $solutionProvider = null,
+        ?ProblemSolving\Solution\Provider\SolutionProvider $solutionProvider = null,
     ) {
         parent::__construct('solver:list-models');
 

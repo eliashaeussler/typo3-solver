@@ -37,7 +37,7 @@ final class ProblemDataProvider
 {
     public static function get(
         string $message = 'Something went wrong.',
-        ProblemSolving\Solution\Provider\SolutionProvider $solutionProvider = null,
+        ?ProblemSolving\Solution\Provider\SolutionProvider $solutionProvider = null,
         string $prompt = 'prompt',
     ): ProblemSolving\Problem\Problem {
         $exception = new \Exception($message, 123);
