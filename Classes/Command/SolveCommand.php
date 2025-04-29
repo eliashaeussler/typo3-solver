@@ -46,7 +46,7 @@ final class SolveCommand extends Console\Command\Command
         private readonly Cache\SolutionsCache $solutionsCache,
         private readonly Formatter\CliFormatter $cliFormatter,
         private readonly Formatter\JsonFormatter $jsonFormatter,
-        ProblemSolving\Solution\Provider\SolutionProvider $solutionProvider = null,
+        ?ProblemSolving\Solution\Provider\SolutionProvider $solutionProvider = null,
     ) {
         parent::__construct('solver:solve');
 
