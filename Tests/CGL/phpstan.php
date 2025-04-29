@@ -41,14 +41,10 @@ return PHPStanConfig\Config\Config::create($rootPath)
         $rootPath . '/.build/vendor/autoload.php',
     )
     ->withBaseline()
-    ->withBleedingEdge()
+    ->withBleedingEdge([
+        'internalTag' => false,
+    ])
     ->maxLevel()
     ->withSets($symfonySet)
-    ->ignoreError(identifier: 'classConstant.internal')
-    ->ignoreError(identifier: 'method.internal')
-    ->ignoreError(identifier: 'method.internalClass')
-    ->ignoreError(identifier: 'new.internalClass')
-    ->ignoreError(identifier: 'staticMethod.internal')
-    ->ignoreError(identifier: 'staticMethod.internalClass')
     ->toArray()
 ;
