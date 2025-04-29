@@ -170,7 +170,7 @@ final class SolveCommandTest extends TestingFramework\Core\Unit\UnitTestCase
         $this->commandTester->execute(['--identifier' => $identifier, '--refresh' => true]);
 
         self::assertSame(0, $this->commandTester->getStatusCode());
-        self::assertNotEquals($solution->responses, $this->solutionsCache->get($problem)->responses);
+        self::assertNotEquals($solution->responses, $this->solutionsCache->get($problem)?->responses);
     }
 
     #[Framework\Attributes\Test]
