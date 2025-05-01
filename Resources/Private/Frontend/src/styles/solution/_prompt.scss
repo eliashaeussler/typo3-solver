@@ -17,19 +17,19 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-@import '../variables';
+@use '../variables';
 
 .solution-prompt {
-    padding: $padding-prompt $padding-container;
-    font-size: $font-size-small;
-    border-top: 1px solid $light-gray;
+    padding: variables.$padding-prompt variables.$padding-container;
+    font-size: variables.$font-size-small;
+    border-top: 1px solid variables.$light-gray;
 
     summary {
         cursor: pointer;
     }
 
     pre {
-        padding: $padding-prompt;
-        margin-bottom: #{$padding-container - $padding-prompt};
+        padding: variables.$padding-prompt;
+        margin-bottom: #{variables.$padding-container - variables.$padding-prompt};
     }
 }

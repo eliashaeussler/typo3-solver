@@ -17,12 +17,12 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-@import 'defaults';
+@use 'defaults';
 
-@import 'solution/body';
-@import 'solution/container';
-@import 'solution/controls';
-@import 'solution/head';
-@import 'solution/list';
-@import 'solution/loader';
-@import 'solution/prompt';
+@use 'solution/body';
+@use 'solution/container';
+@use 'solution/controls';
+@use 'solution/head';
+@use 'solution/list';
+@use 'solution/loader';
+@use 'solution/prompt';

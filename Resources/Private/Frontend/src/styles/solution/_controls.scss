@@ -17,7 +17,7 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-@import '../variables';
+@use '../variables';
 
 .solution-selector {
     ~ .solution-body {
@@ -43,27 +43,27 @@
 .solution-arrow {
     display: none;
     position: absolute;
-    background-color: $primary-color;
-    width: $controls-arrow-size;
-    height: $controls-arrow-size;
+    background-color: variables.$primary-color;
+    width: variables.$controls-arrow-size;
+    height: variables.$controls-arrow-size;
     top: 8rem;
-    color: $white;
+    color: variables.$white;
     cursor: pointer;
-    font-size: $font-size-medium;
+    font-size: variables.$font-size-medium;
     text-align: center;
-    line-height: $controls-arrow-size;
+    line-height: variables.$controls-arrow-size;
 
     &:hover,
     &:focus {
-        background-color: $medium-gray;
+        background-color: variables.$medium-gray;
     }
 
     &-prev {
-        left: -$controls-arrow-size;
+        left: -(variables.$controls-arrow-size);
     }
 
     &-next {
-        right: -$controls-arrow-size;
+        right: -(variables.$controls-arrow-size);
     }
 }
 

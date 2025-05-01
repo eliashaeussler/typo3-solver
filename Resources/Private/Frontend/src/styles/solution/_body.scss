@@ -17,13 +17,13 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-@import '../variables';
+@use '../variables';
 
 .solution-body {
-    padding: $padding-container;
+    padding: variables.$padding-container;
 
     &:not(:first-child) {
-        border-top: 1px solid $black-transparent;
+        border-top: 1px solid variables.$black-transparent;
     }
 
     > *:first-child {
@@ -35,12 +35,12 @@
     }
 
     pre:not(.has-line-numbers) {
-        padding: $padding-medium;
+        padding: variables.$padding-medium;
     }
 
     *:not(pre) > code {
-        padding: $padding-small;
-        border: 1px solid $black-transparent;
+        padding: variables.$padding-small;
+        border: 1px solid variables.$black-transparent;
     }
 
     li > p {
@@ -51,8 +51,8 @@
 .solution-streaming .solution-body {
     > *:last-child::after {
         content: '';
-        border-right: 0.5rem solid $medium-gray;
-        margin-left: $gap-small;
+        border-right: 0.5rem solid variables.$medium-gray;
+        margin-left: variables.$gap-small;
         opacity: 0;
     }
 }

@@ -17,12 +17,12 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-@import '../variables';
+@use '../variables';
 
 .solution-head {
-    color: $primary-color;
-    background-color: $secondary-color;
-    padding: $padding-container;
+    color: variables.$primary-color;
+    background-color: variables.$secondary-color;
+    padding: variables.$padding-container;
 
     &-container {
         display: flex;
@@ -37,8 +37,8 @@
     }
 
     .solution-icon > svg {
-        width: $font-size-large;
-        height: $font-size-large;
+        width: variables.$font-size-large;
+        height: variables.$font-size-large;
     }
 }
 
@@ -47,17 +47,17 @@
     padding: 0;
     margin-bottom: 0;
     display: flex;
-    gap: $gap-medium;
+    gap: variables.$gap-medium;
 
     li {
         display: flex;
         align-items: center;
-        gap: $gap-small;
+        gap: variables.$gap-small;
     }
 
     svg {
-        height: $font-size-default;
-        width: $font-size-default;
+        height: variables.$font-size-default;
+        width: variables.$font-size-default;
         opacity: 0.5;
     }
 }
