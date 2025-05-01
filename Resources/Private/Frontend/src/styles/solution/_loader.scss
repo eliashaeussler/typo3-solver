@@ -1,7 +1,7 @@
-/*
+/*!
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2023 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2025 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -10,14 +10,14 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-@import '../variables';
+@use '../variables';
 
 .solution-loader {
     display: none;
@@ -25,19 +25,19 @@
     &-container {
         position: absolute;
         display: flex;
-        bottom: $loader-gap;
-        right: $loader-gap;
-        background-color: $primary-color;
-        color: $white;
+        bottom: variables.$loader-gap;
+        right: variables.$loader-gap;
+        background-color: variables.$primary-color;
+        color: variables.$white;
         border-radius: 0.25rem;
-        box-shadow: $box-shadow;
-        padding: $padding-large;
-        gap: $gap-medium;
+        box-shadow: variables.$box-shadow;
+        padding: variables.$padding-large;
+        gap: variables.$gap-medium;
     }
 
     &-spinner {
-        animation: $animation-spinner;
-        width: $font-size-default;
+        animation: variables.$animation-spinner;
+        width: variables.$font-size-default;
     }
 }
 
@@ -49,5 +49,5 @@
     width: 100%;
     height: 100%;
     z-index: 100;
-    background-color: $black-transparent;
+    background-color: variables.$black-transparent;
 }

@@ -1,7 +1,7 @@
-/*
+/*!
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2023 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2025 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -10,14 +10,14 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-@import '../variables';
+@use '../variables';
 
 .solution-selector {
     ~ .solution-body {
@@ -43,27 +43,27 @@
 .solution-arrow {
     display: none;
     position: absolute;
-    background-color: $primary-color;
-    width: $controls-arrow-size;
-    height: $controls-arrow-size;
+    background-color: variables.$primary-color;
+    width: variables.$controls-arrow-size;
+    height: variables.$controls-arrow-size;
     top: 8rem;
-    color: $white;
+    color: variables.$white;
     cursor: pointer;
-    font-size: $font-size-medium;
+    font-size: variables.$font-size-medium;
     text-align: center;
-    line-height: $controls-arrow-size;
+    line-height: variables.$controls-arrow-size;
 
     &:hover,
     &:focus {
-        background-color: $medium-gray;
+        background-color: variables.$medium-gray;
     }
 
     &-prev {
-        left: -$controls-arrow-size;
+        left: -(variables.$controls-arrow-size);
     }
 
     &-next {
-        right: -$controls-arrow-size;
+        right: -(variables.$controls-arrow-size);
     }
 }
 

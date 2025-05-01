@@ -1,9 +1,7 @@
-'use strict'
-
 /*
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2024 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2025 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -12,23 +10,22 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-const eslint = require('@eslint/js');
-const tseslint = require('typescript-eslint');
+import eslint from '@eslint/js';
+import licenseHeader from 'eslint-plugin-license-header';
+import licenseText from './res/license-header.js';
+import tseslint from 'typescript-eslint';
 
-module.exports = [
+export default [
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
   {
-    ignores: [
-      'webpack.config.js',
-    ],
     languageOptions: {
       globals: {
         browser: true,
@@ -43,8 +40,11 @@ module.exports = [
         sourceType: 'module',
       },
     },
+    plugins: {
+      'license-header': licenseHeader,
+    },
     rules: {
-      'no-unused-vars': 'off',
+      'license-header/header': ['error', licenseText],
       '@typescript-eslint/no-unused-vars': 'off',
     },
   },

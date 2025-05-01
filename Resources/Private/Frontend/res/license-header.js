@@ -17,36 +17,22 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-/**
- * Data of event stream with event "solutionDelta".
- */
-type SolutionDeltaResponse = {
-  data: SolutionDeltaResponseData;
-  content: string;
-}
+import {fileURLToPath} from 'url';
+import path from 'path';
+import {readFileSync} from 'fs';
 
-/**
- * Metadata of solutions streamed with event "solutionDelta".
- */
-type SolutionDeltaResponseData = {
-  model: string;
-  numberOfResponses: number;
-  numberOfPendingResponses: number;
-  prompt: string;
-}
+const licenseFile = `${path.dirname(fileURLToPath(import.meta.url))}/license-header.txt`;
+const currentYear = new Date().getFullYear().toString();
+const lines = readFileSync(licenseFile).toString()
+  .replace('<%= YEAR %>', currentYear)
+  .trim()
+  .split('\n')
+;
 
-/**
- * Data of event stream with event "solutionError"
- */
-type SolutionErrorResponse = {
-  data: SolutionErrorResponseData;
-  content: string;
-}
+const licenseHeader = [
+  '/*',
+  ...lines.map((line) => ` * ${line}`.trimEnd()),
+  ' */'
+];
 
-/**
- * Metadata of errors streamed with event "solutionError".
- */
-type SolutionErrorResponseData = {
-  message: string;
-  code: string;
-};
+export default licenseHeader;

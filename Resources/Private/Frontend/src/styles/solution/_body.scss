@@ -1,7 +1,7 @@
-/*
+/*!
  * This file is part of the TYPO3 CMS extension "solver".
  *
- * Copyright (C) 2023 Elias Häußler <elias@haeussler.dev>
+ * Copyright (C) 2023-2025 Elias Häußler <elias@haeussler.dev>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -10,20 +10,20 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-@import '../variables';
+@use '../variables';
 
 .solution-body {
-    padding: $padding-container;
+    padding: variables.$padding-container;
 
     &:not(:first-child) {
-        border-top: 1px solid $black-transparent;
+        border-top: 1px solid variables.$black-transparent;
     }
 
     > *:first-child {
@@ -35,12 +35,12 @@
     }
 
     pre:not(.has-line-numbers) {
-        padding: $padding-medium;
+        padding: variables.$padding-medium;
     }
 
     *:not(pre) > code {
-        padding: $padding-small;
-        border: 1px solid $black-transparent;
+        padding: variables.$padding-small;
+        border: 1px solid variables.$black-transparent;
     }
 
     li > p {
@@ -51,8 +51,8 @@
 .solution-streaming .solution-body {
     > *:last-child::after {
         content: '';
-        border-right: 0.5rem solid $medium-gray;
-        margin-left: $gap-small;
+        border-right: 0.5rem solid variables.$medium-gray;
+        margin-left: variables.$gap-small;
         opacity: 0;
     }
 }

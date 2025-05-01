@@ -17,36 +17,19 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-/**
- * Data of event stream with event "solutionDelta".
- */
-type SolutionDeltaResponse = {
-  data: SolutionDeltaResponseData;
-  content: string;
-}
-
-/**
- * Metadata of solutions streamed with event "solutionDelta".
- */
-type SolutionDeltaResponseData = {
-  model: string;
-  numberOfResponses: number;
-  numberOfPendingResponses: number;
-  prompt: string;
-}
-
-/**
- * Data of event stream with event "solutionError"
- */
-type SolutionErrorResponse = {
-  data: SolutionErrorResponseData;
-  content: string;
-}
-
-/**
- * Metadata of errors streamed with event "solutionError".
- */
-type SolutionErrorResponseData = {
-  message: string;
-  code: string;
+export default {
+  extends: 'stylelint-config-sass-guidelines',
+  plugins: [
+    'stylelint-header',
+  ],
+  rules: {
+    '@stylistic/indentation': 4,
+    'max-nesting-depth': 2,
+    'header/header': [
+      './res/license-header.txt',
+      {
+        nonMatchingTolerance: 1,
+      },
+    ],
+  },
 };

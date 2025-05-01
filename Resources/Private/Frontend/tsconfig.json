@@ -1,34 +1,24 @@
 {
 	"compilerOptions": {
-		"outDir": "../../Public/Frontend",
-		"rootDir": ".",
-		"sourceMap": true,
-		"noImplicitAny": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
-		"module": "ES6",
-		"target": "esnext",
-		"strict": true,
-		"baseUrl": ".",
-		"moduleResolution": "node",
-		"esModuleInterop": true,
-		"lib": [
-			"dom",
-			"dom.iterable"
-		],
+		"target": "es2020",
 		"allowSyntheticDefaultImports": true,
-		"skipLibCheck": true,
-		"forceConsistentCasingInFileNames": true,
-		"typeRoots": [
-			"node_modules/@types",
-			"src/scripts/@types"
-		]
-	},
-	"include": [
-		"**/*.ts",
-		"**/*.tsx"
-	],
-	"exclude": [
-		"node_modules"
-	]
+		"incremental": true,
+		"tsBuildInfoFile": "../../../.Build/log/tsconfig.tsbuildinfo",
+		"module": "es2020",
+		"moduleResolution": "node",
+		"removeComments": false,
+		"alwaysStrict": true,
+		"downlevelIteration": true,
+		"experimentalDecorators": true,
+		"useDefineForClassFields": false,
+		"noImplicitAny": true,
+		"noImplicitThis": true,
+		"noImplicitReturns": true,
+		"pretty": true,
+		"baseUrl": "src/scripts",
+		"paths": {
+			"@eliashaeussler/typo3-solver/*": ["*"]
+		},
+		"outDir": "../../Public/JavaScript"
+	}
 }
