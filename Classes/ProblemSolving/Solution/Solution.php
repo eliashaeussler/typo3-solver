@@ -23,9 +23,10 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver\ProblemSolving\Solution;
 
+use Anthropic\Responses as AnthropicResponses;
 use EliasHaeussler\Typo3Solver\ProblemSolving;
 use IteratorAggregate;
-use OpenAI\Responses;
+use OpenAI\Responses as OpenAIResponses;
 
 /**
  * Solution.
@@ -52,7 +53,7 @@ final class Solution implements \Countable, \IteratorAggregate, \JsonSerializabl
         public readonly string $prompt,
     ) {}
 
-    public static function fromOpenAIResponse(Responses\Chat\CreateResponse $response, string $prompt): self
+    public static function fromOpenAIResponse(OpenAIResponses\Chat\CreateResponse $response, string $prompt): self
     {
         return new self(
             \array_map(
@@ -62,6 +63,19 @@ final class Solution implements \Countable, \IteratorAggregate, \JsonSerializabl
             $response->model,
             $prompt,
         );
+    }
+
+    public static function fromAnthropicResponse(
+        AnthropicResponses\Messages\CreateResponse $response,
+        string $prompt,
+    ): self {
+        $responses = [];
+
+        foreach ($response->content as $index => $content) {
+            $responses[] = Model\CompletionResponse::fromAnthropicContent($index, $content, $response->stop_reason);
+        }
+
+        return new self($responses, $response->model, $prompt);
     }
 
     /**
