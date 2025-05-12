@@ -24,6 +24,8 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Tests\Unit\Http;
 
 use EliasHaeussler\Typo3Solver as Src;
+use GeminiAPI\Client as GeminiClient;
+use OpenAI\Client as OpenAIClient;
 use PHPUnit\Framework;
 use TYPO3\TestingFramework;
 
@@ -48,17 +50,17 @@ final class ClientFactoryTest extends TestingFramework\Core\Unit\UnitTestCase
     }
 
     #[Framework\Attributes\Test]
-    public function getThrowsExceptionIfApiKeyIsNotConfigured(): void
+    public function getOpenAIClientThrowsExceptionIfApiKeyIsNotConfigured(): void
     {
         $this->expectExceptionObject(
             Src\Exception\ApiKeyMissingException::create(),
         );
 
-        $this->subject->get();
+        $this->subject->getOpenAIClient();
     }
 
     #[Framework\Attributes\Test]
-    public function getReturnsOpenAIClient(): void
+    public function getOpenAIClientReturnsOpenAIClient(): void
     {
         $exception = null;
 
@@ -67,7 +69,35 @@ final class ClientFactoryTest extends TestingFramework\Core\Unit\UnitTestCase
         ];
 
         try {
-            $this->subject->get();
+            self::assertInstanceOf(OpenAIClient::class, $this->subject->getOpenAIClient());
+        } catch (Src\Exception\ApiKeyMissingException $exception) {
+            // Intended fallthrough.
+        }
+
+        self::assertNull($exception);
+    }
+
+    #[Framework\Attributes\Test]
+    public function getGeminiClientThrowsExceptionIfApiKeyIsNotConfigured(): void
+    {
+        $this->expectExceptionObject(
+            Src\Exception\ApiKeyMissingException::create(),
+        );
+
+        $this->subject->getGeminiClient();
+    }
+
+    #[Framework\Attributes\Test]
+    public function getGeminiClientReturnsGeminiClient(): void
+    {
+        $exception = null;
+
+        $this->provider->configuration = [
+            'api/key' => 'foo',
+        ];
+
+        try {
+            self::assertInstanceOf(GeminiClient::class, $this->subject->getGeminiClient());
         } catch (Src\Exception\ApiKeyMissingException $exception) {
             // Intended fallthrough.
         }

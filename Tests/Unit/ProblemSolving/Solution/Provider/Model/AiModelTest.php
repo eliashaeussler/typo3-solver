@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Tests\Unit\ProblemSolving\Solution\Provider\Model;
 
 use EliasHaeussler\Typo3Solver as Src;
+use GeminiAPI\Resources;
 use OpenAI\Responses;
 use PHPUnit\Framework;
 use TYPO3\TestingFramework;
@@ -49,5 +50,16 @@ final class AiModelTest extends TestingFramework\Core\Unit\UnitTestCase
 
         self::assertSame('foo', $actual->name);
         self::assertSame(1739347287, $actual->createdAt?->getTimestamp());
+    }
+
+    #[Framework\Attributes\Test]
+    public function fromGeminiModelReturnsAiModelFromGivenGeminiModel(): void
+    {
+        $model = new Resources\Model('models/foo', '1.0.0', 'Foo', 'baz', 0, 0, [], null, null, null);
+
+        $actual = Src\ProblemSolving\Solution\Provider\Model\AiModel::fromGeminiModel($model);
+
+        self::assertSame('foo', $actual->name);
+        self::assertNull($actual->createdAt);
     }
 }

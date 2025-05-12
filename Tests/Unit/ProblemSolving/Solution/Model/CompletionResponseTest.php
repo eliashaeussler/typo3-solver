@@ -24,6 +24,9 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\Tests\Unit\ProblemSolving\Solution\Model;
 
 use EliasHaeussler\Typo3Solver as Src;
+use EliasHaeussler\Typo3Solver\Tests;
+use GeminiAPI\Enums;
+use GeminiAPI\Resources;
 use OpenAI\Responses;
 use PHPUnit\Framework;
 use TYPO3\TestingFramework;
@@ -45,8 +48,8 @@ final class CompletionResponseTest extends TestingFramework\Core\Unit\UnitTestCa
 
         $this->subject = new Src\ProblemSolving\Solution\Model\CompletionResponse(
             0,
-            new Src\ProblemSolving\Solution\Model\Message('role', 'foo'),
-            'finishReason',
+            new Src\ProblemSolving\Solution\Model\Message('model', 'foo'),
+            'MAX_TOKENS',
         );
     }
 
@@ -56,12 +59,12 @@ final class CompletionResponseTest extends TestingFramework\Core\Unit\UnitTestCa
         $choice = Responses\Chat\CreateResponseChoice::from([
             'index' => 0,
             'message' => [
-                'role' => 'role',
+                'role' => 'model',
                 'content' => 'foo',
                 'tool_calls' => null,
                 'function_call' => null,
             ],
-            'finish_reason' => 'finishReason',
+            'finish_reason' => 'MAX_TOKENS',
         ]);
 
         self::assertEquals(
@@ -76,10 +79,10 @@ final class CompletionResponseTest extends TestingFramework\Core\Unit\UnitTestCa
         $choice = Responses\Chat\CreateStreamedResponseChoice::from([
             'index' => 0,
             'delta' => [
-                'role' => 'role',
+                'role' => 'model',
                 'content' => 'foo',
             ],
-            'finish_reason' => 'finishReason',
+            'finish_reason' => 'MAX_TOKENS',
         ]);
 
         self::assertEquals(
@@ -89,15 +92,50 @@ final class CompletionResponseTest extends TestingFramework\Core\Unit\UnitTestCa
     }
 
     #[Framework\Attributes\Test]
+    public function fromGeminiCandidateReturnsCompletionResponseFromGeminiCandidate(): void
+    {
+        $candidate = $this->createMock(Resources\Candidate::class);
+
+        Tests\Unit\DataProvider\GeminiDataProvider::fillCandidateProperties($candidate);
+
+        self::assertEquals(
+            $this->subject,
+            Src\ProblemSolving\Solution\Model\CompletionResponse::fromGeminiCandidate($candidate),
+        );
+    }
+
+    #[Framework\Attributes\Test]
+    public function fromGeminiCandidateIgnoresNonTextContentParts(): void
+    {
+        $candidate = $this->createMock(Resources\Candidate::class);
+
+        Tests\Unit\DataProvider\GeminiDataProvider::fillCandidateProperties(
+            mock: $candidate,
+            part: new Resources\Parts\FilePart(Enums\MimeType::TEXT_MARKDOWN, 'foo'),
+        );
+
+        $expected = new Src\ProblemSolving\Solution\Model\CompletionResponse(
+            0,
+            new Src\ProblemSolving\Solution\Model\Message('model', null),
+            'MAX_TOKENS',
+        );
+
+        self::assertEquals(
+            $expected,
+            Src\ProblemSolving\Solution\Model\CompletionResponse::fromGeminiCandidate($candidate),
+        );
+    }
+
+    #[Framework\Attributes\Test]
     public function fromArrayReturnsCompletionResponseFromArray(): void
     {
         $response = [
             'index' => 0,
             'message' => [
-                'role' => 'role',
+                'role' => 'model',
                 'content' => 'foo',
             ],
-            'finishReason' => 'finishReason',
+            'finishReason' => 'MAX_TOKENS',
         ];
 
         self::assertEquals(
@@ -111,13 +149,13 @@ final class CompletionResponseTest extends TestingFramework\Core\Unit\UnitTestCa
     {
         $other = new Src\ProblemSolving\Solution\Model\CompletionResponse(
             0,
-            new Src\ProblemSolving\Solution\Model\Message('role', 'baz'),
+            new Src\ProblemSolving\Solution\Model\Message('model', 'baz'),
             'otherFinishReason',
         );
 
         $expected = new Src\ProblemSolving\Solution\Model\CompletionResponse(
             0,
-            new Src\ProblemSolving\Solution\Model\Message('role', 'foobaz'),
+            new Src\ProblemSolving\Solution\Model\Message('model', 'foobaz'),
             'otherFinishReason',
         );
 
@@ -131,7 +169,7 @@ final class CompletionResponseTest extends TestingFramework\Core\Unit\UnitTestCa
 
         $subject = new Src\ProblemSolving\Solution\Model\CompletionResponse(
             0,
-            new Src\ProblemSolving\Solution\Model\Message('role', 'foo'),
+            new Src\ProblemSolving\Solution\Model\Message('model', 'foo'),
         );
 
         self::assertFalse($subject->isFinished());
@@ -143,10 +181,10 @@ final class CompletionResponseTest extends TestingFramework\Core\Unit\UnitTestCa
         $expected = [
             'index' => 0,
             'message' => [
-                'role' => 'role',
+                'role' => 'model',
                 'content' => 'foo',
             ],
-            'finishReason' => 'finishReason',
+            'finishReason' => 'MAX_TOKENS',
         ];
 
         self::assertSame($expected, $this->subject->toArray());
@@ -158,10 +196,10 @@ final class CompletionResponseTest extends TestingFramework\Core\Unit\UnitTestCa
         $expected = [
             'index' => 0,
             'message' => [
-                'role' => 'role',
+                'role' => 'model',
                 'content' => 'foo',
             ],
-            'finishReason' => 'finishReason',
+            'finishReason' => 'MAX_TOKENS',
         ];
 
         self::assertJsonStringEqualsJsonString(

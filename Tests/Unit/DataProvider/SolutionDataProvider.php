@@ -34,15 +34,20 @@ use EliasHaeussler\Typo3Solver\ProblemSolving;
  */
 final class SolutionDataProvider
 {
-    public static function get(int $numberOfResponses = 1, string $message = 'message {index}'): ProblemSolving\Solution\Solution
-    {
+    public static function get(
+        int $numberOfResponses = 1,
+        string $message = 'message {index}',
+        string $role = 'role',
+        string $finishReason = 'stop',
+        string $model = 'model',
+    ): ProblemSolving\Solution\Solution {
         $responses = [];
 
         for ($i = 0; $i < $numberOfResponses; ++$i) {
-            $responses[] = self::getResponse(\str_replace('{index}', (string)($i + 1), $message), $i);
+            $responses[] = self::getResponse(\str_replace('{index}', (string)($i + 1), $message), $i, $role, $finishReason);
         }
 
-        return new ProblemSolving\Solution\Solution($responses, 'model', 'prompt');
+        return new ProblemSolving\Solution\Solution($responses, $model, 'prompt');
     }
 
     /**
@@ -61,12 +66,16 @@ final class SolutionDataProvider
         }
     }
 
-    public static function getResponse(string $message, int $index = 0): ProblemSolving\Solution\Model\CompletionResponse
-    {
+    public static function getResponse(
+        string $message,
+        int $index = 0,
+        string $role = 'role',
+        string $finishReason = 'stop',
+    ): ProblemSolving\Solution\Model\CompletionResponse {
         return new ProblemSolving\Solution\Model\CompletionResponse(
             $index,
-            new ProblemSolving\Solution\Model\Message('role', $message),
-            'stop',
+            new ProblemSolving\Solution\Model\Message($role, $message),
+            $finishReason,
         );
     }
 }

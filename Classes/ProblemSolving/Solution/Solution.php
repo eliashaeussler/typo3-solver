@@ -24,8 +24,9 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\ProblemSolving\Solution;
 
 use EliasHaeussler\Typo3Solver\ProblemSolving;
+use GeminiAPI\Responses as GeminiResponses;
 use IteratorAggregate;
-use OpenAI\Responses;
+use OpenAI\Responses as OpenAIResponses;
 
 /**
  * Solution.
@@ -52,7 +53,7 @@ final class Solution implements \Countable, \IteratorAggregate, \JsonSerializabl
         public readonly string $prompt,
     ) {}
 
-    public static function fromOpenAIResponse(Responses\Chat\CreateResponse $response, string $prompt): self
+    public static function fromOpenAIResponse(OpenAIResponses\Chat\CreateResponse $response, string $prompt): self
     {
         return new self(
             \array_map(
@@ -60,6 +61,22 @@ final class Solution implements \Countable, \IteratorAggregate, \JsonSerializabl
                 $response->choices,
             ),
             $response->model,
+            $prompt,
+        );
+    }
+
+    public static function fromGeminiResponse(
+        GeminiResponses\GenerateContentResponse $response,
+        string $model,
+        string $prompt,
+    ): self {
+        return new self(
+            /* @phpstan-ignore argument.type */
+            \array_map(
+                Model\CompletionResponse::fromGeminiCandidate(...),
+                $response->candidates,
+            ),
+            $model,
             $prompt,
         );
     }

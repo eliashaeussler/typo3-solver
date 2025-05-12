@@ -21,31 +21,37 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace EliasHaeussler\Typo3Solver\ProblemSolving\Solution\Provider\Model;
+namespace EliasHaeussler\Typo3Solver\Tests\Unit\DataProvider;
 
+use GeminiAPI\Enums;
 use GeminiAPI\Resources;
-use OpenAI\Responses;
+use PHPUnit\Framework;
 
 /**
- * AiModel
+ * GeminiDataProvider
  *
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
-final class AiModel
+final class GeminiDataProvider
 {
-    public function __construct(
-        public readonly string $name,
-        public readonly ?\DateTimeImmutable $createdAt = null,
-    ) {}
-
-    public static function fromOpenAIRetrieveResponse(Responses\Models\RetrieveResponse $response): self
-    {
-        return new self($response->id, new \DateTimeImmutable('@' . $response->created));
-    }
-
-    public static function fromGeminiModel(Resources\Model $model): self
-    {
-        return new self(\str_replace('models/', '', $model->name));
+    public static function fillCandidateProperties(
+        Resources\Candidate&Framework\MockObject\MockObject $mock,
+        int $index = 0,
+        Enums\FinishReason $finishReason = Enums\FinishReason::MAX_TOKENS,
+        ?Resources\Parts\PartInterface $part = null,
+    ): void {
+        $reflection = new \ReflectionClass(Resources\Candidate::class);
+        $reflection->getProperty('index')->setValue($mock, $index);
+        $reflection->getProperty('finishReason')->setValue($mock, $finishReason);
+        $reflection->getProperty('content')->setValue(
+            $mock,
+            new Resources\Content(
+                [
+                    $part ?? new Resources\Parts\TextPart('foo'),
+                ],
+                Enums\Role::Model,
+            ),
+        );
     }
 }

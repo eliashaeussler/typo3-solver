@@ -38,7 +38,7 @@ the handled exception, there are various types of problem solving.
 ..  attention::
 
     For the exception handler to work as expected, make sure you have
-    added an :ref:`OpenAI API key <api-key>`. This is an essential step,
+    added an :ref:`API key <api-key>`. This is an essential step,
     otherwise the exception handler won't be able to provide AI generated
     solutions and just shows a warning about the missing API key.
 
@@ -94,7 +94,7 @@ bootstrapping and a successfully built service container.
 If solution streaming is not possible, the solution is provided synchronous.
 This way is less convenient because – depending on the
 :ref:`configured attributes <extension-configuration>` – requests to
-OpenAI may take relatively long, up to several minutes. During the request,
+the AI provider may take relatively long, up to several minutes. During the request,
 no actions can be done as it would interrupt the request and therefore
 abort problem solving.
 
@@ -106,5 +106,5 @@ abort problem solving.
 ..  note::
 
     You can influence long durations a little bit by modifying the attributes
-    used for each request to OpenAI. All supported attributes can be changed
+    used for each request to the AI provider. All supported attributes can be changed
     in the :ref:`extension configuration <extension-configuration>`.

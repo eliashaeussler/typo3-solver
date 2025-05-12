@@ -75,6 +75,30 @@ parameters:
 		-
 			message: '#^Cannot access offset ''EXTENSIONS'' on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
+			count: 3
+			path: ../Unit/ProblemSolving/Solution/Provider/GeminiSolutionProviderTest.php
+
+		-
+			message: '#^Cannot access offset ''api'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 3
+			path: ../Unit/ProblemSolving/Solution/Provider/GeminiSolutionProviderTest.php
+
+		-
+			message: '#^Cannot access offset ''key'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 3
+			path: ../Unit/ProblemSolving/Solution/Provider/GeminiSolutionProviderTest.php
+
+		-
+			message: '#^Cannot access offset ''solver'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 3
+			path: ../Unit/ProblemSolving/Solution/Provider/GeminiSolutionProviderTest.php
+
+		-
+			message: '#^Cannot access offset ''EXTENSIONS'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
 			count: 5
 			path: ../Unit/ProblemSolving/Solution/Provider/OpenAISolutionProviderTest.php
 

@@ -40,7 +40,7 @@ final class OpenAISolutionProvider implements StreamedSolutionProvider
     public static function create(?Client $client = null): static
     {
         $configuration = new Configuration\Configuration();
-        $client ??= (new Http\ClientFactory($configuration))->get();
+        $client ??= (new Http\ClientFactory($configuration))->getOpenAIClient();
 
         return new self($configuration, $client);
     }
