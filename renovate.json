@@ -31,7 +31,7 @@
 				"openai-php/client"
 			],
 			"matchFileNames": [
-				".github/workflows/release.yaml"
+				"Resources/Private/Libs/Build/composer.json"
 			]
 		},
 		{
