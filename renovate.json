@@ -22,6 +22,19 @@
 			]
 		},
 		{
+			"enabled": false,
+			"matchCurrentVersion": "0.10.3",
+			"matchDatasources": [
+				"packagist"
+			],
+			"matchDepNames": [
+				"openai-php/client"
+			],
+			"matchFileNames": [
+				".github/workflows/release.yaml"
+			]
+		},
+		{
 			"extends": [
 				":pinVersions"
 			],
