@@ -3,6 +3,7 @@
 	"description": "Frontend for EXT:solver, an extension for TYPO3 CMS to extend TYPO3's exception handling with AI generated solutions",
 	"version": "1.0.1",
 	"type": "module",
+	"private": true,
 	"license": "GPL-2.0-or-later",
 	"scripts": {
 		"build": "cross-env NODE_ENV=production rollup -c --failAfterWarnings",

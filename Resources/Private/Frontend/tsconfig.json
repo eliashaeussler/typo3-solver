@@ -3,7 +3,7 @@
 		"target": "es2020",
 		"allowSyntheticDefaultImports": true,
 		"incremental": true,
-		"tsBuildInfoFile": "../../../.Build/log/tsconfig.tsbuildinfo",
+		"tsBuildInfoFile": "../../../.build/log/tsconfig.tsbuildinfo",
 		"module": "es2020",
 		"moduleResolution": "node",
 		"removeComments": false,
