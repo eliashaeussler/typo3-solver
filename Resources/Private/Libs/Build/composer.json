@@ -13,7 +13,7 @@
 	"require": {
 		"eliashaeussler/sse": "1.1.1",
 		"erusev/parsedown": "1.7.4",
-		"openai-php/client": "0.10.3",
+		"openai-php/client": "0.12.0",
 		"spatie/backtrace": "1.7.4"
 	},
 	"provide": {
