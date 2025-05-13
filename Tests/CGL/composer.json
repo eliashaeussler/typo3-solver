@@ -6,7 +6,7 @@
 		"eliashaeussler/rector-config": "3.1.1",
 		"ergebnis/composer-normalize": "2.47.0",
 		"phpstan/extension-installer": "1.4.3",
-		"phpstan/phpstan-symfony": "2.0.4",
+		"phpstan/phpstan-symfony": "2.0.5",
 		"saschaegerer/phpstan-typo3": "2.1.0",
 		"ssch/typo3-rector": "3.1.1",
 		"typo3/coding-standards": "0.8.0"
