@@ -1,6 +1,6 @@
 {
 	"require-dev": {
-		"armin/editorconfig-cli": "2.1.0",
+		"armin/editorconfig-cli": "2.1.1",
 		"eliashaeussler/php-cs-fixer-config": "2.3.0",
 		"eliashaeussler/phpstan-config": "2.9.0",
 		"eliashaeussler/rector-config": "3.1.1",
