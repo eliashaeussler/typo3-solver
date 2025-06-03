@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -e
+
+## Description: Run Composer command for TER libraries
+## Usage: libs [command] [options]
+## Example: ddev libs install
+
+ddev composer -d /var/www/html/Resources/Private/Libs/Build "$@"
