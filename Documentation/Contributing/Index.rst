@@ -6,11 +6,8 @@
 ..  image:: https://img.shields.io/codeclimate/maintainability/eliashaeussler/typo3-solver?logo=codeclimate
     :target: https://codeclimate.com/github/eliashaeussler/typo3-solver/maintainability
 
-..  image:: https://img.shields.io/github/actions/workflow/status/eliashaeussler/typo3-solver/cgl.yaml?label=cgl&logo=github
-    :target: https://github.com/eliashaeussler/typo3-solver/actions/workflows/cgl.yaml
-
-..  image:: https://img.shields.io/github/actions/workflow/status/eliashaeussler/typo3-solver/tests.yaml?label=tests&logo=github
-    :target: https://github.com/eliashaeussler/typo3-solver/actions/workflows/tests.yaml
+..  image:: https://img.shields.io/github/actions/workflow/status/eliashaeussler/typo3-solver/ci.yaml?label=CI&logo=github
+    :target: https://github.com/eliashaeussler/typo3-solver/actions/workflows/ci.yaml
 
 ..  _contributing:
 
