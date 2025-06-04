@@ -3,7 +3,6 @@ presets:
   - name: typo3-extension
   - name: npm-package
     options:
-      packageName: '@eliashaeussler/typo3-solver'
       path: Resources/Private/Frontend
 
 releaseOptions:

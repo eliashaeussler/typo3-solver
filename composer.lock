@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "88461fb76bfcbcdba4e93ef26d40bf6e",
+    "content-hash": "715152048eb1b3dda9c967e9b4c82f3d",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -5525,16 +5525,16 @@
         },
         {
             "name": "eliashaeussler/version-bumper",
-            "version": "2.3.1",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eliashaeussler/version-bumper.git",
-                "reference": "21727820f5d25c4c257b511cf4e01b92b737735e"
+                "reference": "e297bf2be0699e6dbffb42223f6e67d5e04251c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/version-bumper/zipball/21727820f5d25c4c257b511cf4e01b92b737735e",
-                "reference": "21727820f5d25c4c257b511cf4e01b92b737735e",
+                "url": "https://api.github.com/repos/eliashaeussler/version-bumper/zipball/e297bf2be0699e6dbffb42223f6e67d5e04251c4",
+                "reference": "e297bf2be0699e6dbffb42223f6e67d5e04251c4",
                 "shasum": ""
             },
             "require": {
@@ -5557,7 +5557,7 @@
                 "phpstan/extension-installer": "^1.2",
                 "phpstan/phpstan-phpunit": "^2.0",
                 "phpstan/phpstan-symfony": "^2.0",
-                "phpunit/phpunit": "^10.2 || ^11.0"
+                "phpunit/phpunit": "^10.2 || ^11.0 || ^12.0"
             },
             "type": "composer-plugin",
             "extra": {
@@ -5583,9 +5583,9 @@
             "description": "Composer plugin to bump project versions during release preparations",
             "support": {
                 "issues": "https://github.com/eliashaeussler/version-bumper/issues",
-                "source": "https://github.com/eliashaeussler/version-bumper/tree/2.3.1"
+                "source": "https://github.com/eliashaeussler/version-bumper/tree/2.4.0"
             },
-            "time": "2025-02-08T18:05:28+00:00"
+            "time": "2025-06-04T14:11:26+00:00"
         },
         {
             "name": "myclabs/deep-copy",
