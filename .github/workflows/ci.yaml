@@ -54,7 +54,7 @@ jobs:
           git diff --exit-code --staged Resources/Public
 
       # Update PR
-      - uses: stefanzweifel/git-auto-commit-action@v5
+      - uses: stefanzweifel/git-auto-commit-action@v6
         if: ${{ github.actor == 'renovate[bot]' && steps.check.outputs.skip_assets != 'true' }}
         id: commit
         with:
