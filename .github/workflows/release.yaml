@@ -59,7 +59,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.1
+          php-version: 8.2
           extensions: intl, mbstring, json, zip, curl
           tools: composer:v2, eliashaeussler/typo3-vendor-bundler, typo3/tailor
 
