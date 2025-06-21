@@ -39,7 +39,7 @@
 		"fix:composer": [
 			"@composer normalize",
 			"@composer normalize ../../composer.json",
-			"@composer normalize ../../Resources/Private/Libs/Build/composer.json",
+			"@composer normalize ../../Resources/Private/Libs/composer.json",
 			"@composer normalize ../Functional/Fixtures/Extensions/middleware_bridge/composer.json"
 		],
 		"fix:editorconfig": "@lint:editorconfig --fix",

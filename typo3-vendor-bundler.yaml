@@ -1,0 +1,4 @@
+autoload:
+  overwriteExistingTargetFile: true
+  excludeFromClassMap:
+    - 'vendor/composer/InstalledVersions.php'

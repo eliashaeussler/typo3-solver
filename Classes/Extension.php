@@ -23,8 +23,6 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver;
 
-use TYPO3\CMS\Core;
-
 /**
  * Extension
  *
@@ -35,23 +33,4 @@ use TYPO3\CMS\Core;
 final class Extension
 {
     public const KEY = 'solver';
-
-    /**
-     * Load additional libraries provided by PHAR file (only to be used in non-Composer-mode).
-     *
-     * FOR USE IN ext_localconf.php AND NON-COMPOSER-MODE ONLY.
-     */
-    public static function loadVendorLibraries(): void
-    {
-        // Vendor libraries are already available in Composer mode
-        if (Core\Core\Environment::isComposerMode()) {
-            return;
-        }
-
-        $vendorPharFile = Core\Utility\GeneralUtility::getFileAbsFileName('EXT:solver/Resources/Private/Libs/vendors.phar');
-
-        if (file_exists($vendorPharFile)) {
-            require 'phar://' . $vendorPharFile . '/vendor/autoload.php';
-        }
-    }
 }

@@ -7,10 +7,9 @@ on:
 jobs:
   # Job: Create release
   release:
-    if: startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     outputs:
-      release-notes-url: ${{ steps.create-release.outputs.html_url }}
+      release-notes-url: ${{ steps.create-release.outputs.url }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -26,13 +25,12 @@ jobs:
       # Create release
       - name: Create release
         id: create-release
-        uses: ncipollo/release-action@v1
+        uses: softprops/action-gh-release@v2
         with:
-          generateReleaseNotes: true
+          generate_release_notes: true
 
   # Job: Publish on TER
   ter-publish:
-    if: startsWith(github.ref, 'refs/tags/')
     needs: [release]
     runs-on: ubuntu-latest
     env:
@@ -63,25 +61,16 @@ jobs:
         with:
           php-version: 8.1
           extensions: intl, mbstring, json, zip, curl
-          tools: composer:v2
-          coverage: none
+          tools: composer:v2, eliashaeussler/typo3-vendor-bundler, typo3/tailor
 
-      # Build dependencies
-      - name: Build dependencies
-        env:
-          BUILD_PATH: Resources/Private/Libs/Build
-          LIB_PATH: Resources/Private/Libs
-        run: |
-          git reset --hard HEAD && git clean -dfx
-          curl -L https://clue.engineering/phar-composer-latest.phar -o phar-composer.phar
-          composer install -d $(pwd)/$BUILD_PATH
-          php phar-composer.phar build $(pwd)/$BUILD_PATH $(pwd)/$LIB_PATH/vendors.phar
-          rm phar-composer.phar
+      - name: Reset files
+        run: git reset --hard HEAD && git clean -dfx
 
-      # Install tailor
-      - name: Install tailor
-        run: composer global require typo3/tailor --prefer-dist --no-progress --no-suggest
+      # Bundle
+      - name: Bundle vendor libraries
+        run: composer bundle -v
 
+      # Release
       - name: Publish to TER
         run: |
           php ~/.composer/vendor/bin/tailor set-version "${{ steps.get-version.outputs.version }}"
