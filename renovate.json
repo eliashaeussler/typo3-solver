@@ -31,7 +31,7 @@
 				"openai-php/client"
 			],
 			"matchFileNames": [
-				"Resources/Private/Libs/Build/composer.json"
+				"Resources/Private/Libs/composer.json"
 			]
 		},
 		{
@@ -39,7 +39,7 @@
 				":pinVersions"
 			],
 			"matchFileNames": [
-				"Resources/Private/Libs/Build/composer.*",
+				"Resources/Private/Libs/composer.*",
 				"Tests/CGL/composer.*"
 			]
 		}

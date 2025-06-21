@@ -32,7 +32,6 @@ return [
         'documentation',
         'public',
         'resources\\/private\\/frontend',
-        'resources\\/private\\/libs\\/build',
         'tailor-version-upload',
         'tests',
         'vendor',
@@ -52,6 +51,7 @@ return [
         'phpunit.unit.xml',
         'renovate.json',
         'SECURITY.md',
+        'typo3-vendor-bundler.yaml',
         'version-bumper.yaml',
     ],
 ];

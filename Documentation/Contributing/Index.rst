@@ -77,7 +77,7 @@ You can access the DDEV site at https://typo3-ext-solver.ddev.site/.
 ..  tip::
 
     There's also a dedicated DDEV command to manage TER libraries located at
-    :file:`Resources/Private/Libs/Build`. Run :bash:`ddev libs <command>` with
+    :file:`Resources/Private/Libs`. Run :bash:`ddev libs <command>` with
     any available Composer command, e.g. :bash:`ddev libs install`.
 
 ..  _analyze-code:

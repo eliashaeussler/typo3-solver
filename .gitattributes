@@ -13,10 +13,10 @@
 /composer.lock                      export-ignore
 /CONTRIBUTING.md                    export-ignore
 /docker-compose.yml                 export-ignore
-/ext_localconf.php                  export-ignore
 /packaging_exclude.php              export-ignore
 /phpunit.functional.xml             export-ignore
 /phpunit.unit.xml                   export-ignore
 /renovate.json                      export-ignore
 /SECURITY.md                        export-ignore
+/typo3-vendor-bundler.yaml          export-ignore
 /version-bumper.yaml                export-ignore

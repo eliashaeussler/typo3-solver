@@ -5,4 +5,4 @@ set -e
 ## Usage: libs [command] [options]
 ## Example: ddev libs install
 
-ddev composer -d /var/www/html/Resources/Private/Libs/Build "$@"
+ddev composer -d /var/www/html/Resources/Private/Libs "$@"
