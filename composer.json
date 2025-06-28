@@ -37,7 +37,7 @@
 	"require-dev": {
 		"ext-dom": "*",
 		"ext-libxml": "*",
-		"eliashaeussler/version-bumper": "^2.4",
+		"eliashaeussler/version-bumper": "^2.4 || ^3.0",
 		"guzzlehttp/psr7": "^2.7",
 		"phpunit/phpcov": "^9.0 || ^10.0",
 		"symfony/dependency-injection": "^5.4 || ^6.0 || ^7.0",
