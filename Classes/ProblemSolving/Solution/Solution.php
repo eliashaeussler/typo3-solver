@@ -24,7 +24,6 @@ declare(strict_types=1);
 namespace EliasHaeussler\Typo3Solver\ProblemSolving\Solution;
 
 use EliasHaeussler\Typo3Solver\ProblemSolving;
-use IteratorAggregate;
 use OpenAI\Responses;
 
 /**
@@ -33,7 +32,7 @@ use OpenAI\Responses;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  *
- * @implements IteratorAggregate<int, Model\CompletionResponse>
+ * @implements \IteratorAggregate<int, Model\CompletionResponse>
  *
  * @phpstan-import-type CompletionResponseArray from ProblemSolving\Solution\Model\CompletionResponse
  * @phpstan-type SolutionArray array{responses: array<int, CompletionResponseArray>, model: string, prompt: string}
