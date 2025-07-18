@@ -3,13 +3,22 @@ on:
   push:
     branches:
       - '**'
+  pull_request:
+    branches:
+      - main
 
 permissions: read-all
 
 jobs:
+  prepare:
+    name: Prepare workflow
+    uses: eliashaeussler/.github/.github/workflows/pull-request.yaml@main
+
   assets:
     name: Verify asset integrity
     runs-on: ubuntu-latest
+    needs: prepare
+    if: needs.prepare.outputs.continue == 'true'
     outputs:
       modified: ${{ steps.commit.outputs.changes_detected || 'false' }}
     steps:
