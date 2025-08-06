@@ -59,7 +59,7 @@ jobs:
 
       - name: Download extension artefact
         id: download
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: extension-artefact
 
@@ -81,7 +81,7 @@ jobs:
 
       - name: Download extension artefact
         id: download
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: extension-artefact
 
