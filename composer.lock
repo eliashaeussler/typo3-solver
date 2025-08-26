@@ -2109,16 +2109,16 @@
         },
         {
             "name": "spatie/backtrace",
-            "version": "1.7.4",
+            "version": "1.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/backtrace.git",
-                "reference": "cd37a49fce7137359ac30ecc44ef3e16404cccbe"
+                "reference": "8c0f16a59ae35ec8c62d85c3c17585158f430110"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/backtrace/zipball/cd37a49fce7137359ac30ecc44ef3e16404cccbe",
-                "reference": "cd37a49fce7137359ac30ecc44ef3e16404cccbe",
+                "url": "https://api.github.com/repos/spatie/backtrace/zipball/8c0f16a59ae35ec8c62d85c3c17585158f430110",
+                "reference": "8c0f16a59ae35ec8c62d85c3c17585158f430110",
                 "shasum": ""
             },
             "require": {
@@ -2156,7 +2156,8 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/backtrace/tree/1.7.4"
+                "issues": "https://github.com/spatie/backtrace/issues",
+                "source": "https://github.com/spatie/backtrace/tree/1.8.1"
             },
             "funding": [
                 {
@@ -2168,7 +2169,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2025-05-08T15:41:09+00:00"
+            "time": "2025-08-26T08:22:30+00:00"
         },
         {
             "name": "symfony/cache",
