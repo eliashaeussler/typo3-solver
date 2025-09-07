@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 use EliasHaeussler\RectorConfig\Config\Config;
 use Rector\Config\RectorConfig;
+use Rector\PHPUnit\CodeQuality\Rector\MethodCall\ScalarArgumentToExpectedParamTypeRector;
 use Rector\ValueObject\PhpVersion;
 
 return static function (RectorConfig $rectorConfig): void {
@@ -42,6 +43,10 @@ return static function (RectorConfig $rectorConfig): void {
         ->withPHPUnit()
         ->withSymfony()
         ->withTYPO3()
+        ->skip(ScalarArgumentToExpectedParamTypeRector::class, [
+            $rootPath . '/Tests/Unit/ProblemSolving/Solution/Provider/OpenAISolutionProviderTest.php',
+            $rootPath . '/Tests/Unit/ProblemSolving/SolverTest.php',
+        ])
         ->apply()
     ;
 };
