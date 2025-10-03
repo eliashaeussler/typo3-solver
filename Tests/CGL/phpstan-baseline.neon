@@ -1,103 +1,103 @@
 parameters:
 	ignoreErrors:
 		-
-			message: '#^Cannot access offset ''EXTENSIONS'' on mixed\.$#'
+			rawMessage: Cannot access offset 'EXTENSIONS' on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: ../../Classes/Configuration/LowLevelConfigurationProvider.php
 
 		-
-			message: '#^Cannot access offset ''solver'' on mixed\.$#'
+			rawMessage: Cannot access offset 'solver' on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: ../../Classes/Configuration/LowLevelConfigurationProvider.php
 
 		-
-			message: '#^Parameter \#1 \$arguments \(array\{date\: DateTimeInterface, readable\: bool\}\) of method EliasHaeussler\\Typo3Solver\\ViewHelpers\\DateViewHelper\:\:renderStatic\(\) should be contravariant with parameter \$arguments \(array\<string, mixed\>\) of method TYPO3Fluid\\Fluid\\Core\\ViewHelper\\AbstractViewHelper\:\:renderStatic\(\)$#'
+			rawMessage: 'Parameter #1 $arguments (array{date: DateTimeInterface, readable: bool}) of method EliasHaeussler\Typo3Solver\ViewHelpers\DateViewHelper::renderStatic() should be contravariant with parameter $arguments (array<string, mixed>) of method TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper::renderStatic()'
 			identifier: method.childParameterType
 			count: 1
 			path: ../../Classes/ViewHelpers/DateViewHelper.php
 
 		-
-			message: '#^Parameter \#1 \$arguments \(array\{date\: DateTimeInterface, readable\: bool\}\) of method EliasHaeussler\\Typo3Solver\\ViewHelpers\\DateViewHelper\:\:renderStatic\(\) should be contravariant with parameter \$arguments \(array\<string, mixed\>\) of method TYPO3Fluid\\Fluid\\Core\\ViewHelper\\ViewHelperInterface\:\:renderStatic\(\)$#'
+			rawMessage: 'Parameter #1 $arguments (array{date: DateTimeInterface, readable: bool}) of method EliasHaeussler\Typo3Solver\ViewHelpers\DateViewHelper::renderStatic() should be contravariant with parameter $arguments (array<string, mixed>) of method TYPO3Fluid\Fluid\Core\ViewHelper\ViewHelperInterface::renderStatic()'
 			identifier: method.childParameterType
 			count: 1
 			path: ../../Classes/ViewHelpers/DateViewHelper.php
 
 		-
-			message: '#^Parameter \#1 \$arguments \(array\{replaceLineNumbersInCodeSnippets\?\: bool\}\) of method EliasHaeussler\\Typo3Solver\\ViewHelpers\\MarkdownToHtmlViewHelper\:\:renderStatic\(\) should be contravariant with parameter \$arguments \(array\<string, mixed\>\) of method TYPO3Fluid\\Fluid\\Core\\ViewHelper\\AbstractViewHelper\:\:renderStatic\(\)$#'
+			rawMessage: 'Parameter #1 $arguments (array{replaceLineNumbersInCodeSnippets?: bool}) of method EliasHaeussler\Typo3Solver\ViewHelpers\MarkdownToHtmlViewHelper::renderStatic() should be contravariant with parameter $arguments (array<string, mixed>) of method TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper::renderStatic()'
 			identifier: method.childParameterType
 			count: 1
 			path: ../../Classes/ViewHelpers/MarkdownToHtmlViewHelper.php
 
 		-
-			message: '#^Parameter \#1 \$arguments \(array\{replaceLineNumbersInCodeSnippets\?\: bool\}\) of method EliasHaeussler\\Typo3Solver\\ViewHelpers\\MarkdownToHtmlViewHelper\:\:renderStatic\(\) should be contravariant with parameter \$arguments \(array\<string, mixed\>\) of method TYPO3Fluid\\Fluid\\Core\\ViewHelper\\ViewHelperInterface\:\:renderStatic\(\)$#'
+			rawMessage: 'Parameter #1 $arguments (array{replaceLineNumbersInCodeSnippets?: bool}) of method EliasHaeussler\Typo3Solver\ViewHelpers\MarkdownToHtmlViewHelper::renderStatic() should be contravariant with parameter $arguments (array<string, mixed>) of method TYPO3Fluid\Fluid\Core\ViewHelper\ViewHelperInterface::renderStatic()'
 			identifier: method.childParameterType
 			count: 1
 			path: ../../Classes/ViewHelpers/MarkdownToHtmlViewHelper.php
 
 		-
-			message: '#^Cannot access offset ''EXTENSIONS'' on mixed\.$#'
+			rawMessage: Cannot access offset 'EXTENSIONS' on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: ../Extension/ExtensionConfigurationExtension.php
 
 		-
-			message: '#^Cannot access offset ''solver'' on mixed\.$#'
+			rawMessage: Cannot access offset 'solver' on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: ../Extension/ExtensionConfigurationExtension.php
 
 		-
-			message: '#^Cannot access offset ''EXTENSIONS'' on mixed\.$#'
+			rawMessage: Cannot access offset 'EXTENSIONS' on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 3
 			path: ../Unit/Cache/SolutionsCacheTest.php
 
 		-
-			message: '#^Cannot access offset ''cache'' on mixed\.$#'
+			rawMessage: Cannot access offset 'cache' on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 3
 			path: ../Unit/Cache/SolutionsCacheTest.php
 
 		-
-			message: '#^Cannot access offset ''lifetime'' on mixed\.$#'
+			rawMessage: Cannot access offset 'lifetime' on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 3
 			path: ../Unit/Cache/SolutionsCacheTest.php
 
 		-
-			message: '#^Cannot access offset ''solver'' on mixed\.$#'
+			rawMessage: Cannot access offset 'solver' on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 3
 			path: ../Unit/Cache/SolutionsCacheTest.php
 
 		-
-			message: '#^Cannot access offset ''EXTENSIONS'' on mixed\.$#'
+			rawMessage: Cannot access offset 'EXTENSIONS' on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
-			count: 5
+			count: 4
 			path: ../Unit/ProblemSolving/Solution/Provider/OpenAISolutionProviderTest.php
 
 		-
-			message: '#^Cannot access offset ''api'' on mixed\.$#'
+			rawMessage: Cannot access offset 'api' on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 3
 			path: ../Unit/ProblemSolving/Solution/Provider/OpenAISolutionProviderTest.php
 
 		-
-			message: '#^Cannot access offset ''ignoredCodes'' on mixed\.$#'
+			rawMessage: Cannot access offset 'ignoredCodes' on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: ../Unit/ProblemSolving/Solution/Provider/OpenAISolutionProviderTest.php
 
 		-
-			message: '#^Cannot access offset ''key'' on mixed\.$#'
+			rawMessage: Cannot access offset 'key' on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 3
 			path: ../Unit/ProblemSolving/Solution/Provider/OpenAISolutionProviderTest.php
 
 		-
-			message: '#^Cannot access offset ''solver'' on mixed\.$#'
+			rawMessage: Cannot access offset 'solver' on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
-			count: 5
+			count: 4
 			path: ../Unit/ProblemSolving/Solution/Provider/OpenAISolutionProviderTest.php
