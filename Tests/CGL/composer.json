@@ -33,6 +33,7 @@
 		"analyze:dependencies": "composer-dependency-analyser --composer-json ../../composer.json",
 		"fix": [
 			"@fix:composer",
+			"@fix:composer-conflicts",
 			"@fix:editorconfig",
 			"@fix:php"
 		],
@@ -42,14 +43,17 @@
 			"@composer normalize ../../Resources/Private/Libs/composer.json",
 			"@composer normalize ../Functional/Fixtures/Extensions/middleware_bridge/composer.json"
 		],
+		"fix:composer-conflicts": "@lint:composer-conflicts",
 		"fix:editorconfig": "@lint:editorconfig --fix",
 		"fix:php": "php-cs-fixer fix",
 		"lint": [
 			"@lint:composer",
+			"@lint:composer-conflicts",
 			"@lint:editorconfig",
 			"@lint:php"
 		],
 		"lint:composer": "@fix:composer --dry-run",
+		"lint:composer-conflicts": "bash -c 'diff -u <(jq -S .conflict ../../composer.json) <(jq -S .conflict ../../Resources/Private/Libs/composer.json)'",
 		"lint:editorconfig": "ec --finder-config .editorconfig-lint.php",
 		"lint:php": "@fix:php --dry-run",
 		"migration": [

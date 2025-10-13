@@ -111,6 +111,8 @@ jobs:
       # Linting
       - name: Lint composer.json
         run: composer cgl lint:composer
+      - name: Lint conflicts in composer.json files
+        run: composer cgl lint:composer-conflicts
       - name: Lint Editorconfig
         run: composer cgl lint:editorconfig
       - name: Lint PHP
