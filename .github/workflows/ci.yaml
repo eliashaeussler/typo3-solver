@@ -39,7 +39,7 @@ jobs:
 
       # Prepare environment
       - name: Setup Node
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         if: ${{ steps.check.outputs.skip_assets != 'true' }}
         with:
           node-version: 22
@@ -90,7 +90,7 @@ jobs:
           tools: composer:v2, cs2pr
           coverage: none
       - name: Setup Node
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version: 22
           cache: 'npm'
