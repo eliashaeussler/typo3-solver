@@ -128,7 +128,7 @@ final class OpenAISolutionProvider implements StreamedSolutionProvider
 
         return \array_values(
             \array_map(
-                static fn(Responses\Models\RetrieveResponse $response) => Model\AiModel::fromOpenAIRetrieveResponse($response),
+                Model\AiModel::fromOpenAIRetrieveResponse(...),
                 $modelListResponse,
             ),
         );
