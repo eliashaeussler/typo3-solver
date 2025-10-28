@@ -42,7 +42,7 @@ jobs:
         uses: actions/setup-node@v6
         if: ${{ steps.check.outputs.skip_assets != 'true' }}
         with:
-          node-version: 22
+          node-version: 24
           cache: 'npm'
           cache-dependency-path: 'Resources/Private/Frontend/package-lock.json'
 
@@ -92,7 +92,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
           cache: 'npm'
           cache-dependency-path: 'Resources/Private/Frontend/package-lock.json'
 
