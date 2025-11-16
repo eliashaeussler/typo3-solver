@@ -31,8 +31,8 @@
 		"symfony/console": "^7.0",
 		"symfony/filesystem": "^7.0",
 		"symfony/routing": "^7.0",
-		"typo3/cms-core": "~13.4.0",
-		"typo3fluid/fluid": "^4.0"
+		"typo3/cms-core": "~13.4.0 || ~14.0.0",
+		"typo3fluid/fluid": "^4.0 || ^5.0"
 	},
 	"require-dev": {
 		"ext-dom": "*",
@@ -41,7 +41,7 @@
 		"guzzlehttp/psr7": "^2.7",
 		"phpunit/phpcov": "^10.0 || ^11.0",
 		"symfony/dependency-injection": "^7.0",
-		"typo3/testing-framework": "^9.0.1"
+		"typo3/testing-framework": "^9.0.3"
 	},
 	"autoload": {
 		"psr-4": {
