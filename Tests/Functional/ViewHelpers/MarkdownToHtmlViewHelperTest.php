@@ -67,9 +67,12 @@ MARKDOWN;
         $view = $this->createView('{s:markdownToHtml(markdown: markdown)}');
         $view->assign('markdown', $markdown);
 
+        $actual = $view->render();
+
+        self::assertIsString($actual);
         self::assertSame(
             $this->parsedown->text($markdown),
-            \trim($view->render()),
+            \trim($actual),
         );
     }
 
@@ -85,9 +88,12 @@ MARKDOWN;
         $view = $this->createView('{markdown -> s:markdownToHtml()}');
         $view->assign('markdown', $markdown);
 
+        $actual = $view->render();
+
+        self::assertIsString($actual);
         self::assertSame(
             $this->parsedown->text($markdown),
-            \trim($view->render()),
+            \trim($actual),
         );
     }
 
@@ -115,6 +121,9 @@ MARKDOWN;
         $view->assign('markdown', $markdown);
 
         $actual = $view->render();
+
+        self::assertIsString($actual);
+
         $xpath = self::createDOMXPath($actual);
 
         self::assertNodeContentEqualsString('has-line-numbers', '//ul/li[1]/pre[1]/@class', $xpath);

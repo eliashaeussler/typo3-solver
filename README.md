@@ -25,7 +25,7 @@ provides a console command to solve problems from command line.
 * Caching integration for solved problems
 * Command to solve problems from command line
 * Customizable solution providers and prompts
-* Compatible with TYPO3 11.5 LTS, 12.4 LTS and 13.4 LTS
+* Compatible with TYPO3 13.4 LTS
 
 ## 🔥 Installation
 

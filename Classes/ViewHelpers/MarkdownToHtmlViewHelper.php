@@ -58,18 +58,11 @@ final class MarkdownToHtmlViewHelper extends Fluid\Core\ViewHelper\AbstractViewH
         return 'markdown';
     }
 
-    /**
-     * @param array{replaceLineNumbersInCodeSnippets?: bool} $arguments
-     *
-     * @todo Migrate to render() once support for TYPO3 v12 is dropped
-     */
-    public static function renderStatic(
-        array $arguments,
-        \Closure $renderChildrenClosure,
-        Fluid\Core\Rendering\RenderingContextInterface $renderingContext,
-    ): string {
-        $markdown = $renderChildrenClosure();
-        $replaceLineNumbers = $arguments['replaceLineNumbersInCodeSnippets'] ?? false;
+    public function render(): string
+    {
+        $markdown = $this->renderChildren();
+        /** @var bool $replaceLineNumbers */
+        $replaceLineNumbers = $this->arguments['replaceLineNumbersInCodeSnippets'] ?? false;
 
         // Convert markdown to HTML
         $parsedown = new \Parsedown();
@@ -105,7 +98,8 @@ final class MarkdownToHtmlViewHelper extends Fluid\Core\ViewHelper\AbstractViewH
             '/^(\d+)\s(.*)$/m',
             '<span data-line="$1">$2</span>',
             $codeSnippet,
-            count: $replacements,
+            -1,
+            $replacements,
         );
 
         if ($replacements === 0) {

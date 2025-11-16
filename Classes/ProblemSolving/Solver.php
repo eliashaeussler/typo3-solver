@@ -34,13 +34,13 @@ use EliasHaeussler\Typo3Solver\Formatter;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
-final class Solver
+final readonly class Solver
 {
-    private readonly Solution\Provider\CacheSolutionProvider $provider;
+    private Solution\Provider\CacheSolutionProvider $provider;
 
     public function __construct(
-        private readonly Configuration\Configuration $configuration,
-        private readonly Formatter\Formatter $formatter,
+        private Configuration\Configuration $configuration,
+        private Formatter\Formatter $formatter,
         ?Solution\Provider\SolutionProvider $solutionProvider = null,
     ) {
         $this->provider = new Solution\Provider\CacheSolutionProvider(

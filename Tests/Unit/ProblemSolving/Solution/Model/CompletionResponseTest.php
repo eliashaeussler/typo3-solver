@@ -58,8 +58,6 @@ final class CompletionResponseTest extends TestingFramework\Core\Unit\UnitTestCa
             'message' => [
                 'role' => 'role',
                 'content' => 'foo',
-                'tool_calls' => null,
-                'function_call' => null,
             ],
             'finish_reason' => 'finishReason',
         ]);

@@ -13,30 +13,6 @@ parameters:
 			path: ../../Classes/Configuration/LowLevelConfigurationProvider.php
 
 		-
-			rawMessage: 'Parameter #1 $arguments (array{date: DateTimeInterface, readable: bool}) of method EliasHaeussler\Typo3Solver\ViewHelpers\DateViewHelper::renderStatic() should be contravariant with parameter $arguments (array<string, mixed>) of method TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper::renderStatic()'
-			identifier: method.childParameterType
-			count: 1
-			path: ../../Classes/ViewHelpers/DateViewHelper.php
-
-		-
-			rawMessage: 'Parameter #1 $arguments (array{date: DateTimeInterface, readable: bool}) of method EliasHaeussler\Typo3Solver\ViewHelpers\DateViewHelper::renderStatic() should be contravariant with parameter $arguments (array<string, mixed>) of method TYPO3Fluid\Fluid\Core\ViewHelper\ViewHelperInterface::renderStatic()'
-			identifier: method.childParameterType
-			count: 1
-			path: ../../Classes/ViewHelpers/DateViewHelper.php
-
-		-
-			rawMessage: 'Parameter #1 $arguments (array{replaceLineNumbersInCodeSnippets?: bool}) of method EliasHaeussler\Typo3Solver\ViewHelpers\MarkdownToHtmlViewHelper::renderStatic() should be contravariant with parameter $arguments (array<string, mixed>) of method TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper::renderStatic()'
-			identifier: method.childParameterType
-			count: 1
-			path: ../../Classes/ViewHelpers/MarkdownToHtmlViewHelper.php
-
-		-
-			rawMessage: 'Parameter #1 $arguments (array{replaceLineNumbersInCodeSnippets?: bool}) of method EliasHaeussler\Typo3Solver\ViewHelpers\MarkdownToHtmlViewHelper::renderStatic() should be contravariant with parameter $arguments (array<string, mixed>) of method TYPO3Fluid\Fluid\Core\ViewHelper\ViewHelperInterface::renderStatic()'
-			identifier: method.childParameterType
-			count: 1
-			path: ../../Classes/ViewHelpers/MarkdownToHtmlViewHelper.php
-
-		-
 			rawMessage: Cannot access offset 'EXTENSIONS' on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1

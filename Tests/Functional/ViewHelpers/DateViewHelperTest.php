@@ -53,9 +53,12 @@ final class DateViewHelperTest extends TestingFramework\Core\Functional\Function
         $view = $this->createView('<s:date date="{date}" />');
         $view->assign('date', $date);
 
+        $actual = $view->render();
+
+        self::assertIsString($actual);
         self::assertSame(
             $date->format('d.m.Y H:i:s'),
-            \trim($view->render()),
+            \trim($actual),
         );
     }
 
@@ -69,7 +72,10 @@ final class DateViewHelperTest extends TestingFramework\Core\Functional\Function
         $view = $this->createView('<s:date date="{date}" readable="1" />');
         $view->assign('date', $date);
 
-        self::assertStringEndsWith($expected, \trim($view->render()));
+        $actual = $view->render();
+
+        self::assertIsString($actual);
+        self::assertStringEndsWith($expected, \trim($actual));
     }
 
     /**

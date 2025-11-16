@@ -32,7 +32,7 @@ use TYPO3\CMS\Core;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
-final class Configuration
+final readonly class Configuration
 {
     private const DEFAULT_MODEL = 'gpt-4o-mini';
     private const DEFAULT_TOKENS = 300;
@@ -43,7 +43,7 @@ final class Configuration
     private const DEFAULT_PROMPT = ProblemSolving\Solution\Prompt\DefaultPrompt::class;
 
     public function __construct(
-        private readonly ConfigurationProvider $provider = new LazyConfigurationProvider(),
+        private ConfigurationProvider $provider = new LazyConfigurationProvider(),
     ) {}
 
     public function getApiKey(): ?string

@@ -31,11 +31,11 @@ use OpenAI\Responses;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
-final class AiModel
+final readonly class AiModel
 {
     public function __construct(
-        public readonly string $name,
-        public readonly ?\DateTimeImmutable $createdAt = null,
+        public string $name,
+        public ?\DateTimeImmutable $createdAt = null,
     ) {}
 
     public static function fromOpenAIRetrieveResponse(Responses\Models\RetrieveResponse $response): self

@@ -5,12 +5,12 @@
 		"local>eliashaeussler/renovate-config:typo3-extension"
 	],
 	"constraints": {
-		"php": "8.1.*"
+		"php": "8.2.*"
 	},
 	"packageRules": [
 		{
 			"enabled": false,
-			"matchCurrentVersion": "8.1",
+			"matchCurrentVersion": "8.2",
 			"matchDatasources": [
 				"docker"
 			],

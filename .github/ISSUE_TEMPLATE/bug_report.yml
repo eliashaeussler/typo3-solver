@@ -11,7 +11,7 @@ body:
     attributes:
       label: TYPO3 version
       description: What TYPO3 version are you using?
-      placeholder: 'e.g. 11.5.23'
+      placeholder: 'e.g. 13.4.20'
     validations:
       required: true
   - type: input
@@ -19,7 +19,7 @@ body:
     attributes:
       label: PHP version
       description: What PHP version are you using?
-      placeholder: 'e.g. 8.1.14'
+      placeholder: 'e.g. 8.2.29'
     validations:
       required: true
   - type: input

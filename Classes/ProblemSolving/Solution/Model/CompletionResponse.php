@@ -34,12 +34,12 @@ use OpenAI\Responses;
  * @phpstan-import-type MessageArray from Message
  * @phpstan-type CompletionResponseArray array{index: int, message: MessageArray, finishReason: string|null}
  */
-final class CompletionResponse implements \JsonSerializable
+final readonly class CompletionResponse implements \JsonSerializable
 {
     public function __construct(
-        public readonly int $index,
-        public readonly Message $message,
-        public readonly ?string $finishReason = null,
+        public int $index,
+        public Message $message,
+        public ?string $finishReason = null,
     ) {}
 
     public static function fromOpenAIChoice(

@@ -41,16 +41,16 @@ use TYPO3\CMS\Core;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
-final class SolutionMiddleware implements Server\MiddlewareInterface
+final readonly class SolutionMiddleware implements Server\MiddlewareInterface
 {
     public const ROUTE_PATH = '/tx_solver/solution';
 
     public function __construct(
-        private readonly Configuration\Configuration $configuration,
-        private readonly Cache\ExceptionsCache $exceptionsCache,
-        private readonly Formatter\Message\ExceptionStreamFormatter $exceptionFormatter,
-        private readonly Formatter\WebStreamFormatter $webFormatter,
-        private readonly Authentication\StreamAuthentication $authentication,
+        private Configuration\Configuration $configuration,
+        private Cache\ExceptionsCache $exceptionsCache,
+        private Formatter\Message\ExceptionStreamFormatter $exceptionFormatter,
+        private Formatter\WebStreamFormatter $webFormatter,
+        private Authentication\StreamAuthentication $authentication,
     ) {}
 
     /**
