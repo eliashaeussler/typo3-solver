@@ -23,7 +23,7 @@
 		},
 		{
 			"enabled": false,
-			"matchCurrentVersion": "0.10.3",
+			"matchCurrentVersion": "0.18.0",
 			"matchDatasources": [
 				"packagist"
 			],
