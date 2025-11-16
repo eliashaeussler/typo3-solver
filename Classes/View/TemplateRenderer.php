@@ -32,9 +32,9 @@ use TYPO3Fluid\Fluid;
  * @license GPL-2.0-or-later
  * @internal
  */
-final class TemplateRenderer
+final readonly class TemplateRenderer
 {
-    private readonly Fluid\Core\Rendering\RenderingContextInterface $renderingContext;
+    private Fluid\Core\Rendering\RenderingContextInterface $renderingContext;
 
     public function __construct()
     {
@@ -48,8 +48,13 @@ final class TemplateRenderer
     {
         $view = new Fluid\View\TemplateView($this->renderingContext);
         $view->assignMultiple($variables);
+        $templateResult = $view->render($templatePath);
 
-        return $view->render($templatePath);
+        if (!is_string($templateResult)) {
+            return '';
+        }
+
+        return $templateResult;
     }
 
     private function createRenderingContext(): Fluid\Core\Rendering\RenderingContextInterface

@@ -50,18 +50,12 @@ final class DateViewHelper extends Fluid\Core\ViewHelper\AbstractViewHelper
         );
     }
 
-    /**
-     * @param array{date: \DateTimeInterface, readable: bool} $arguments
-     *
-     * @todo Migrate to render() once support for TYPO3 v12 is dropped
-     */
-    public static function renderStatic(
-        array $arguments,
-        \Closure $renderChildrenClosure,
-        Fluid\Core\Rendering\RenderingContextInterface $renderingContext,
-    ): string {
-        $date = $arguments['date'];
-        $readable = $arguments['readable'];
+    public function render(): string
+    {
+        /** @var \DateTimeInterface $date */
+        $date = $this->arguments['date'];
+        /** @var bool $readable */
+        $readable = $this->arguments['readable'];
 
         // Early return if output should not be better readable
         if (!$readable) {

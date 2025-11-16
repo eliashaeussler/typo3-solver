@@ -35,11 +35,11 @@ use EliasHaeussler\Typo3Solver\ProblemSolving;
  *
  * @internal
  */
-final class DelegatingCacheSolutionProvider implements SolutionProvider
+final readonly class DelegatingCacheSolutionProvider implements SolutionProvider
 {
     public function __construct(
-        private readonly Cache\SolutionsCache $cache,
-        private readonly SolutionProvider $delegate,
+        private Cache\SolutionsCache $cache,
+        private SolutionProvider $delegate,
     ) {}
 
     /**

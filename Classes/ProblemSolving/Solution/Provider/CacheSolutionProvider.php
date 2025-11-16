@@ -33,11 +33,11 @@ use EliasHaeussler\Typo3Solver\ProblemSolving;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
-final class CacheSolutionProvider implements StreamedSolutionProvider
+final readonly class CacheSolutionProvider implements StreamedSolutionProvider
 {
     public function __construct(
-        private readonly Cache\SolutionsCache $cache,
-        private readonly SolutionProvider $provider,
+        private Cache\SolutionsCache $cache,
+        private SolutionProvider $provider,
     ) {}
 
     /**

@@ -30,11 +30,11 @@ use EliasHaeussler\Typo3Solver\ProblemSolving;
 use OpenAI\Client;
 use OpenAI\Responses;
 
-final class OpenAISolutionProvider implements StreamedSolutionProvider
+final readonly class OpenAISolutionProvider implements StreamedSolutionProvider
 {
     public function __construct(
-        private readonly Configuration\Configuration $configuration,
-        private readonly Client $client,
+        private Configuration\Configuration $configuration,
+        private Client $client,
     ) {}
 
     public static function create(?Client $client = null): static

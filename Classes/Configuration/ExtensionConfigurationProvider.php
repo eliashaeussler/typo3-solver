@@ -32,9 +32,9 @@ use TYPO3\CMS\Core;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
-final class ExtensionConfigurationProvider implements ConfigurationProvider
+final readonly class ExtensionConfigurationProvider implements ConfigurationProvider
 {
-    private readonly Core\Configuration\ExtensionConfiguration $configuration;
+    private Core\Configuration\ExtensionConfiguration $configuration;
 
     public function __construct()
     {

@@ -31,12 +31,12 @@ use EliasHaeussler\Typo3Solver\ProblemSolving;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
-final class Problem
+final readonly class Problem
 {
     public function __construct(
-        private readonly \Throwable $exception,
-        private readonly ProblemSolving\Solution\Provider\SolutionProvider $solutionProvider,
-        private readonly string $prompt,
+        private \Throwable $exception,
+        private ProblemSolving\Solution\Provider\SolutionProvider $solutionProvider,
+        private string $prompt,
     ) {}
 
     public function getException(): \Throwable

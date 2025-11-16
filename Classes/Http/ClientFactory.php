@@ -33,10 +33,10 @@ use OpenAI\Client;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
-final class ClientFactory
+final readonly class ClientFactory
 {
     public function __construct(
-        private readonly Configuration\Configuration $configuration,
+        private Configuration\Configuration $configuration,
     ) {}
 
     /**

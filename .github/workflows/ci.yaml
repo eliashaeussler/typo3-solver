@@ -150,14 +150,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php-version: ["8.1", "8.2", "8.3", "8.4"]
-        typo3-version: ["11.5", "12.4", "13.4"]
+        php-version: ["8.2", "8.3", "8.4"]
+        typo3-version: ["13.4"]
         dependencies: ["highest", "lowest"]
-        exclude:
-          - php-version: "8.1"
-            typo3-version: "13.4"
-          - php-version: "8.4"
-            typo3-version: "11.5"
     env:
       typo3DatabaseName: typo3
       typo3DatabaseHost: '127.0.0.1'

@@ -41,9 +41,9 @@ use EliasHaeussler\Typo3Solver\ProblemSolving;
  *     validUntil: int,
  * }
  */
-final class SolutionSerializer
+final readonly class SolutionSerializer
 {
-    private readonly Configuration\Configuration $configuration;
+    private Configuration\Configuration $configuration;
 
     public function __construct()
     {
@@ -76,13 +76,6 @@ final class SolutionSerializer
         ] = $solutionArray;
 
         if ($validUntil < time()) {
-            return null;
-        }
-
-        // BC layer: We cannot handle legacy cache entries, therefore return early
-        // @todo Remove with next major release
-        /* @phpstan-ignore function.alreadyNarrowedType, nullCoalesce.offset */
-        if (!\is_array($solution['responses'] ?? null)) {
             return null;
         }
 

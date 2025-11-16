@@ -34,10 +34,10 @@ use EliasHaeussler\Typo3Solver\View;
  *
  * @internal
  */
-final class WebStreamFormatter implements Formatter
+final readonly class WebStreamFormatter implements Formatter
 {
     public function __construct(
-        private readonly View\TemplateRenderer $renderer,
+        private View\TemplateRenderer $renderer,
     ) {}
 
     public function format(

@@ -31,10 +31,10 @@ use EliasHaeussler\Typo3Solver\View;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
-final class ExceptionFormatter
+final readonly class ExceptionFormatter
 {
     public function __construct(
-        private readonly View\TemplateRenderer $renderer,
+        private View\TemplateRenderer $renderer,
     ) {}
 
     public function format(\Throwable $exception): string

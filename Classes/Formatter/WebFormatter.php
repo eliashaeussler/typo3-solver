@@ -35,15 +35,15 @@ use Symfony\Component\Filesystem;
  * @author Elias Häußler <elias@haeussler.dev>
  * @license GPL-2.0-or-later
  */
-final class WebFormatter implements Formatter
+final readonly class WebFormatter implements Formatter
 {
     private const SCRIPT_PATH = 'Resources/Public/JavaScript/main.js';
     private const STYLESHEET_PATH = 'Resources/Public/Css/main.css';
 
     public function __construct(
-        private readonly Cache\ExceptionsCache $exceptionsCache,
-        private readonly View\TemplateRenderer $renderer,
-        private readonly Authentication\StreamAuthentication $authentication,
+        private Cache\ExceptionsCache $exceptionsCache,
+        private View\TemplateRenderer $renderer,
+        private Authentication\StreamAuthentication $authentication,
     ) {}
 
     public function format(

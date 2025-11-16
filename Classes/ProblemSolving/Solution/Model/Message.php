@@ -31,11 +31,11 @@ namespace EliasHaeussler\Typo3Solver\ProblemSolving\Solution\Model;
  *
  * @phpstan-type MessageArray array{role: string, content: string|null}
  */
-final class Message implements \JsonSerializable
+final readonly class Message implements \JsonSerializable
 {
     public function __construct(
-        public readonly string $role,
-        public readonly ?string $content,
+        public string $role,
+        public ?string $content,
     ) {}
 
     /**
