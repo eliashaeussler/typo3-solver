@@ -249,16 +249,6 @@ jobs:
         with:
           name: coverage
 
-      # CodeClimate
-      - name: CodeClimate report
-        uses: paambaati/codeclimate-action@v9.0.0
-        if: env.CC_TEST_REPORTER_ID
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        with:
-          coverageLocations: |
-            ${{ steps.download.outputs.download-path }}/clover.xml:clover
-
       # Coveralls
       - name: Coveralls report
         uses: coverallsapp/github-action@v2

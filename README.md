@@ -5,7 +5,6 @@
 # TYPO3 extension `solver`
 
 [![Coverage](https://img.shields.io/coverallsCoverage/github/eliashaeussler/typo3-solver?logo=coveralls)](https://coveralls.io/github/eliashaeussler/typo3-solver)
-[![Maintainability](https://img.shields.io/codeclimate/maintainability/eliashaeussler/typo3-solver?logo=codeclimate)](https://codeclimate.com/github/eliashaeussler/typo3-solver/maintainability)
 [![CI](https://img.shields.io/github/actions/workflow/status/eliashaeussler/typo3-solver/ci.yaml?label=CI&logo=github)](https://github.com/eliashaeussler/typo3-solver/actions/workflows/ci.yaml)
 [![Supported TYPO3 versions](https://typo3-badges.dev/badge/solver/typo3/shields.svg)](https://extensions.typo3.org/extension/solver)
 [![Slack](https://img.shields.io/badge/slack-%23ext--solver-4a154b?logo=slack)](https://typo3.slack.com/archives/C04Q3440HS6)
