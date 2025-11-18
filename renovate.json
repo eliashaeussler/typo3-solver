@@ -18,6 +18,7 @@
 				"php"
 			],
 			"matchFileNames": [
+				".github/workflows/ci.yaml",
 				".github/workflows/release.yaml"
 			]
 		},
