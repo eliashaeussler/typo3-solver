@@ -104,6 +104,10 @@ rulesets:
               integration_id: 15368
             - context: 'Tests (PHP 8.4, TYPO3 13.4 & lowest dependencies)'
               integration_id: 15368
+            - context: 'Tests (PHP 8.5, TYPO3 13.4 & highest dependencies)'
+              integration_id: 15368
+            - context: 'Tests (PHP 8.5, TYPO3 13.4 & lowest dependencies)'
+              integration_id: 15368
             - context: 'Test coverage'
               integration_id: 15368
     bypass_actors:
