@@ -20,7 +20,7 @@
 	"require": {
 		"php": "~8.2.0 || ~8.3.0 || ~8.4.0",
 		"ext-mbstring": "*",
-		"eliashaeussler/sse": "^1.1",
+		"eliashaeussler/sse": "^2.0",
 		"erusev/parsedown": "^1.7",
 		"guzzlehttp/guzzle": "^7.5",
 		"openai-php/client": "^0.18.0",
