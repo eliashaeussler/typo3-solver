@@ -23,12 +23,7 @@ declare(strict_types=1);
 
 use EliasHaeussler\PHPStanConfig;
 
-$rootPath = dirname(__DIR__, 2);
-$symfonySet = PHPStanConfig\Set\SymfonySet::create()
-    ->withConsoleApplicationLoader($rootPath . '/Tests/Build/console-application.php')
-;
-
-return PHPStanConfig\Config\Config::create($rootPath)
+return PHPStanConfig\Config\Config::create(dirname(__DIR__, 2))
     ->in(
         'Classes',
         'Configuration',
@@ -38,13 +33,15 @@ return PHPStanConfig\Config\Config::create($rootPath)
         'Tests/CGL',
     )
     ->bootstrapFiles(
-        $rootPath . '/.build/vendor/autoload.php',
+        '.build/vendor/autoload.php',
     )
-    ->withBaseline()
+    ->withBaseline(__DIR__ . '/phpstan-baseline.neon')
     ->withBleedingEdge([
         'internalTag' => false,
     ])
     ->maxLevel()
-    ->withSets($symfonySet)
+    ->withSet(static function (PHPStanConfig\Set\SymfonySet $set) {
+        $set->withConsoleApplicationLoader('Tests/Build/console-application.php');
+    })
     ->toArray()
 ;
