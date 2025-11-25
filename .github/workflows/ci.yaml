@@ -143,6 +143,10 @@ jobs:
           mkdir -p .build/docs
           composer docs:build -- --no-progress --fail-on-log
 
+      # Bundler
+      - name: Validate bundler config
+        run: composer validate-bundler-config
+
   tests:
     name: Tests (PHP ${{ matrix.php-version }}, TYPO3 ${{ matrix.typo3-version }} & ${{ matrix.dependencies }} dependencies)
     if: ${{ needs.assets.outputs.modified == 'false' }}
