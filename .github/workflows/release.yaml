@@ -31,11 +31,20 @@ jobs:
           tools: composer:v2, typo3/tailor
           coverage: none
 
-      - name: Reset files
-        run: git reset --hard HEAD && git clean -dfx
+      - name: Install Composer dependencies
+        uses: ramsey/composer-install@v3
 
       - name: Bundle vendor libraries
         run: composer bundle -v
+
+      - name: Stash modified composer.json file
+        run: git stash push -- composer.json
+
+      - name: Reset files
+        run: git reset --hard HEAD && git clean -dfx
+
+      - name: Restore modified composer.json file
+        run: git stash pop
 
       - name: Create artefact
         run: |
