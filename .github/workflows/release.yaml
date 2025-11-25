@@ -37,13 +37,13 @@ jobs:
       - name: Bundle vendor libraries
         run: composer bundle -v
 
-      - name: Stash modified composer.json file
-        run: git stash push -- composer.json
+      - name: Stash bundled files
+        run: git stash push -- composer.json Resources/Private/Libs/vendor
 
       - name: Reset files
         run: git reset --hard HEAD && git clean -dfx
 
-      - name: Restore modified composer.json file
+      - name: Restore bundled files
         run: git stash pop
 
       - name: Create artefact
