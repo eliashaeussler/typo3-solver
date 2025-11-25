@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "649630292b162291a3a1a4a42a317def",
+    "content-hash": "503361674c77018dca69eb9153428a89",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -5733,6 +5733,73 @@
                 }
             ],
             "time": "2022-12-30T00:23:10+00:00"
+        },
+        {
+            "name": "eliashaeussler/typo3-vendor-bundler",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/eliashaeussler/typo3-vendor-bundler.git",
+                "reference": "7b7001503f8de6b9a7df950afc78504f00d80a61"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/eliashaeussler/typo3-vendor-bundler/zipball/7b7001503f8de6b9a7df950afc78504f00d80a61",
+                "reference": "7b7001503f8de6b9a7df950afc78504f00d80a61",
+                "shasum": ""
+            },
+            "require": {
+                "composer": "~2.2.18 || ^2.4",
+                "composer-plugin-api": "^2.0",
+                "cuyz/valinor": "^2.0",
+                "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
+                "symfony/console": "^5.4 || ^6.4 || ^7.0",
+                "symfony/filesystem": "^5.4 || ^6.4 || ^7.0",
+                "symfony/yaml": "^5.4 || ^6.4 || ^7.0"
+            },
+            "conflict": {
+                "cuyz/valinor": "2.2.1"
+            },
+            "require-dev": {
+                "armin/editorconfig-cli": "^2.1",
+                "composer/composer": "~2.2.18 || ^2.4",
+                "eliashaeussler/php-cs-fixer-config": "^3.0",
+                "eliashaeussler/phpstan-config": "^3.0",
+                "eliashaeussler/rector-config": "^3.1",
+                "ergebnis/composer-normalize": "^2.47",
+                "phpstan/extension-installer": "^1.4",
+                "phpstan/phpstan-phpunit": "^2.0",
+                "phpstan/phpstan-symfony": "^2.0",
+                "phpunit/phpunit": "^11.5 || ^12.2",
+                "shipmonk/composer-dependency-analyser": "^1.8"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "EliasHaeussler\\Typo3VendorBundler\\Typo3VendorBundlerPlugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "EliasHaeussler\\Typo3VendorBundler\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Elias Häußler",
+                    "email": "elias@haeussler.dev",
+                    "homepage": "https://haeussler.dev",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Composer plugin to bundle vendor libraries for TYPO3 extensions in classic mode",
+            "support": {
+                "issues": "https://github.com/eliashaeussler/typo3-vendor-bundler/issues",
+                "source": "https://github.com/eliashaeussler/typo3-vendor-bundler/tree/2.2.0"
+            },
+            "time": "2025-11-25T19:35:09+00:00"
         },
         {
             "name": "eliashaeussler/version-bumper",

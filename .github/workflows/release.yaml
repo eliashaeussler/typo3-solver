@@ -28,7 +28,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: 8.2
-          tools: composer:v2, eliashaeussler/typo3-vendor-bundler, typo3/tailor
+          tools: composer:v2, typo3/tailor
           coverage: none
 
       - name: Reset files
