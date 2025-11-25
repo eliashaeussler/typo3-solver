@@ -13,7 +13,7 @@
                edit-on-github="eliashaeussler/typo3-solver"
                typo3-core-preferred="main"
     />
-    <project title="Solver" release="3.0.3" copyright="since 2023 by Elias Häußler"/>
+    <project title="Solver" release="3.0.4" copyright="since 2023 by Elias Häußler"/>
     <inventory id="t3coreapi" url="https://docs.typo3.org/m/typo3/reference-coreapi/main/en-us/"/>
     <inventory id="t3tsref" url="https://docs.typo3.org/m/typo3/reference-typoscript/main/en-us/"/>
 </guides>
