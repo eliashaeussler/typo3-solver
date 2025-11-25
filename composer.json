@@ -31,7 +31,7 @@
 		"symfony/console": "^7.0",
 		"symfony/filesystem": "^7.0",
 		"symfony/routing": "^7.0",
-		"typo3/cms-core": "~13.4.0",
+		"typo3/cms-core": "~13.4.0 || ~14.0.0",
 		"typo3fluid/fluid": "^4.0"
 	},
 	"require-dev": {
