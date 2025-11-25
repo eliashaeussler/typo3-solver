@@ -34,7 +34,7 @@ Features
 -   Caching integration for solves problems
 -   Console command to solve problems from command line
 -   Customizable solution providers and prompts
--   Compatible with TYPO3 13.4 LTS
+-   Compatible with TYPO3 13.4 LTS and 14.0
 
 ..  _support:
 
