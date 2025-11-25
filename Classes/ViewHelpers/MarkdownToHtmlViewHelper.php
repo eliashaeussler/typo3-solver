@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace EliasHaeussler\Typo3Solver\ViewHelpers;
 
+use FastVolt\Helper\Markdown;
 use TYPO3Fluid\Fluid;
 
 /**
@@ -64,11 +65,13 @@ final class MarkdownToHtmlViewHelper extends Fluid\Core\ViewHelper\AbstractViewH
         /** @var bool $replaceLineNumbers */
         $replaceLineNumbers = $this->arguments['replaceLineNumbersInCodeSnippets'] ?? false;
 
+        // This should never happen, but makes PHPStan happy :)
+        if (!is_string($markdown)) {
+            return '';
+        }
+
         // Convert markdown to HTML
-        $parsedown = new \Parsedown();
-        $parsedown->setSafeMode(true);
-        /** @var string $html */
-        $html = $parsedown->text($markdown);
+        $html = (string)Markdown::new()->setContent($markdown)->toHtml();
 
         // Replace line numbers
         if ($replaceLineNumbers) {

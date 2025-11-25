@@ -25,6 +25,7 @@ namespace EliasHaeussler\Typo3Solver\Tests\Functional\ViewHelpers;
 
 use EliasHaeussler\Typo3Solver as Src;
 use EliasHaeussler\Typo3Solver\Tests;
+use FastVolt\Helper\Markdown;
 use PHPUnit\Framework;
 use TYPO3\TestingFramework;
 
@@ -46,13 +47,13 @@ final class MarkdownToHtmlViewHelperTest extends TestingFramework\Core\Functiona
 
     protected bool $initializeDatabase = false;
 
-    private \Parsedown $parsedown;
+    private Markdown $markdown;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->parsedown = new \Parsedown();
+        $this->markdown = new Markdown();
     }
 
     #[Framework\Attributes\Test]
@@ -71,7 +72,7 @@ MARKDOWN;
 
         self::assertIsString($actual);
         self::assertSame(
-            $this->parsedown->text($markdown),
+            $this->markdown->setContent($markdown)->toHtml(),
             \trim($actual),
         );
     }
@@ -92,7 +93,7 @@ MARKDOWN;
 
         self::assertIsString($actual);
         self::assertSame(
-            $this->parsedown->text($markdown),
+            $this->markdown->setContent($markdown)->toHtml(),
             \trim($actual),
         );
     }

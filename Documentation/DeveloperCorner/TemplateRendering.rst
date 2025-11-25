@@ -59,7 +59,7 @@ The extension provides two additional view helpers.
 ..  php:class:: MarkdownToHtmlViewHelper
 
     View helper to convert a given Markdown string to HTML. It
-    uses the `erusev/parsedown <https://github.com/erusev/parsedown>`__
+    uses the `fastvolt/markdown <https://github.com/fastvolt/markdown>`__
     library internally. In addition, resolved HTML can also be
     modified by replacing line numbers in code snippets to
     match the expected structure of code examples on error pages.
