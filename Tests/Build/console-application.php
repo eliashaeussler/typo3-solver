@@ -35,14 +35,12 @@ $GLOBALS['TYPO3_CONF_VARS'] = $configurationManager->getDefaultConfiguration();
 $application = new Console\Application();
 
 // Add console commands
-$application->add(new Src\Command\CacheFlushCommand(new Src\Cache\SolutionsCache()));
-$application->add(
+$application->addCommands([
+    new Src\Command\CacheFlushCommand(new Src\Cache\SolutionsCache()),
     new Src\Command\ListModelsCommand(
         new Src\Configuration\Configuration(),
         Tests\Unit\Fixtures\DummySolutionProvider::create(),
     ),
-);
-$application->add(
     new Src\Command\SolveCommand(
         new Src\Configuration\Configuration(),
         new Src\Cache\ExceptionsCache(),
@@ -51,6 +49,6 @@ $application->add(
         new Src\Formatter\JsonFormatter(),
         Tests\Unit\Fixtures\DummySolutionProvider::create(),
     ),
-);
+]);
 
 return $application;
