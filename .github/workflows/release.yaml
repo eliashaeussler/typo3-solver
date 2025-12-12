@@ -54,7 +54,7 @@ jobs:
           php ~/.composer/vendor/bin/tailor create-artefact "${{ github.ref_name }}"
 
       - name: Upload extension artefact
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: extension-artefact
           path: tailor-version-artefact/${{ env.EXTENSION_ARTEFACT }}
@@ -70,7 +70,7 @@ jobs:
 
       - name: Download extension artefact
         id: download
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           name: extension-artefact
 
@@ -92,7 +92,7 @@ jobs:
 
       - name: Download extension artefact
         id: download
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           name: extension-artefact
 
