@@ -9,7 +9,7 @@
 		"phpstan/phpstan-symfony": "2.0.9",
 		"saschaegerer/phpstan-typo3": "2.1.1",
 		"shipmonk/composer-dependency-analyser": "1.8.4",
-		"ssch/typo3-rector": "3.9.0",
+		"ssch/typo3-rector": "3.10.0",
 		"typo3/coding-standards": "0.8.0"
 	},
 	"replace": {
