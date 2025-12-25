@@ -39,8 +39,8 @@ jobs:
 
       - name: Stash bundled files
         run: |
-          git add -f Resources/Private/Libs/vendor
-          git stash push -- composer.json Resources/Private/Libs/vendor
+          git add -f Resources/Private/Libs
+          git stash push -- composer.json Resources/Private/Libs
 
       - name: Reset files
         run: git reset --hard HEAD && git clean -dfx
