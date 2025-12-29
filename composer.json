@@ -37,7 +37,7 @@
 	"require-dev": {
 		"ext-dom": "*",
 		"ext-libxml": "*",
-		"eliashaeussler/typo3-vendor-bundler": "^2.2",
+		"eliashaeussler/typo3-vendor-bundler": "^2.2 || ^3.0",
 		"eliashaeussler/version-bumper": "^3.0",
 		"guzzlehttp/psr7": "^2.7",
 		"phpunit/phpcov": "^10.0 || ^11.0",
