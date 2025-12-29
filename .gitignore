@@ -1,5 +1,5 @@
 /.build
 /config
 /var
-/Resources/Private/Libs/vendor
+/Resources/Private/Libs
 /.phpunit.result.cache

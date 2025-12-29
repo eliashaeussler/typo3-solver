@@ -23,24 +23,10 @@
 			]
 		},
 		{
-			"enabled": false,
-			"matchCurrentVersion": "0.18.0",
-			"matchDatasources": [
-				"packagist"
-			],
-			"matchDepNames": [
-				"openai-php/client"
-			],
-			"matchFileNames": [
-				"Resources/Private/Libs/composer.json"
-			]
-		},
-		{
 			"extends": [
 				":pinVersions"
 			],
 			"matchFileNames": [
-				"Resources/Private/Libs/composer.*",
 				"Tests/CGL/composer.*"
 			]
 		}

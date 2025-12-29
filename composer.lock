@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "503361674c77018dca69eb9153428a89",
+    "content-hash": "f2b736c772d3fc3c3504dea99df2b6f5",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -5799,17 +5799,71 @@
             "time": "2022-12-30T00:23:10+00:00"
         },
         {
-            "name": "eliashaeussler/typo3-vendor-bundler",
-            "version": "2.3.0",
+            "name": "eliashaeussler/task-runner",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/eliashaeussler/typo3-vendor-bundler.git",
-                "reference": "fc43c957266155ce0e906bed162167139dc1cc7c"
+                "url": "https://github.com/eliashaeussler/task-runner.git",
+                "reference": "9876f8e9f428225ef56a826fbbc50095490331c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/typo3-vendor-bundler/zipball/fc43c957266155ce0e906bed162167139dc1cc7c",
-                "reference": "fc43c957266155ce0e906bed162167139dc1cc7c",
+                "url": "https://api.github.com/repos/eliashaeussler/task-runner/zipball/9876f8e9f428225ef56a826fbbc50095490331c4",
+                "reference": "9876f8e9f428225ef56a826fbbc50095490331c4",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
+                "symfony/console": "^5.4 || ^6.0 || ^7.0 || ^8.0"
+            },
+            "require-dev": {
+                "armin/editorconfig-cli": "^2.2",
+                "eliashaeussler/php-cs-fixer-config": "^3.1",
+                "eliashaeussler/phpstan-config": "^4.0",
+                "eliashaeussler/rector-config": "^4.0",
+                "ergebnis/composer-normalize": "^2.48",
+                "phpstan/extension-installer": "^1.4",
+                "phpstan/phpstan-phpunit": "^2.0",
+                "phpunit/phpunit": "^11.5 || ^12.5",
+                "shipmonk/composer-dependency-analyser": "^1.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "EliasHaeussler\\TaskRunner\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Elias Häußler",
+                    "email": "elias@haeussler.dev",
+                    "homepage": "https://haeussler.dev",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Progress helper for long-running CLI tasks, based on Symfony Console",
+            "support": {
+                "issues": "https://github.com/eliashaeussler/task-runner/issues",
+                "source": "https://github.com/eliashaeussler/task-runner/tree/1.1.0"
+            },
+            "time": "2025-12-29T16:53:28+00:00"
+        },
+        {
+            "name": "eliashaeussler/typo3-vendor-bundler",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/eliashaeussler/typo3-vendor-bundler.git",
+                "reference": "c5ac29e3c5bfbb88390a52f9b6f4374d7bc3f1bc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/eliashaeussler/typo3-vendor-bundler/zipball/c5ac29e3c5bfbb88390a52f9b6f4374d7bc3f1bc",
+                "reference": "c5ac29e3c5bfbb88390a52f9b6f4374d7bc3f1bc",
                 "shasum": ""
             },
             "require": {
@@ -5817,6 +5871,7 @@
                 "composer-plugin-api": "^2.0",
                 "cuyz/valinor": "^2.0",
                 "cyclonedx/cyclonedx-library": "^3.9",
+                "eliashaeussler/task-runner": "^1.0.1",
                 "package-url/packageurl-php": "^1.0",
                 "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
                 "symfony/console": "^5.4 || ^6.4 || ^7.0 || ^8.0",
@@ -5864,9 +5919,9 @@
             "description": "Composer plugin to bundle vendor libraries for TYPO3 extensions in classic mode",
             "support": {
                 "issues": "https://github.com/eliashaeussler/typo3-vendor-bundler/issues",
-                "source": "https://github.com/eliashaeussler/typo3-vendor-bundler/tree/2.3.0"
+                "source": "https://github.com/eliashaeussler/typo3-vendor-bundler/tree/3.0.0"
             },
-            "time": "2025-12-23T21:56:03+00:00"
+            "time": "2025-12-29T18:55:04+00:00"
         },
         {
             "name": "eliashaeussler/version-bumper",

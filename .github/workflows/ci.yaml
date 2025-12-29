@@ -112,8 +112,6 @@ jobs:
       # Linting
       - name: Lint composer.json
         run: composer cgl lint:composer
-      - name: Lint conflicts in composer.json files
-        run: composer cgl lint:composer-conflicts
       - name: Lint Editorconfig
         run: composer cgl lint:editorconfig
       - name: Lint PHP
@@ -146,6 +144,8 @@ jobs:
       # Bundler
       - name: Validate bundler config
         run: composer validate-bundler-config
+      - name: Check dependency extraction for TER vendor libraries
+        run: composer extract-dependencies --print-file-contents --fail
 
   tests:
     name: Tests (PHP ${{ matrix.php-version }}, TYPO3 ${{ matrix.typo3-version }} & ${{ matrix.dependencies }} dependencies)
