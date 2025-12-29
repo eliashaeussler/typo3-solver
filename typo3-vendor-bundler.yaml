@@ -3,3 +3,5 @@ autoload:
     overwrite: true
   excludeFromClassMap:
     - 'vendor/composer/InstalledVersions.php'
+dependencyExtraction:
+  enabled: true
