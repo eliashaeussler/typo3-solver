@@ -5800,16 +5800,16 @@
         },
         {
             "name": "eliashaeussler/task-runner",
-            "version": "1.1.0",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eliashaeussler/task-runner.git",
-                "reference": "9876f8e9f428225ef56a826fbbc50095490331c4"
+                "reference": "286f3e94b6f94126106a9f2c16c787afc70ddab1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/task-runner/zipball/9876f8e9f428225ef56a826fbbc50095490331c4",
-                "reference": "9876f8e9f428225ef56a826fbbc50095490331c4",
+                "url": "https://api.github.com/repos/eliashaeussler/task-runner/zipball/286f3e94b6f94126106a9f2c16c787afc70ddab1",
+                "reference": "286f3e94b6f94126106a9f2c16c787afc70ddab1",
                 "shasum": ""
             },
             "require": {
@@ -5818,6 +5818,7 @@
             },
             "require-dev": {
                 "armin/editorconfig-cli": "^2.2",
+                "composer/composer": "^2.2",
                 "eliashaeussler/php-cs-fixer-config": "^3.1",
                 "eliashaeussler/phpstan-config": "^4.0",
                 "eliashaeussler/rector-config": "^4.0",
@@ -5848,9 +5849,9 @@
             "description": "Progress helper for long-running CLI tasks, based on Symfony Console",
             "support": {
                 "issues": "https://github.com/eliashaeussler/task-runner/issues",
-                "source": "https://github.com/eliashaeussler/task-runner/tree/1.1.0"
+                "source": "https://github.com/eliashaeussler/task-runner/tree/1.2.2"
             },
-            "time": "2025-12-29T16:53:28+00:00"
+            "time": "2026-01-06T11:25:33+00:00"
         },
         {
             "name": "eliashaeussler/typo3-vendor-bundler",
