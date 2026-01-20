@@ -31,7 +31,7 @@ $EM_CONF[$_EXTKEY] = [
     'author_email' => 'elias@haeussler.dev',
     'constraints' => [
         'depends' => [
-            'typo3' => '13.4.0-14.0.99',
+            'typo3' => '13.4.0-14.1.99',
             'php' => '8.2.0-8.5.99',
         ],
     ],
