@@ -1,6 +1,6 @@
 repository:
   name: 'typo3-solver'
-  description: '💡 Extension for TYPO3 CMS to extend TYPO3's exception handling with AI generated solutions.'
+  description: 💡 Extension for TYPO3 CMS to extend TYPO3's exception handling with AI generated solutions.
   homepage: 'https://docs.typo3.org/p/eliashaeussler/typo3-solver/main/en-us/'
   topics: 'typo3,extension,ai,openai,exception'
   private: false
