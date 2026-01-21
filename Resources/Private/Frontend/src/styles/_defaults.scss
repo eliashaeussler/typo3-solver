@@ -23,7 +23,9 @@
     height: 1px;
     padding: 0;
     overflow: hidden;
+    /* stylelint-disable property-no-deprecated */
     clip: rect(0, 0, 0, 0);
+    /* stylelint-enable property-no-deprecated */
     white-space: nowrap;
     clip-path: inset(50%);
     border: 0;
