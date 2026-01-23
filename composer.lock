@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f6c4e976d8fabc5afd3f05571cdf77e9",
+    "content-hash": "c191915ad1d61edc57119acf166c00a8",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -5855,16 +5855,16 @@
         },
         {
             "name": "eliashaeussler/typo3-vendor-bundler",
-            "version": "3.0.1",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eliashaeussler/typo3-vendor-bundler.git",
-                "reference": "58efd961fe498305ec47f16e61f988b161d4f85a"
+                "reference": "04b472f15cf48d603be2acf62c77e3d05bbeef47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/typo3-vendor-bundler/zipball/58efd961fe498305ec47f16e61f988b161d4f85a",
-                "reference": "58efd961fe498305ec47f16e61f988b161d4f85a",
+                "url": "https://api.github.com/repos/eliashaeussler/typo3-vendor-bundler/zipball/04b472f15cf48d603be2acf62c77e3d05bbeef47",
+                "reference": "04b472f15cf48d603be2acf62c77e3d05bbeef47",
                 "shasum": ""
             },
             "require": {
@@ -5920,9 +5920,9 @@
             "description": "Composer plugin to bundle vendor libraries for TYPO3 extensions in classic mode",
             "support": {
                 "issues": "https://github.com/eliashaeussler/typo3-vendor-bundler/issues",
-                "source": "https://github.com/eliashaeussler/typo3-vendor-bundler/tree/3.0.1"
+                "source": "https://github.com/eliashaeussler/typo3-vendor-bundler/tree/3.1.1"
             },
-            "time": "2025-12-30T19:45:23+00:00"
+            "time": "2026-01-23T21:02:56+00:00"
         },
         {
             "name": "eliashaeussler/version-bumper",
