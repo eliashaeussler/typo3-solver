@@ -17,5 +17,4 @@
 /phpunit.unit.xml                   export-ignore
 /renovate.json                      export-ignore
 /SECURITY.md                        export-ignore
-/typo3-vendor-bundler.yaml          export-ignore
 /version-bumper.yaml                export-ignore
