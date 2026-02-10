@@ -6,7 +6,7 @@
 		"eliashaeussler/rector-config": "4.0.0",
 		"ergebnis/composer-normalize": "2.49.0",
 		"phpstan/extension-installer": "1.4.3",
-		"phpstan/phpstan-symfony": "2.0.12",
+		"phpstan/phpstan-symfony": "2.0.13",
 		"saschaegerer/phpstan-typo3": "2.1.1",
 		"shipmonk/composer-dependency-analyser": "1.8.4",
 		"ssch/typo3-rector": "3.11.0",
