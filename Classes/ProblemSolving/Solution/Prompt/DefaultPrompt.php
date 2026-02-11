@@ -68,7 +68,7 @@ final readonly class DefaultPrompt implements Prompt
     {
         $backtrace = Backtrace\Backtrace::createForThrowable($exception);
         $frames = $backtrace->frames();
-        $applicationFrame = $frames[$backtrace->firstApplicationFrameIndex()] ?? null;
+        $applicationFrame = $frames[$backtrace->firstApplicationFrameIndex() ?? 0] ?? null;
         $snippet = '';
 
         // Early return if application frame could not be determined
