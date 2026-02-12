@@ -266,6 +266,11 @@ jobs:
           token: ${{ secrets.REBUILD_ASSETS_TOKEN }}
           fetch-depth: 0
 
+      - name: Prepare Git environment
+        run: |
+          git config user.email "elias@haeussler.dev"
+          git config user.name "Elias Häußler"
+
       - name: Merge changes into default branch
         run: |
           git fetch origin ${{ github.event.repository.default_branch }}
