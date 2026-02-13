@@ -7,7 +7,7 @@
 		"ergebnis/composer-normalize": "2.50.0",
 		"phpstan/extension-installer": "1.4.3",
 		"phpstan/phpstan-symfony": "2.0.14",
-		"saschaegerer/phpstan-typo3": "2.1.1",
+		"saschaegerer/phpstan-typo3": "3.0.0",
 		"shipmonk/composer-dependency-analyser": "1.8.4",
 		"ssch/typo3-rector": "3.11.0",
 		"typo3/coding-standards": "0.8.0"
