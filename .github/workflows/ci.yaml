@@ -31,7 +31,7 @@ jobs:
       - name: Check modified assets
         id: check
         run: |
-          if git diff --name-only ${{ github.sha }}~1 ${{ github.sha }} | grep -q '^Resources/Private/Frontend/'; then
+          if git diff --name-only ${{ github.sha }}~1 ${{ github.sha }} | grep -q '^Build/assets/'; then
             echo "skip_assets=false" >> $GITHUB_OUTPUT
           else
             echo "skip_assets=true" >> $GITHUB_OUTPUT
@@ -44,17 +44,17 @@ jobs:
         with:
           node-version: 24
           cache: 'npm'
-          cache-dependency-path: 'Resources/Private/Frontend/package-lock.json'
+          cache-dependency-path: 'Build/assets/package-lock.json'
 
       # Install Frontend dependencies
       - name: Install Frontend dependencies
         if: ${{ steps.check.outputs.skip_assets != 'true' }}
-        run: npm --prefix Resources/Private/Frontend ci
+        run: npm --prefix Build/assets ci
 
       # Re-create Frontend dist files
       - name: Re-create dist files
         if: ${{ steps.check.outputs.skip_assets != 'true' }}
-        run: npm --prefix Resources/Private/Frontend run build
+        run: npm --prefix Build/assets run build
 
       - name: Fail on integrity mismatch
         if: ${{ github.actor != 'renovate[bot]' && steps.check.outputs.skip_assets != 'true' }}
@@ -93,7 +93,7 @@ jobs:
         with:
           node-version: 24
           cache: 'npm'
-          cache-dependency-path: 'Resources/Private/Frontend/package-lock.json'
+          cache-dependency-path: 'Build/assets/package-lock.json'
 
       # Validation
       - name: Validate composer.json
@@ -121,13 +121,13 @@ jobs:
 
       # Install Frontend dependencies
       - name: Install Frontend dependencies
-        run: npm --prefix Resources/Private/Frontend ci
+        run: npm --prefix Build/assets ci
 
       # Frontend linting
       - name: Lint SCSS
-        run: npm --prefix Resources/Private/Frontend run lint:scss
+        run: npm --prefix Build/assets run lint:scss
       - name: Lint TypeScript
-        run: npm --prefix Resources/Private/Frontend run lint:ts
+        run: npm --prefix Build/assets run lint:ts
 
       # Migration
       - name: Rector migration
@@ -136,7 +136,7 @@ jobs:
       # Documentation
       - name: Check documentation build
         run: |
-          mkdir -p .build/docs
+          mkdir -p Build/docs/result
           composer docs:build -- --no-progress --fail-on-log
 
       # Bundler
@@ -222,13 +222,13 @@ jobs:
 
       # Upload artifact
       - name: Fix coverage path
-        working-directory: .build/coverage
+        working-directory: Build/tests/coverage
         run: sed -i 's#/home/runner/work/typo3-solver/typo3-solver#${{ github.workspace }}#g' clover.xml
       - name: Upload coverage artifact
         uses: actions/upload-artifact@v6
         with:
           name: coverage
-          path: .build/coverage/clover.xml
+          path: Build/tests/coverage/clover.xml
           retention-days: 7
 
   report-coverage:

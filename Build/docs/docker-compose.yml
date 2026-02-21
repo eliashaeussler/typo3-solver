@@ -4,5 +4,5 @@ services:
     entrypoint: ['/opt/guides/entrypoint.sh', '--config', 'Documentation', '--output', '/result']
     pull_policy: always
     volumes:
-      - .:/project:ro
-      - .build/docs:/result
+      - ../..:/project:ro
+      - ./result:/result

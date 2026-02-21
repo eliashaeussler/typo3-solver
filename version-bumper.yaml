@@ -3,7 +3,7 @@ presets:
   - name: typo3-extension
   - name: npm-package
     options:
-      path: Resources/Private/Frontend
+      path: Build/assets
 
 releaseOptions:
   commitMessage: '[RELEASE] Release of EXT:solver {%version%}'

@@ -39,7 +39,7 @@
 		"fix:composer": [
 			"@composer normalize",
 			"@composer normalize ../../composer.json",
-			"@composer normalize ../Functional/Fixtures/Extensions/middleware_bridge/composer.json"
+			"@composer normalize ../../Tests/Functional/Fixtures/Extensions/middleware_bridge/composer.json"
 		],
 		"fix:editorconfig": "@lint:editorconfig --fix",
 		"fix:php": "php-cs-fixer fix",

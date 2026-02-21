@@ -29,7 +29,7 @@ use Rector\ValueObject\PhpVersion;
 return static function (RectorConfig $rectorConfig): void {
     $rootPath = dirname(__DIR__, 2);
 
-    require $rootPath . '/.build/vendor/autoload.php';
+    require $rootPath . '/vendor/autoload.php';
 
     Config::create($rectorConfig, PhpVersion::PHP_82)
         ->in(
@@ -38,7 +38,7 @@ return static function (RectorConfig $rectorConfig): void {
             $rootPath . '/Tests',
         )
         ->not(
-            $rootPath . '/Tests/CGL/vendor/*',
+            $rootPath . '/Build',
         )
         ->withPHPUnit()
         ->withSymfony()

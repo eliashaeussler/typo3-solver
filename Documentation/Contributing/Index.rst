@@ -67,7 +67,7 @@ Next, install all dependencies:
 ..  code-block:: bash
 
     ddev composer install
-    ddev frontend install
+    ddev assets install
 
 You can access the DDEV site at https://typo3-ext-solver.ddev.site/.
 
@@ -126,18 +126,18 @@ Frontend
 ..  code-block:: bash
 
     # All linters
-    ddev frontend run lint
+    ddev assets run lint
 
     # Specific linters
-    ddev frontend run lint:scss
-    ddev frontend run lint:ts
+    ddev assets run lint:scss
+    ddev assets run lint:ts
 
     # Fix all CGL issues
-    ddev frontend run fix
+    ddev assets run fix
 
     # Fix specific CGL issues
-    ddev frontend run fix:scss
-    ddev frontend run fix:ts
+    ddev assets run fix:scss
+    ddev assets run fix:ts
 
 ..  _run-tests:
 
@@ -163,12 +163,12 @@ Run tests
     # Merge code coverage of all test suites
     ddev test coverage:merge
 
-Code coverage reports are written to :file:`.build/coverage`. You can
+Code coverage reports are written to :file:`Build/tests/coverage`. You can
 open the last merged HTML report like follows:
 
 ..  code-block:: bash
 
-    open .build/coverage/html/_merged/index.html
+    open Build/tests/coverage/html/_merged/index.html
 
 ..  _build-documentation:
 
@@ -186,7 +186,7 @@ Build documentation
     # Open rendered documentation
     composer docs:open
 
-The built docs will be stored in :file:`.build/docs`.
+The built docs will be stored in :file:`Build/docs/result`.
 
 ..  _pull-request:
 

@@ -27,7 +27,7 @@
 				":pinVersions"
 			],
 			"matchFileNames": [
-				"Tests/CGL/composer.*"
+				"Build/cgl/composer.*"
 			]
 		}
 	]
