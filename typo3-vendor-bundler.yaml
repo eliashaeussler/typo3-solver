@@ -1,5 +1,0 @@
-autoload:
-  target:
-    overwrite: true
-dependencyExtraction:
-  enabled: true
