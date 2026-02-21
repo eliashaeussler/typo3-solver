@@ -27,13 +27,13 @@ use ShipMonk\ComposerDependencyAnalyser;
 $rootPath = dirname(__DIR__, 2);
 
 /** @var Autoload\ClassLoader $loader */
-$loader = require $rootPath . '/.build/vendor/autoload.php';
+$loader = require $rootPath . '/vendor/autoload.php';
 $loader->register();
 
 $configuration = new ComposerDependencyAnalyser\Config\Configuration();
 $configuration
     ->addPathsToExclude([
-        $rootPath . '/Tests/CGL',
+        $rootPath . '/Build',
     ])
     ->ignoreErrorsOnPackage(
         'phpunit/phpunit',

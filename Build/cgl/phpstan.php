@@ -30,10 +30,10 @@ return PHPStanConfig\Config\Config::create(dirname(__DIR__, 2))
         'Tests',
     )
     ->not(
-        'Tests/CGL',
+        'Build',
     )
     ->bootstrapFiles(
-        '.build/vendor/autoload.php',
+        'vendor/autoload.php',
     )
     ->withBaseline(__DIR__ . '/phpstan-baseline.neon')
     ->withBleedingEdge([
@@ -41,7 +41,7 @@ return PHPStanConfig\Config\Config::create(dirname(__DIR__, 2))
     ])
     ->maxLevel()
     ->withSet(static function (PHPStanConfig\Set\SymfonySet $set) {
-        $set->withConsoleApplicationLoader('Tests/Build/console-application.php');
+        $set->withConsoleApplicationLoader('Build/tests/console-application.php');
     })
     ->toArray()
 ;

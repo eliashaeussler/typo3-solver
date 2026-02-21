@@ -23,7 +23,6 @@ declare(strict_types=1);
 
 return [
     'directories' => [
-        '.build',
         '.ddev',
         '.git',
         '.github',
@@ -47,8 +46,6 @@ return [
         'gitattributes',
         'gitignore',
         'packaging_exclude.php',
-        'phpunit.functional.xml',
-        'phpunit.unit.xml',
         'renovate.json',
         'SECURITY.md',
         'typo3-vendor-bundler.yaml',

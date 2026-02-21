@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -e
+
+## Description: Run npm command for the Frontend subproject
+## Usage: assets [command] [options]
+## Example: ddev assets install\nddev assets start\nddev assets run build\nddev assets run lint\nddev assets run fix
+
+npm --prefix /var/www/html/Build/assets "$@"

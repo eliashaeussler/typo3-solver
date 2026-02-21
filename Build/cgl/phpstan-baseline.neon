@@ -16,64 +16,64 @@ parameters:
 			rawMessage: Cannot access offset 'EXTENSIONS' on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
-			path: ../Extension/ExtensionConfigurationExtension.php
+			path: ../../Tests/Extension/ExtensionConfigurationExtension.php
 
 		-
 			rawMessage: Cannot access offset 'solver' on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
-			path: ../Extension/ExtensionConfigurationExtension.php
+			path: ../../Tests/Extension/ExtensionConfigurationExtension.php
 
 		-
 			rawMessage: Cannot access offset 'EXTENSIONS' on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 3
-			path: ../Unit/Cache/SolutionsCacheTest.php
+			path: ../../Tests/Unit/Cache/SolutionsCacheTest.php
 
 		-
 			rawMessage: Cannot access offset 'cache' on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 3
-			path: ../Unit/Cache/SolutionsCacheTest.php
+			path: ../../Tests/Unit/Cache/SolutionsCacheTest.php
 
 		-
 			rawMessage: Cannot access offset 'lifetime' on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 3
-			path: ../Unit/Cache/SolutionsCacheTest.php
+			path: ../../Tests/Unit/Cache/SolutionsCacheTest.php
 
 		-
 			rawMessage: Cannot access offset 'solver' on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 3
-			path: ../Unit/Cache/SolutionsCacheTest.php
+			path: ../../Tests/Unit/Cache/SolutionsCacheTest.php
 
 		-
 			rawMessage: Cannot access offset 'EXTENSIONS' on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 4
-			path: ../Unit/ProblemSolving/Solution/Provider/OpenAISolutionProviderTest.php
+			path: ../../Tests/Unit/ProblemSolving/Solution/Provider/OpenAISolutionProviderTest.php
 
 		-
 			rawMessage: Cannot access offset 'api' on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 3
-			path: ../Unit/ProblemSolving/Solution/Provider/OpenAISolutionProviderTest.php
+			path: ../../Tests/Unit/ProblemSolving/Solution/Provider/OpenAISolutionProviderTest.php
 
 		-
 			rawMessage: Cannot access offset 'ignoredCodes' on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
-			path: ../Unit/ProblemSolving/Solution/Provider/OpenAISolutionProviderTest.php
+			path: ../../Tests/Unit/ProblemSolving/Solution/Provider/OpenAISolutionProviderTest.php
 
 		-
 			rawMessage: Cannot access offset 'key' on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 3
-			path: ../Unit/ProblemSolving/Solution/Provider/OpenAISolutionProviderTest.php
+			path: ../../Tests/Unit/ProblemSolving/Solution/Provider/OpenAISolutionProviderTest.php
 
 		-
 			rawMessage: Cannot access offset 'solver' on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 4
-			path: ../Unit/ProblemSolving/Solution/Provider/OpenAISolutionProviderTest.php
+			path: ../../Tests/Unit/ProblemSolving/Solution/Provider/OpenAISolutionProviderTest.php

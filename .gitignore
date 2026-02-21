@@ -1,5 +1,7 @@
-/.build
+/Build/log
 /config
+/public
 /var
+/vendor
 /Resources/Private/Libs
 /.phpunit.result.cache

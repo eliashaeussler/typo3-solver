@@ -62,29 +62,26 @@
 			"typo3/class-alias-loader": true,
 			"typo3/cms-composer-installers": true
 		},
-		"bin-dir": ".build/bin",
-		"sort-packages": true,
-		"vendor-dir": ".build/vendor"
+		"sort-packages": true
 	},
 	"extra": {
 		"typo3/cms": {
-			"extension-key": "solver",
-			"web-dir": ".build/web"
+			"extension-key": "solver"
 		}
 	},
 	"scripts": {
 		"post-install-cmd": [
 			"@cgl install"
 		],
-		"cgl": "@composer -d Tests/CGL --",
+		"cgl": "@composer -d Build/cgl --",
 		"docs": [
 			"@docs:cleanup",
 			"@docs:build",
 			"@docs:open"
 		],
-		"docs:build": "docker compose run --rm docs",
-		"docs:cleanup": "rm -rf .build/docs",
-		"docs:open": "open .build/docs/Index.html",
+		"docs:build": "docker compose -f Build/docs/docker-compose.yml run --rm docs",
+		"docs:cleanup": "rm -rf Build/docs/result",
+		"docs:open": "open Build/docs/result/Index.html",
 		"test": [
 			"@test:functional",
 			"@test:unit"
@@ -94,9 +91,9 @@
 			"@test:coverage:unit",
 			"@test:coverage:merge"
 		],
-		"test:coverage:functional": "phpunit -c phpunit.functional.xml",
-		"test:coverage:merge": "phpcov merge --html .build/coverage/html/_merged --clover .build/coverage/clover.xml --text php://stdout .build/coverage/php",
-		"test:coverage:unit": "phpunit -c phpunit.unit.xml",
+		"test:coverage:functional": "phpunit -c Build/tests/phpunit.functional.xml",
+		"test:coverage:merge": "phpcov merge --html Build/tests/coverage/html/_merged --clover Build/tests/coverage/clover.xml --text php://stdout Build/tests/coverage/php",
+		"test:coverage:unit": "phpunit -c Build/tests/phpunit.unit.xml",
 		"test:functional": "@test:coverage:functional --no-coverage",
 		"test:unit": "@test:coverage:unit --no-coverage"
 	}

@@ -5,4 +5,4 @@ set -e
 ## Usage: cgl [command] [options]
 ## Example: ddev cgl lint\nddev cgl fix\nddev cgl migration\nddev cgl sca\nddev cgl lint:composer\nddev cgl fix:composer
 
-composer -d /var/www/html/Tests/CGL "$@"
+composer -d /var/www/html/Build/cgl "$@"
