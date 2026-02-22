@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b40626ecb6755fabce7078575fc6aaea",
+    "content-hash": "f9dcfb93b150d93910acba8ae5fb198a",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -5417,86 +5417,6 @@
             "time": "2024-11-12T16:29:46+00:00"
         },
         {
-            "name": "composer/spdx-licenses",
-            "version": "1.5.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/composer/spdx-licenses.git",
-                "reference": "edf364cefe8c43501e21e88110aac10b284c3c9f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/composer/spdx-licenses/zipball/edf364cefe8c43501e21e88110aac10b284c3c9f",
-                "reference": "edf364cefe8c43501e21e88110aac10b284c3c9f",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.3.2 || ^7.0 || ^8.0"
-            },
-            "require-dev": {
-                "phpstan/phpstan": "^1.11",
-                "symfony/phpunit-bridge": "^3 || ^7"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Composer\\Spdx\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nils Adermann",
-                    "email": "naderman@naderman.de",
-                    "homepage": "http://www.naderman.de"
-                },
-                {
-                    "name": "Jordi Boggiano",
-                    "email": "j.boggiano@seld.be",
-                    "homepage": "http://seld.be"
-                },
-                {
-                    "name": "Rob Bast",
-                    "email": "rob.bast@gmail.com",
-                    "homepage": "http://robbast.nl"
-                }
-            ],
-            "description": "SPDX licenses list and validation library.",
-            "keywords": [
-                "license",
-                "spdx",
-                "validator"
-            ],
-            "support": {
-                "irc": "ircs://irc.libera.chat:6697/composer",
-                "issues": "https://github.com/composer/spdx-licenses/issues",
-                "source": "https://github.com/composer/spdx-licenses/tree/1.5.9"
-            },
-            "funding": [
-                {
-                    "url": "https://packagist.com",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/composer",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/composer/composer",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2025-05-12T21:07:07+00:00"
-        },
-        {
             "name": "cuyz/valinor",
             "version": "2.3.2",
             "source": {
@@ -5574,35 +5494,41 @@
         },
         {
             "name": "cyclonedx/cyclonedx-library",
-            "version": "v3.10.0",
+            "version": "v4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CycloneDX/cyclonedx-php-library.git",
-                "reference": "e6bb0fca8d89f1e34755900c361061a6f5253e49"
+                "reference": "c95a371894c4e32bea42bfa024f2ab5092cbb292"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CycloneDX/cyclonedx-php-library/zipball/e6bb0fca8d89f1e34755900c361061a6f5253e49",
-                "reference": "e6bb0fca8d89f1e34755900c361061a6f5253e49",
+                "url": "https://api.github.com/repos/CycloneDX/cyclonedx-php-library/zipball/c95a371894c4e32bea42bfa024f2ab5092cbb292",
+                "reference": "c95a371894c4e32bea42bfa024f2ab5092cbb292",
                 "shasum": ""
             },
             "require": {
-                "composer/spdx-licenses": "^1.5",
                 "ext-dom": "*",
                 "ext-json": "*",
                 "ext-libxml": "*",
                 "opis/json-schema": "^2.0",
-                "package-url/packageurl-php": "^1.0",
                 "php": "^8.1"
             },
+            "conflict": {
+                "composer/spdx-licenses": "<1.5"
+            },
             "require-dev": {
+                "composer/spdx-licenses": "^1.5",
                 "ext-simplexml": "*",
                 "roave/security-advisories": "dev-latest"
+            },
+            "suggest": {
+                "composer/spdx-licenses": "used in license factory",
+                "package-url/packageurl-php": "for parsing and crafting PackageURL strings"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.x-dev"
+                    "dev-master": "4.x-dev"
                 },
                 "composer-normalize": {
                     "indent-size": 4,
@@ -5659,7 +5585,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2026-01-07T13:45:46+00:00"
+            "time": "2026-02-17T11:46:50+00:00"
         },
         {
             "name": "cypresslab/gitelephant",
@@ -5851,23 +5777,23 @@
         },
         {
             "name": "eliashaeussler/typo3-vendor-bundler",
-            "version": "3.1.1",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eliashaeussler/typo3-vendor-bundler.git",
-                "reference": "04b472f15cf48d603be2acf62c77e3d05bbeef47"
+                "reference": "353c75d3fab9a2cd16fc7a226bce9e583c4594cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/typo3-vendor-bundler/zipball/04b472f15cf48d603be2acf62c77e3d05bbeef47",
-                "reference": "04b472f15cf48d603be2acf62c77e3d05bbeef47",
+                "url": "https://api.github.com/repos/eliashaeussler/typo3-vendor-bundler/zipball/353c75d3fab9a2cd16fc7a226bce9e583c4594cd",
+                "reference": "353c75d3fab9a2cd16fc7a226bce9e583c4594cd",
                 "shasum": ""
             },
             "require": {
                 "composer": "~2.2.18 || ^2.4",
                 "composer-plugin-api": "^2.0",
-                "cuyz/valinor": "^2.0",
-                "cyclonedx/cyclonedx-library": "^3.9",
+                "cuyz/valinor": "^2.2.2",
+                "cyclonedx/cyclonedx-library": "^4.0",
                 "eliashaeussler/task-runner": "^1.0.1",
                 "package-url/packageurl-php": "^1.0",
                 "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
@@ -5875,13 +5801,11 @@
                 "symfony/filesystem": "^5.4 || ^6.4 || ^7.0 || ^8.0",
                 "symfony/yaml": "^5.4 || ^6.4 || ^7.0 || ^8.0"
             },
-            "conflict": {
-                "cuyz/valinor": "2.2.1"
-            },
             "require-dev": {
                 "armin/editorconfig-cli": "^2.1",
                 "composer/composer": "~2.2.18 || ^2.4",
                 "composer/semver": "^3.0",
+                "composer/spdx-licenses": "^1.5.7",
                 "eliashaeussler/php-cs-fixer-config": "^3.0",
                 "eliashaeussler/phpstan-config": "^4.0",
                 "eliashaeussler/rector-config": "^4.0",
@@ -5889,7 +5813,7 @@
                 "phpstan/extension-installer": "^1.4",
                 "phpstan/phpstan-phpunit": "^2.0",
                 "phpstan/phpstan-symfony": "^2.0",
-                "phpunit/phpunit": "^11.5 || ^12.2",
+                "phpunit/phpunit": "^11.5 || ^12.5 || ^13.0",
                 "shipmonk/composer-dependency-analyser": "^1.8"
             },
             "type": "composer-plugin",
@@ -5916,9 +5840,9 @@
             "description": "Composer plugin to bundle vendor libraries for TYPO3 extensions in classic mode",
             "support": {
                 "issues": "https://github.com/eliashaeussler/typo3-vendor-bundler/issues",
-                "source": "https://github.com/eliashaeussler/typo3-vendor-bundler/tree/3.1.1"
+                "source": "https://github.com/eliashaeussler/typo3-vendor-bundler/tree/4.0.0"
             },
-            "time": "2026-01-23T21:02:56+00:00"
+            "time": "2026-02-22T17:58:42+00:00"
         },
         {
             "name": "eliashaeussler/version-bumper",
