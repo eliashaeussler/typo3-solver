@@ -12,6 +12,7 @@
                edit-on-github-branch="main"
                edit-on-github="eliashaeussler/typo3-solver"
                typo3-core-preferred="main"
+               interlink-shortcode="eliashaeussler/typo3-solver"
     />
     <project title="Solver" release="3.1.0" copyright="since 2023 by Elias Häußler"/>
     <inventory id="t3coreapi" url="https://docs.typo3.org/m/typo3/reference-coreapi/main/en-us/"/>
