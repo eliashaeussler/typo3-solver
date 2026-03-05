@@ -23,7 +23,7 @@
 	"devDependencies": {
 		"@eslint/js": "^10.0.0",
 		"@rollup/plugin-node-resolve": "^16.0.1",
-		"@rollup/plugin-terser": "^0.4.4",
+		"@rollup/plugin-terser": "^1.0.0",
 		"@rollup/plugin-typescript": "^12.1.2",
 		"@types/webpack-env": "^1.18.0",
 		"cross-env": "^10.0.0",
