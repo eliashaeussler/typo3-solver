@@ -27,7 +27,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.2
+          php-version: 8.2 # renovate-ignore
           tools: composer:v2, typo3/tailor
           coverage: none
 
@@ -103,7 +103,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.2
+          php-version: 8.2 # renovate-ignore
           extensions: intl, mbstring, json, zip, curl
           tools: composer:v2, typo3/tailor
 
