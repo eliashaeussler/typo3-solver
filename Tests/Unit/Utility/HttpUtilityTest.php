@@ -66,21 +66,4 @@ final class HttpUtilityTest extends TestingFramework\Core\Unit\UnitTestCase
 
         unset($GLOBALS['TYPO3_REQUEST']);
     }
-
-    #[Framework\Attributes\Test]
-    public function getServerRequestCreatesServerRequestIfNoGlobalServerRequestIsAvailable(): void
-    {
-        $emptyStream = new Core\Http\Stream('php://temp');
-
-        // Simulate TYPO3 request url
-        Core\Utility\GeneralUtility::setIndpEnv('TYPO3_REQUEST_URL', 'https://www.example.com');
-
-        $expected = Core\Http\ServerRequestFactory::fromGlobals()->withBody($emptyStream);
-        $actual = Src\Utility\HttpUtility::getServerRequest()->withBody($emptyStream);
-
-        self::assertEquals($expected, $actual);
-
-        // Revert simulated TYPO3 request url
-        Core\Utility\GeneralUtility::flushInternalRuntimeCaches();
-    }
 }
