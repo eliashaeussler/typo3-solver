@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5b965d5e961f0c339bc83cdcbea6a132",
+    "content-hash": "1bfb2e6ecedd186b86938f21c918cdd7",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -5861,16 +5861,16 @@
         },
         {
             "name": "eliashaeussler/version-bumper",
-            "version": "3.2.2",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eliashaeussler/version-bumper.git",
-                "reference": "c46dafa616879b4fe70953a02736ac5f4ec37a8c"
+                "reference": "c07e35754ce1c156427f9a75e170fc90a32ef681"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/version-bumper/zipball/c46dafa616879b4fe70953a02736ac5f4ec37a8c",
-                "reference": "c46dafa616879b4fe70953a02736ac5f4ec37a8c",
+                "url": "https://api.github.com/repos/eliashaeussler/version-bumper/zipball/c07e35754ce1c156427f9a75e170fc90a32ef681",
+                "reference": "c07e35754ce1c156427f9a75e170fc90a32ef681",
                 "shasum": ""
             },
             "require": {
@@ -5926,9 +5926,9 @@
             "description": "Composer plugin to bump project versions during release preparations",
             "support": {
                 "issues": "https://github.com/eliashaeussler/version-bumper/issues",
-                "source": "https://github.com/eliashaeussler/version-bumper/tree/3.2.2"
+                "source": "https://github.com/eliashaeussler/version-bumper/tree/3.3.0"
             },
-            "time": "2026-05-07T19:16:44+00:00"
+            "time": "2026-05-12T07:59:30+00:00"
         },
         {
             "name": "myclabs/deep-copy",
