@@ -5,7 +5,7 @@
 		"local>eliashaeussler/renovate-config:typo3-extension"
 	],
 	"constraints": {
-		"php": "8.2.*"
+		"php": "8.5.*"
 	},
 	"packageRules": [
 		{
