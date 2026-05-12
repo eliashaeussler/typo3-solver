@@ -6,5 +6,4 @@ presets:
       path: Resources/Private/Frontend
 
 releaseOptions:
-  commitMessage: '[RELEASE] Release of EXT:solver {%version%}'
   signTag: true
