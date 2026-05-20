@@ -12,7 +12,7 @@ permissions: read-all
 jobs:
   prepare:
     name: Prepare workflow
-    uses: eliashaeussler/.github/.github/workflows/pull-request.yaml@main
+    uses: eliashaeussler/.github/.github/workflows/pull-request.yaml@76514ec3b1ca3ae6de8d56490ddcfe7f05139590 # main
 
   assets:
     name: Verify asset integrity
@@ -22,7 +22,7 @@ jobs:
     outputs:
       modified: ${{ steps.commit.outputs.changes_detected || 'false' }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
           token: ${{ secrets.REBUILD_ASSETS_TOKEN }}
           fetch-depth: 2
@@ -39,7 +39,7 @@ jobs:
 
       # Prepare environment
       - name: Setup Node
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         if: ${{ steps.check.outputs.skip_assets != 'true' }}
         with:
           node-version: 24
@@ -63,7 +63,7 @@ jobs:
           git diff --exit-code --staged Resources/Public
 
       # Commit updated dist files
-      - uses: stefanzweifel/git-auto-commit-action@v7
+      - uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
         if: ${{ github.actor == 'renovate[bot]' && steps.check.outputs.skip_assets != 'true' }}
         id: commit
         with:
@@ -78,18 +78,18 @@ jobs:
     if: ${{ needs.assets.outputs.modified == 'false' }}
     needs: assets
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
 
       # Prepare environment
       - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc # v2
         with:
           # We use the minimum supported PHP version
           php-version: 8.2 # renovate-ignore
           tools: composer:v2, cs2pr
           coverage: none
       - name: Setup Node
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
         with:
           node-version: 24
           cache: 'npm'
@@ -101,7 +101,7 @@ jobs:
 
       # Install dependencies
       - name: Install Composer dependencies
-        uses: ramsey/composer-install@4.0.0
+        uses: ramsey/composer-install@65e4f84970763564f46a70b8a54b90d033b3bdda # 4.0.0
 
       # Analyze
       - name: Analyze dependencies
@@ -160,11 +160,11 @@ jobs:
       typo3DatabaseUsername: root
       typo3DatabasePassword: root
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
 
       # Prepare environment
       - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc # v2
         with:
           php-version: ${{ matrix.php-version }}
           tools: composer:v2
@@ -176,7 +176,7 @@ jobs:
 
       # Install dependencies
       - name: Install Composer dependencies
-        uses: ramsey/composer-install@4.0.0
+        uses: ramsey/composer-install@65e4f84970763564f46a70b8a54b90d033b3bdda # 4.0.0
         with:
           dependency-versions: ${{ matrix.dependencies }}
           composer-options: --with=typo3/cms-core:"^${{ matrix.typo3-version }}"
@@ -196,11 +196,11 @@ jobs:
       typo3DatabaseUsername: root
       typo3DatabasePassword: root
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
 
       # Prepare environment
       - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc # v2
         with:
           php-version: 8.5
           tools: composer:v2
@@ -212,7 +212,7 @@ jobs:
 
       # Install dependencies
       - name: Install Composer dependencies
-        uses: ramsey/composer-install@4.0.0
+        uses: ramsey/composer-install@65e4f84970763564f46a70b8a54b90d033b3bdda # 4.0.0
 
       # Run tests
       - name: Run tests
@@ -234,7 +234,7 @@ jobs:
     needs: test-coverage
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
 
       # Download artifact
       - name: Download coverage artifact
@@ -245,7 +245,7 @@ jobs:
 
       # Coveralls
       - name: Coveralls report
-        uses: coverallsapp/github-action@v2
+        uses: coverallsapp/github-action@5cbfd81b66ca5d10c19b062c04de0199c215fb6e # v2
         with:
           file: ${{ steps.download.outputs.download-path }}/clover.xml
 
@@ -259,7 +259,7 @@ jobs:
       - test-coverage
     if: ${{ needs.assets.outputs.modified == 'false' && github.actor != 'renovate[bot]' && github.event_name == 'push' && startsWith(github.ref_name, 'renovate/') }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
           token: ${{ secrets.REBUILD_ASSETS_TOKEN }}
           fetch-depth: 0
