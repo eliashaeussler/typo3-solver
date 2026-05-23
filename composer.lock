@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1bfb2e6ecedd186b86938f21c918cdd7",
+    "content-hash": "e0bde2cbddf5cc47bab8a3c84644c041",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -5862,16 +5862,16 @@
         },
         {
             "name": "eliashaeussler/version-bumper",
-            "version": "3.3.0",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eliashaeussler/version-bumper.git",
-                "reference": "c07e35754ce1c156427f9a75e170fc90a32ef681"
+                "reference": "2e8ba02dca5ff394792414caf1e7da112f9b04e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/version-bumper/zipball/c07e35754ce1c156427f9a75e170fc90a32ef681",
-                "reference": "c07e35754ce1c156427f9a75e170fc90a32ef681",
+                "url": "https://api.github.com/repos/eliashaeussler/version-bumper/zipball/2e8ba02dca5ff394792414caf1e7da112f9b04e7",
+                "reference": "2e8ba02dca5ff394792414caf1e7da112f9b04e7",
                 "shasum": ""
             },
             "require": {
@@ -5891,7 +5891,7 @@
             },
             "require-dev": {
                 "armin/editorconfig-cli": "^2.0",
-                "composer/composer": "^2.2",
+                "composer/composer": "~2.2.28 || ~2.9.8",
                 "eliashaeussler/php-cs-fixer-config": "^3.0",
                 "eliashaeussler/phpstan-config": "^4.0",
                 "eliashaeussler/rector-config": "^4.0",
@@ -5927,9 +5927,9 @@
             "description": "Composer plugin to bump project versions during release preparations",
             "support": {
                 "issues": "https://github.com/eliashaeussler/version-bumper/issues",
-                "source": "https://github.com/eliashaeussler/version-bumper/tree/3.3.0"
+                "source": "https://github.com/eliashaeussler/version-bumper/tree/4.0.1"
             },
-            "time": "2026-05-12T07:59:30+00:00"
+            "time": "2026-05-23T18:02:25+00:00"
         },
         {
             "name": "myclabs/deep-copy",
