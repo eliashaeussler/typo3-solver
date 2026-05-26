@@ -37,11 +37,22 @@
 	"require-dev": {
 		"ext-dom": "*",
 		"ext-libxml": "*",
+		"armin/editorconfig-cli": "^2.2",
+		"eliashaeussler/php-cs-fixer-config": "^3.1",
+		"eliashaeussler/phpstan-config": "^4.0",
+		"eliashaeussler/rector-config": "^4.0",
 		"eliashaeussler/typo3-vendor-bundler": "^4.0",
 		"eliashaeussler/version-bumper": "^3.3 || ^4.0",
+		"ergebnis/composer-normalize": "^2.52",
 		"guzzlehttp/psr7": "^2.7",
+		"phpstan/extension-installer": "^1.4",
+		"phpstan/phpstan-symfony": "^2.0",
 		"phpunit/phpcov": "^10.0 || ^11.0 || ^12.0 || ^13.0",
+		"saschaegerer/phpstan-typo3": "^3.0",
+		"shipmonk/composer-dependency-analyser": "^1.8",
+		"ssch/typo3-rector": "^3.14",
 		"symfony/dependency-injection": "^7.2 || ^8.0",
+		"typo3/coding-standards": "^0.8.0",
 		"typo3/testing-framework": "^9.0.3"
 	},
 	"autoload": {
@@ -58,9 +69,14 @@
 		"allow-plugins": {
 			"eliashaeussler/typo3-vendor-bundler": true,
 			"eliashaeussler/version-bumper": true,
+			"ergebnis/composer-normalize": true,
 			"php-http/discovery": true,
+			"phpstan/extension-installer": true,
 			"typo3/class-alias-loader": true,
 			"typo3/cms-composer-installers": true
+		},
+		"audit": {
+			"abandoned": "report"
 		},
 		"bin-dir": ".build/bin",
 		"sort-packages": true,
@@ -70,34 +86,79 @@
 		"typo3/cms": {
 			"extension-key": "solver",
 			"web-dir": ".build/web"
+		},
+		"version-bumper": {
+			"config-file": "Build/version-bumper.yaml"
 		}
 	},
 	"scripts": {
-		"post-install-cmd": [
-			"@cgl install"
+		"check": [
+			"@check:deps",
+			"@check:refactor",
+			"@check:static",
+			"@check:style"
 		],
-		"cgl": "@composer -d Tests/CGL --",
+		"check:deps": "composer-dependency-analyser --config Build/composer-dependency-analyser.php",
+		"check:refactor": [
+			"@check:refactor:php"
+		],
+		"check:refactor:php": "@refactor:php --dry-run",
+		"check:static": "phpstan analyse -c Build/phpstan.php",
+		"check:style": [
+			"@check:style:composer",
+			"@check:style:editorconfig",
+			"@check:style:php"
+		],
+		"check:style:composer": "@fix:composer --dry-run",
+		"check:style:editorconfig": "ec --finder-config Build/.editorconfig-lint.php",
+		"check:style:php": "@fix:php --dry-run",
+		"ci": [
+			"@composer validate --strict",
+			"@composer audit",
+			"@check:deps",
+			"@check:refactor",
+			"@check:static --error-format github",
+			"@check:style",
+			"mkdir -p .build/docs",
+			"@docs:build --no-progress --fail-on-log",
+			"@composer extract-dependencies --print-file-contents --fail"
+		],
 		"docs": [
 			"@docs:cleanup",
 			"@docs:build",
 			"@docs:open"
 		],
-		"docs:build": "docker compose run --rm docs",
+		"docs:build": "docker compose -f Build/docker-compose.yml run --rm docs",
 		"docs:cleanup": "rm -rf .build/docs",
 		"docs:open": "open .build/docs/Index.html",
+		"fix": [
+			"@fix:composer",
+			"@fix:editorconfig",
+			"@fix:php"
+		],
+		"fix:composer": [
+			"@composer normalize",
+			"@composer normalize Tests/Functional/Fixtures/Extensions/middleware_bridge/composer.json"
+		],
+		"fix:editorconfig": "@check:style:editorconfig --fix",
+		"fix:php": "php-cs-fixer fix --config Build/.php-cs-fixer.php",
+		"refactor": [
+			"@refactor:php"
+		],
+		"refactor:php": "rector process -c Build/rector.php",
 		"test": [
 			"@test:functional",
 			"@test:unit"
 		],
 		"test:coverage": [
-			"@test:coverage:functional",
-			"@test:coverage:unit",
-			"@test:coverage:merge"
+			"@test:functional:coverage",
+			"@test:unit:coverage",
+			"@test:merge-coverage"
 		],
-		"test:coverage:functional": "phpunit -c phpunit.functional.xml",
-		"test:coverage:merge": "phpcov merge --html .build/coverage/html/_merged --clover .build/coverage/clover.xml --text php://stdout .build/coverage/php",
-		"test:coverage:unit": "phpunit -c phpunit.unit.xml",
-		"test:functional": "@test:coverage:functional --no-coverage",
-		"test:unit": "@test:coverage:unit --no-coverage"
+		"test:functional": "@test:functional:coverage --no-coverage",
+		"test:functional:coverage": "phpunit -c Build/phpunit.functional.xml",
+		"test:merge-coverage": "phpcov merge --html .build/coverage/html/_merged --clover .build/coverage/clover.xml --text php://stdout .build/coverage/php",
+		"test:unit": "@test:unit:coverage --no-coverage",
+		"test:unit:coverage": "phpunit -c Build/phpunit.unit.xml"
 	}
 }

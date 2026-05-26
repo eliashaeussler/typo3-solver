@@ -6,15 +6,5 @@
 	],
 	"constraints": {
 		"php": "8.2.*"
-	},
-	"packageRules": [
-		{
-			"extends": [
-				":pinVersions"
-			],
-			"matchFileNames": [
-				"Tests/CGL/composer.*"
-			]
-		}
-	]
+	}
 }

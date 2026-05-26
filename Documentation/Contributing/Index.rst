@@ -8,9 +8,9 @@
 
 ..  _contributing:
 
-============
-Contributing
-============
+==================
+Contribution guide
+==================
 
 Thanks for considering contributing to this extension! Since it is
 an open source product, its successful further development depends
@@ -24,179 +24,124 @@ cases. In addition, we use `DDEV <https://ddev.readthedocs.io/en/stable/>`__
 for local development. Make sure to set it up as described below. For
 continuous integration, we use GitHub Actions.
 
-..  _create-an-issue-first:
-
-Create an issue first
-=====================
-
-Before you start working on the extension, please create an issue on
-GitHub: https://github.com/eliashaeussler/typo3-solver/issues
-
-Also, please check if there is already an issue on the topic you want
-to address.
-
-..  _contribution-workflow:
-
-Contribution workflow
-=====================
-
-..  note::
-
-    This extension follows `Semantic Versioning <https://semver.org/>`__.
-
 ..  _preparation:
 
 Preparation
------------
-
-Clone the repository first:
+===========
 
 ..  code-block:: bash
 
+    # Clone repository
     git clone https://github.com/eliashaeussler/typo3-solver.git
     cd typo3-solver
 
-Now start DDEV:
+    # Install dependencies
+    composer install
 
-..  code-block:: bash
+..  _development-workflow:
 
-    ddev start
+Development workflow
+====================
 
-Next, install all dependencies:
+A typical contribution workflow looks like this:
 
-..  code-block:: bash
+..  rst-class:: bignums-xxl
 
-    ddev composer install
-    ddev frontend install
+    1.  Apply automatic fixes
 
-You can access the DDEV site at https://typo3-ext-solver.ddev.site/.
+        Use the following commands to normalize and format the code base:
 
-..  _analyze-code:
+        ..  code-block:: bash
 
-Analyze code
-------------
+            # Apply all automatic fixes
+            composer fix
 
-..  _check-code-quality:
+            # Apply specific fixes
+            composer fix:composer
+            composer fix:editorconfig
+            composer fix:php
 
-..  code-block:: bash
+    2.  Run checks
 
-    # All analyzers
-    ddev cgl analyze
+        Use :bash:`composer check` to run the full code quality pipeline locally.
+        This command bundles dependency analysis, static analysis, coding style checks,
+        and Rector in dry-run mode so that potential refactorings can be reviewed
+        without changing files.
 
-    # Specific analyzers
-    ddev cgl analyze:dependencies
+        ..  code-block:: bash
 
-Check code quality
-------------------
+            # Run all checks
+            composer check
 
-..  _cgl-typo3:
+            # Run specific checks
+            composer check:deps
+            composer check:refactor
+            composer check:static
+            composer check:style
 
-TYPO3
-~~~~~
+            # Run specific style checks
+            composer check:style:composer
+            composer check:style:editorconfig
+            composer check:style:php
 
-..  code-block:: bash
+        ..  _refactorings:
 
-    # All linters
-    ddev cgl lint
+    3.  Run refactorings
 
-    # Specific linters
-    ddev cgl lint:composer
-    ddev cgl lint:editorconfig
-    ddev cgl lint:php
+        Refactorings are intentionally separated from regular checks because they may
+        change the code base.
 
-    # Fix all CGL issues
-    ddev cgl fix
+        ..  code-block:: bash
 
-    # Fix specific CGL issues
-    ddev cgl fix:composer
-    ddev cgl fix:editorconfig
-    ddev cgl fix:php
+            # Run all configured refactorings
+            composer refactor
 
-    # All static code analyzers
-    ddev cgl sca
+            # Run specific refactorings
+            composer refactor:php
 
-    # Specific static code analyzers
-    ddev cgl sca:php
+    4.  Run tests
 
-..  _cgl-frontend:
+        Run the full test suite before opening a pull request:
 
-Frontend
-~~~~~~~~
+        ..  code-block:: bash
 
-..  code-block:: bash
+            # Run all tests
+            composer test
+            composer test:coverage
 
-    # All linters
-    ddev frontend run lint
+            # Run functional tests
+            composer test:functional
+            composer test:functional:coverage
 
-    # Specific linters
-    ddev frontend run lint:scss
-    ddev frontend run lint:ts
+            # Run unit tests
+            composer test:unit
+            composer test:unit:coverage
 
-    # Fix all CGL issues
-    ddev frontend run fix
+            # Merge coverage reports
+            composer test:merge-coverage
 
-    # Fix specific CGL issues
-    ddev frontend run fix:scss
-    ddev frontend run fix:ts
+..  _coverage-reports:
 
-..  _run-tests:
+Coverage reports
+================
 
-Run tests
----------
-
-..  code-block:: bash
-
-    # All tests
-    ddev test
-
-    # Specific tests
-    ddev test functional
-    ddev test unit
-
-    # All tests with code coverage
-    ddev test coverage
-
-    # Specific tests with code coverage
-    ddev test coverage:functional
-    ddev test coverage:unit
-
-    # Merge code coverage of all test suites
-    ddev test coverage:merge
-
-Code coverage reports are written to :file:`.build/coverage`. You can
-open the last merged HTML report like follows:
+Code coverage reports are written to `.build/coverage`. Open the latest merge
+HTML report with:
 
 ..  code-block:: bash
 
     open .build/coverage/html/_merged/index.html
 
-..  _build-documentation:
+..  _pull-requests:
 
-Build documentation
--------------------
+Pull requests
+=============
 
-..  code-block:: bash
+Once the changes are ready, please
+`submit a pull request <https://github.com/eliashaeussler/typo3-solver/compare>`__
+and describe what was changed and why. Ideally, the pull request references an
+issue that describes the problem being solved.
 
-    # Rebuild and open documentation
-    composer docs
-
-    # Build documentation (from cache)
-    composer docs:build
-
-    # Open rendered documentation
-    composer docs:open
-
-The built docs will be stored in :file:`.build/docs`.
-
-..  _pull-request:
-
-Pull Request
-------------
-
-Once you have finished your work, please **submit a pull request** and describe
-what you've done: https://github.com/eliashaeussler/typo3-solver/pulls
-
-Ideally, your PR references an issue describing the problem
-you're trying to solve. All described code quality tools are automatically
-executed on each pull request for all currently supported PHP versions and TYPO3
-versions.
+All documented code quality tools are executed automatically for pull requests
+across the currently supported PHP versions. For details, refer to the GitHub
+Actions workflows.

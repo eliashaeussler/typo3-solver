@@ -3,7 +3,7 @@
 		"target": "es2020",
 		"allowSyntheticDefaultImports": true,
 		"incremental": true,
-		"tsBuildInfoFile": "../../../.build/log/tsconfig.tsbuildinfo",
+		"tsBuildInfoFile": "../../.build/log/tsconfig.tsbuildinfo",
 		"module": "esnext",
 		"moduleResolution": "bundler",
 		"removeComments": false,
@@ -18,6 +18,6 @@
 		"paths": {
 			"@eliashaeussler/typo3-solver/*": ["./src/scripts/*"]
 		},
-		"outDir": "../../Public/JavaScript"
+		"outDir": "../../Resources/Public/JavaScript"
 	}
 }

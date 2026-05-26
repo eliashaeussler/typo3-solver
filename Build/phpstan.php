@@ -23,14 +23,11 @@ declare(strict_types=1);
 
 use EliasHaeussler\PHPStanConfig;
 
-return PHPStanConfig\Config\Config::create(dirname(__DIR__, 2))
+return PHPStanConfig\Config\Config::create(dirname(__DIR__))
     ->in(
         'Classes',
         'Configuration',
         'Tests',
-    )
-    ->not(
-        'Tests/CGL',
     )
     ->bootstrapFiles(
         '.build/vendor/autoload.php',

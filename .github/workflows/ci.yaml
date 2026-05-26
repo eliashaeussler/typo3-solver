@@ -1,4 +1,5 @@
 name: CI
+
 on:
   push:
     branches:
@@ -7,275 +8,69 @@ on:
     branches:
       - main
 
-permissions: read-all
+permissions:
+  contents: read
 
 jobs:
   prepare:
-    name: Prepare workflow
-    uses: eliashaeussler/.github/.github/workflows/pull-request.yaml@fdc23f43e6ba48018b997f552dd39f9944c17c86 # main
+    name: 'Prepare workflow'
+    uses: eliashaeussler/gha/.github/workflows/preparation.yaml@dc5fa2548158a3fb7537863ff248cfc98596b06a # 0.2.0
 
-  assets:
-    name: Verify asset integrity
-    runs-on: ubuntu-latest
-    needs: prepare
-    if: needs.prepare.outputs.continue == 'true'
-    outputs:
-      modified: ${{ steps.commit.outputs.changes_detected || 'false' }}
-    steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
-        with:
-          token: ${{ secrets.REBUILD_ASSETS_TOKEN }}
-          fetch-depth: 2
+  asset-integrity:
+    name: 'Verify asset integrity'
 
-      # Preconditions
-      - name: Check modified assets
-        id: check
-        run: |
-          if git diff --name-only ${{ github.sha }}~1 ${{ github.sha }} | grep -q '^Resources/Private/Frontend/'; then
-            echo "skip_assets=false" >> $GITHUB_OUTPUT
-          else
-            echo "skip_assets=true" >> $GITHUB_OUTPUT
-          fi
+    needs: [prepare]
+    if: ${{ needs.prepare.outputs.continue == 'true' }}
 
-      # Prepare environment
-      - name: Setup Node
-        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
-        if: ${{ steps.check.outputs.skip_assets != 'true' }}
-        with:
-          node-version: 24
-          cache: 'npm'
-          cache-dependency-path: 'Resources/Private/Frontend/package-lock.json'
+    secrets:
+      ASSETS_TOKEN: ${{ secrets.REBUILD_ASSETS_TOKEN }}
 
-      # Install Frontend dependencies
-      - name: Install Frontend dependencies
-        if: ${{ steps.check.outputs.skip_assets != 'true' }}
-        run: npm --prefix Resources/Private/Frontend ci
+    uses: eliashaeussler/gha/.github/workflows/asset-integrity.yaml@dc5fa2548158a3fb7537863ff248cfc98596b06a # 0.2.0
+    with:
+      base-path: Build/Assets
 
-      # Re-create Frontend dist files
-      - name: Re-create dist files
-        if: ${{ steps.check.outputs.skip_assets != 'true' }}
-        run: npm --prefix Resources/Private/Frontend run build
+  checks:
+    name: 'Checks'
 
-      - name: Fail on integrity mismatch
-        if: ${{ github.actor != 'renovate[bot]' && steps.check.outputs.skip_assets != 'true' }}
-        run: |
-          git add Resources/Public
-          git diff --exit-code --staged Resources/Public
+    needs: [asset-integrity]
+    if: ${{ needs.asset-integrity.outputs.rebuilt == 'false' }}
 
-      # Commit updated dist files
-      - uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
-        if: ${{ github.actor == 'renovate[bot]' && steps.check.outputs.skip_assets != 'true' }}
-        id: commit
-        with:
-          commit_message: '[TASK] Automatically rebuild frontend assets'
-          commit_author: 'Elias Häußler <elias@haeussler.dev>'
-          commit_user_name: 'Elias Häußler'
-          commit_user_email: 'elias@haeussler.dev'
+    permissions:
+      security-events: write
 
-  cgl:
-    name: CGL
-    runs-on: ubuntu-latest
-    if: ${{ needs.assets.outputs.modified == 'false' }}
-    needs: assets
-    steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
-
-      # Prepare environment
-      - name: Setup PHP
-        uses: shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc # v2
-        with:
-          # We use the minimum supported PHP version
-          php-version: 8.2 # renovate-ignore
-          tools: composer:v2, cs2pr
-          coverage: none
-      - name: Setup Node
-        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
-        with:
-          node-version: 24
-          cache: 'npm'
-          cache-dependency-path: 'Resources/Private/Frontend/package-lock.json'
-
-      # Validation
-      - name: Validate composer.json
-        run: composer validate --strict
-
-      # Install dependencies
-      - name: Install Composer dependencies
-        uses: ramsey/composer-install@65e4f84970763564f46a70b8a54b90d033b3bdda # 4.0.0
-
-      # Analyze
-      - name: Analyze dependencies
-        run: composer cgl analyze:dependencies
-
-      # Linting
-      - name: Lint composer.json
-        run: composer cgl lint:composer
-      - name: Lint Editorconfig
-        run: composer cgl lint:editorconfig
-      - name: Lint PHP
-        run: composer cgl lint:php -- --format=checkstyle | cs2pr
-
-      # SCA
-      - name: SCA PHP
-        run: composer cgl sca:php -- --error-format github
-
-      # Install Frontend dependencies
-      - name: Install Frontend dependencies
-        run: npm --prefix Resources/Private/Frontend ci
-
-      # Frontend linting
-      - name: Lint SCSS
-        run: npm --prefix Resources/Private/Frontend run lint:scss
-      - name: Lint TypeScript
-        run: npm --prefix Resources/Private/Frontend run lint:ts
-
-      # Migration
-      - name: Rector migration
-        run: composer cgl migration:rector -- --dry-run
-
-      # Documentation
-      - name: Check documentation build
-        run: |
-          mkdir -p .build/docs
-          composer docs:build -- --no-progress --fail-on-log
-
-      # Bundler
-      - name: Check dependency extraction for TER vendor libraries
-        run: composer extract-dependencies --print-file-contents --fail
+    uses: eliashaeussler/gha/.github/workflows/checks.yaml@dc5fa2548158a3fb7537863ff248cfc98596b06a # 0.2.0
+    with:
+      # We use the minimum supported PHP version
+      php-version: 8.2 # renovate-ignore
+      npm: true
+      assets-path: Build/Assets
 
   tests:
-    name: Tests (PHP ${{ matrix.php-version }}, TYPO3 ${{ matrix.typo3-version }} & ${{ matrix.dependencies }} dependencies)
-    if: ${{ needs.assets.outputs.modified == 'false' }}
-    needs: assets
-    runs-on: ubuntu-latest
+    name: 'Tests (PHP ${{ matrix.php-version }}, TYPO3 ${{ matrix.typo3-version }} & ${{ matrix.dependencies }} dependencies)'
+
+    needs: [asset-integrity]
+    if: ${{ needs.asset-integrity.outputs.rebuilt == 'false' }}
+
     strategy:
       fail-fast: false
       matrix:
         php-version: ["8.2", "8.3", "8.4", "8.5"]
         typo3-version: ["13.4", "14.3"]
         dependencies: ["highest", "lowest"]
-    env:
-      typo3DatabaseName: typo3
-      typo3DatabaseHost: '127.0.0.1'
-      typo3DatabaseUsername: root
-      typo3DatabasePassword: root
-    steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
 
-      # Prepare environment
-      - name: Setup PHP
-        uses: shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc # v2
-        with:
-          php-version: ${{ matrix.php-version }}
-          tools: composer:v2
-          coverage: none
-
-      # Start MySQL service
-      - name: Start MySQL
-        run: sudo /etc/init.d/mysql start
-
-      # Install dependencies
-      - name: Install Composer dependencies
-        uses: ramsey/composer-install@65e4f84970763564f46a70b8a54b90d033b3bdda # 4.0.0
-        with:
-          dependency-versions: ${{ matrix.dependencies }}
-          composer-options: --with=typo3/cms-core:"^${{ matrix.typo3-version }}"
-
-      # Run tests
-      - name: Run tests
-        run: composer test
+    uses: eliashaeussler/gha/.github/workflows/composer-tests.yaml@dc5fa2548158a3fb7537863ff248cfc98596b06a # 0.2.0
+    with:
+      php-version: ${{ matrix.php-version }}
+      typo3-version: ${{ matrix.typo3-version }}
+      dependencies: ${{ matrix.dependencies }}
+      boot-mysql: true
 
   test-coverage:
-    name: Test coverage
-    if: ${{ needs.assets.outputs.modified == 'false' }}
-    needs: assets
-    runs-on: ubuntu-latest
-    env:
-      typo3DatabaseName: typo3
-      typo3DatabaseHost: '127.0.0.1'
-      typo3DatabaseUsername: root
-      typo3DatabasePassword: root
-    steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+    name: 'Test coverage'
 
-      # Prepare environment
-      - name: Setup PHP
-        uses: shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc # v2
-        with:
-          php-version: 8.5
-          tools: composer:v2
-          coverage: pcov
+    needs: [asset-integrity]
+    if: ${{ needs.asset-integrity.outputs.rebuilt == 'false' }}
 
-      # Start MySQL service
-      - name: Start MySQL
-        run: sudo /etc/init.d/mysql start
-
-      # Install dependencies
-      - name: Install Composer dependencies
-        uses: ramsey/composer-install@65e4f84970763564f46a70b8a54b90d033b3bdda # 4.0.0
-
-      # Run tests
-      - name: Run tests
-        run: composer test:coverage
-
-      # Upload artifact
-      - name: Fix coverage path
-        working-directory: .build/coverage
-        run: sed -i 's#/home/runner/work/typo3-solver/typo3-solver#${{ github.workspace }}#g' clover.xml
-      - name: Upload coverage artifact
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
-        with:
-          name: coverage
-          path: .build/coverage/clover.xml
-          retention-days: 7
-
-  report-coverage:
-    name: Report test coverage
-    needs: test-coverage
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
-
-      # Download artifact
-      - name: Download coverage artifact
-        id: download
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
-        with:
-          name: coverage
-
-      # Coveralls
-      - name: Coveralls report
-        uses: coverallsapp/github-action@5cbfd81b66ca5d10c19b062c04de0199c215fb6e # v2
-        with:
-          file: ${{ steps.download.outputs.download-path }}/clover.xml
-
-  merge-branch:
-    name: 'Merge Renovate branch'
-    runs-on: ubuntu-latest
-    needs:
-      - assets
-      - cgl
-      - tests
-      - test-coverage
-    if: ${{ needs.assets.outputs.modified == 'false' && github.actor != 'renovate[bot]' && github.event_name == 'push' && startsWith(github.ref_name, 'renovate/') }}
-    steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
-        with:
-          token: ${{ secrets.REBUILD_ASSETS_TOKEN }}
-          fetch-depth: 0
-
-      - name: Prepare Git environment
-        run: |
-          git config user.email "elias@haeussler.dev"
-          git config user.name "Elias Häußler"
-
-      - name: Merge changes into default branch
-        run: |
-          git fetch origin ${{ github.event.repository.default_branch }}
-          git checkout ${{ github.event.repository.default_branch }}
-          git merge --no-ff --no-edit ${{ github.ref_name }}
-          git push origin ${{ github.event.repository.default_branch }}
-
-      - name: Delete merged branch
-        run: |
-          git push origin --delete ${{ github.ref_name }}
+    uses: eliashaeussler/gha/.github/workflows/composer-test-coverage.yaml@dc5fa2548158a3fb7537863ff248cfc98596b06a # 0.2.0
+    with:
+      boot-mysql: true

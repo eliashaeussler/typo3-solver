@@ -24,7 +24,7 @@ declare(strict_types=1);
 use Composer\Autoload;
 use ShipMonk\ComposerDependencyAnalyser;
 
-$rootPath = dirname(__DIR__, 2);
+$rootPath = dirname(__DIR__);
 
 /** @var Autoload\ClassLoader $loader */
 $loader = require $rootPath . '/.build/vendor/autoload.php';
@@ -32,9 +32,6 @@ $loader->register();
 
 $configuration = new ComposerDependencyAnalyser\Config\Configuration();
 $configuration
-    ->addPathsToExclude([
-        $rootPath . '/Tests/CGL',
-    ])
     ->ignoreErrorsOnPackage(
         'phpunit/phpunit',
         [ComposerDependencyAnalyser\Config\ErrorType::SHADOW_DEPENDENCY],
