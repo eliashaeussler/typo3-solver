@@ -88,7 +88,7 @@
 			"web-dir": ".build/web"
 		},
 		"version-bumper": {
-			"config-file": "Build/version-bumper.yaml"
+			"config-file": "Build/release/version-bumper.yaml"
 		}
 	},
 	"scripts": {
@@ -98,19 +98,19 @@
 			"@check:static",
 			"@check:style"
 		],
-		"check:deps": "composer-dependency-analyser --config Build/composer-dependency-analyser.php",
+		"check:deps": "composer-dependency-analyser --config Build/checks/composer-dependency-analyser.php",
 		"check:refactor": [
 			"@check:refactor:php"
 		],
 		"check:refactor:php": "@refactor:php --dry-run",
-		"check:static": "phpstan analyse -c Build/phpstan.php",
+		"check:static": "phpstan analyse -c Build/checks/phpstan.php",
 		"check:style": [
 			"@check:style:composer",
 			"@check:style:editorconfig",
 			"@check:style:php"
 		],
 		"check:style:composer": "@fix:composer --dry-run",
-		"check:style:editorconfig": "ec --finder-config Build/.editorconfig-lint.php",
+		"check:style:editorconfig": "ec --finder-config Build/checks/.editorconfig-lint.php",
 		"check:style:php": "@fix:php --dry-run",
 		"ci": [
 			"@composer validate --strict",
@@ -119,7 +119,7 @@
 			"@check:refactor",
 			"@check:static --error-format github",
 			"@check:style",
-			"mkdir -p .build/docs",
+			"mkdir -p Build/docs/result",
 			"@docs:build --no-progress --fail-on-log",
 			"@composer extract-dependencies --print-file-contents --fail"
 		],
@@ -128,9 +128,9 @@
 			"@docs:build",
 			"@docs:open"
 		],
-		"docs:build": "docker compose -f Build/docker-compose.yml run --rm docs",
-		"docs:cleanup": "rm -rf .build/docs",
-		"docs:open": "open .build/docs/Index.html",
+		"docs:build": "docker compose -f Build/docs/docker-compose.yml run --rm build",
+		"docs:cleanup": "rm -rf Build/docs/result",
+		"docs:open": "open Build/docs/result/Index.html",
 		"fix": [
 			"@fix:composer",
 			"@fix:editorconfig",
@@ -141,11 +141,11 @@
 			"@composer normalize Tests/Functional/Fixtures/Extensions/middleware_bridge/composer.json"
 		],
 		"fix:editorconfig": "@check:style:editorconfig --fix",
-		"fix:php": "php-cs-fixer fix --config Build/.php-cs-fixer.php",
+		"fix:php": "php-cs-fixer fix --config Build/checks/.php-cs-fixer.php",
 		"refactor": [
 			"@refactor:php"
 		],
-		"refactor:php": "rector process -c Build/rector.php",
+		"refactor:php": "rector process -c Build/checks/rector.php",
 		"test": [
 			"@test:functional",
 			"@test:unit"
@@ -156,9 +156,9 @@
 			"@test:merge-coverage"
 		],
 		"test:functional": "@test:functional:coverage --no-coverage",
-		"test:functional:coverage": "phpunit -c Build/phpunit.functional.xml",
-		"test:merge-coverage": "phpcov merge --html .build/coverage/html/_merged --clover .build/coverage/clover.xml --text php://stdout .build/coverage/php",
+		"test:functional:coverage": "phpunit -c Build/tests/phpunit.functional.xml",
+		"test:merge-coverage": "phpcov merge --html Build/tests/coverage/html/_merged --clover Build/tests/coverage/clover.xml --text php://stdout Build/tests/coverage/php",
 		"test:unit": "@test:unit:coverage --no-coverage",
-		"test:unit:coverage": "phpunit -c Build/phpunit.unit.xml"
+		"test:unit:coverage": "phpunit -c Build/tests/phpunit.unit.xml"
 	}
 }

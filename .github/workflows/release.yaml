@@ -18,4 +18,4 @@ jobs:
     uses: eliashaeussler/gha/.github/workflows/extension-release.yaml@18254c00b1f6945b335092e72fb38a75deeba889 # 0.2.1
     with:
       php-version: 8.2 # renovate-ignore
-      packaging-excludes-file: Build/packaging_exclude.php
+      packaging-excludes-file: Build/release/packaging_exclude.php
