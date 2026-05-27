@@ -3,7 +3,7 @@
 		"target": "es2020",
 		"allowSyntheticDefaultImports": true,
 		"incremental": true,
-		"tsBuildInfoFile": "../../.build/log/tsconfig.tsbuildinfo",
+		"tsBuildInfoFile": "log/tsconfig.tsbuildinfo",
 		"module": "esnext",
 		"moduleResolution": "bundler",
 		"removeComments": false,

@@ -3,9 +3,9 @@ presets:
   - name: typo3-extension
   - name: npm-package
     options:
-      path: Build/Assets
+      path: Build/assets
 
 releaseOptions:
   signTag: true
 
-rootPath: ../
+rootPath: ../../

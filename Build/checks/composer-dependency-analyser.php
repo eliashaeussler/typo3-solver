@@ -21,25 +21,21 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-use EliasHaeussler\PhpCsFixerConfig;
-use TYPO3\CodingStandards;
+use Composer\Autoload;
+use ShipMonk\ComposerDependencyAnalyser;
 
-$header = PhpCsFixerConfig\Rules\Header::create(
-    'solver',
-    PhpCsFixerConfig\Package\Type::TYPO3Extension,
-    PhpCsFixerConfig\Package\Author::create('Elias Häußler', 'elias@haeussler.dev'),
-    PhpCsFixerConfig\Package\CopyrightRange::from(2023),
-    PhpCsFixerConfig\Package\License::GPL2OrLater,
-);
+$rootPath = dirname(__DIR__, 2);
 
-$config = CodingStandards\CsFixerConfig::create();
-$finder = $config->getFinder()
-    ->in(dirname(__DIR__))
-    ->ignoreVCSIgnored(true)
-    ->ignoreDotFiles(false)
+/** @var Autoload\ClassLoader $loader */
+$loader = require $rootPath . '/.build/vendor/autoload.php';
+$loader->register();
+
+$configuration = new ComposerDependencyAnalyser\Config\Configuration();
+$configuration
+    ->ignoreErrorsOnPackage(
+        'phpunit/phpunit',
+        [ComposerDependencyAnalyser\Config\ErrorType::SHADOW_DEPENDENCY],
+    )
 ;
 
-return PhpCsFixerConfig\Config::create()
-    ->withConfig($config)
-    ->withRule($header)
-;
+return $configuration;

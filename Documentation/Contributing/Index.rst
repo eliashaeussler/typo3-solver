@@ -125,12 +125,12 @@ A typical contribution workflow looks like this:
 Coverage reports
 ================
 
-Code coverage reports are written to `.build/coverage`. Open the latest merge
+Code coverage reports are written to `Build/tests/coverage`. Open the latest merge
 HTML report with:
 
 ..  code-block:: bash
 
-    open .build/coverage/html/_merged/index.html
+    open Build/tests/coverage/html/_merged/index.html
 
 ..  _pull-requests:
 
