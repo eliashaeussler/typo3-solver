@@ -3722,16 +3722,16 @@
         },
         {
             "name": "symfony/polyfill-intl-grapheme",
-            "version": "v1.38.0",
+            "version": "v1.38.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-grapheme.git",
-                "reference": "9c862df890f7c833b1101ac5578ec4dcf199efb5"
+                "reference": "e9247d281d694a5120554d9afaf54e070e88a603"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-grapheme/zipball/9c862df890f7c833b1101ac5578ec4dcf199efb5",
-                "reference": "9c862df890f7c833b1101ac5578ec4dcf199efb5",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-grapheme/zipball/e9247d281d694a5120554d9afaf54e070e88a603",
+                "reference": "e9247d281d694a5120554d9afaf54e070e88a603",
                 "shasum": ""
             },
             "require": {
@@ -3780,7 +3780,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-intl-grapheme/tree/v1.38.0"
+                "source": "https://github.com/symfony/polyfill-intl-grapheme/tree/v1.38.1"
             },
             "funding": [
                 {
@@ -3800,20 +3800,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-05-25T12:39:52+00:00"
+            "time": "2026-05-26T05:58:03+00:00"
         },
         {
             "name": "symfony/polyfill-intl-idn",
-            "version": "v1.37.0",
+            "version": "v1.38.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-idn.git",
-                "reference": "9614ac4d8061dc257ecc64cba1b140873dce8ad3"
+                "reference": "dc21118016c039a66235cf93d96b435ffb282412"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/9614ac4d8061dc257ecc64cba1b140873dce8ad3",
-                "reference": "9614ac4d8061dc257ecc64cba1b140873dce8ad3",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/dc21118016c039a66235cf93d96b435ffb282412",
+                "reference": "dc21118016c039a66235cf93d96b435ffb282412",
                 "shasum": ""
             },
             "require": {
@@ -3867,7 +3867,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-intl-idn/tree/v1.37.0"
+                "source": "https://github.com/symfony/polyfill-intl-idn/tree/v1.38.1"
             },
             "funding": [
                 {
@@ -3887,7 +3887,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-09-10T14:38:51+00:00"
+            "time": "2026-05-25T15:22:23+00:00"
         },
         {
             "name": "symfony/polyfill-intl-normalizer",
@@ -3976,16 +3976,16 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.38.0",
+            "version": "v1.38.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "6b177d03d2eb04a6c9d01bab9818fb93a30ce7fd"
+                "reference": "14c5439eec4ccff081ac14eca2dc57feb2a66d92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/6b177d03d2eb04a6c9d01bab9818fb93a30ce7fd",
-                "reference": "6b177d03d2eb04a6c9d01bab9818fb93a30ce7fd",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/14c5439eec4ccff081ac14eca2dc57feb2a66d92",
+                "reference": "14c5439eec4ccff081ac14eca2dc57feb2a66d92",
                 "shasum": ""
             },
             "require": {
@@ -4037,7 +4037,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.38.0"
+                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.38.1"
             },
             "funding": [
                 {
@@ -4057,20 +4057,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-05-25T14:08:27+00:00"
+            "time": "2026-05-26T12:51:13+00:00"
         },
         {
             "name": "symfony/polyfill-php83",
-            "version": "v1.38.0",
+            "version": "v1.38.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php83.git",
-                "reference": "c4406e07046227db8844a25f89d111da078aaa9c"
+                "reference": "8339098cae28673c15cce00d80734af0453054e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php83/zipball/c4406e07046227db8844a25f89d111da078aaa9c",
-                "reference": "c4406e07046227db8844a25f89d111da078aaa9c",
+                "url": "https://api.github.com/repos/symfony/polyfill-php83/zipball/8339098cae28673c15cce00d80734af0453054e2",
+                "reference": "8339098cae28673c15cce00d80734af0453054e2",
                 "shasum": ""
             },
             "require": {
@@ -4117,7 +4117,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php83/tree/v1.38.0"
+                "source": "https://github.com/symfony/polyfill-php83/tree/v1.38.1"
             },
             "funding": [
                 {
@@ -4137,7 +4137,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-05-25T12:39:52+00:00"
+            "time": "2026-05-26T12:51:13+00:00"
         },
         {
             "name": "symfony/polyfill-uuid",
@@ -5028,16 +5028,16 @@
         },
         {
             "name": "typo3/cms-core",
-            "version": "v13.4.29",
+            "version": "v13.4.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/core.git",
-                "reference": "8712924c3ca2198c6be4016211123576e39dba76"
+                "reference": "7779fe79725633fdafb18acb35b40c047acc1c0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/core/zipball/8712924c3ca2198c6be4016211123576e39dba76",
-                "reference": "8712924c3ca2198c6be4016211123576e39dba76",
+                "url": "https://api.github.com/repos/TYPO3-CMS/core/zipball/7779fe79725633fdafb18acb35b40c047acc1c0f",
+                "reference": "7779fe79725633fdafb18acb35b40c047acc1c0f",
                 "shasum": ""
             },
             "require": {
@@ -5083,16 +5083,16 @@
                 "symfony/filesystem": "^7.2",
                 "symfony/finder": "^7.2",
                 "symfony/http-foundation": "^7.2",
-                "symfony/mailer": "^7.2",
+                "symfony/mailer": "^7.4.12",
                 "symfony/messenger": "^7.2",
-                "symfony/mime": "^7.2",
+                "symfony/mime": "^7.4.12",
                 "symfony/options-resolver": "^7.2",
                 "symfony/polyfill-php83": "^1.31",
                 "symfony/process": "^7.2",
                 "symfony/rate-limiter": "^7.2",
-                "symfony/routing": "^7.2",
+                "symfony/routing": "^7.4.12",
                 "symfony/uid": "^7.2",
-                "symfony/yaml": "^7.2",
+                "symfony/yaml": "^7.4.12",
                 "typo3/class-alias-loader": "^1.2",
                 "typo3/cms-cli": "^3.1.1",
                 "typo3/cms-composer-installers": "^5.0.2",
@@ -5169,7 +5169,7 @@
                 "issues": "https://forge.typo3.org",
                 "source": "https://github.com/typo3/typo3"
             },
-            "time": "2026-05-12T09:46:17+00:00"
+            "time": "2026-05-26T09:34:34+00:00"
         },
         {
             "name": "typo3/html-sanitizer",
@@ -8585,23 +8585,23 @@
         },
         {
             "name": "typo3/cms-backend",
-            "version": "v13.4.29",
+            "version": "v13.4.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/backend.git",
-                "reference": "3e5b026d1614a19442b1a8121dc1a2ad22b59afe"
+                "reference": "9b1278bd0a5c04d85090d96c8354b0fb5bcd89a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/backend/zipball/3e5b026d1614a19442b1a8121dc1a2ad22b59afe",
-                "reference": "3e5b026d1614a19442b1a8121dc1a2ad22b59afe",
+                "url": "https://api.github.com/repos/TYPO3-CMS/backend/zipball/9b1278bd0a5c04d85090d96c8354b0fb5bcd89a1",
+                "reference": "9b1278bd0a5c04d85090d96c8354b0fb5bcd89a1",
                 "shasum": ""
             },
             "require": {
                 "ext-intl": "*",
                 "ext-libxml": "*",
                 "psr/event-dispatcher": "^1.0",
-                "typo3/cms-core": "13.4.29"
+                "typo3/cms-core": "13.4.30"
             },
             "conflict": {
                 "typo3/cms": "*"
@@ -8663,20 +8663,20 @@
                 "issues": "https://forge.typo3.org",
                 "source": "https://github.com/typo3/typo3"
             },
-            "time": "2026-05-12T09:46:17+00:00"
+            "time": "2026-05-26T09:34:34+00:00"
         },
         {
             "name": "typo3/cms-extbase",
-            "version": "v13.4.29",
+            "version": "v13.4.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/extbase.git",
-                "reference": "0b8517321c71ce051d082d192e2b51cdc6862ffd"
+                "reference": "90f6fe6ecef724e42ade59decf6ff969d280a15e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/extbase/zipball/0b8517321c71ce051d082d192e2b51cdc6862ffd",
-                "reference": "0b8517321c71ce051d082d192e2b51cdc6862ffd",
+                "url": "https://api.github.com/repos/TYPO3-CMS/extbase/zipball/90f6fe6ecef724e42ade59decf6ff969d280a15e",
+                "reference": "90f6fe6ecef724e42ade59decf6ff969d280a15e",
                 "shasum": ""
             },
             "require": {
@@ -8686,7 +8686,7 @@
                 "symfony/dependency-injection": "^7.2",
                 "symfony/property-access": "^7.2",
                 "symfony/property-info": "^7.2",
-                "typo3/cms-core": "13.4.29"
+                "typo3/cms-core": "13.4.30"
             },
             "conflict": {
                 "typo3/cms": "*"
@@ -8733,26 +8733,26 @@
                 "issues": "https://forge.typo3.org",
                 "source": "https://github.com/typo3/typo3"
             },
-            "time": "2026-05-12T09:46:17+00:00"
+            "time": "2026-05-26T09:34:34+00:00"
         },
         {
             "name": "typo3/cms-fluid",
-            "version": "v13.4.29",
+            "version": "v13.4.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/fluid.git",
-                "reference": "5c514c46e61404e7842562317c97203ce55c623d"
+                "reference": "9b91fe7bc91351caef6a3d2905e05c96d9ee6e1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/fluid/zipball/5c514c46e61404e7842562317c97203ce55c623d",
-                "reference": "5c514c46e61404e7842562317c97203ce55c623d",
+                "url": "https://api.github.com/repos/TYPO3-CMS/fluid/zipball/9b91fe7bc91351caef6a3d2905e05c96d9ee6e1b",
+                "reference": "9b91fe7bc91351caef6a3d2905e05c96d9ee6e1b",
                 "shasum": ""
             },
             "require": {
                 "symfony/dependency-injection": "^7.2",
-                "typo3/cms-core": "13.4.29",
-                "typo3/cms-extbase": "13.4.29",
+                "typo3/cms-core": "13.4.30",
+                "typo3/cms-extbase": "13.4.30",
                 "typo3fluid/fluid": "^4.6.1"
             },
             "conflict": {
@@ -8797,25 +8797,25 @@
                 "issues": "https://forge.typo3.org",
                 "source": "https://github.com/typo3/typo3"
             },
-            "time": "2026-05-12T09:46:17+00:00"
+            "time": "2026-05-26T09:34:34+00:00"
         },
         {
             "name": "typo3/cms-frontend",
-            "version": "v13.4.29",
+            "version": "v13.4.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-CMS/frontend.git",
-                "reference": "f87eb9157d87fa09b6532b83e6dbf5d08ed91b36"
+                "reference": "d7588d8c2c426085b3b50338765b883dc8c77675"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/frontend/zipball/f87eb9157d87fa09b6532b83e6dbf5d08ed91b36",
-                "reference": "f87eb9157d87fa09b6532b83e6dbf5d08ed91b36",
+                "url": "https://api.github.com/repos/TYPO3-CMS/frontend/zipball/d7588d8c2c426085b3b50338765b883dc8c77675",
+                "reference": "d7588d8c2c426085b3b50338765b883dc8c77675",
                 "shasum": ""
             },
             "require": {
                 "ext-libxml": "*",
-                "typo3/cms-core": "13.4.29"
+                "typo3/cms-core": "13.4.30"
             },
             "conflict": {
                 "typo3/cms": "*"
@@ -8867,7 +8867,7 @@
                 "issues": "https://forge.typo3.org",
                 "source": "https://github.com/typo3/typo3"
             },
-            "time": "2026-05-12T09:46:17+00:00"
+            "time": "2026-05-26T09:34:34+00:00"
         },
         {
             "name": "typo3/testing-framework",
