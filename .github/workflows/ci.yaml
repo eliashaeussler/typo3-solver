@@ -14,7 +14,7 @@ permissions:
 jobs:
   prepare:
     name: 'Prepare workflow'
-    uses: eliashaeussler/gha/.github/workflows/preparation.yaml@18254c00b1f6945b335092e72fb38a75deeba889 # 0.2.1
+    uses: eliashaeussler/gha/.github/workflows/preparation.yaml@24e339c643ee01a7e008b13e40bcee4155c479fa # 0.2.3
 
   asset-integrity:
     name: 'Verify asset integrity'
@@ -25,7 +25,7 @@ jobs:
     secrets:
       ASSETS_TOKEN: ${{ secrets.REBUILD_ASSETS_TOKEN }}
 
-    uses: eliashaeussler/gha/.github/workflows/asset-integrity.yaml@18254c00b1f6945b335092e72fb38a75deeba889 # 0.2.1
+    uses: eliashaeussler/gha/.github/workflows/asset-integrity.yaml@24e339c643ee01a7e008b13e40bcee4155c479fa # 0.2.3
     with:
       base-path: Build/assets
 
@@ -38,7 +38,7 @@ jobs:
     permissions:
       security-events: write
 
-    uses: eliashaeussler/gha/.github/workflows/checks.yaml@18254c00b1f6945b335092e72fb38a75deeba889 # 0.2.1
+    uses: eliashaeussler/gha/.github/workflows/checks.yaml@24e339c643ee01a7e008b13e40bcee4155c479fa # 0.2.3
     with:
       # We use the minimum supported PHP version
       php-version: 8.2 # renovate-ignore
@@ -58,7 +58,7 @@ jobs:
         typo3-version: ["13.4", "14.3"]
         dependencies: ["highest", "lowest"]
 
-    uses: eliashaeussler/gha/.github/workflows/composer-tests.yaml@18254c00b1f6945b335092e72fb38a75deeba889 # 0.2.1
+    uses: eliashaeussler/gha/.github/workflows/composer-tests.yaml@24e339c643ee01a7e008b13e40bcee4155c479fa # 0.2.3
     with:
       php-version: ${{ matrix.php-version }}
       typo3-version: ${{ matrix.typo3-version }}
@@ -71,7 +71,7 @@ jobs:
     needs: [asset-integrity]
     if: ${{ needs.asset-integrity.outputs.rebuilt == 'false' }}
 
-    uses: eliashaeussler/gha/.github/workflows/composer-test-coverage.yaml@18254c00b1f6945b335092e72fb38a75deeba889 # 0.2.1
+    uses: eliashaeussler/gha/.github/workflows/composer-test-coverage.yaml@24e339c643ee01a7e008b13e40bcee4155c479fa # 0.2.3
     with:
       coverage-file: Build/tests/coverage/clover.xml
       boot-mysql: true
