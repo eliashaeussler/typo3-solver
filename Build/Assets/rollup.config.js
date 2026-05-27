@@ -43,13 +43,13 @@ export default [
   {
     input: 'src/scripts/main.ts',
     output: {
-      dir: '../../Public/JavaScript',
+      dir: '../../Resources/Public/JavaScript',
       format: 'esm',
       sourcemap: isDev ? 'inline' : false,
     },
     plugins: [
       del({
-        targets: '../../Public/JavaScript/*',
+        targets: '../../Resources/Public/JavaScript/*',
         force: true,
       }),
       nodeResolve(),
@@ -66,11 +66,11 @@ export default [
   {
     input: 'src/styles/main.scss',
     output: {
-      dir: '../../Public/Css',
+      dir: '../../Resources/Public/Css',
     },
     plugins: [
       del({
-        targets: '../../Public/Css/*',
+        targets: '../../Resources/Public/Css/*',
         force: true,
       }),
       nodeResolve({

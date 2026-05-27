@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-set -e
-
-## Description: Run npm command for the Frontend subproject
-## Usage: frontend [command] [options]
-## Example: ddev frontend install\nddev frontend start\nddev frontend run build\nddev frontend run lint\nddev frontend run fix
-
-npm --prefix /var/www/html/Resources/Private/Frontend "$@"

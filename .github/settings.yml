@@ -90,41 +90,45 @@ rulesets:
           strict_required_status_checks_policy: true
           do_not_enforce_on_create: false
           required_status_checks:
-            - context: 'CGL'
+            - context: 'Checks / Perform Composer checks'
               integration_id: 15368
-            - context: 'Tests (PHP 8.2, TYPO3 13.4 & highest dependencies)'
+            - context: 'Checks / Perform npm checks'
               integration_id: 15368
-            - context: 'Tests (PHP 8.2, TYPO3 13.4 & lowest dependencies)'
+            - context: 'Checks / Perform repository checks'
               integration_id: 15368
-            - context: 'Tests (PHP 8.2, TYPO3 14.3 & highest dependencies)'
+            - context: 'Tests (PHP 8.2, TYPO3 13.4 & highest dependencies) / Run tests'
               integration_id: 15368
-            - context: 'Tests (PHP 8.2, TYPO3 14.3 & lowest dependencies)'
+            - context: 'Tests (PHP 8.2, TYPO3 13.4 & lowest dependencies) / Run tests'
               integration_id: 15368
-            - context: 'Tests (PHP 8.3, TYPO3 13.4 & highest dependencies)'
+            - context: 'Tests (PHP 8.2, TYPO3 14.3 & highest dependencies) / Run tests'
               integration_id: 15368
-            - context: 'Tests (PHP 8.3, TYPO3 13.4 & lowest dependencies)'
+            - context: 'Tests (PHP 8.2, TYPO3 14.3 & lowest dependencies) / Run tests'
               integration_id: 15368
-            - context: 'Tests (PHP 8.3, TYPO3 14.3 & highest dependencies)'
+            - context: 'Tests (PHP 8.3, TYPO3 13.4 & highest dependencies) / Run tests'
               integration_id: 15368
-            - context: 'Tests (PHP 8.3, TYPO3 14.3 & lowest dependencies)'
+            - context: 'Tests (PHP 8.3, TYPO3 13.4 & lowest dependencies) / Run tests'
               integration_id: 15368
-            - context: 'Tests (PHP 8.4, TYPO3 13.4 & highest dependencies)'
+            - context: 'Tests (PHP 8.3, TYPO3 14.3 & highest dependencies) / Run tests'
               integration_id: 15368
-            - context: 'Tests (PHP 8.4, TYPO3 13.4 & lowest dependencies)'
+            - context: 'Tests (PHP 8.3, TYPO3 14.3 & lowest dependencies) / Run tests'
               integration_id: 15368
-            - context: 'Tests (PHP 8.4, TYPO3 14.3 & highest dependencies)'
+            - context: 'Tests (PHP 8.4, TYPO3 13.4 & highest dependencies) / Run tests'
               integration_id: 15368
-            - context: 'Tests (PHP 8.4, TYPO3 14.3 & lowest dependencies)'
+            - context: 'Tests (PHP 8.4, TYPO3 13.4 & lowest dependencies) / Run tests'
               integration_id: 15368
-            - context: 'Tests (PHP 8.5, TYPO3 13.4 & highest dependencies)'
+            - context: 'Tests (PHP 8.4, TYPO3 14.3 & highest dependencies) / Run tests'
               integration_id: 15368
-            - context: 'Tests (PHP 8.5, TYPO3 13.4 & lowest dependencies)'
+            - context: 'Tests (PHP 8.4, TYPO3 14.3 & lowest dependencies) / Run tests'
               integration_id: 15368
-            - context: 'Tests (PHP 8.5, TYPO3 14.3 & highest dependencies)'
+            - context: 'Tests (PHP 8.5, TYPO3 13.4 & highest dependencies) / Run tests'
               integration_id: 15368
-            - context: 'Tests (PHP 8.5, TYPO3 14.3 & lowest dependencies)'
+            - context: 'Tests (PHP 8.5, TYPO3 13.4 & lowest dependencies) / Run tests'
               integration_id: 15368
-            - context: 'Test coverage'
+            - context: 'Tests (PHP 8.5, TYPO3 14.3 & highest dependencies) / Run tests'
+              integration_id: 15368
+            - context: 'Tests (PHP 8.5, TYPO3 14.3 & lowest dependencies) / Run tests'
+              integration_id: 15368
+            - context: 'Test coverage / Collect test coverage'
               integration_id: 15368
     bypass_actors:
       - actor_id: 5

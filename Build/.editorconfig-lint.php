@@ -23,7 +23,7 @@ declare(strict_types=1);
 
 return \Symfony\Component\Finder\Finder::create()
     ->files()
-    ->in(dirname(__DIR__, 2))
+    ->in(dirname(__DIR__))
     ->ignoreVCSIgnored(true)
     ->exclude([
         'Resources/Public/Css',

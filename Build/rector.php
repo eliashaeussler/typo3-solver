@@ -27,7 +27,7 @@ use Rector\PHPUnit\CodeQuality\Rector\MethodCall\ScalarArgumentToExpectedParamTy
 use Rector\ValueObject\PhpVersion;
 
 return static function (RectorConfig $rectorConfig): void {
-    $rootPath = dirname(__DIR__, 2);
+    $rootPath = dirname(__DIR__);
 
     require $rootPath . '/.build/vendor/autoload.php';
 
@@ -36,9 +36,6 @@ return static function (RectorConfig $rectorConfig): void {
             $rootPath . '/Classes',
             $rootPath . '/Configuration',
             $rootPath . '/Tests',
-        )
-        ->not(
-            $rootPath . '/Tests/CGL/vendor/*',
         )
         ->withPHPUnit()
         ->withSymfony()
