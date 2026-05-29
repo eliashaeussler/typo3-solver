@@ -6363,16 +6363,16 @@
         },
         {
             "name": "eliashaeussler/version-bumper",
-            "version": "4.0.1",
+            "version": "4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eliashaeussler/version-bumper.git",
-                "reference": "2e8ba02dca5ff394792414caf1e7da112f9b04e7"
+                "reference": "f9a809acf0a8e12916edde330f7fb97eb1800489"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/version-bumper/zipball/2e8ba02dca5ff394792414caf1e7da112f9b04e7",
-                "reference": "2e8ba02dca5ff394792414caf1e7da112f9b04e7",
+                "url": "https://api.github.com/repos/eliashaeussler/version-bumper/zipball/f9a809acf0a8e12916edde330f7fb97eb1800489",
+                "reference": "f9a809acf0a8e12916edde330f7fb97eb1800489",
                 "shasum": ""
             },
             "require": {
@@ -6428,9 +6428,9 @@
             "description": "Composer plugin to bump project versions during release preparations",
             "support": {
                 "issues": "https://github.com/eliashaeussler/version-bumper/issues",
-                "source": "https://github.com/eliashaeussler/version-bumper/tree/4.0.1"
+                "source": "https://github.com/eliashaeussler/version-bumper/tree/4.0.2"
             },
-            "time": "2026-05-23T18:02:25+00:00"
+            "time": "2026-05-28T14:54:12+00:00"
         },
         {
             "name": "ergebnis/agent-detector",
@@ -8598,11 +8598,11 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "2.1.56",
+            "version": "2.2.1",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/93a603c9fc3be8c3c93bbc8d22170ad766685537",
-                "reference": "93a603c9fc3be8c3c93bbc8d22170ad766685537",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/dea9c8f2d25cc849391042b71e429c1a4bf82660",
+                "reference": "dea9c8f2d25cc849391042b71e429c1a4bf82660",
                 "shasum": ""
             },
             "require": {
@@ -8624,6 +8624,17 @@
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ondřej Mirtes"
+                },
+                {
+                    "name": "Markus Staab"
+                },
+                {
+                    "name": "Vincent Langlet"
+                }
             ],
             "description": "PHPStan - PHP Static Analysis Tool",
             "keywords": [
@@ -8647,7 +8658,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-05-26T17:04:57+00:00"
+            "time": "2026-05-28T14:44:12+00:00"
         },
         {
             "name": "phpstan/phpstan-deprecation-rules",
@@ -10110,7 +10121,6 @@
                     "type": "github"
                 }
             ],
-            "abandoned": true,
             "time": "2025-03-19T07:56:08+00:00"
         },
         {
@@ -10167,7 +10177,6 @@
                     "type": "github"
                 }
             ],
-            "abandoned": true,
             "time": "2024-07-03T04:45:54+00:00"
         },
         {
