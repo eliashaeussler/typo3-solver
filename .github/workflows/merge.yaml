@@ -16,4 +16,4 @@ jobs:
     secrets:
       MERGE_TOKEN: ${{ secrets.REBUILD_ASSETS_TOKEN }}
 
-    uses: eliashaeussler/gha/.github/workflows/merge.yaml@24e339c643ee01a7e008b13e40bcee4155c479fa # 0.2.3
+    uses: eliashaeussler/gha/.github/workflows/merge.yaml@05cb9b379844348a1ad161dca85bc27ea8128427 # 0.3.6
