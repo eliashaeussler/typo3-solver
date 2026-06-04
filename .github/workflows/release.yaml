@@ -15,7 +15,7 @@ jobs:
     secrets:
       TYPO3_API_TOKEN: ${{ secrets.TYPO3_API_TOKEN }}
 
-    uses: eliashaeussler/gha/.github/workflows/extension-release.yaml@2d0e88cdf429b8ef1117ca8cd9d53e327340827d # 0.4.9
+    uses: eliashaeussler/gha/.github/workflows/extension-release.yaml@7d2b570c76b71c7dc980fe1038eaba179dba3bc9 # 0.5.0
     with:
       php-version: 8.2 # renovate-ignore
       packaging-excludes-file: Build/release/packaging_exclude.php
