@@ -14,7 +14,7 @@ permissions:
 jobs:
   prepare:
     name: 'Prepare workflow'
-    uses: eliashaeussler/gha/.github/workflows/preparation.yaml@5344de65c90275de4c729d973f1fe7246ea23ee1 # 0.6.3
+    uses: eliashaeussler/gha/.github/workflows/preparation.yaml@b205b470c2f8b2eec7ca41caedf3c401abda2dcf # 0.7.1
 
   asset-integrity:
     name: 'Verify asset integrity'
@@ -25,7 +25,7 @@ jobs:
     secrets:
       ASSETS_TOKEN: ${{ secrets.REBUILD_ASSETS_TOKEN }}
 
-    uses: eliashaeussler/gha/.github/workflows/asset-integrity.yaml@5344de65c90275de4c729d973f1fe7246ea23ee1 # 0.6.3
+    uses: eliashaeussler/gha/.github/workflows/asset-integrity.yaml@b205b470c2f8b2eec7ca41caedf3c401abda2dcf # 0.7.1
     with:
       base-path: Build/assets
 
@@ -38,7 +38,7 @@ jobs:
     permissions:
       security-events: write
 
-    uses: eliashaeussler/gha/.github/workflows/checks.yaml@5344de65c90275de4c729d973f1fe7246ea23ee1 # 0.6.3
+    uses: eliashaeussler/gha/.github/workflows/checks.yaml@b205b470c2f8b2eec7ca41caedf3c401abda2dcf # 0.7.1
     with:
       # We use the minimum supported PHP version
       php-version: 8.2 # renovate-ignore
@@ -58,7 +58,7 @@ jobs:
         typo3-version: ["13.4", "14.3"]
         dependencies: ["highest", "lowest"]
 
-    uses: eliashaeussler/gha/.github/workflows/typo3-tests.yaml@5344de65c90275de4c729d973f1fe7246ea23ee1 # 0.6.3
+    uses: eliashaeussler/gha/.github/workflows/typo3-tests.yaml@b205b470c2f8b2eec7ca41caedf3c401abda2dcf # 0.7.1
     with:
       php-version: ${{ matrix.php-version }}
       typo3-version: ${{ matrix.typo3-version }}
@@ -70,4 +70,4 @@ jobs:
     needs: [asset-integrity]
     if: ${{ needs.asset-integrity.outputs.rebuilt == 'false' }}
 
-    uses: eliashaeussler/gha/.github/workflows/typo3-test-coverage.yaml@5344de65c90275de4c729d973f1fe7246ea23ee1 # 0.6.3
+    uses: eliashaeussler/gha/.github/workflows/typo3-test-coverage.yaml@b205b470c2f8b2eec7ca41caedf3c401abda2dcf # 0.7.1
