@@ -9999,21 +9999,21 @@
         },
         {
             "name": "rector/rector",
-            "version": "2.4.5",
+            "version": "2.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "cbd86024be5014d3c14d9f0b3f7aae8ecbffd62c"
+                "reference": "9b9e5c76618e4d359f65b54ca2eabcad3d1761ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/cbd86024be5014d3c14d9f0b3f7aae8ecbffd62c",
-                "reference": "cbd86024be5014d3c14d9f0b3f7aae8ecbffd62c",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/9b9e5c76618e4d359f65b54ca2eabcad3d1761ee",
+                "reference": "9b9e5c76618e4d359f65b54ca2eabcad3d1761ee",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.4|^8.0",
-                "phpstan/phpstan": "^2.1.56"
+                "phpstan/phpstan": "^2.2.2"
             },
             "conflict": {
                 "rector/rector-doctrine": "*",
@@ -10047,7 +10047,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rectorphp/rector/issues",
-                "source": "https://github.com/rectorphp/rector/tree/2.4.5"
+                "source": "https://github.com/rectorphp/rector/tree/2.4.6"
             },
             "funding": [
                 {
@@ -10055,7 +10055,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-05-26T21:03:22+00:00"
+            "time": "2026-06-17T11:56:28+00:00"
         },
         {
             "name": "saschaegerer/phpstan-typo3",
@@ -11239,16 +11239,16 @@
         },
         {
             "name": "ssch/typo3-rector",
-            "version": "v3.14.1",
+            "version": "v3.14.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sabbelasichon/typo3-rector.git",
-                "reference": "d30beb664bfd3d0fe6e200ecab37e4f31f9b6232"
+                "reference": "ba56528fb92a71c6032b363da4ef20dac61fb915"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/d30beb664bfd3d0fe6e200ecab37e4f31f9b6232",
-                "reference": "d30beb664bfd3d0fe6e200ecab37e4f31f9b6232",
+                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/ba56528fb92a71c6032b363da4ef20dac61fb915",
+                "reference": "ba56528fb92a71c6032b363da4ef20dac61fb915",
                 "shasum": ""
             },
             "require": {
@@ -11351,7 +11351,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-04-13T17:08:21+00:00"
+            "time": "2026-06-17T19:27:30+00:00"
         },
         {
             "name": "staabm/side-effects-detector",
