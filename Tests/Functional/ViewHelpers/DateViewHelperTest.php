@@ -58,7 +58,7 @@ final class DateViewHelperTest extends TestingFramework\Core\Functional\Function
         self::assertIsString($actual);
         self::assertSame(
             $date->format('d.m.Y H:i:s'),
-            \trim($actual),
+            trim($actual),
         );
     }
 
@@ -75,7 +75,7 @@ final class DateViewHelperTest extends TestingFramework\Core\Functional\Function
         $actual = $view->render();
 
         self::assertIsString($actual);
-        self::assertStringEndsWith($expected, \trim($actual));
+        self::assertStringEndsWith($expected, trim($actual));
     }
 
     /**

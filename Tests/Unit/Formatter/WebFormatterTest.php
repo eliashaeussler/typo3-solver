@@ -111,7 +111,7 @@ final class WebFormatterTest extends TestingFramework\Core\Unit\UnitTestCase
     public function getAdditionalStylesReturnsAdditionalStylesheet(): void
     {
         self::assertStringEqualsFile(
-            \dirname(__DIR__, 3) . '/Resources/Public/Css/main.css',
+            dirname(__DIR__, 3) . '/Resources/Public/Css/main.css',
             $this->subject->getAdditionalStyles(),
         );
     }
@@ -120,18 +120,18 @@ final class WebFormatterTest extends TestingFramework\Core\Unit\UnitTestCase
     public function getAdditionalScriptsReturnsAdditionalJavaScript(): void
     {
         self::assertStringEqualsFile(
-            \dirname(__DIR__, 3) . '/Resources/Public/JavaScript/main.js',
-            \substr($this->subject->getAdditionalScripts(), \strlen('<script>'), -\strlen('</script>')),
+            dirname(__DIR__, 3) . '/Resources/Public/JavaScript/main.js',
+            substr($this->subject->getAdditionalScripts(), strlen('<script>'), -strlen('</script>')),
         );
     }
 
     private function getLastGeneratedStreamHash(): string
     {
-        $registeredHashes = \file(\dirname(__DIR__, 3) . '/var/transient/tx_solver/stream_auth.txt');
+        $registeredHashes = file(dirname(__DIR__, 3) . '/var/transient/tx_solver/stream_auth.txt');
 
         self::assertIsArray($registeredHashes);
 
-        $lastHash = \end($registeredHashes);
+        $lastHash = end($registeredHashes);
 
         self::assertIsString($lastHash);
 

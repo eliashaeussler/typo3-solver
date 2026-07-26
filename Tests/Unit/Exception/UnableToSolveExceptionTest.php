@@ -44,7 +44,7 @@ final class UnableToSolveExceptionTest extends TestingFramework\Core\Unit\UnitTe
         $actual = Src\Exception\UnableToSolveException::create($problem);
 
         self::assertSame(
-            \sprintf('Unable to provide a solution for "Something went wrong." using the "%s" provider.', Src\Tests\Unit\Fixtures\DummySolutionProvider::class),
+            sprintf('Unable to provide a solution for "Something went wrong." using the "%s" provider.', Src\Tests\Unit\Fixtures\DummySolutionProvider::class),
             $actual->getMessage(),
         );
         self::assertSame(1675767101, $actual->getCode());

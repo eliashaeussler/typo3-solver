@@ -72,7 +72,7 @@ final class SolverTest extends TestingFramework\Core\Unit\UnitTestCase
         $actual = $this->subject->solve(new \Exception());
 
         self::assertNotNull($actual);
-        self::assertJsonStringEqualsJsonString(\json_encode($dummySolution, JSON_THROW_ON_ERROR), $actual);
+        self::assertJsonStringEqualsJsonString(json_encode($dummySolution, JSON_THROW_ON_ERROR), $actual);
     }
 
     #[Framework\Attributes\Test]
@@ -80,23 +80,23 @@ final class SolverTest extends TestingFramework\Core\Unit\UnitTestCase
     {
         $this->provider->shouldBeUsed = false;
 
-        self::assertSame([], \iterator_to_array($this->subject->solveStreamed(new \Exception())));
+        self::assertSame([], iterator_to_array($this->subject->solveStreamed(new \Exception())));
     }
 
     #[Framework\Attributes\Test]
     public function solveStreamedYieldsFormattedSolutionStreams(): void
     {
-        $solutions = \iterator_to_array(Tests\Unit\DataProvider\SolutionDataProvider::getStream());
+        $solutions = iterator_to_array(Tests\Unit\DataProvider\SolutionDataProvider::getStream());
 
         $this->provider->solutionStream = $solutions;
 
-        $actual = \iterator_to_array($this->subject->solveStreamed(new \Exception()));
+        $actual = iterator_to_array($this->subject->solveStreamed(new \Exception()));
 
         $expected1 = Tests\Unit\DataProvider\SolutionDataProvider::get();
         $expected2 = Tests\Unit\DataProvider\SolutionDataProvider::get(message: ' ... message {index}');
 
         self::assertCount(2, $actual);
-        self::assertJsonStringEqualsJsonString(\json_encode($expected1, JSON_THROW_ON_ERROR), $actual[0]);
-        self::assertJsonStringEqualsJsonString(\json_encode($expected2, JSON_THROW_ON_ERROR), $actual[1]);
+        self::assertJsonStringEqualsJsonString(json_encode($expected1, JSON_THROW_ON_ERROR), $actual[0]);
+        self::assertJsonStringEqualsJsonString(json_encode($expected2, JSON_THROW_ON_ERROR), $actual[1]);
     }
 }

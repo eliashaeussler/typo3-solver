@@ -34,9 +34,9 @@ trait DOMDocumentTrait
     private static function createDOMXPath(string $html): \DOMXPath
     {
         $document = new \DOMDocument();
-        \libxml_use_internal_errors(true);
+        libxml_use_internal_errors(true);
         $document->loadHTML($html);
-        \libxml_clear_errors();
+        libxml_clear_errors();
 
         return new \DOMXPath($document);
     }
@@ -45,7 +45,7 @@ trait DOMDocumentTrait
     {
         self::assertNotFalse($nodeList = $xpath->query($query));
         self::assertInstanceOf(\DOMNode::class, $firstNode = $nodeList->item(0));
-        self::assertSame(\trim($string), \trim($firstNode->textContent));
+        self::assertSame(trim($string), trim($firstNode->textContent));
     }
 
     private static function assertNodeListIsEmpty(string $query, \DOMXPath $xpath): void

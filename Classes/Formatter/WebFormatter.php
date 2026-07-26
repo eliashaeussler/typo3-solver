@@ -69,11 +69,11 @@ final readonly class WebFormatter implements Formatter
 
     private function getFileContents(string $filename): string
     {
-        $rootPath = \dirname(__DIR__, 2);
+        $rootPath = dirname(__DIR__, 2);
         $filePath = Filesystem\Path::join($rootPath, $filename);
 
-        if (\file_exists($filePath)) {
-            return (string)@\file_get_contents($filePath);
+        if (file_exists($filePath)) {
+            return (string)@file_get_contents($filePath);
         }
 
         return ''; // @codeCoverageIgnore

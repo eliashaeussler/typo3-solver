@@ -39,7 +39,7 @@ final class SolutionDataProvider
         $responses = [];
 
         for ($i = 0; $i < $numberOfResponses; ++$i) {
-            $responses[] = self::getResponse(\str_replace('{index}', (string)($i + 1), $message), $i);
+            $responses[] = self::getResponse(str_replace('{index}', (string)($i + 1), $message), $i);
         }
 
         return new ProblemSolving\Solution\Solution($responses, 'model', 'prompt');

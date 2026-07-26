@@ -147,7 +147,7 @@ final class SolutionTest extends TestingFramework\Core\Unit\UnitTestCase
     #[Framework\Attributes\Test]
     public function subjectIsIterable(): void
     {
-        self::assertSame([$this->completionResponse], \iterator_to_array($this->subject));
+        self::assertSame([$this->completionResponse], iterator_to_array($this->subject));
     }
 
     #[Framework\Attributes\Test]
@@ -176,8 +176,8 @@ final class SolutionTest extends TestingFramework\Core\Unit\UnitTestCase
         ];
 
         self::assertJsonStringEqualsJsonString(
-            \json_encode($expected, JSON_THROW_ON_ERROR),
-            \json_encode($this->subject, JSON_THROW_ON_ERROR),
+            json_encode($expected, JSON_THROW_ON_ERROR),
+            json_encode($this->subject, JSON_THROW_ON_ERROR),
         );
     }
 }

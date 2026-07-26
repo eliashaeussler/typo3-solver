@@ -67,7 +67,7 @@ final class CacheFlushCommandTest extends TestingFramework\Core\Unit\UnitTestCas
 
         self::assertSame(0, $this->commandTester->getStatusCode());
         self::assertStringContainsString(
-            \sprintf('Cache entry with identifier "%s" successfully removed.', $identifier),
+            sprintf('Cache entry with identifier "%s" successfully removed.', $identifier),
             $this->commandTester->getDisplay(),
         );
         self::assertNull($this->cache->get($problem));

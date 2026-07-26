@@ -205,7 +205,7 @@ final class SolveCommandTest extends TestingFramework\Core\Unit\UnitTestCase
 
         self::assertJson($output);
         self::assertJsonStringEqualsJsonString(
-            \json_encode($solution, JSON_THROW_ON_ERROR),
+            json_encode($solution, JSON_THROW_ON_ERROR),
             $output,
         );
     }

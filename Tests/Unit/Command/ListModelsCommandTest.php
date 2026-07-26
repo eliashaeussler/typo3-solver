@@ -77,21 +77,21 @@ final class ListModelsCommandTest extends TestingFramework\Core\Unit\UnitTestCas
             $this->commandTester->getDisplay(),
         );
         self::assertStringNotContainsString(
-            \implode(PHP_EOL, [
+            implode(PHP_EOL, [
                 ' * baz-1 (created at 01/01/2022)',
                 ' * foo-1 (created at 01/01/2023)',
             ]),
             $this->commandTester->getDisplay(),
         );
         self::assertStringNotContainsString(
-            \implode(PHP_EOL, [
+            implode(PHP_EOL, [
                 ' * gpt-4o-mini-audio-preview (created at 16/12/2024)',
                 ' * gpt-4o-realtime-preview (created at 30/09/2024)',
             ]),
             $this->commandTester->getDisplay(),
         );
         self::assertStringContainsString(
-            \implode(PHP_EOL, [
+            implode(PHP_EOL, [
                 ' * gpt-3.5 (created at 28/02/2023)',
                 ' * gpt-3.5-turbo-0301 (created at 01/03/2023)',
             ]),
@@ -144,7 +144,7 @@ final class ListModelsCommandTest extends TestingFramework\Core\Unit\UnitTestCas
             $this->commandTester->getDisplay(),
         );
         self::assertStringContainsString(
-            \implode(PHP_EOL, [
+            implode(PHP_EOL, [
                 ' * baz-1 (created at 01/01/2022)',
                 ' * foo-1 (created at 01/01/2023)',
                 ' * gpt-3.5 (created at 28/02/2023)',

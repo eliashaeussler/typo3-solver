@@ -115,7 +115,7 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
             'openai-processing-ms' => '0',
             'openai-version' => '1',
         ]);
-        $response->getBody()->write(\json_encode($payload, JSON_THROW_ON_ERROR));
+        $response->getBody()->write(json_encode($payload, JSON_THROW_ON_ERROR));
         $response->getBody()->rewind();
 
         $this->mockHandler->append($response);
@@ -135,7 +135,7 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
             Src\Exception\ApiKeyMissingException::create(),
         );
 
-        \iterator_to_array($this->subject->getStreamedSolution($this->problem));
+        iterator_to_array($this->subject->getStreamedSolution($this->problem));
     }
 
     #[Framework\Attributes\Test]
@@ -147,7 +147,7 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
 
         $this->mockHandler->append(new \Exception());
 
-        \iterator_to_array($this->subject->getStreamedSolution($this->problem));
+        iterator_to_array($this->subject->getStreamedSolution($this->problem));
     }
 
     #[Framework\Attributes\Test]
@@ -187,8 +187,8 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
         ];
 
         $response = new Psr7\Response();
-        $response->getBody()->write('data: ' . \json_encode($streamedResponse1) . PHP_EOL);
-        $response->getBody()->write('data: ' . \json_encode($streamedResponse2) . PHP_EOL);
+        $response->getBody()->write('data: ' . json_encode($streamedResponse1) . PHP_EOL);
+        $response->getBody()->write('data: ' . json_encode($streamedResponse2) . PHP_EOL);
         $response->getBody()->rewind();
 
         $this->mockHandler->append($response);
@@ -198,7 +198,7 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
             Tests\Unit\DataProvider\SolutionDataProvider::get(message: 'content 1 ... content 2'),
         ];
 
-        self::assertEquals($expected, \iterator_to_array($this->subject->getStreamedSolution($this->problem)));
+        self::assertEquals($expected, iterator_to_array($this->subject->getStreamedSolution($this->problem)));
     }
 
     #[Framework\Attributes\Test]
@@ -228,7 +228,7 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
             'openai-processing-ms' => '0',
             'openai-version' => '1',
         ]);
-        $response->getBody()->write(\json_encode($this->createListResponse(), JSON_THROW_ON_ERROR));
+        $response->getBody()->write(json_encode($this->createListResponse(), JSON_THROW_ON_ERROR));
         $response->getBody()->rewind();
 
         $this->mockHandler->append($response);
@@ -258,7 +258,7 @@ final class OpenAISolutionProviderTest extends TestingFramework\Core\Unit\UnitTe
             'openai-processing-ms' => '0',
             'openai-version' => '1',
         ]);
-        $response->getBody()->write(\json_encode($this->createListResponse(), JSON_THROW_ON_ERROR));
+        $response->getBody()->write(json_encode($this->createListResponse(), JSON_THROW_ON_ERROR));
         $response->getBody()->rewind();
 
         $this->mockHandler->append($response);

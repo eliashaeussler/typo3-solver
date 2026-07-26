@@ -78,7 +78,7 @@ final readonly class SolutionMiddleware implements Server\MiddlewareInterface
             $id = $request->getQueryParams()['exception'] ?? null;
 
             // Throw exception if stream hash is invalid
-            if (!\is_string($hash)) {
+            if (!is_string($hash)) {
                 throw Exception\AuthenticationFailureException::create();
             }
 
@@ -86,7 +86,7 @@ final readonly class SolutionMiddleware implements Server\MiddlewareInterface
             $this->authentication->authenticate($hash);
 
             // Throw exception if exception identifier is invalid
-            if (!\is_string($id)) {
+            if (!is_string($id)) {
                 throw Exception\UnrecoverableExceptionException::forMissingIdentifier();
             }
 

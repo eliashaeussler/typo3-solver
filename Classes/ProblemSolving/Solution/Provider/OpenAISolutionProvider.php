@@ -108,7 +108,7 @@ final readonly class OpenAISolutionProvider implements StreamedSolutionProvider
 
     public function canBeUsed(\Throwable $exception): bool
     {
-        return !\in_array($exception->getCode(), $this->configuration->getIgnoredCodes(), true);
+        return !in_array($exception->getCode(), $this->configuration->getIgnoredCodes(), true);
     }
 
     public function isCacheable(): bool
@@ -123,11 +123,11 @@ final readonly class OpenAISolutionProvider implements StreamedSolutionProvider
 
         // Filter by supported models
         if (!$includeUnsupported) {
-            $modelListResponse = \array_filter($modelListResponse, $this->isSupportedModel(...));
+            $modelListResponse = array_filter($modelListResponse, $this->isSupportedModel(...));
         }
 
-        return \array_values(
-            \array_map(
+        return array_values(
+            array_map(
                 Model\AiModel::fromOpenAIRetrieveResponse(...),
                 $modelListResponse,
             ),
@@ -139,13 +139,13 @@ final readonly class OpenAISolutionProvider implements StreamedSolutionProvider
      */
     private function isSupportedModel(Responses\Models\RetrieveResponse $response): bool
     {
-        $identifier = \strtolower($response->id);
+        $identifier = strtolower($response->id);
 
-        if (!\str_starts_with($identifier, 'gpt-') && !\str_starts_with($identifier, 'chatgpt-')) {
+        if (!str_starts_with($identifier, 'gpt-') && !str_starts_with($identifier, 'chatgpt-')) {
             return false;
         }
 
-        return !\str_contains($identifier, '-realtime') && !\str_contains($identifier, '-audio');
+        return !str_contains($identifier, '-realtime') && !str_contains($identifier, '-audio');
     }
 
     /**

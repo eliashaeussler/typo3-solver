@@ -98,6 +98,6 @@ TEMPLATE;
             'dbVersion' => 'MySQL 8.4.0',
         ]);
 
-        self::assertSame(\trim($expected), \trim($actual));
+        self::assertSame(trim($expected), trim($actual));
     }
 }

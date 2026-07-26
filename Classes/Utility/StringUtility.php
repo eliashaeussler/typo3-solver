@@ -36,12 +36,12 @@ final class StringUtility
      */
     public static function replaceFirstOccurrence(string $search, string $replace, string $subject): string
     {
-        $position = \strpos($subject, $search);
+        $position = strpos($subject, $search);
 
         if ($position === false) {
             return $subject;
         }
 
-        return \substr_replace($subject, $replace, $position, \mb_strlen($search));
+        return substr_replace($subject, $replace, $position, mb_strlen($search));
     }
 }

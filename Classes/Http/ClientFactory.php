@@ -46,7 +46,7 @@ final readonly class ClientFactory
     {
         $apiKey = $this->configuration->getApiKey();
 
-        if ($apiKey === null || \trim($apiKey) === '') {
+        if ($apiKey === null || trim($apiKey) === '') {
             throw Exception\ApiKeyMissingException::create();
         }
 

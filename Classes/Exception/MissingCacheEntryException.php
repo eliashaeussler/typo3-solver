@@ -34,7 +34,7 @@ final class MissingCacheEntryException extends Exception
     public static function create(string $identifier): self
     {
         return new self(
-            \sprintf('Unable to find a cache entry for identifier "%s".', $identifier),
+            sprintf('Unable to find a cache entry for identifier "%s".', $identifier),
             1680388703,
         );
     }
