@@ -88,6 +88,7 @@
 				"providesPackages": {}
 			},
 			"extension-key": "solver",
+			"version": "3.3.2",
 			"web-dir": ".build/web"
 		},
 		"version-bumper": {
