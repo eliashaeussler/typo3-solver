@@ -61,7 +61,7 @@ final class StreamAuthenticationTest extends TestingFramework\Core\Unit\UnitTest
         new Src\Authentication\StreamAuthentication();
 
         self::assertFileExists($this->filename);
-        self::assertSame('', \file_get_contents($this->filename));
+        self::assertSame('', file_get_contents($this->filename));
     }
 
     #[Framework\Attributes\Test]
@@ -90,14 +90,14 @@ final class StreamAuthenticationTest extends TestingFramework\Core\Unit\UnitTest
     public function authenticateRemovesHashFromTransientFileOnSuccessfulAuthentication(): void
     {
         $registeredHash = $this->subject->register();
-        $registeredHashesBeforeAuthentication = \file($this->filename);
+        $registeredHashesBeforeAuthentication = file($this->filename);
 
         self::assertIsArray($registeredHashesBeforeAuthentication);
         self::assertContains($registeredHash, $registeredHashesBeforeAuthentication);
 
         $this->subject->authenticate($registeredHash);
 
-        $registeredHashesAfterAuthentication = \file($this->filename);
+        $registeredHashesAfterAuthentication = file($this->filename);
 
         self::assertIsArray($registeredHashesAfterAuthentication);
         self::assertNotContains($registeredHash, $registeredHashesAfterAuthentication);
@@ -108,7 +108,7 @@ final class StreamAuthenticationTest extends TestingFramework\Core\Unit\UnitTest
     {
         $actual = $this->subject->register();
 
-        $registeredHashesBeforeAuthentication = \file($this->filename);
+        $registeredHashesBeforeAuthentication = file($this->filename);
 
         self::assertIsArray($registeredHashesBeforeAuthentication);
         self::assertContains($actual, $registeredHashesBeforeAuthentication);

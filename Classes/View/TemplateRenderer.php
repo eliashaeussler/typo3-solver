@@ -59,7 +59,7 @@ final readonly class TemplateRenderer
 
     private function createRenderingContext(): Fluid\Core\Rendering\RenderingContextInterface
     {
-        $rootPath = \dirname(__DIR__, 2) . '/Resources/Private';
+        $rootPath = dirname(__DIR__, 2) . '/Resources/Private';
         $renderingContext = new Fluid\Core\Rendering\RenderingContext();
 
         $templatePaths = $renderingContext->getTemplatePaths();

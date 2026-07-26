@@ -38,7 +38,7 @@ final class LowLevelConfigurationProvider implements ConfigurationProvider
     {
         $extensionConfiguration = $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS'][Extension::KEY] ?? null;
 
-        if (!\is_array($extensionConfiguration)) {
+        if (!is_array($extensionConfiguration)) {
             return $default;
         }
 

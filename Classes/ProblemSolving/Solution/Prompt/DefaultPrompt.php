@@ -51,7 +51,7 @@ final readonly class DefaultPrompt implements Prompt
 
     public function generate(\Throwable $exception): string
     {
-        return \trim(
+        return trim(
             $this->renderer->render('Prompt/Default', [
                 'exception' => $exception,
                 'exceptionClass' => $exception::class,
@@ -84,7 +84,7 @@ final readonly class DefaultPrompt implements Prompt
             $snippet .= $number . ' ' . $line . PHP_EOL;
         }
 
-        return \trim($snippet);
+        return trim($snippet);
     }
 
     private function getDatabasePlatformAndVersion(): ?string

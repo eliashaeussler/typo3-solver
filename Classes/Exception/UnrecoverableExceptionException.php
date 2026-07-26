@@ -34,7 +34,7 @@ final class UnrecoverableExceptionException extends Exception
     public static function create(string $identifier): self
     {
         return new self(
-            \sprintf('Exception with cache identifier "%s" cannot be restored.', $identifier),
+            sprintf('Exception with cache identifier "%s" cannot be restored.', $identifier),
             1681219687,
         );
     }

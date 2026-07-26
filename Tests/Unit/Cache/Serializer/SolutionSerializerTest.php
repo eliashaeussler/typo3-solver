@@ -52,7 +52,7 @@ final class SolutionSerializerTest extends TestingFramework\Core\Unit\UnitTestCa
     {
         $solution = Src\Tests\Unit\DataProvider\SolutionDataProvider::get();
 
-        $createTime = \time();
+        $createTime = time();
         $expiryTime = $createTime + $this->configuration->getCacheLifetime();
 
         $actual = $this->subject->serialize($solution);
@@ -79,7 +79,7 @@ final class SolutionSerializerTest extends TestingFramework\Core\Unit\UnitTestCa
     {
         $solution = Src\Tests\Unit\DataProvider\SolutionDataProvider::get();
 
-        $createTime = \time();
+        $createTime = time();
         $expiryTime = $createTime + $this->configuration->getCacheLifetime();
 
         $solutionArray = [

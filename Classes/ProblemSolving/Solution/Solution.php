@@ -54,7 +54,7 @@ final class Solution implements \Countable, \IteratorAggregate, \JsonSerializabl
     public static function fromOpenAIResponse(Responses\Chat\CreateResponse $response, string $prompt): self
     {
         return new self(
-            \array_map(
+            array_map(
                 Model\CompletionResponse::fromOpenAIChoice(...),
                 $response->choices,
             ),
@@ -68,7 +68,7 @@ final class Solution implements \Countable, \IteratorAggregate, \JsonSerializabl
      */
     public static function fromArray(array $solution): self
     {
-        $responses = \array_map(
+        $responses = array_map(
             Model\CompletionResponse::fromArray(...),
             $solution['responses'],
         );
@@ -78,7 +78,7 @@ final class Solution implements \Countable, \IteratorAggregate, \JsonSerializabl
 
     public function count(): int
     {
-        return \count($this->responses);
+        return count($this->responses);
     }
 
     public function getCreateDate(): ?\DateTimeInterface
@@ -116,7 +116,7 @@ final class Solution implements \Countable, \IteratorAggregate, \JsonSerializabl
     public function toArray(): array
     {
         return [
-            'responses' => \array_map(
+            'responses' => array_map(
                 static fn(ProblemSolving\Solution\Model\CompletionResponse $response): array => $response->toArray(),
                 $this->responses,
             ),

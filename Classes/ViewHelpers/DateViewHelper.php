@@ -87,6 +87,6 @@ final class DateViewHelper extends Fluid\Core\ViewHelper\AbstractViewHelper
 
     private static function renderDiff(int $duration, string $unit): string
     {
-        return \sprintf('%d %s%s ago', $duration, $unit, $duration === 1 ? '' : 's');
+        return sprintf('%d %s%s ago', $duration, $unit, $duration === 1 ? '' : 's');
     }
 }

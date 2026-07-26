@@ -34,7 +34,7 @@ final class IOException extends Exception
     public static function forConflictingParameters(string ...$parameters): self
     {
         return new self(
-            \sprintf('The parameters "%s" cannot be used together.', \implode('", "', $parameters)),
+            sprintf('The parameters "%s" cannot be used together.', implode('", "', $parameters)),
             1680388489,
         );
     }
@@ -42,7 +42,7 @@ final class IOException extends Exception
     public static function forMissingRequiredParameter(string $parameter): self
     {
         return new self(
-            \sprintf('The parameter "%s" is required.', $parameter),
+            sprintf('The parameter "%s" is required.', $parameter),
             1680388939,
         );
     }

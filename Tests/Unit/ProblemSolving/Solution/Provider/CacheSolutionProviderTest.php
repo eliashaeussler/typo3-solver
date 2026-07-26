@@ -108,7 +108,7 @@ final class CacheSolutionProviderTest extends TestingFramework\Core\Unit\UnitTes
 
         $this->cache->set($problem, $solution);
 
-        $actual = \iterator_to_array($this->subject->getStreamedSolution($problem));
+        $actual = iterator_to_array($this->subject->getStreamedSolution($problem));
 
         self::assertCount(1, $actual);
         self::assertEquals([$this->cache->get($problem)], $actual);
@@ -124,7 +124,7 @@ final class CacheSolutionProviderTest extends TestingFramework\Core\Unit\UnitTes
         $provider->solution = $solution;
         $subject = new Src\ProblemSolving\Solution\Provider\CacheSolutionProvider($this->cache, $provider);
 
-        $actual = \iterator_to_array($subject->getStreamedSolution($problem));
+        $actual = iterator_to_array($subject->getStreamedSolution($problem));
 
         self::assertCount(1, $actual);
         self::assertSame([$solution], $actual);
@@ -134,14 +134,14 @@ final class CacheSolutionProviderTest extends TestingFramework\Core\Unit\UnitTes
     public function getStreamedSolutionYieldsSolutionsFromProvider(): void
     {
         $problem = Tests\Unit\DataProvider\ProblemDataProvider::get(solutionProvider: $this->provider);
-        $solution = \iterator_to_array(Tests\Unit\DataProvider\SolutionDataProvider::getStream(2, 2));
+        $solution = iterator_to_array(Tests\Unit\DataProvider\SolutionDataProvider::getStream(2, 2));
 
         $this->provider->solutionStream = $solution;
 
         $expected1 = Tests\Unit\DataProvider\SolutionDataProvider::get(2);
         $expected2 = Tests\Unit\DataProvider\SolutionDataProvider::get(2, ' ... message {index}');
 
-        $actual = \iterator_to_array($this->subject->getStreamedSolution($problem));
+        $actual = iterator_to_array($this->subject->getStreamedSolution($problem));
 
         self::assertCount(2, $actual);
         self::assertEquals($expected1, $actual[0]);

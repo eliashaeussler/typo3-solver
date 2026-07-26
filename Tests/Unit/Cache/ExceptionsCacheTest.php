@@ -51,7 +51,7 @@ final class ExceptionsCacheTest extends TestingFramework\Core\Unit\UnitTestCase
     #[Framework\Attributes\Test]
     public function constructorCreatesCacheFileIfNotExists(): void
     {
-        $cacheFile = \dirname(__DIR__, 3) . '/var/cache/data/tx_solver/exceptions.php';
+        $cacheFile = dirname(__DIR__, 3) . '/var/cache/data/tx_solver/exceptions.php';
         $filesystem = new Filesystem\Filesystem();
 
         $filesystem->remove($cacheFile);

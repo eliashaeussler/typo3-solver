@@ -50,7 +50,7 @@ final class CliFormatter implements Formatter
             'showPrompt' => $this->output?->isVerbose(),
         ]);
 
-        return \trim($formattedSolution);
+        return trim($formattedSolution);
     }
 
     public function setOutput(Console\Output\OutputInterface $output): self

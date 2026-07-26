@@ -73,7 +73,7 @@ MARKDOWN;
         self::assertIsString($actual);
         self::assertSame(
             $this->markdown->setContent($markdown)->toHtml(),
-            \trim($actual),
+            trim($actual),
         );
     }
 
@@ -94,7 +94,7 @@ MARKDOWN;
         self::assertIsString($actual);
         self::assertSame(
             $this->markdown->setContent($markdown)->toHtml(),
-            \trim($actual),
+            trim($actual),
         );
     }
 

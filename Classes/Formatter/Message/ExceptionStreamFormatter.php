@@ -50,6 +50,6 @@ final readonly class ExceptionStreamFormatter
             ]),
         ];
 
-        return \json_encode($json, JSON_THROW_ON_ERROR);
+        return json_encode($json, JSON_THROW_ON_ERROR);
     }
 }

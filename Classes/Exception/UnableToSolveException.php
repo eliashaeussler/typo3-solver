@@ -36,7 +36,7 @@ final class UnableToSolveException extends Exception
     public static function create(ProblemSolving\Problem\Problem $problem, ?\Throwable $previous = null): self
     {
         return new self(
-            \sprintf(
+            sprintf(
                 'Unable to provide a solution for "%s" using the "%s" provider.',
                 $problem->getException()->getMessage(),
                 $problem->getSolutionProvider()::class,

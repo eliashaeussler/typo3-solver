@@ -65,8 +65,8 @@ final class MessageTest extends TestingFramework\Core\Unit\UnitTestCase
         ];
 
         self::assertJsonStringEqualsJsonString(
-            \json_encode($expected, JSON_THROW_ON_ERROR),
-            \json_encode($this->subject, JSON_THROW_ON_ERROR),
+            json_encode($expected, JSON_THROW_ON_ERROR),
+            json_encode($this->subject, JSON_THROW_ON_ERROR),
         );
     }
 }

@@ -83,10 +83,10 @@ final class MarkdownToHtmlViewHelper extends Fluid\Core\ViewHelper\AbstractViewH
 
     private static function replaceLineNumbersInCodeSnippets(string $html): string
     {
-        return \preg_replace(
+        return preg_replace(
             '/<\/span>\s*<span/',
             '</span><span',
-            \preg_replace_callback(
+            preg_replace_callback(
                 '/<pre><code>(.*?)<\/code><\/pre>/s',
                 static fn(array $matches): string => self::replaceLineNumbersInCodeSnippet($matches[1]),
                 $html,
@@ -97,7 +97,7 @@ final class MarkdownToHtmlViewHelper extends Fluid\Core\ViewHelper\AbstractViewH
     private static function replaceLineNumbersInCodeSnippet(string $codeSnippet): string
     {
         $replacements = 0;
-        $codeSnippetWithLineNumbers = \preg_replace(
+        $codeSnippetWithLineNumbers = preg_replace(
             '/^(\d+)\s(.*)$/m',
             '<span data-line="$1">$2</span>',
             $codeSnippet,

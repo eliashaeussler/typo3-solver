@@ -74,7 +74,7 @@ Cache
 This solution was cached a few moments ago as foo
 TEXT;
 
-        self::assertSame(\trim($expected), $this->subject->format($problem, $solution));
+        self::assertSame(trim($expected), $this->subject->format($problem, $solution));
     }
 
     #[Framework\Attributes\Test]

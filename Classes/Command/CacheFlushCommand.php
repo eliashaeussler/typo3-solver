@@ -59,7 +59,7 @@ final class CacheFlushCommand extends Console\Command\Command
             // Remove single cache entry
             $this->cache->remove($identifier);
             $io->success(
-                \sprintf('Cache entry with identifier "%s" successfully removed.', $identifier),
+                sprintf('Cache entry with identifier "%s" successfully removed.', $identifier),
             );
         } else {
             // Flush all caches

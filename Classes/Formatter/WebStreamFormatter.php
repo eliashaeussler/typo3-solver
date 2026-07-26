@@ -47,7 +47,7 @@ final readonly class WebStreamFormatter implements Formatter
         $json = [
             'data' => [
                 'model' => $solution->model,
-                'numberOfResponses' => \count($solution->responses),
+                'numberOfResponses' => count($solution->responses),
                 'numberOfPendingResponses' => $this->countPendingResponses($solution->responses),
                 'prompt' => $solution->prompt,
             ],
@@ -56,7 +56,7 @@ final readonly class WebStreamFormatter implements Formatter
             ]),
         ];
 
-        return \json_encode($json, JSON_THROW_ON_ERROR);
+        return json_encode($json, JSON_THROW_ON_ERROR);
     }
 
     /**
@@ -64,11 +64,11 @@ final readonly class WebStreamFormatter implements Formatter
      */
     private function countPendingResponses(array $responses): int
     {
-        $pendingResponses = \array_filter(
+        $pendingResponses = array_filter(
             $responses,
             static fn(ProblemSolving\Solution\Model\CompletionResponse $response): bool => !$response->isFinished(),
         );
 
-        return \count($pendingResponses);
+        return count($pendingResponses);
     }
 }

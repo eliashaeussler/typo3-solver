@@ -52,7 +52,7 @@
 		"shipmonk/composer-dependency-analyser": "^1.8",
 		"ssch/typo3-rector": "^3.14",
 		"symfony/dependency-injection": "^7.2 || ^8.0",
-		"typo3/coding-standards": "^0.8.0",
+		"typo3/coding-standards": "^0.9.0",
 		"typo3/testing-framework": "^9.0.3"
 	},
 	"autoload": {

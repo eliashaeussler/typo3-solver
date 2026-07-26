@@ -33,6 +33,6 @@ final class LazyDateTime extends \DateTime
 {
     public function getTimestamp(): int
     {
-        return \time();
+        return time();
     }
 }

@@ -59,7 +59,7 @@ final class WebStreamFormatterTest extends TestingFramework\Core\Unit\UnitTestCa
         self::assertJson($actual);
 
         /** @var array{data: array<string, mixed>, content: string} $json */
-        $json = \json_decode($actual, true, flags: JSON_THROW_ON_ERROR);
+        $json = json_decode($actual, true, flags: JSON_THROW_ON_ERROR);
         $xpath = self::createDOMXPath($json['content']);
 
         self::assertSame('model', $json['data']['model'] ?? null);

@@ -71,12 +71,12 @@ final class ListModelsCommand extends Console\Command\Command
         }
 
         // Map responses to model IDs
-        $models = \array_map(
+        $models = array_map(
             $this->decorateModel(...),
             $modelListResponse,
         );
 
-        \sort($models);
+        sort($models);
 
         $io->listing($models);
 
@@ -94,6 +94,6 @@ final class ListModelsCommand extends Console\Command\Command
             return $model->name;
         }
 
-        return \sprintf('%s <fg=gray>(created at %s)</>', $model->name, $model->createdAt->format('d/m/Y'));
+        return sprintf('%s <fg=gray>(created at %s)</>', $model->name, $model->createdAt->format('d/m/Y'));
     }
 }

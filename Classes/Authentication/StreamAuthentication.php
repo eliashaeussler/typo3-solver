@@ -59,7 +59,7 @@ final class StreamAuthentication
         }
 
         // Throw exception if hash is not registered
-        if (($line = \array_search($hash, $registeredHashes, true)) === false) {
+        if (($line = array_search($hash, $registeredHashes, true)) === false) {
             throw Exception\AuthenticationFailureException::create();
         }
 
@@ -71,7 +71,7 @@ final class StreamAuthentication
 
     public function register(): string
     {
-        $hash = \sha1(\uniqid('tx_solver_stream_hash_'));
+        $hash = sha1(uniqid('tx_solver_stream_hash_'));
 
         $this->write([$hash], true);
 
@@ -85,7 +85,7 @@ final class StreamAuthentication
             'transient/tx_solver/stream_auth.txt',
         );
 
-        if (!\file_exists($this->storagePath)) {
+        if (!file_exists($this->storagePath)) {
             Core\Utility\GeneralUtility::mkdir_deep(dirname($this->storagePath));
             $this->write([]);
         }
@@ -97,11 +97,11 @@ final class StreamAuthentication
     private function write(array $hashes, bool $append = false): void
     {
         if ($append) {
-            \array_unshift($hashes, '');
+            array_unshift($hashes, '');
         }
 
-        $content = \implode(PHP_EOL, $hashes);
+        $content = implode(PHP_EOL, $hashes);
 
-        \file_put_contents($this->storagePath, $content, $append ? FILE_APPEND : LOCK_EX);
+        file_put_contents($this->storagePath, $content, $append ? FILE_APPEND : LOCK_EX);
     }
 }

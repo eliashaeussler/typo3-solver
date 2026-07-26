@@ -52,7 +52,7 @@ final class JsonFormatterTest extends TestingFramework\Core\Unit\UnitTestCase
         $solution = Src\Tests\Unit\DataProvider\SolutionDataProvider::get();
 
         self::assertJsonStringEqualsJsonString(
-            \json_encode($solution, JSON_THROW_ON_ERROR),
+            json_encode($solution, JSON_THROW_ON_ERROR),
             $this->subject->format($problem, $solution),
         );
     }

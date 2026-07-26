@@ -37,6 +37,6 @@ final class JsonFormatter implements Formatter
         ProblemSolving\Problem\Problem $problem,
         ProblemSolving\Solution\Solution $solution,
     ): string {
-        return \json_encode($solution, JSON_THROW_ON_ERROR);
+        return json_encode($solution, JSON_THROW_ON_ERROR);
     }
 }
