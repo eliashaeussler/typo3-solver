@@ -84,6 +84,9 @@
 	},
 	"extra": {
 		"typo3/cms": {
+			"Package": {
+				"providesPackages": {}
+			},
 			"extension-key": "solver",
 			"web-dir": ".build/web"
 		},
