@@ -42,7 +42,7 @@
 		"eliashaeussler/phpstan-config": "^4.0",
 		"eliashaeussler/rector-config": "^4.0",
 		"eliashaeussler/typo3-vendor-bundler": "^4.1",
-		"eliashaeussler/version-bumper": "^3.3 || ^4.0",
+		"eliashaeussler/version-bumper": "^4.0",
 		"ergebnis/composer-normalize": "^2.52",
 		"guzzlehttp/psr7": "^2.7",
 		"phpstan/extension-installer": "^1.4",
