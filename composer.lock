@@ -394,16 +394,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "4.4.3",
+            "version": "4.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "61e730f1658814821a85f2402c945f3883407dec"
+                "reference": "fb9e0ffe15e1590e24dc61c0c0a23f9a33ee42ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/61e730f1658814821a85f2402c945f3883407dec",
-                "reference": "61e730f1658814821a85f2402c945f3883407dec",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/fb9e0ffe15e1590e24dc61c0c0a23f9a33ee42ce",
+                "reference": "fb9e0ffe15e1590e24dc61c0c0a23f9a33ee42ce",
                 "shasum": ""
             },
             "require": {
@@ -480,7 +480,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/dbal/issues",
-                "source": "https://github.com/doctrine/dbal/tree/4.4.3"
+                "source": "https://github.com/doctrine/dbal/tree/4.4.4"
             },
             "funding": [
                 {
@@ -496,7 +496,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-03-20T08:52:12+00:00"
+            "time": "2026-07-21T14:34:40+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -918,16 +918,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "7.15.1",
+            "version": "7.15.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "61443dfb33c62f308ee8add20f45b4d6e4bf8d2f"
+                "reference": "744101956d78b7c1384d0cbf379db13e859167bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/61443dfb33c62f308ee8add20f45b4d6e4bf8d2f",
-                "reference": "61443dfb33c62f308ee8add20f45b4d6e4bf8d2f",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/744101956d78b7c1384d0cbf379db13e859167bf",
+                "reference": "744101956d78b7c1384d0cbf379db13e859167bf",
                 "shasum": ""
             },
             "require": {
@@ -1026,7 +1026,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/7.15.1"
+                "source": "https://github.com/guzzle/guzzle/tree/7.15.2"
             },
             "funding": [
                 {
@@ -1042,7 +1042,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-07-18T11:23:11+00:00"
+            "time": "2026-07-26T23:23:20+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -1381,16 +1381,16 @@
         },
         {
             "name": "openai-php/client",
-            "version": "v0.20.0",
+            "version": "v0.20.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/openai-php/client.git",
-                "reference": "b5c0e1e0f210e6b9aca5ee048157fcf3039ca91f"
+                "reference": "de32ca459d5810d3c80989bc16fb0412f5095ae4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/openai-php/client/zipball/b5c0e1e0f210e6b9aca5ee048157fcf3039ca91f",
-                "reference": "b5c0e1e0f210e6b9aca5ee048157fcf3039ca91f",
+                "url": "https://api.github.com/repos/openai-php/client/zipball/de32ca459d5810d3c80989bc16fb0412f5095ae4",
+                "reference": "de32ca459d5810d3c80989bc16fb0412f5095ae4",
                 "shasum": ""
             },
             "require": {
@@ -1452,7 +1452,7 @@
             ],
             "support": {
                 "issues": "https://github.com/openai-php/client/issues",
-                "source": "https://github.com/openai-php/client/tree/v0.20.0"
+                "source": "https://github.com/openai-php/client/tree/v0.20.1"
             },
             "funding": [
                 {
@@ -1468,7 +1468,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-06-13T12:14:23+00:00"
+            "time": "2026-07-20T11:03:21+00:00"
         },
         {
             "name": "php-http/discovery",
@@ -7355,16 +7355,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.95.15",
+            "version": "v3.95.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer.git",
-                "reference": "3e47e5d50046f87e3244acde2fe655d1a3b72555"
+                "reference": "0ee88422118f3cc59c8c3def222ba7f1493b6d5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/3e47e5d50046f87e3244acde2fe655d1a3b72555",
-                "reference": "3e47e5d50046f87e3244acde2fe655d1a3b72555",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/0ee88422118f3cc59c8c3def222ba7f1493b6d5b",
+                "reference": "0ee88422118f3cc59c8c3def222ba7f1493b6d5b",
                 "shasum": ""
             },
             "require": {
@@ -7404,10 +7404,10 @@
                 "php-coveralls/php-coveralls": "^2.9.1",
                 "php-cs-fixer/phpunit-constraint-isidenticalstring": "^1.8",
                 "php-cs-fixer/phpunit-constraint-xmlmatchesxsd": "^1.8",
-                "phpunit/phpunit": "^9.6.35 || ^10.5.64 || ^11.5.56 || ^12.5.31",
+                "phpunit/phpunit": "^9.6.35 || ^10.5.64 || ^11.5.56 || ^12.5.31 || ^13.0.6",
                 "symfony/polyfill-php85": "^1.38",
-                "symfony/var-dumper": "^5.4.48 || ^6.4.36 || ^7.4.8 || ^8.1.0",
-                "symfony/yaml": "^5.4.53 || ^6.4.41 || ^7.4.13 || ^8.1.0"
+                "symfony/var-dumper": "^5.4.48 || ^6.4.36 || ^7.4.8 || ^8.1.1",
+                "symfony/yaml": "^5.4.53 || ^6.4.41 || ^7.4.13 || ^8.1.1"
             },
             "suggest": {
                 "ext-dom": "For handling output formats in XML",
@@ -7448,7 +7448,7 @@
             ],
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues",
-                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.95.15"
+                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.95.17"
             },
             "funding": [
                 {
@@ -7456,7 +7456,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-07-15T09:51:47+00:00"
+            "time": "2026-07-24T13:54:39+00:00"
         },
         {
             "name": "idiosyncratic/editorconfig",
@@ -8876,11 +8876,11 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "2.2.5",
+            "version": "2.2.6",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/909c1e5fef7989ac0d0c1c5c42e32a5c4f6198a0",
-                "reference": "909c1e5fef7989ac0d0c1c5c42e32a5c4f6198a0",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/a6e9b5a9420f6109c091e87d82683bd1a80b87ed",
+                "reference": "a6e9b5a9420f6109c091e87d82683bd1a80b87ed",
                 "shasum": ""
             },
             "require": {
@@ -8936,7 +8936,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-07-05T06:31:06+00:00"
+            "time": "2026-07-26T21:22:49+00:00"
         },
         {
             "name": "phpstan/phpstan-deprecation-rules",
@@ -8990,27 +8990,28 @@
         },
         {
             "name": "phpstan/phpstan-strict-rules",
-            "version": "2.0.11",
+            "version": "2.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan-strict-rules.git",
-                "reference": "9b000a578b85b32945b358b172c7b20e91189024"
+                "reference": "2bc5ae19ae965663b62ac907ee6342c3903ec93b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan-strict-rules/zipball/9b000a578b85b32945b358b172c7b20e91189024",
-                "reference": "9b000a578b85b32945b358b172c7b20e91189024",
+                "url": "https://api.github.com/repos/phpstan/phpstan-strict-rules/zipball/2bc5ae19ae965663b62ac907ee6342c3903ec93b",
+                "reference": "2bc5ae19ae965663b62ac907ee6342c3903ec93b",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.4 || ^8.0",
-                "phpstan/phpstan": "^2.1.39"
+                "phpstan/phpstan": "^2.1.52"
             },
             "require-dev": {
                 "php-parallel-lint/php-parallel-lint": "^1.2",
                 "phpstan/phpstan-deprecation-rules": "^2.0",
                 "phpstan/phpstan-phpunit": "^2.0",
-                "phpunit/phpunit": "^9.6"
+                "phpunit/phpunit": "^9.6",
+                "shipmonk/name-collision-detector": "^2.1"
             },
             "type": "phpstan-extension",
             "extra": {
@@ -9035,9 +9036,9 @@
             ],
             "support": {
                 "issues": "https://github.com/phpstan/phpstan-strict-rules/issues",
-                "source": "https://github.com/phpstan/phpstan-strict-rules/tree/2.0.11"
+                "source": "https://github.com/phpstan/phpstan-strict-rules/tree/2.0.12"
             },
-            "time": "2026-05-02T06:54:10+00:00"
+            "time": "2026-07-19T07:24:06+00:00"
         },
         {
             "name": "phpstan/phpstan-symfony",
@@ -10144,21 +10145,21 @@
         },
         {
             "name": "rector/rector",
-            "version": "2.5.7",
+            "version": "2.5.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "ba22f8c087848278fed6b4910d4cf1108096d8d3"
+                "reference": "861c77fd2a6d45317a401f4e0b617f947e8b6f96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/ba22f8c087848278fed6b4910d4cf1108096d8d3",
-                "reference": "ba22f8c087848278fed6b4910d4cf1108096d8d3",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/861c77fd2a6d45317a401f4e0b617f947e8b6f96",
+                "reference": "861c77fd2a6d45317a401f4e0b617f947e8b6f96",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.4|^8.0",
-                "phpstan/phpstan": "^2.2.2"
+                "phpstan/phpstan": "^2.2.6"
             },
             "conflict": {
                 "rector/rector-doctrine": "*",
@@ -10192,7 +10193,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rectorphp/rector/issues",
-                "source": "https://github.com/rectorphp/rector/tree/2.5.7"
+                "source": "https://github.com/rectorphp/rector/tree/2.5.8"
             },
             "funding": [
                 {
@@ -10200,7 +10201,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-07-13T15:24:18+00:00"
+            "time": "2026-07-27T06:19:16+00:00"
         },
         {
             "name": "saschaegerer/phpstan-typo3",
@@ -12521,21 +12522,21 @@
         },
         {
             "name": "typo3/testing-framework",
-            "version": "9.5.0",
+            "version": "9.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3/testing-framework.git",
-                "reference": "bc918e46acc8d10c3e883b90f39b7fcdc339ab65"
+                "reference": "4818f0cac101ac89c2eaf9793588f1ccd7a5f446"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3/testing-framework/zipball/bc918e46acc8d10c3e883b90f39b7fcdc339ab65",
-                "reference": "bc918e46acc8d10c3e883b90f39b7fcdc339ab65",
+                "url": "https://api.github.com/repos/TYPO3/testing-framework/zipball/4818f0cac101ac89c2eaf9793588f1ccd7a5f446",
+                "reference": "4818f0cac101ac89c2eaf9793588f1ccd7a5f446",
                 "shasum": ""
             },
             "require": {
                 "composer/class-map-generator": "^1.3.4",
-                "guzzlehttp/psr7": "^2.5.0",
+                "guzzlehttp/psr7": "^2.5.0 || ^3.0",
                 "php": "^8.2",
                 "phpunit/phpunit": "^11.2.5 || ^12.1.2 || ^13.0.2",
                 "psr/container": "^2.0",
@@ -12593,9 +12594,9 @@
             "support": {
                 "general": "https://typo3.org/support/",
                 "issues": "https://github.com/TYPO3/testing-framework/issues",
-                "source": "https://github.com/TYPO3/testing-framework/tree/9.5.0"
+                "source": "https://github.com/TYPO3/testing-framework/tree/9.6.1"
             },
-            "time": "2026-03-25T21:37:25+00:00"
+            "time": "2026-07-23T09:46:45+00:00"
         },
         {
             "name": "webmozart/assert",
