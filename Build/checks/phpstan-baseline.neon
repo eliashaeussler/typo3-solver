@@ -51,7 +51,7 @@ parameters:
 		-
 			rawMessage: Cannot access offset 'EXTENSIONS' on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
-			count: 4
+			count: 5
 			path: ../../Tests/Unit/ProblemSolving/Solution/Provider/OpenAISolutionProviderTest.php
 
 		-
@@ -63,7 +63,7 @@ parameters:
 		-
 			rawMessage: Cannot access offset 'ignoredCodes' on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
+			count: 2
 			path: ../../Tests/Unit/ProblemSolving/Solution/Provider/OpenAISolutionProviderTest.php
 
 		-
@@ -75,5 +75,5 @@ parameters:
 		-
 			rawMessage: Cannot access offset 'solver' on mixed.
 			identifier: offsetAccess.nonOffsetAccessible
-			count: 4
+			count: 5
 			path: ../../Tests/Unit/ProblemSolving/Solution/Provider/OpenAISolutionProviderTest.php

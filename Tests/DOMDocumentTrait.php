@@ -33,6 +33,10 @@ trait DOMDocumentTrait
 {
     private static function createDOMXPath(string $html): \DOMXPath
     {
+        if ($html === '') {
+            self::fail('HTML string must not be empty.');
+        }
+
         $document = new \DOMDocument();
         libxml_use_internal_errors(true);
         $document->loadHTML($html);
