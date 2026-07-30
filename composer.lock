@@ -6576,16 +6576,16 @@
         },
         {
             "name": "eliashaeussler/typo3-vendor-bundler",
-            "version": "4.1.0",
+            "version": "4.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eliashaeussler/typo3-vendor-bundler.git",
-                "reference": "e62c2b11fce3fac476e0ce420254b786b2db60da"
+                "reference": "c8dfecefa8afbc18846fec226284f8ea15d85f2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/typo3-vendor-bundler/zipball/e62c2b11fce3fac476e0ce420254b786b2db60da",
-                "reference": "e62c2b11fce3fac476e0ce420254b786b2db60da",
+                "url": "https://api.github.com/repos/eliashaeussler/typo3-vendor-bundler/zipball/c8dfecefa8afbc18846fec226284f8ea15d85f2f",
+                "reference": "c8dfecefa8afbc18846fec226284f8ea15d85f2f",
                 "shasum": ""
             },
             "require": {
@@ -6638,9 +6638,9 @@
             "description": "Composer plugin to bundle vendor libraries for TYPO3 extensions in classic mode",
             "support": {
                 "issues": "https://github.com/eliashaeussler/typo3-vendor-bundler/issues",
-                "source": "https://github.com/eliashaeussler/typo3-vendor-bundler/tree/4.1.0"
+                "source": "https://github.com/eliashaeussler/typo3-vendor-bundler/tree/4.1.1"
             },
-            "time": "2026-07-24T20:34:32+00:00"
+            "time": "2026-07-30T14:03:06+00:00"
         },
         {
             "name": "eliashaeussler/version-bumper",
