@@ -6644,16 +6644,16 @@
         },
         {
             "name": "eliashaeussler/version-bumper",
-            "version": "4.0.3",
+            "version": "4.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eliashaeussler/version-bumper.git",
-                "reference": "a519b7b12d40c19a9bcec38f7652b923bfb00d03"
+                "reference": "b52c367464306813f9f7484d20559709327d8331"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/version-bumper/zipball/a519b7b12d40c19a9bcec38f7652b923bfb00d03",
-                "reference": "a519b7b12d40c19a9bcec38f7652b923bfb00d03",
+                "url": "https://api.github.com/repos/eliashaeussler/version-bumper/zipball/b52c367464306813f9f7484d20559709327d8331",
+                "reference": "b52c367464306813f9f7484d20559709327d8331",
                 "shasum": ""
             },
             "require": {
@@ -6709,9 +6709,9 @@
             "description": "Composer plugin to bump project versions during release preparations",
             "support": {
                 "issues": "https://github.com/eliashaeussler/version-bumper/issues",
-                "source": "https://github.com/eliashaeussler/version-bumper/tree/4.0.3"
+                "source": "https://github.com/eliashaeussler/version-bumper/tree/4.0.4"
             },
-            "time": "2026-06-04T05:37:13+00:00"
+            "time": "2026-07-31T13:56:22+00:00"
         },
         {
             "name": "ergebnis/agent-detector",
@@ -7358,16 +7358,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.95.17",
+            "version": "v3.95.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer.git",
-                "reference": "0ee88422118f3cc59c8c3def222ba7f1493b6d5b"
+                "reference": "a8b4e4216faabf67f4e96110ee99a48c96e4e683"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/0ee88422118f3cc59c8c3def222ba7f1493b6d5b",
-                "reference": "0ee88422118f3cc59c8c3def222ba7f1493b6d5b",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/a8b4e4216faabf67f4e96110ee99a48c96e4e683",
+                "reference": "a8b4e4216faabf67f4e96110ee99a48c96e4e683",
                 "shasum": ""
             },
             "require": {
@@ -7451,7 +7451,7 @@
             ],
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues",
-                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.95.17"
+                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.95.18"
             },
             "funding": [
                 {
@@ -7459,7 +7459,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-07-24T13:54:39+00:00"
+            "time": "2026-07-30T15:46:02+00:00"
         },
         {
             "name": "idiosyncratic/editorconfig",
@@ -10149,16 +10149,16 @@
         },
         {
             "name": "rector/rector",
-            "version": "2.5.8",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "861c77fd2a6d45317a401f4e0b617f947e8b6f96"
+                "reference": "24ef17c06737a6272806c5cca32b860449efe1ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/861c77fd2a6d45317a401f4e0b617f947e8b6f96",
-                "reference": "861c77fd2a6d45317a401f4e0b617f947e8b6f96",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/24ef17c06737a6272806c5cca32b860449efe1ba",
+                "reference": "24ef17c06737a6272806c5cca32b860449efe1ba",
                 "shasum": ""
             },
             "require": {
@@ -10197,7 +10197,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rectorphp/rector/issues",
-                "source": "https://github.com/rectorphp/rector/tree/2.5.8"
+                "source": "https://github.com/rectorphp/rector/tree/2.6.0"
             },
             "funding": [
                 {
@@ -10205,20 +10205,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-07-27T06:19:16+00:00"
+            "time": "2026-08-03T09:01:59+00:00"
         },
         {
             "name": "saschaegerer/phpstan-typo3",
-            "version": "3.0.1",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sascha-egerer/phpstan-typo3.git",
-                "reference": "6aa28e7088113b65f1e9d94e5202ddd2750c4f70"
+                "reference": "a5e67524fc6f2e9362ebcb170a9374525bfe844f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sascha-egerer/phpstan-typo3/zipball/6aa28e7088113b65f1e9d94e5202ddd2750c4f70",
-                "reference": "6aa28e7088113b65f1e9d94e5202ddd2750c4f70",
+                "url": "https://api.github.com/repos/sascha-egerer/phpstan-typo3/zipball/a5e67524fc6f2e9362ebcb170a9374525bfe844f",
+                "reference": "a5e67524fc6f2e9362ebcb170a9374525bfe844f",
                 "shasum": ""
             },
             "require": {
@@ -10263,7 +10263,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sascha-egerer/phpstan-typo3/issues",
-                "source": "https://github.com/sascha-egerer/phpstan-typo3/tree/3.0.1"
+                "source": "https://github.com/sascha-egerer/phpstan-typo3/tree/3.1.0"
             },
             "funding": [
                 {
@@ -10275,7 +10275,7 @@
                     "type": "liberapay"
                 }
             ],
-            "time": "2026-02-13T13:13:55+00:00"
+            "time": "2026-07-30T21:38:28+00:00"
         },
         {
             "name": "sebastian/cli-parser",
