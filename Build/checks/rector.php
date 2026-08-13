@@ -21,29 +21,20 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-use EliasHaeussler\RectorConfig\Config\Config;
 use Rector\Config\RectorConfig;
-use Rector\PHPUnit\CodeQuality\Rector\MethodCall\ScalarArgumentToExpectedParamTypeRector;
-use Rector\ValueObject\PhpVersion;
+use Ssch\TYPO3Rector\Set\Typo3LevelSetList;
 
-return static function (RectorConfig $rectorConfig): void {
-    $rootPath = dirname(__DIR__, 2);
+$rootPath = dirname(__DIR__, 2);
 
-    require $rootPath . '/.build/vendor/autoload.php';
-
-    Config::create($rectorConfig, PhpVersion::PHP_82)
-        ->in(
-            $rootPath . '/Classes',
-            $rootPath . '/Configuration',
-            $rootPath . '/Tests',
-        )
-        ->withPHPUnit()
-        ->withSymfony()
-        ->withTYPO3()
-        ->skip(ScalarArgumentToExpectedParamTypeRector::class, [
-            $rootPath . '/Tests/Unit/ProblemSolving/Solution/Provider/OpenAISolutionProviderTest.php',
-            $rootPath . '/Tests/Unit/ProblemSolving/SolverTest.php',
-        ])
-        ->apply()
-    ;
-};
+return RectorConfig::configure()
+    ->withPaths([
+        $rootPath . '/Classes',
+        $rootPath . '/Configuration',
+        $rootPath . '/Tests',
+    ])
+    ->withPhpSets(php82: true)
+    ->withComposerBased(phpunit: true, symfony: true)
+    ->withSets([
+        Typo3LevelSetList::UP_TO_TYPO3_13,
+    ])
+;
