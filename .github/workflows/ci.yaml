@@ -14,7 +14,7 @@ permissions:
 jobs:
   prepare:
     name: 'Prepare workflow'
-    uses: eliashaeussler/gha/.github/workflows/preparation.yaml@e567077243633adfcfd38b5e5af5a8a10983b27a # 1.1.5
+    uses: eliashaeussler/gha/.github/workflows/preparation.yaml@d35bc3755a6ea467539dd3d16ebe98a42b7f2f6e # 1.1.6
 
   asset-integrity:
     name: 'Verify asset integrity'
@@ -25,7 +25,7 @@ jobs:
     secrets:
       ASSETS_TOKEN: ${{ secrets.REBUILD_ASSETS_TOKEN }}
 
-    uses: eliashaeussler/gha/.github/workflows/asset-integrity.yaml@e567077243633adfcfd38b5e5af5a8a10983b27a # 1.1.5
+    uses: eliashaeussler/gha/.github/workflows/asset-integrity.yaml@d35bc3755a6ea467539dd3d16ebe98a42b7f2f6e # 1.1.6
     with:
       base-path: Build/assets
 
@@ -39,7 +39,7 @@ jobs:
       contents: read
       security-events: write
 
-    uses: eliashaeussler/gha/.github/workflows/checks.yaml@e567077243633adfcfd38b5e5af5a8a10983b27a # 1.1.5
+    uses: eliashaeussler/gha/.github/workflows/checks.yaml@d35bc3755a6ea467539dd3d16ebe98a42b7f2f6e # 1.1.6
     with:
       # We use the minimum supported PHP version
       php-version: 8.2 # renovate-ignore
@@ -59,7 +59,7 @@ jobs:
         typo3-version: ["13.4", "14.3"]
         dependencies: ["highest", "lowest"]
 
-    uses: eliashaeussler/gha/.github/workflows/typo3-tests.yaml@e567077243633adfcfd38b5e5af5a8a10983b27a # 1.1.5
+    uses: eliashaeussler/gha/.github/workflows/typo3-tests.yaml@d35bc3755a6ea467539dd3d16ebe98a42b7f2f6e # 1.1.6
     with:
       php-version: ${{ matrix.php-version }}
       typo3-version: ${{ matrix.typo3-version }}
@@ -71,7 +71,7 @@ jobs:
     needs: [asset-integrity]
     if: ${{ needs.asset-integrity.outputs.rebuilt == 'false' }}
 
-    uses: eliashaeussler/gha/.github/workflows/typo3-test-coverage.yaml@e567077243633adfcfd38b5e5af5a8a10983b27a # 1.1.5
+    uses: eliashaeussler/gha/.github/workflows/typo3-test-coverage.yaml@d35bc3755a6ea467539dd3d16ebe98a42b7f2f6e # 1.1.6
 
   automerge:
     name: 'Automerge modified Renovate branch'
@@ -84,4 +84,4 @@ jobs:
     permissions:
       contents: read
 
-    uses: eliashaeussler/gha/.github/workflows/renovate-merge.yaml@e567077243633adfcfd38b5e5af5a8a10983b27a # 1.1.5
+    uses: eliashaeussler/gha/.github/workflows/renovate-merge.yaml@d35bc3755a6ea467539dd3d16ebe98a42b7f2f6e # 1.1.6
