@@ -1,0 +1,14 @@
+.github/workflows/ci.yaml
+  h_a1c258d8beeba3 26-27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "3f6d9c0138a7e855cce3ff41dab157b2c20dcdb3",
+  "prompts": {},
+  "humans": {
+    "h_a1c258d8beeba3": {
+      "author": "Elias Häußler <elias@haeussler.dev>"
+    }
+  }
+}
