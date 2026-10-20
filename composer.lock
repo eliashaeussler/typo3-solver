@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dc88a441d07424780bcea3244fa87584",
+    "content-hash": "9577b696c4232116b1e6c5506bdfd5b2",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -6460,66 +6460,6 @@
             "time": "2025-12-09T08:43:49+00:00"
         },
         {
-            "name": "eliashaeussler/rector-config",
-            "version": "4.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/eliashaeussler/rector-config.git",
-                "reference": "8f1c49d4c0a9633a6f962c69bdc8df5bb2944009"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/rector-config/zipball/8f1c49d4c0a9633a6f962c69bdc8df5bb2944009",
-                "reference": "8f1c49d4c0a9633a6f962c69bdc8df5bb2944009",
-                "shasum": ""
-            },
-            "require": {
-                "composer-runtime-api": "^2.0",
-                "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
-                "rector/rector": "^2.0.17"
-            },
-            "require-dev": {
-                "armin/editorconfig-cli": "^2.0",
-                "composer/composer": "^2.0",
-                "eliashaeussler/php-cs-fixer-config": "^3.0",
-                "eliashaeussler/phpstan-config": "^3.0",
-                "ergebnis/composer-normalize": "^2.30",
-                "illuminate/container": "^12.0",
-                "phpstan/extension-installer": "^1.2",
-                "phpunit/phpunit": "^11.0 || ^12.0",
-                "ssch/typo3-rector": "^3.0",
-                "symfony/config": "^6.4 || ^7.0 || ^8.0",
-                "typo3/cms-core": "^13.4 || ^14.0"
-            },
-            "suggest": {
-                "ssch/typo3-rector": "Configures additional Rector rules for TYPO3 CMS projects (^3.0)"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "EliasHaeussler\\RectorConfig\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Elias Häußler",
-                    "email": "elias@haeussler.dev",
-                    "homepage": "https://haeussler.dev",
-                    "role": "Maintainer"
-                }
-            ],
-            "description": "My personal configuration for Rector",
-            "support": {
-                "issues": "https://github.com/eliashaeussler/rector-config/issues",
-                "source": "https://github.com/eliashaeussler/rector-config/tree/4.0.0"
-            },
-            "time": "2025-12-04T20:38:29+00:00"
-        },
-        {
             "name": "eliashaeussler/task-runner",
             "version": "1.2.3",
             "source": {
@@ -10149,16 +10089,16 @@
         },
         {
             "name": "rector/rector",
-            "version": "2.5.8",
+            "version": "2.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "861c77fd2a6d45317a401f4e0b617f947e8b6f96"
+                "reference": "03cd615cdd5648abb5f10ff3a684fdb976687190"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/861c77fd2a6d45317a401f4e0b617f947e8b6f96",
-                "reference": "861c77fd2a6d45317a401f4e0b617f947e8b6f96",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/03cd615cdd5648abb5f10ff3a684fdb976687190",
+                "reference": "03cd615cdd5648abb5f10ff3a684fdb976687190",
                 "shasum": ""
             },
             "require": {
@@ -10197,7 +10137,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rectorphp/rector/issues",
-                "source": "https://github.com/rectorphp/rector/tree/2.5.8"
+                "source": "https://github.com/rectorphp/rector/tree/2.6.2"
             },
             "funding": [
                 {
@@ -10205,7 +10145,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-07-27T06:19:16+00:00"
+            "time": "2026-08-12T06:23:05+00:00"
         },
         {
             "name": "saschaegerer/phpstan-typo3",
@@ -11389,16 +11329,16 @@
         },
         {
             "name": "ssch/typo3-rector",
-            "version": "v3.14.3",
+            "version": "v3.14.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sabbelasichon/typo3-rector.git",
-                "reference": "8926a9f9057445b226cc21157e2aa737033e67c8"
+                "reference": "d4b82ae77c030eaba585c8091fe8787ac4b1a506"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/8926a9f9057445b226cc21157e2aa737033e67c8",
-                "reference": "8926a9f9057445b226cc21157e2aa737033e67c8",
+                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/d4b82ae77c030eaba585c8091fe8787ac4b1a506",
+                "reference": "d4b82ae77c030eaba585c8091fe8787ac4b1a506",
                 "shasum": ""
             },
             "require": {
@@ -11416,7 +11356,7 @@
                 "symfony/polyfill-php80": "^1.28.0",
                 "symfony/polyfill-php81": "^1.28.0",
                 "symfony/string": "^5.4 || ^6.4 || ^7.0",
-                "webmozart/assert": "^1.11.0"
+                "webmozart/assert": "^1.11 || ^2.0"
             },
             "require-dev": {
                 "ergebnis/composer-normalize": "^2.42.0",
@@ -11501,7 +11441,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-07-01T14:37:16+00:00"
+            "time": "2026-08-03T19:09:00+00:00"
         },
         {
             "name": "staabm/side-effects-detector",
